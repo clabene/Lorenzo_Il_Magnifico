@@ -1,11 +1,11 @@
 package player;
 
+import interfaces.Losable;
 import pointsTrack.FaithPointsTrack;
 import pointsTrack.LandCardsPointsTrack;
 import pointsTrack.MilitaryPointsTrack;
 import pointsTrack.PersonCardsPointsTrack;
 import cards.Card;
-import interfaces.Expendable;
 import interfaces.Gainable;
 import resources.Resource;
 
@@ -35,8 +35,12 @@ public class Player {
             tmp.gainedByPlayer(this);
     }
 
-    public void spend(Expendable ... e) {
-        //todo
+    /*
+    * Players loses all the points and all the resources given as parameters
+    * */
+    public void lose(Losable... losables) {
+        for (Losable tmp : losables)
+            tmp.lostByPlayer(this);
     }
 
     public void takeCard(Card card){
@@ -45,6 +49,10 @@ public class Player {
 
     public void addResourcesToPlank(Resource ... resources){
         plank.getSetOfResources().resourcesAdded(resources);
+    }
+
+    public void removeResourcesFromPlank(Resource ... resources){
+        plank.getSetOfResources().resourcesSpent(resources);
     }
 
     public Plank getPlank() {
@@ -65,5 +73,17 @@ public class Player {
 
     public LandCardsPointsTrack getLandCardsPoints() {
         return landCardsPoints;
+    }
+
+    public void addVictoryPoints(int points) {
+        this.victoryPoints += points;
+    }
+
+    public void loseVictoryPoints(int points) {
+        this.victoryPoints -= points;
+    }
+
+    public int getVictoryPoints() {
+        return victoryPoints;
     }
 }

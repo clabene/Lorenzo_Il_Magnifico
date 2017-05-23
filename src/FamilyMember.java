@@ -27,11 +27,5 @@ public class FamilyMember {
         this.inActionSpace = inActionSpace;
     }
 
-    public static void main(String[] a){
-        System.out.println("CIAONE tanto non è vero che va");
-    }
-
-    //brandolese cane
-    //il vecchio pure
 
 }

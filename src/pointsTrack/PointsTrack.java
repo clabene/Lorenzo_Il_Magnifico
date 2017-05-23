@@ -26,13 +26,14 @@ public abstract class PointsTrack implements Gainable{
     *
     * Note that military points are well described by such a model (even if they don't have victory points associated),
     * since it can encapsulate the bonuses attributes given at the end of the game and it allows the class to implement
-    * Gainable and Expendable and there is a limit number of military points a player can have. All this would be harder
+    * Gainable and Losable and there is a limit number of military points a player can have. All this would be harder
     * to implement if military points were described by an int.
     *
     * The decision of extending this class to all possible pointsTrack's was made in order
     * to have a more readable code and no ugly victoryPointsOfPosition "exposed" in the constructor,
     * to make it easier to implement Gainable's method gainedByPlayer(Player player); , which is now implemented separately in
-    * each subclass.
+    * each subclass,
+    * because only some of the subclasses have to implement Losable
     *
     * */
 

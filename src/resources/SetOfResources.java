@@ -1,13 +1,13 @@
 package resources;
 
-import interfaces.Expendable;
+import interfaces.Losable;
 import interfaces.Gainable;
 import player.Player;
 
 /**
  * Created by IBM on 09/05/2017.
  */
-public class SetOfResources implements Expendable, Gainable {
+public class SetOfResources implements Losable, Gainable {
 
     private Resource[] resources = new Resource[4];
     private final int WOOD_INDEX = 0;
@@ -74,7 +74,10 @@ public class SetOfResources implements Expendable, Gainable {
         player.addResourcesToPlank(this.getResources());
     }
 
-
+    @Override
+    public void lostByPlayer(Player player){
+        player.removeResourcesFromPlank(this.getResources());
+    }
 
 
 }

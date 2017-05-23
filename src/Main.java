@@ -19,9 +19,11 @@ public class Main {
         System.out.println("faith "+player.getFaithPoints().getTrackPosition().getValue());
         System.out.println("person "+player.getPersonCardsPoints().getTrackPosition().getValue());
         System.out.println("land "+player.getLandCardsPoints().getTrackPosition().getValue());
+        System.out.println("vitory "+player.getVictoryPoints());
 
         player.gain(new SetOfResources(new Money(3)), new Stone(6), new MilitaryPointsTrack(27),
-                new FaithPointsTrack(3), new FaithPointsTrack(1), new LandCardsPointsTrack(7));
+                new FaithPointsTrack(3), new FaithPointsTrack(1), new LandCardsPointsTrack(7),
+                new VictoryPoint(21));
 
         System.out.println("---------------------------------------------------");
 
@@ -31,6 +33,20 @@ public class Main {
         System.out.println("faith "+player.getFaithPoints().getTrackPosition().getValue());
         System.out.println("person "+player.getPersonCardsPoints().getTrackPosition().getValue());
         System.out.println("land "+player.getLandCardsPoints().getTrackPosition().getValue());
+        System.out.println("vitory "+player.getVictoryPoints());
+
+        player.lose(new SetOfResources(new Money(3)), new Stone(6), new MilitaryPointsTrack(27),
+                new FaithPointsTrack(3), new FaithPointsTrack(1));
+
+        System.out.println("---------------------------------------------------");
+
+
+        System.out.println(player.getPlank().getSetOfResources());
+        System.out.println("military "+player.getMilitaryPoints().getTrackPosition().getValue());
+        System.out.println("faith "+player.getFaithPoints().getTrackPosition().getValue());
+        System.out.println("person "+player.getPersonCardsPoints().getTrackPosition().getValue());
+        System.out.println("land "+player.getLandCardsPoints().getTrackPosition().getValue());
+        System.out.println("vitory "+player.getVictoryPoints());
 
 
     }

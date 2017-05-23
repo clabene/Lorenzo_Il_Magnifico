@@ -15,6 +15,6 @@ public class Money extends Resource {
 
     @Override
     public String toString(){
-        return "Money (quantity of "+getQuantity()+")";
+        return "Money(quantity of "+getQuantity()+")";
     }
 }

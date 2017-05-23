@@ -1,6 +1,6 @@
 package cards;
 
-import interfaces.Expendable;
+import interfaces.Losable;
 
 /**
  * Created by IBM on 13/05/2017.
@@ -14,13 +14,13 @@ public class CardCost {
     *
     * */
 
-    private Expendable cost;
+    private Losable cost;
 
-    public CardCost(Expendable cost){
+    public CardCost(Losable cost){
         this.cost = cost;
     }
 
-    public Expendable getCost() {
+    public Losable getCost() {
         return cost;
     }
 

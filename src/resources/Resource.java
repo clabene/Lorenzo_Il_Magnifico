@@ -1,13 +1,13 @@
 package resources;
 
-import interfaces.Expendable;
+import interfaces.Losable;
 import interfaces.Gainable;
 import player.Player;
 
 /**
  * Created by IBM on 09/05/2017.
  */
-public abstract class Resource implements Expendable, Gainable {
+public abstract class Resource implements Losable, Gainable {
 
     private int quantity;
 
@@ -33,6 +33,11 @@ public abstract class Resource implements Expendable, Gainable {
     @Override
     public void gainedByPlayer(Player player){
         player.addResourcesToPlank(this);
+    }
+
+    @Override
+    public void lostByPlayer(Player player){
+        player.removeResourcesFromPlank(this);
     }
 
 }

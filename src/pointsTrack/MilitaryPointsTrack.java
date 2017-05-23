@@ -1,12 +1,13 @@
 package pointsTrack;
 
+import interfaces.Losable;
 import player.Player;
 import utility.StaticVariables;
 
 /**
  * Created by IBM on 20/05/2017.
  */
-public class MilitaryPointsTrack extends PointsTrack {
+public class MilitaryPointsTrack extends PointsTrack implements Losable {
 
     private final int firstPlaceBonus = StaticVariables.FIRST_PLACE_MILITARY_BONUS;
     private final int secondPlaceBonus = StaticVariables.SECOND_PLACE_MILITARY_BONUS;
@@ -23,6 +24,12 @@ public class MilitaryPointsTrack extends PointsTrack {
     public void gainedByPlayer(Player player){
         for(int i = getTrackPosition().getValue(); i>0; i--)
             player.getMilitaryPoints().incrementTrackPosition();
+    }
+
+    @Override
+    public void lostByPlayer(Player player){
+        for(int i = getTrackPosition().getValue(); i>0; i--)
+            player.getMilitaryPoints().decrementTrackPosition();
     }
 
 

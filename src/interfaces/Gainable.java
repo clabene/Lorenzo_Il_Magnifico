@@ -8,7 +8,7 @@ import player.Player;
 public interface Gainable{
     //can be gained
 
-    public void gainedByPlayer(Player player);
+    void gainedByPlayer(Player player);
 
 
 }
