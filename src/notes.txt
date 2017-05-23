@@ -1,0 +1,33 @@
+Note 1
+Right now classes Wood, Stone, Slave, Money have the only advantage to make it easier to distinguish among the different types of resources.
+On the other hand it could be a good idea to just make an Enum "ResourceType" and give a ResourceType attribute to class Resource.
+
+Note 2
+Might wanna have Gainable to extend Expendable. However, have them distinguished makes reading the code more intuitive.
+
+Note 3
+Idea:
+Gainable has this method-declaration: gainedByPlayer(player.Player player);
+and player has method:
+    gain(Gainable gainable){
+        //controls & details omitted here
+        gainable.gainedByPlayer(this);
+    }
+
+Same can be done with Expendable
+
+UPDATE: this is idea has been put into practise for Gainable, not (yet) for Expendable.
+
+Note 4
+Might wanna extend pointsTrack to all possible pointsTrack's in order to have a more readable code and no ugly victoryPointsOfPosition
+"exposed" in the constructor.
+On the other hand, it might be an excessively complicated solution.
+
+UPDATE: The class was extended.
+Reasons: read the class notes.
+
+
+Note 5
+DiceValue is a quite useless class (also, it has been badly implemented so far -see notes on the class). Better is, using a LimitedInteger
+object to represent dice values (using static variables w/ meaningful names in order to keep code readable and clean) and maybe implementing a
+Dice class to get random values.

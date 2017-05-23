@@ -1,0 +1,17 @@
+package actionSpaces;
+
+/**
+ * Created by IBM on 19/05/2017.
+ */
+public class TowerActionSpace extends ActionSpace {
+
+    public TowerActionSpace(){
+        super(1, ActionSpaceType.TOWER);
+
+    }
+
+    public void action(){
+
+    }
+
+}

@@ -1,0 +1,7 @@
+package cards;
+
+/**
+ * Created by IBM on 14/05/2017.
+ */
+public class CardEffect {
+}
