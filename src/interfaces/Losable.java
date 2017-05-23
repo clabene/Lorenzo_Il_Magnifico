@@ -1,5 +1,7 @@
 package interfaces;
 
+import exceptions.NegativePointsException;
+import exceptions.NegativeResourceQuantityException;
 import player.Player;
 
 /**
@@ -8,6 +10,6 @@ import player.Player;
 public interface Losable {
     //can be spent.
 
-    void lostByPlayer(Player player);
+    void lostByPlayer(Player player) throws NegativeResourceQuantityException, NegativePointsException;
 
 }

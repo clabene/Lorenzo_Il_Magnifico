@@ -1,5 +1,6 @@
 package resources;
 
+import exceptions.NegativeResourceQuantityException;
 import interfaces.Losable;
 import interfaces.Gainable;
 import player.Player;
@@ -48,18 +49,33 @@ public class SetOfResources implements Losable, Gainable {
         }
     }
 
-    private void oneResourceSpent(Resource resource){
+    private void oneResourceSpent(Resource resource) throws NegativeResourceQuantityException {
         if(resource instanceof Wood) resources[WOOD_INDEX].resourceSpent(resource.getQuantity());
         else if(resource instanceof Stone) resources[STONE_INDEX].resourceSpent(resource.getQuantity());
         else if(resource instanceof Slave)  resources[SLAVE_INDEX].resourceSpent(resource.getQuantity());
         else if(resource instanceof Money) resources[MONEY_INDEX].resourceSpent(resource.getQuantity());
     }
 
+    //true if NegativeResourceQuantityException is not to be thrown
+    private boolean enoughResourcesQuantity(Resource resource) {
+        if(resource instanceof Wood && resources[WOOD_INDEX].getQuantity() < resource.getQuantity())
+                return false;
+        else if(resource instanceof Stone&& resources[STONE_INDEX].getQuantity() < resource.getQuantity())
+            return false;
+        else if(resource instanceof Slave && resources[SLAVE_INDEX].getQuantity() < resource.getQuantity())
+                return false;
+        else if(resource instanceof Money && resources[MONEY_INDEX].getQuantity() < resource.getQuantity())
+                return false;
+        return true;
+    }
 
-    public void resourcesSpent(Resource ... resources){
-        for(Resource tmp : resources){
+
+    public void resourcesSpent(Resource ... resources) throws NegativeResourceQuantityException {
+        for(Resource tmp : resources)
+            if(!enoughResourcesQuantity(tmp))
+                throw new NegativeResourceQuantityException();
+        for (Resource tmp : resources)
             oneResourceSpent(tmp);
-        }
     }
 
     @Override
@@ -68,14 +84,13 @@ public class SetOfResources implements Losable, Gainable {
     }
 
 
-    //TODO check if this is of any help. Maybe this class should not implement Gainable and have all handled by class Resource.
     @Override
     public void gainedByPlayer(Player player){
         player.addResourcesToPlank(this.getResources());
     }
 
     @Override
-    public void lostByPlayer(Player player){
+    public void lostByPlayer(Player player) throws NegativeResourceQuantityException {
         player.removeResourcesFromPlank(this.getResources());
     }
 

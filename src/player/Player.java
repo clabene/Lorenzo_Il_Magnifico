@@ -1,5 +1,7 @@
 package player;
 
+import exceptions.NegativePointsException;
+import exceptions.NegativeResourceQuantityException;
 import interfaces.Losable;
 import pointsTrack.FaithPointsTrack;
 import pointsTrack.LandCardsPointsTrack;
@@ -14,7 +16,7 @@ import resources.Resource;
  */
 public class Player {
 
-    private int victoryPoints = 0;
+    private int victoryPoints = 0; //todo
     private MilitaryPointsTrack militaryPoints = new MilitaryPointsTrack();
     private FaithPointsTrack faithPoints = new FaithPointsTrack();
     private PersonCardsPointsTrack personCardsPoints = new PersonCardsPointsTrack();
@@ -37,10 +39,19 @@ public class Player {
 
     /*
     * Players loses all the points and all the resources given as parameters
+    *
+    * Player loses the losable objects that can lose without an exception to be thrown. The catching of an Exception will not
+    * cause the method to stop.
+    * Player will not lose a portion of a SetOfResources, but either all of it or none of it.
+    *
     * */
     public void lose(Losable... losables) {
         for (Losable tmp : losables)
-            tmp.lostByPlayer(this);
+            try {
+                tmp.lostByPlayer(this);
+            } catch (NegativeResourceQuantityException | NegativePointsException e) {
+                e.printStackTrace();
+            }
     }
 
     public void takeCard(Card card){
@@ -51,7 +62,7 @@ public class Player {
         plank.getSetOfResources().resourcesAdded(resources);
     }
 
-    public void removeResourcesFromPlank(Resource ... resources){
+    public void removeResourcesFromPlank(Resource ... resources) throws NegativeResourceQuantityException {
         plank.getSetOfResources().resourcesSpent(resources);
     }
 

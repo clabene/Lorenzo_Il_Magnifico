@@ -12,7 +12,7 @@ public class Main {
 
     public static void main(String args[]){
 
-        Player player = new Player(new Wood(2), new Slave(4));
+        Player player = new Player();
 
         System.out.println(player.getPlank().getSetOfResources());
         System.out.println("military "+player.getMilitaryPoints().getTrackPosition().getValue());
@@ -21,9 +21,9 @@ public class Main {
         System.out.println("land "+player.getLandCardsPoints().getTrackPosition().getValue());
         System.out.println("vitory "+player.getVictoryPoints());
 
-        player.gain(new SetOfResources(new Money(3)), new Stone(6), new MilitaryPointsTrack(27),
+        player.gain(new SetOfResources(new Money(3), new Stone(7)), new MilitaryPointsTrack(27),
                 new FaithPointsTrack(3), new FaithPointsTrack(1), new LandCardsPointsTrack(7),
-                new VictoryPoint(21));
+                new VictoryPoint(21), new Wood(3));
 
         System.out.println("---------------------------------------------------");
 
@@ -35,8 +35,8 @@ public class Main {
         System.out.println("land "+player.getLandCardsPoints().getTrackPosition().getValue());
         System.out.println("vitory "+player.getVictoryPoints());
 
-        player.lose(new SetOfResources(new Money(3)), new Stone(6), new MilitaryPointsTrack(27),
-                new FaithPointsTrack(3), new FaithPointsTrack(1));
+        player.lose(new Stone(4), new MilitaryPointsTrack(3), new SetOfResources(new Money(1), new Stone(4)),
+                new Money(2));
 
         System.out.println("---------------------------------------------------");
 

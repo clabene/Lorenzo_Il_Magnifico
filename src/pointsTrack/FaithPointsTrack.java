@@ -1,5 +1,6 @@
 package pointsTrack;
 
+import exceptions.NegativePointsException;
 import interfaces.Losable;
 import player.Player;
 import utility.StaticVariables;
@@ -18,13 +19,14 @@ public class FaithPointsTrack extends PointsTrack implements Losable {
     }
 
     @Override
-    public void gainedByPlayer(Player player){
+    public void gainedByPlayer(Player player) {
         for(int i = getTrackPosition().getValue(); i>0; i--)
             player.getFaithPoints().incrementTrackPosition();
     }
 
     @Override
-    public void lostByPlayer(Player player){
+    public void lostByPlayer(Player player) throws NegativePointsException {
+        if(player.getFaithPoints().getTrackPosition().getValue() < getTrackPosition().getValue()) throw new NegativePointsException();
         for(int i = getTrackPosition().getValue(); i>0; i--)
             player.getFaithPoints().decrementTrackPosition();
     }

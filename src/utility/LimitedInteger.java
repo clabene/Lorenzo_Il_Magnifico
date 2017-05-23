@@ -18,9 +18,8 @@ public class LimitedInteger {
         this.value = value;
     }
 
-
     @Deprecated
-    //todo delete this constructor, value is 0 and no check concerning MIN_VALUE and MAX_VALUE is done
+    //todo delete this constructor: value is 0 and no check concerning MIN_VALUE and MAX_VALUE is done
     public LimitedInteger(int MAX_VALUE, int MIN_VALUE) {
         this.MAX_VALUE = MAX_VALUE;
         this.MIN_VALUE = MIN_VALUE;

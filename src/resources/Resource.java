@@ -1,5 +1,6 @@
 package resources;
 
+import exceptions.NegativeResourceQuantityException;
 import interfaces.Losable;
 import interfaces.Gainable;
 import player.Player;
@@ -25,8 +26,9 @@ public abstract class Resource implements Losable, Gainable {
     public void resourceAdded(int quantity){
         this.quantity += quantity;
     }
-    //todo must throw exception if quantity goes below 0
-    public void resourceSpent(int quantity){
+
+    public void resourceSpent(int quantity) throws NegativeResourceQuantityException{
+        if(this.quantity < quantity) throw new NegativeResourceQuantityException();
         this.quantity -= quantity;
     }
 
@@ -36,7 +38,7 @@ public abstract class Resource implements Losable, Gainable {
     }
 
     @Override
-    public void lostByPlayer(Player player){
+    public void lostByPlayer(Player player) throws NegativeResourceQuantityException{
         player.removeResourcesFromPlank(this);
     }
 

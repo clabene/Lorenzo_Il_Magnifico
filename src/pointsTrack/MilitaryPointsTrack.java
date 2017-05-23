@@ -1,5 +1,6 @@
 package pointsTrack;
 
+import exceptions.NegativePointsException;
 import interfaces.Losable;
 import player.Player;
 import utility.StaticVariables;
@@ -27,7 +28,8 @@ public class MilitaryPointsTrack extends PointsTrack implements Losable {
     }
 
     @Override
-    public void lostByPlayer(Player player){
+    public void lostByPlayer(Player player) throws NegativePointsException{
+        if(player.getFaithPoints().getTrackPosition().getValue() < getTrackPosition().getValue()) throw new NegativePointsException();
         for(int i = getTrackPosition().getValue(); i>0; i--)
             player.getMilitaryPoints().decrementTrackPosition();
     }
