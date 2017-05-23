@@ -10,7 +10,7 @@ import resources.*;
 public class Main {
 
     //ciaone jjj
-
+//ejrhkmd
     public static void main(String args[]){
 
         Player player = new Player(new Wood(2), new Slave(4));
