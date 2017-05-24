@@ -38,11 +38,10 @@ public class Player {
     }
 
     /*
-    * Players loses all the points and all the resources given as parameters
+    * Players loses all the points and all the resources given as parameter. Further information follow:
     *
-    * Player loses the losable objects that can lose without an exception to be thrown. The catching of an Exception will not
-    * cause the method to stop.
-    * Player will not lose a portion of a SetOfResources, but either all of it or none of it.
+    * Player loses all the losable objects that can lose without an exception to be thrown. The catching of an Exception will not
+    * cause the method to stop. Also, player will not lose a portion of a SetOfResources, but either all of it or none of it.
     *
     * */
     public void lose(Losable... losables) {

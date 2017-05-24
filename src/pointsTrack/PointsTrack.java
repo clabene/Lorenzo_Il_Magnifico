@@ -14,8 +14,8 @@ public abstract class PointsTrack implements Gainable{
     * so that it will encapsulate all the attributes of a single cell of the track.
     *
     * A few examples follow:
-    * At the end of the game, a player will gain some victory points based on their position on the faith track.
-    * Using this class to represent their faith points will make the calculations easier thanks to the victoryPointsOfPositions attribute.
+    * At the end of the game, a player will gain some victory points based on their position on the faith track. Using this
+    * class to represent their faith points will make the calculations easier thanks to the victoryPointsOfPositions attribute.
     * Same when it comes to calculating those points coming from the number of person cards the player has at the end of the game:
     * player just needs to have a PersonCardsPointsTrack attribute of type pointsTrack, that updates going ahead every time they
     * get a person card.
