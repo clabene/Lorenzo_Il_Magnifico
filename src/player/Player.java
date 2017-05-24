@@ -89,7 +89,8 @@ public class Player {
         this.victoryPoints += points;
     }
 
-    public void loseVictoryPoints(int points) {
+    public void loseVictoryPoints(int points) throws NegativePointsException {
+        if(this.victoryPoints < points) throw new NegativePointsException();
         this.victoryPoints -= points;
     }
 

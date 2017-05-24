@@ -1,3 +1,4 @@
+import exceptions.NegativePointsException;
 import interfaces.Losable;
 import interfaces.Gainable;
 import player.Player;
@@ -23,7 +24,7 @@ public class VictoryPoint implements Gainable, Losable {
     }
 
     @Override
-    public void lostByPlayer(Player player) {
+    public void lostByPlayer(Player player) throws NegativePointsException{
         player.loseVictoryPoints(getVictoryPoints());
     }
 

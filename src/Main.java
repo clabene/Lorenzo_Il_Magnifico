@@ -36,7 +36,7 @@ public class Main {
         System.out.println("victory "+player.getVictoryPoints());
 
         player.lose(new Stone(4), new MilitaryPointsTrack(3), new SetOfResources(new Money(1), new Stone(4)),
-                new Money(2), new VictoryPoint(11));
+                new Money(2), new VictoryPoint(31));
 
         System.out.println("---------------------------------------------------");
 
