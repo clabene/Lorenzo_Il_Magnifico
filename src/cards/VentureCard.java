@@ -5,8 +5,8 @@ package cards;
  */
 public class VentureCard extends Card {
 
-    public VentureCard(PeriodNumber periodNumber, CardCost cardCost, CardCost cardCost2, CardEffect immediateCardEffect, CardEffect permanentCardEffect){
-        super(CardType.VENTURE, periodNumber);
+    public VentureCard(String name, PeriodNumber periodNumber, CardCost cardCost, CardCost cardCost2, CardEffect immediateCardEffect, CardEffect permanentCardEffect){
+        super(name, CardType.VENTURE, periodNumber);
         super.setActivationValue(null);
         super.setCardCost(cardCost);
         super.setCardCost2(cardCost2);

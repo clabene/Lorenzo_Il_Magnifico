@@ -35,13 +35,6 @@ public abstract class Card {
         this.period = period;
     }
 
-    @Deprecated
-    //delete this constructor
-    public Card(CardType cardType, PeriodNumber period) {
-        this.cardType = cardType;
-        this.period = period;
-    }
-
     public void setCardCost(CardCost cardCost) {
         this.cardCost = cardCost;
     }

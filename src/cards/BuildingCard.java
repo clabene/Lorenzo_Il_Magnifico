@@ -5,13 +5,13 @@ package cards;
  */
 public class BuildingCard extends Card {
 
-    public BuildingCard(PeriodNumber periodNumber, CardCost cardCost, int activationValue, CardEffect immediateCardEffect, CardEffect permanentCardEffect){
-        super(CardType.BUILDING, periodNumber);
-        super.setActivationValue(null);
+    public BuildingCard(String name, PeriodNumber periodNumber, CardCost cardCost, int activationValue, CardEffect immediateCardEffect, CardEffect permanentCardEffect){
+        super(name, CardType.BUILDING, periodNumber);
+        super.setActivationValue(activationValue);
         super.setCardCost(cardCost);
         super.setImmediateEffect(immediateCardEffect);
         super.setPermanentEffect(permanentCardEffect);
     }
-    //ciao
+
 
 }

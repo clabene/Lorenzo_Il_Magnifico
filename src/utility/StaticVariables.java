@@ -1,5 +1,10 @@
 package utility;
 
+import interfaces.Gainable;
+import pointsTrack.FaithPointsTrack;
+import pointsTrack.MilitaryPointsTrack;
+import resources.*;
+
 /**
  * Created by IBM on 16/05/2017.
  */
@@ -17,6 +22,10 @@ public class StaticVariables {
     public static final int SECOND_PLACE_MILITARY_BONUS = 2; //player with the second most military points gets 2 victory points at the end of the game
 
     public static final int MAX_NUMBER_OF_CARDS_PER_TYPE_ON_PLANK = 6; //mas number of cards of the same type a player can have on their plank
+
+    public static final Gainable[] COUNCIL_FAVOURS = {new SetOfResources(new Wood(), new Stone()),
+            new Slave(2), new Money(2), new MilitaryPointsTrack(2), new FaithPointsTrack(1)};
+
 
     /*
     //max value requested to activate a land card or a building card when a family member is on the relative action spaces

@@ -5,8 +5,8 @@ package cards;
  */
 public class LandCard extends Card {
 
-    public LandCard(PeriodNumber periodNumber, int activationValue, CardEffect immediateCardEffect, CardEffect permanentCardEffect){
-        super(CardType.LAND, periodNumber);
+    public LandCard(String name, PeriodNumber periodNumber, int activationValue, CardEffect immediateCardEffect, CardEffect permanentCardEffect) {
+        super(name, CardType.LAND, periodNumber);
         super.setActivationValue(activationValue);
         super.setCardCost(null);
         super.setImmediateEffect(immediateCardEffect);

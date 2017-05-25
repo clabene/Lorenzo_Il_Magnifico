@@ -6,8 +6,8 @@ package cards;
  */
 public class PersonCard extends Card {
 
-    public PersonCard(PeriodNumber periodNumber, CardCost cardCost, CardEffect immediateCardEffect, CardEffect permanentCardEffect){
-        super(CardType.PERSON, periodNumber);
+    public PersonCard(String name, PeriodNumber periodNumber, CardCost cardCost, CardEffect immediateCardEffect, CardEffect permanentCardEffect){
+        super(name, CardType.PERSON, periodNumber);
         super.setActivationValue(null);
         super.setCardCost(cardCost);
         super.setImmediateEffect(immediateCardEffect);
