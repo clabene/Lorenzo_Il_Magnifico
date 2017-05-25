@@ -1,5 +1,6 @@
 package player;
 
+import actionSpaces.ActionSpace;
 import exceptions.NegativePointsException;
 import exceptions.NegativeResourceQuantityException;
 import interfaces.Losable;
@@ -52,6 +53,12 @@ public class Player {
                 e.printStackTrace();
             }
     }
+
+    public void addFamiliar(ActionSpace){
+
+    }
+
+
 
     public void takeCard(Card card){
         plank.getCards().cardAdded(card);
