@@ -28,10 +28,12 @@ public class CouncilFavour implements Gainable {
 
         while(numberOfFavours > 0){
             //favours are printed
-            toString();
+            System.out.println(toString());
 
             //player selects favour
-            int chosenIndex = input.nextInt()-1;
+            int chosenIndex = input.nextInt()-1; //todo controls are needed here
+
+            if(favours[chosenIndex] == null) continue;
 
             //favour gained by player (calling gain??)
             player.gain(favours[chosenIndex]);
@@ -46,14 +48,12 @@ public class CouncilFavour implements Gainable {
 
     @Override
     public String toString(){
-        System.out.println("wella");
         int i = 0;
         String toReturn = "";
         for(Gainable tmp : favours) {
-            if(tmp != null) {
-                i++;
+            i++;
+            if(tmp != null)
                 toReturn += i + " " + tmp.toString() + "\n";
-            }
         }
         return toReturn;
     }
@@ -61,11 +61,10 @@ public class CouncilFavour implements Gainable {
 
     public static void main(String[] args){
         CouncilFavour c = new CouncilFavour(2);
-        System.out.println(c);
 
         Player p = new Player();
         c.gainedByPlayer(p);
-        System.out.println("player: " + p.getPlank().getSetOfResources() +" "+ p.getFaithPoints() + " " + p.getMilitaryPoints());
+        System.out.println("player: " + p.getPlank().getSetOfResources() +"  "+ p.getFaithPoints() + "  " + p.getMilitaryPoints());
 
 
     }
