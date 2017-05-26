@@ -1,7 +1,7 @@
 package player;
 
 import actionSpaces.ActionSpace;
-import areas.Board;
+import board.Board;
 import exceptions.NegativePointsException;
 import exceptions.NegativeResourceQuantityException;
 import interfaces.Losable;

@@ -1,4 +1,6 @@
-package areas;
+package board;
+
+import board.*;
 
 /**
  * Created by IBM on 09/05/2017.

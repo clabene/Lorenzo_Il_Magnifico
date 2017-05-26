@@ -2,7 +2,7 @@ package gameStructure;
 
 import actionSpaces.ActionSpace;
 import areas.Area;
-import areas.Board;
+import board.Board;
 import player.FamilyMember;
 import player.Player;
 import resources.SetOfResources;
@@ -17,12 +17,13 @@ public class ActionPhase {
 
     private Player player;
     private Board board;
-
+//ciao claudio
 
     public void putFamilyMemberOnActionSpace(){
 
         FamilyMember familyMember = player.selectFamilyMember();
         Area area = player.selectArea(board);
+
         ActionSpace actionSpace = player.selectActionSpace(area);
         incrementFamilyMemberValueRequest(player);
 
