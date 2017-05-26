@@ -1,3 +1,5 @@
+package resources;
+
 import interfaces.Gainable;
 import player.Player;
 import utility.StaticVariables;
