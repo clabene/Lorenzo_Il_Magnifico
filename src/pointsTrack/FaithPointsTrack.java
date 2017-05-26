@@ -26,9 +26,14 @@ public class FaithPointsTrack extends PointsTrack implements Losable {
 
     @Override
     public void lostByPlayer(Player player) throws NegativePointsException {
-        if(player.getFaithPoints().getTrackPosition().getValue() < getTrackPosition().getValue()) throw new NegativePointsException();
-        for(int i = getTrackPosition().getValue(); i>0; i--)
-            player.getFaithPoints().decrementTrackPosition();
+
+        if(player.getFaithPoints().getTrackPosition().getValue() < getTrackPosition().getValue())
+            for(int i = player.getFaithPoints().getTrackPosition().getValue(); i>0; i--)
+                player.getFaithPoints().decrementTrackPosition();
+        else
+            for(int i = getTrackPosition().getValue(); i>0; i--)
+                player.getFaithPoints().decrementTrackPosition();
+
     }
 
     @Override

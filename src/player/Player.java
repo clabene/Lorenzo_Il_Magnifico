@@ -10,7 +10,7 @@ import pointsTrack.MilitaryPointsTrack;
 import pointsTrack.PersonCardsPointsTrack;
 import cards.Card;
 import interfaces.Gainable;
-import resources.Resource;
+import resources.*;
 import areas.Area;
 
 /**
@@ -45,17 +45,32 @@ public class Player {
     * Player loses all the losable objects that can lose without an exception to be thrown. The catching of an Exception will not
     * cause the method to stop. Also, player will not lose a portion of a SetOfResources, but either all of it or none of it.
     *
+    * If player is asked to loose a certain quantity of some resource but has less of it, they won't lose any of that resource
+    * and false will be returned. When it comes to points, they will always return true and lose all possible points.
+    *
+    * true: all was lost
+    *
     * */
-    public void lose(Losable... losables) {
+    public boolean lose(Losable... losables) {
+        boolean toReturn = true;
         for (Losable tmp : losables)
             try {
                 tmp.lostByPlayer(this);
             } catch (NegativeResourceQuantityException | NegativePointsException e) {
-                e.printStackTrace();
+                toReturn = false;
             }
+            return toReturn;
     }
 
+    public static void main(String[] a){
+        Player player = new Player(new Slave(20));
+        player.gain(new FaithPointsTrack(10));
+        boolean b = player.lose(new FaithPointsTrack(15), new Slave(20));
+        System.out.println("fede "+ player.getFaithPoints().getTrackPosition().getValue());
+        System.out.println(player.getPlank().getSetOfResources().toString());
+        System.out.println(b);
 
+    }
 
 
     public Area selectArea(Area area){
