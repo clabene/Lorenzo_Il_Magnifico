@@ -7,8 +7,11 @@ import player.Player;
  */
 public class ActivationActionSpace extends ActionSpace {
 
-    public ActivationActionSpace(int MAX_NUMBER_OF_FAMILIARS){
+    private ActivationActionSpaceType activationType;
+
+    public ActivationActionSpace(int MAX_NUMBER_OF_FAMILIARS, ActivationActionSpaceType activationType ){
         super(MAX_NUMBER_OF_FAMILIARS, ActionSpaceType.ACTIVATION, 1, null);
+        this.activationType = activationType;
 
     }
 
