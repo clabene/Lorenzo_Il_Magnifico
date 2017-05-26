@@ -80,7 +80,14 @@ public class SetOfResources implements Losable, Gainable {
 
     @Override
     public String toString(){
-        return resources[WOOD_INDEX]+"; "+ resources[STONE_INDEX]+"; "+ resources[SLAVE_INDEX]+"; "+ resources[MONEY_INDEX];
+        String toReturn = "";
+        for(Resource tmp : resources)
+            if(tmp.getQuantity() != 0)
+                toReturn += tmp.toString()+"  ";
+        if(toReturn.equals(""))
+            return "No resource found";
+        return toReturn;
+        //return resources[WOOD_INDEX]+"; "+ resources[STONE_INDEX]+"; "+ resources[SLAVE_INDEX]+"; "+ resources[MONEY_INDEX];
     }
 
 

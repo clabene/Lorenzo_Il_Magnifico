@@ -54,7 +54,7 @@ public class Player {
             }
     }
 
-    public void addFamiliar(ActionSpace){
+    public void addFamiliar(ActionSpace actionSpace){
 
     }
 

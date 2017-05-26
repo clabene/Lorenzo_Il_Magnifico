@@ -31,6 +31,10 @@ public class FaithPointsTrack extends PointsTrack implements Losable {
             player.getFaithPoints().decrementTrackPosition();
     }
 
+    @Override
+    public String toString(){
+        return "Faith points: " + getTrackPosition().getValue();
+    }
 
 
 }

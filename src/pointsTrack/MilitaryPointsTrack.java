@@ -34,5 +34,10 @@ public class MilitaryPointsTrack extends PointsTrack implements Losable {
             player.getMilitaryPoints().decrementTrackPosition();
     }
 
+    @Override
+    public String toString(){
+        return "Military points: " + getTrackPosition().getValue();
+    }
+
 
 }

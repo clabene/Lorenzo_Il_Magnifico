@@ -1,5 +1,6 @@
 package actionSpaces;
 
+import interfaces.Gainable;
 import player.Player;
 
 /**
@@ -7,8 +8,8 @@ import player.Player;
  */
 public class TowerActionSpace extends ActionSpace {
 
-    public TowerActionSpace(){
-        super(1, ActionSpaceType.TOWER);
+    public TowerActionSpace(int minValueToPlaceFamiliar, Gainable ... gainables){
+        super(1, ActionSpaceType.TOWER, minValueToPlaceFamiliar, gainables);
 
     }
 
