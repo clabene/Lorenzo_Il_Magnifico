@@ -11,6 +11,7 @@ import pointsTrack.PersonCardsPointsTrack;
 import cards.Card;
 import interfaces.Gainable;
 import resources.Resource;
+import areas.Area;
 
 /**
  * Created by IBM on 14/05/2017.
@@ -54,9 +55,27 @@ public class Player {
             }
     }
 
-    public void addFamiliar(ActionSpace actionSpace){
+
+
+
+    public Area selectArea(Area area){
+        System.out.println("Quale area vuoi selezionare?");
+
+        return area;
 
     }
+
+    public ActionSpace selectActionSpace (ActionSpace actionSpace){
+        System.out.println("Quale spazio azione vuoi selezionare?");
+        return actionSpace;
+    }
+
+    public FamilyMember selectFamilyMember (FamilyMember familyMember) {
+        System.out.println("Quale familiare vuoi selezionare?");
+        return familyMember;
+    }
+
+
 
 
 
