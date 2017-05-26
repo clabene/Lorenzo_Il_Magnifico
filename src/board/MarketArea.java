@@ -1,6 +1,10 @@
-package board;
+package areas;
+
+import java.util.ArrayList;
 
 
+import actionSpaces.ActionSpace;
+import interfaces.Gainable;
 import pointsTrack.MilitaryPointsTrack;
 import resources.*;
 import actionSpaces.MarketActionSpace;
@@ -20,7 +24,19 @@ public class MarketArea implements Area{
         return this.spaces;
     }
 
+    @Override
+    public void show() {
+        int i = 0;
+        for( MarketActionSpace tmp : spaces){
+            i++;
+            System.out.println(i+ " "+ "MarketActionSpace"+ tmp.toString() + "\n");
 
+        }
 
+    }
 
+    @Override
+    public ActionSpace getActionSpace(int index) {
+        return spaces[index];
+    }
 }

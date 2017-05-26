@@ -63,6 +63,9 @@ public abstract class ActionSpace {
         return (Gainable[]) bonus.toArray();
     }
 
+    public boolean getCovered(){return this.covered;};
+    public int getMinValueToPlaceFamiliar(){return this.minValueToPlaceFamiliar;};
+
 
     //this method is the one to call when the action space is activated
     //action will be so implemented by subclasses:

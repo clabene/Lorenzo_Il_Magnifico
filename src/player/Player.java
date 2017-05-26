@@ -1,6 +1,7 @@
 package player;
 
 import actionSpaces.ActionSpace;
+import areas.Board;
 import exceptions.NegativePointsException;
 import exceptions.NegativeResourceQuantityException;
 import interfaces.Losable;
@@ -13,22 +14,36 @@ import interfaces.Gainable;
 import resources.*;
 import board.Area;
 
+import java.awt.*;
+import java.util.Scanner;
+
 /**
  * Created by IBM on 14/05/2017.
  */
 public class Player {
 
+    private String id;
     private int victoryPoints = 0; //todo
     private MilitaryPointsTrack militaryPoints = new MilitaryPointsTrack();
     private FaithPointsTrack faithPoints = new FaithPointsTrack();
     private PersonCardsPointsTrack personCardsPoints = new PersonCardsPointsTrack();
     private LandCardsPointsTrack landCardsPoints = new LandCardsPointsTrack();
 
+
     private Plank plank;
 
     public Player(Resource ... resources){
         this.plank = new Plank(resources);
     }
+
+    private final int BLACK_FAMILY_MEMBER_INDEX = 0;
+    private final int RED_FAMILY_MEMBER_INDEX = 1;
+    private final int WHITE_FAMILY_MEMBER_INDEX = 2;
+    private final int NEUTRAL_FAMILY_MEMBER_INDEX = 3;
+
+    FamilyMember [] familyMembers = {new FamilyMember(Color.BLACK, 0), new FamilyMember(Color.RED, 0),
+            new FamilyMember(Color.WHITE, 0), new FamilyMember(null, 0)};
+
 
 
     /*
@@ -73,19 +88,47 @@ public class Player {
     }
 
 
-    public Area selectArea(Area area){
+    public Area selectArea(Board board){
         System.out.println("Quale area vuoi selezionare?");
-        return area;
+        board.show();
+        Scanner input = new Scanner(System.in);
+        int index = input.nextInt() -1 ;
+        return board.getArea(index);
+
+
     }
 
-    public ActionSpace selectActionSpace (ActionSpace actionSpace){
+    public ActionSpace selectActionSpace (Area area){
+
         System.out.println("Quale spazio azione vuoi selezionare?");
-        return actionSpace;
+        area.show();
+        Scanner input = new Scanner(System.in);
+        int index = input.nextInt() -1 ;
+        return area.getActionSpace(index);
+
+
     }
 
-    public FamilyMember selectFamilyMember (FamilyMember familyMember) {
+    public FamilyMember selectFamilyMember() {
         System.out.println("Quale familiare vuoi selezionare?");
-        return familyMember;
+        this.showFamilyMembers();
+        Scanner input = new Scanner(System.in);
+        int index = input.nextInt() -1;
+
+
+        return familyMembers[index];
+    }
+
+
+    public void showFamilyMembers(){
+        System.out.println("Scegli un familiare \n");
+        int i = 0;
+        for(FamilyMember tmp : familyMembers){
+            i++;
+            System.out.println(i+ " " + tmp.toString()+ " del giocatore " + this.id +"\n");
+        }
+
+
     }
 
 

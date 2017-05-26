@@ -30,6 +30,11 @@ public class FamilyMember {
     public void setInActionSpace(boolean inActionSpace) {
         this.inActionSpace = inActionSpace;
     }
+    public boolean getInActionSpace(){return this.inActionSpace;};
+
+    public String toString(){
+        return this.color + " Family Member " + " value: " +this.value;
+    }
 
 
 }

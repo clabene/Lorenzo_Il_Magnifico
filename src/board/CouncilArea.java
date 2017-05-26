@@ -1,5 +1,6 @@
 package board;
 
+import actionSpaces.ActionSpace;
 import actionSpaces.CouncilActionSpace;
 
 /**
@@ -10,5 +11,15 @@ public class CouncilArea implements Area {
 
     public CouncilActionSpace getCouncilSpace(){
         return this.space;
+    }
+
+    @Override
+    public void show() {
+        System.out.println("CouncilActionSpace");
+    }
+
+    @Override
+    public ActionSpace getActionSpace(int index) {
+        return space;
     }
 }
