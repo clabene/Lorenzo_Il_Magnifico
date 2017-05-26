@@ -1,5 +1,7 @@
 package cards;
 
+import cardEffects.CardEffect;
+
 /**
  * Created by IBM on 09/05/2017.
  */
@@ -62,5 +64,9 @@ public abstract class Card {
         return period;
     }
 
+    @Override
+    public String toString(){
+        return name+" ("+cardType.toString()+" card, "+period.toString()+" period)";
+    }
 
 }

@@ -84,4 +84,5 @@ public abstract class PointsTrack implements Gainable{
     public LimitedInteger getTrackPosition() {
         return trackPosition;
     }
+
 }

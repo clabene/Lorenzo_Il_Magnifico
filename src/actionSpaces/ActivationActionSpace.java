@@ -10,13 +10,16 @@ public class ActivationActionSpace extends ActionSpace {
     private ActivationActionSpaceType activationType;
 
     public ActivationActionSpace(int MAX_NUMBER_OF_FAMILIARS, ActivationActionSpaceType activationType ){
-        super(MAX_NUMBER_OF_FAMILIARS, ActionSpaceType.ACTIVATION, 1, null);
+        super(MAX_NUMBER_OF_FAMILIARS, ActionSpaceType.ACTIVATION, 1);
         this.activationType = activationType;
-
     }
 
     public boolean action(Player player){
+
         return true;
     }
+
+
+
 
 }

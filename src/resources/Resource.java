@@ -19,10 +19,6 @@ public abstract class Resource implements Losable, Gainable {
         this(1);
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
     public void resourceAdded(int quantity){
         this.quantity += quantity;
     }
@@ -32,6 +28,9 @@ public abstract class Resource implements Losable, Gainable {
         this.quantity -= quantity;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
     @Override
     public void gainedByPlayer(Player player){
         player.addResourcesToPlank(this);

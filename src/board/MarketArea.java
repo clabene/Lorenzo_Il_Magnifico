@@ -1,9 +1,6 @@
-package areas;
-
-import java.util.ArrayList;
+package board;
 
 
-import interfaces.Gainable;
 import pointsTrack.MilitaryPointsTrack;
 import resources.*;
 import actionSpaces.MarketActionSpace;

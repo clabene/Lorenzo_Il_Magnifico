@@ -14,15 +14,14 @@ public class VictoryPoint implements Gainable, Losable {
         this.victoryPoints = numberOfPoints;
     }
 
+
     public int getVictoryPoints() {
         return victoryPoints;
     }
-
     @Override
     public void gainedByPlayer(Player player) {
         player.addVictoryPoints(getVictoryPoints());
     }
-
     @Override
     public void lostByPlayer(Player player) throws NegativePointsException{
         player.loseVictoryPoints(getVictoryPoints());

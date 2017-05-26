@@ -1,8 +1,12 @@
-import player.Player;
+import cards.CardType;
+import interfaces.Gainable;
 import pointsTrack.FaithPointsTrack;
-import pointsTrack.LandCardsPointsTrack;
-import pointsTrack.MilitaryPointsTrack;
-import resources.*;
+import pointsTrack.PointsTrack;
+import resources.Resource;
+import resources.Stone;
+import resources.Wood;
+
+import java.util.ResourceBundle;
 
 /**
  * Created by IBM on 09/05/2017.
@@ -11,7 +15,7 @@ public class Main {
 
 
     public static void main(String args[]){
-
+        /*
         Player player = new Player();
 
         System.out.println(player.getPlank().getSetOfResources());
@@ -47,6 +51,14 @@ public class Main {
         System.out.println("person "+player.getPersonCardsPoints().getTrackPosition().getValue());
         System.out.println("land "+player.getLandCardsPoints().getTrackPosition().getValue());
         System.out.println("victory "+player.getVictoryPoints());
+        */
+
+        Gainable g = new Wood();
+        System.out.println(g instanceof Stone);
+        System.out.println(g instanceof Wood);
+        System.out.println(g instanceof Resource);
+        System.out.println(g instanceof PointsTrack);
+        System.out.println(g instanceof FaithPointsTrack);
 
 
     }

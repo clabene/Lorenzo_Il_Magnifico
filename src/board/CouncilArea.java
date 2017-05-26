@@ -1,4 +1,4 @@
-package areas;
+package board;
 
 import actionSpaces.CouncilActionSpace;
 

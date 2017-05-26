@@ -17,9 +17,9 @@ public class SetOfCards {
     private Card[][] cards = new Card[StaticVariables.NUMBER_OF_CARD_TYPES][StaticVariables.MAX_NUMBER_OF_CARDS_PER_TYPE_ON_PLANK];
 
     /*
-    * It is quite useless to have LimitedInteger here, because the array is already limiting the number of possible values.
+    * It is quite useless to have LimitedInteger's here, because the array is already limiting the number of possible values.
     * Also, ArrayIndexOutOfBoundsException is called before LimitedIntegerValueOffRangeException
-    * However, having utility.LimitedInteger instead of just int makes the code cleaner and safer
+    * However, having LimitedInteger instead of just int makes the code cleaner and safer
     * */
 
     private LimitedInteger numberOfLandCards;
@@ -67,8 +67,27 @@ public class SetOfCards {
                 toReturn += tmp.toString()+"   ";
             }
         }
-
         return toReturn;
+    }
+
+    public Card[] getLandCards() {
+        return cards[LAND_CARD_INDEX];
+    }
+    public Card[] getBuildingCards() {
+        return cards[BUILDING_CARD_INDEX];
+    }
+    public Card[] getPersonCards() {
+        return cards[PERSON_CARD_INDEX];
+    }
+    public Card[] getVentureCards() {
+        return cards[VENTURE_CARD_INDEX];
+    }
+
+    public static void main(String args[]) {
+        SetOfCards s = new SetOfCards();
+        s.cardAdded(new LandCard("pp", PeriodNumber.SECOND, 2, null, null));
+        System.out.println(s.getLandCards()[0]);
+        System.out.println(s.getBuildingCards()[0]);
     }
 
 

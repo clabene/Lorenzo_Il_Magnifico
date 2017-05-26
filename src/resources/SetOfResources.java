@@ -90,7 +90,6 @@ public class SetOfResources implements Losable, Gainable {
         //return resources[WOOD_INDEX]+"; "+ resources[STONE_INDEX]+"; "+ resources[SLAVE_INDEX]+"; "+ resources[MONEY_INDEX];
     }
 
-
     @Override
     public void gainedByPlayer(Player player){
         player.addResourcesToPlank(this.getResources());

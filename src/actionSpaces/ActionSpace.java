@@ -26,7 +26,6 @@ public abstract class ActionSpace {
     private final int MAX_NUMBER_OF_FAMILIARS; //= (int) Double.POSITIVE_INFINITY; if no limit
     private LimitedInteger numberOfFamiliars;
 
-
     public ActionSpace(int MAX_NUMBER_OF_FAMILIARS, ActionSpaceType actionSpaceType, int minValueToPlaceFamiliar, Gainable ... bonuses){
         this.MAX_NUMBER_OF_FAMILIARS = MAX_NUMBER_OF_FAMILIARS;
         initializeNumberOfFamiliars();

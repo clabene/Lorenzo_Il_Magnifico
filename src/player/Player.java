@@ -11,7 +11,7 @@ import pointsTrack.PersonCardsPointsTrack;
 import cards.Card;
 import interfaces.Gainable;
 import resources.*;
-import areas.Area;
+import board.Area;
 
 /**
  * Created by IBM on 14/05/2017.
@@ -59,11 +59,11 @@ public class Player {
             } catch (NegativeResourceQuantityException | NegativePointsException e) {
                 toReturn = false;
             }
-            return toReturn;
+        return toReturn;
     }
 
     public static void main(String[] a){
-        Player player = new Player(new Slave(20));
+        Player player = new Player(new Slave(21));
         player.gain(new FaithPointsTrack(10));
         boolean b = player.lose(new FaithPointsTrack(15), new Slave(20));
         System.out.println("fede "+ player.getFaithPoints().getTrackPosition().getValue());
@@ -75,11 +75,7 @@ public class Player {
 
     public Area selectArea(Area area){
         System.out.println("Quale area vuoi selezionare?");
-
-
-
         return area;
-
     }
 
     public ActionSpace selectActionSpace (ActionSpace actionSpace){
@@ -91,9 +87,6 @@ public class Player {
         System.out.println("Quale familiare vuoi selezionare?");
         return familyMember;
     }
-
-
-
 
 
     public void takeCard(Card card){
@@ -132,8 +125,8 @@ public class Player {
         this.victoryPoints += points;
     }
 
-    public void loseVictoryPoints(int points) throws NegativePointsException {
-        if(this.victoryPoints < points) throw new NegativePointsException();
+    public void loseVictoryPoints(int points) {
+        if(this.victoryPoints < points) this.victoryPoints = 0;
         this.victoryPoints -= points;
     }
 

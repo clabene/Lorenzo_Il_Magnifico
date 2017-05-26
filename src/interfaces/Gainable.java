@@ -10,5 +10,4 @@ public interface Gainable{
 
     void gainedByPlayer(Player player);
 
-
 }
