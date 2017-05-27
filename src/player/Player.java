@@ -135,6 +135,7 @@ public class Player {
 
 
 
+    public String getId(){return this.id;};
 
     public void takeCard(Card card){
         plank.getCards().cardAdded(card);

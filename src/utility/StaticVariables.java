@@ -27,6 +27,8 @@ public class StaticVariables {
     public static final Gainable[] COUNCIL_FAVOURS = {new SetOfResources(new Wood(), new Stone()),
             new Slave(2), new Money(2), new MilitaryPointsTrack(2), new FaithPointsTrack(1)};
 
+
+
     public static final TowerActionSpace[] TOWER_ACTION_SPACES = {new TowerActionSpace (7, new Wood(2)),
                                                                       new TowerActionSpace(7, new Stone(2)),
                                                                       new TowerActionSpace(7, new MilitaryPointsTrack(2)),

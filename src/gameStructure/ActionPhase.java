@@ -21,6 +21,11 @@ public class ActionPhase {
     private Player player;
     private Board board;
 
+    public ActionPhase(Player player, Board board){
+        this.player = player;
+        this.board = board;
+    }
+
 
     public void playActionPhase(){
 

@@ -1,10 +1,12 @@
 package board;
 
+import board.*;
+
 /**
  * Created by IBM on 09/05/2017.
  */
 public class Board {
-    Area[] areas = {new TowerArea(), new MarketArea(), new CouncilArea(),  new ActivationArea()};
+    private Area[] areas = {new TowerArea(), new MarketArea(), new CouncilArea(), new ChurchArea(), new ActivationArea()};
 
     public void show(){
         int i = 0;
@@ -12,6 +14,10 @@ public class Board {
             i++;
             System.out.println(i+" "+ " Area: "+ tmp.toString()+ "\n");
         }
+    }
+
+    public CouncilArea getCouncilArea(){
+        return (CouncilArea) this.areas[2];
     }
 
     public Area getArea(int index){
