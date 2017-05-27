@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cards/Card.java" afterPath="$PROJECT_DIR$/src/cards/Card.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gameStructure/ActionPhase.java" afterPath="$PROJECT_DIR$/src/gameStructure/ActionPhase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gameStructure/Game.java" afterPath="$PROJECT_DIR$/src/gameStructure/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gameStructure/Period.java" afterPath="$PROJECT_DIR$/src/gameStructure/Period.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gameStructure/Turn.java" afterPath="$PROJECT_DIR$/src/gameStructure/Turn.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/player/Player.java" afterPath="$PROJECT_DIR$/src/player/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resources/SetOfResources.java" afterPath="$PROJECT_DIR$/src/resources/SetOfResources.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -911,7 +904,14 @@
       <option name="project" value="LOCAL" />
       <updated>1495839860728</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary=" big bugs">
+      <created>1495899655995</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1495899655995</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
