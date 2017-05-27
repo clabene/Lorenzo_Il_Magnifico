@@ -36,6 +36,10 @@ public class SetOfResources implements Losable, Gainable {
         return resources;
     }
 
+    public int getQuantityOfSlaves(){
+        return resources[SLAVE_INDEX].getQuantity();
+    }
+
     private void oneResourceAdded(Resource resource){
         if(resource instanceof Wood) resources[WOOD_INDEX].resourceAdded(resource.getQuantity());
         else if(resource instanceof Stone) resources[STONE_INDEX].resourceAdded(resource.getQuantity());
@@ -68,6 +72,7 @@ public class SetOfResources implements Losable, Gainable {
                 return false;
         return true;
     }
+
 
 
     public void resourcesSpent(Resource ... resources) throws NegativeResourceQuantityException {

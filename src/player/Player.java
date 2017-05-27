@@ -2,6 +2,7 @@ package player;
 
 import actionSpaces.ActionSpace;
 import board.Board;
+import cardEffects.CardEffect;
 import exceptions.NegativePointsException;
 import exceptions.NegativeResourceQuantityException;
 import interfaces.Losable;
@@ -15,6 +16,7 @@ import resources.*;
 import board.Area;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -132,6 +134,8 @@ public class Player {
     }
 
 
+
+
     public void takeCard(Card card){
         plank.getCards().cardAdded(card);
     }
@@ -175,5 +179,26 @@ public class Player {
 
     public int getVictoryPoints() {
         return victoryPoints;
+    }
+/*
+    public int getNumberOfFamilyMembersAvailable(){
+        int i = 0;
+        for(FamilyMember tmp: familyMembers){
+            if(!tmp.getInActionSpace()){
+                i++;
+            }
+        }
+        return i;
+    }
+*/
+    public ArrayList<FamilyMember> getFamilyMembersAvailable(){
+        ArrayList<FamilyMember> available = new ArrayList<>();
+        for(FamilyMember tmp: familyMembers){
+            if(!tmp.getInActionSpace()){
+                available.add(tmp);
+
+            }
+        }
+        return available;
     }
 }

@@ -57,6 +57,8 @@ public abstract class Card {
         this.activationValue= activationValue;
     }
 
+
+
     public CardType getCardType() {
         return cardType;
     }
