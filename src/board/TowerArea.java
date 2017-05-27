@@ -2,8 +2,6 @@ package board;
 
 import actionSpaces.ActionSpace;
 import actionSpaces.TowerActionSpace;
-import pointsTrack.MilitaryPointsTrack;
-import resources.*;
 import utility.StaticVariables;
 
 

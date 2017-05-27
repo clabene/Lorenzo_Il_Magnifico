@@ -15,7 +15,7 @@ public class Slave extends Resource {
 
     @Override
     public String toString(){
-        return "Slave(quantity of "+getQuantity()+")";
+        return getQuantity()+" slaves";
     }
 
 

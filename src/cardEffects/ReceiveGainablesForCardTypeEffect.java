@@ -2,37 +2,53 @@ package cardEffects;
 
 import cards.Card;
 import cards.CardType;
+import cards.LandCard;
+import cards.PeriodNumber;
 import interfaces.Gainable;
 import player.Player;
+import pointsTrack.MilitaryPointsTrack;
+import resources.Wood;
 
-import java.util.ArrayList;
 
 /**
  * Created by IBM on 26/05/2017.
  */
-public class ReceiveGainablesForCardTypeEffect implements CardEffect {
+public class ReceiveGainablesForCardTypeEffect extends ReceiveGainablesEffect {
 
-    private ArrayList<Gainable> gainables = new ArrayList<>();
     private CardType cardType;
 
     public ReceiveGainablesForCardTypeEffect(CardType cardType, Gainable ... gainables){
-        for(Gainable tmp : gainables)
-            this.gainables.add(tmp);
+        super(gainables);
         this.cardType = cardType;
     }
 
+
     private Card[] getCardsOfGivenType(Player player){
         if(cardType == CardType.LAND) return player.getPlank().getCards().getLandCards();
-        if(cardType == CardType.BUILDING) return player.getPlank().getCards().getBuildingCards();
-        if(cardType == CardType.PERSON) return player.getPlank().getCards().getPersonCards();
-        if(cardType == CardType.VENTURE) return player.getPlank().getCards().getVentureCards();
+        else if(cardType == CardType.BUILDING) return player.getPlank().getCards().getBuildingCards();
+        else if(cardType == CardType.PERSON) return player.getPlank().getCards().getPersonCards();
+        else if(cardType == CardType.VENTURE) return player.getPlank().getCards().getVentureCards();
         return new Card[0];
     }
 
+    @Override
     public void activate(Player player){
         for(Card tmp : getCardsOfGivenType(player))
-            player.gain((Gainable[]) gainables.toArray());
+            if(tmp != null)
+                super.activate(player);
     }
+
+    public static void main(String[] a){
+        Player p = new Player();
+        p.getPlank().getCards().cardAdded(new LandCard("po", PeriodNumber.SECOND, 0, null, null));
+        p.getPlank().getCards().cardAdded(new LandCard("po", PeriodNumber.SECOND, 0, null, null));
+        p.getPlank().getCards().cardAdded(new LandCard("po", PeriodNumber.SECOND, 0, null, null));
+        ReceiveGainablesForCardTypeEffect r = new ReceiveGainablesForCardTypeEffect(CardType.LAND, new Wood(2), new MilitaryPointsTrack(1));
+        r.activate(p);
+        System.out.println(p.getPlank().getSetOfResources());
+        System.out.println(p.getMilitaryPoints());
+    }
+
 
 
 }

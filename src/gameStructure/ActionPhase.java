@@ -36,7 +36,7 @@ public class ActionPhase {
 
             incrementFamilyMemberValueRequest(player);
 
-            if(putFamilyMemberOnActionSpace(familyMember, actionSpace)){ return;};
+            if(putFamilyMemberOnActionSpace(familyMember, actionSpace)){ return;}
 
 
         }

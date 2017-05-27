@@ -59,13 +59,15 @@ public abstract class ActionSpace {
         } catch (LimitedValueOffRangeException e){
             System.out.println("Cannot put your familiar here, this action space is full already");
         }
-
         return (Gainable[]) bonus.toArray();
     }
 
-    public boolean getCovered(){return this.covered;};
-    public int getMinValueToPlaceFamiliar(){return this.minValueToPlaceFamiliar;};
-
+    public boolean getCovered(){
+        return this.covered;
+    }
+    public int getMinValueToPlaceFamiliar(){
+        return this.minValueToPlaceFamiliar;
+    }
 
     //this method is the one to call when the action space is activated
     //action will be so implemented by subclasses:

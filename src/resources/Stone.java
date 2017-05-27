@@ -15,6 +15,6 @@ public class Stone extends Resource {
 
     @Override
     public String toString(){
-        return "Stone(quantity of "+getQuantity()+")";
+        return getQuantity()+" stones";
     }
 }

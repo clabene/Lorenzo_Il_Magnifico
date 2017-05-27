@@ -1,6 +1,7 @@
 import cards.CardType;
 import interfaces.Gainable;
 import pointsTrack.FaithPointsTrack;
+import pointsTrack.MilitaryPointsTrack;
 import pointsTrack.PointsTrack;
 import resources.Resource;
 import resources.Stone;
@@ -53,13 +54,13 @@ public class Main {
         System.out.println("victory "+player.getVictoryPoints());
         */
 
-        Gainable g = new Wood();
+        Gainable g = new FaithPointsTrack(2);
         System.out.println(g instanceof Stone);
         System.out.println(g instanceof Wood);
         System.out.println(g instanceof Resource);
         System.out.println(g instanceof PointsTrack);
         System.out.println(g instanceof FaithPointsTrack);
-
+        System.out.println(g instanceof MilitaryPointsTrack);
 
     }
 

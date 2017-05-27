@@ -1,12 +1,10 @@
 package board;
 
-import board.*;
-
 /**
  * Created by IBM on 09/05/2017.
  */
 public class Board {
-    Area[] areas = {new TowerArea(), new MarketArea(), new CouncilArea(), new ChurchArea(), new ActivationArea()};
+    Area[] areas = {new TowerArea(), new MarketArea(), new CouncilArea(),  new ActivationArea()};
 
     public void show(){
         int i = 0;

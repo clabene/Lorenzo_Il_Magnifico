@@ -2,6 +2,8 @@ package cardEffects;
 
 import interfaces.Gainable;
 import player.Player;
+import pointsTrack.FaithPointsTrack;
+import resources.Wood;
 
 import java.util.ArrayList;
 
@@ -17,8 +19,18 @@ public class ReceiveGainablesEffect implements CardEffect {
             this.gainables.add(tmp);
     }
 
+    @Override
     public void activate(Player player){
-        player.gain( (Gainable[]) gainables.toArray() );
+        player.gain(gainables.toArray(new Gainable[gainables.size()]));
+    }
+
+
+    public static void main(String[] a){
+        Player p = new Player();
+        ReceiveGainablesEffect r = new ReceiveGainablesEffect(new FaithPointsTrack(2), new Wood(3));
+        r.activate(p);
+        System.out.println(p.getFaithPoints());
+        System.out.println(p.getPlank().getSetOfResources());
     }
 
 }
