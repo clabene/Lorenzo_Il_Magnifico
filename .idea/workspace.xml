@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="New controls">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lorenzo_Il_Magnifico/actionSpaces/ActionSpace.class" afterPath="$PROJECT_DIR$/out/production/Lorenzo_Il_Magnifico/actionSpaces/ActionSpace.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lorenzo_Il_Magnifico/actionSpaces/MarketActionSpace.class" afterPath="$PROJECT_DIR$/out/production/Lorenzo_Il_Magnifico/actionSpaces/MarketActionSpace.class" />
+    <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/board/Board.java" afterPath="$PROJECT_DIR$/src/board/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gameStructure/ActionPhase.java" afterPath="$PROJECT_DIR$/src/gameStructure/ActionPhase.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -841,7 +837,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496089107518</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="ActionPhase updated">
+      <created>1496094575552</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1496094575552</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TodoView">
@@ -926,7 +929,8 @@
     <MESSAGE value="Lose method returns boolean now" />
     <MESSAGE value="some card effect" />
     <MESSAGE value="New controls" />
-    <option name="LAST_COMMIT_MESSAGE" value="New controls" />
+    <MESSAGE value="ActionPhase updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="ActionPhase updated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
