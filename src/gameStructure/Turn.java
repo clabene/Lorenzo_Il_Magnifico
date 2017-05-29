@@ -25,7 +25,7 @@ public class Turn {
     }
 
     public void setNextTurnOrder(){
-        this.players =  board.getCouncilArea().getTurnOrder();
+        //this.players =  board.getCouncilArea().getTurnOrder();
         ArrayList<Player> newTurn  = new ArrayList<>();
         //todo
     }

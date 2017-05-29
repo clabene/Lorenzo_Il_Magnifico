@@ -47,19 +47,19 @@ public abstract class ActionSpace {
     }
 
     /*
-        * New familiar is added to the action space
-        *
-        * Returns Gainable object "bonus" that current player will have to gain. It was avoided this way to put a Player object
-        * in this method, which would not have been very fancy.
-        *
-        * */
+     * New familiar is added to the action space
+     *
+     * Returns Gainable object "bonus" that current player will have to gain. It was avoided this way to put a Player object
+     * in this method, which would not have been very fancy.
+     *
+     **/
     public Gainable[] familiarAdded(){
         try{
             numberOfFamiliars.increment();
         } catch (LimitedValueOffRangeException e){
             System.out.println("Cannot put your familiar here, this action space is full already");
         }
-        return (Gainable[]) bonus.toArray();
+        return (Gainable[]) bonus.toArray(new Gainable[bonus.size()]);
     }
 
     public boolean getCovered(){

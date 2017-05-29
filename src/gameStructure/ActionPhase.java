@@ -4,8 +4,6 @@ import actionSpaces.ActionSpace;
 
 import board.Area;
 import board.Board;
-import cardEffects.CardEffect;
-import cards.Card;
 import player.FamilyMember;
 import player.Player;
 import resources.SetOfResources;
@@ -29,36 +27,46 @@ public class ActionPhase {
 
     public void playActionPhase(){
 
-
         while(true){
 
-            if(!checkPhasePlayable()){return;}
+            if(!checkPhasePlayable()) return;
             FamilyMember familyMember = selectionFamilyMemberPhase();
-            if(familyMember == null){ continue; }
+            if(familyMember == null) continue;
 
             ActionSpace actionSpace = selectionActionSpacePhase();
-            if(actionSpace == null){continue;}
+            if(actionSpace == null) continue;
 
             incrementFamilyMemberValueRequest(player);
 
-            if(putFamilyMemberOnActionSpace(familyMember, actionSpace)){ return;}
-
+            if(putFamilyMemberOnActionSpace(familyMember, actionSpace)) return;
 
         }
 
     }
 
-    public boolean putFamilyMemberOnActionSpace(FamilyMember familyMember, ActionSpace actionSpace) {
+    public static void main(String[] ar){
+        Player p = new Player(new Slave(2));
+        ActionPhase a = new ActionPhase(p, new Board());
+        a.playActionPhase();
+        System.out.println(p.getPlank().getSetOfResources());
+
+    }
+
+    private boolean putFamilyMemberOnActionSpace(FamilyMember familyMember, ActionSpace actionSpace) {
         if (familyMember.getValue() < actionSpace.getMinValueToPlaceFamiliar() ) {
             familyMember.setInActionSpace(true);
-            actionSpace.familiarAdded();
-            actionSpace.action(player);
+            //player.gain(actionSpace.familiarAdded());
+            //actionSpace.action(player);
+
+            if(actionSpace.action(player))
+                player.gain(actionSpace.familiarAdded());
+
             return true;
         }else
             return false;
     }
 
-    public boolean checkPhasePlayable() {
+    private boolean checkPhasePlayable() {
         if (player.getFamilyMembersAvailable().size() == 1 &&
                 player.getFamilyMembersAvailable().contains(new FamilyMember(null, 0)) &&
                 player.getPlank().getSetOfResources().getQuantityOfSlaves() == 0) {
@@ -72,7 +80,7 @@ public class ActionPhase {
     }
 
 
-    public void incrementFamilyMemberValueRequest(Player player) {
+    private void incrementFamilyMemberValueRequest(Player player) {
         boolean b = true;
         while (b) {
 
@@ -93,7 +101,7 @@ public class ActionPhase {
 
     }
 
-    public FamilyMember selectionFamilyMemberPhase(){
+    private FamilyMember selectionFamilyMemberPhase(){
         FamilyMember familyMember = player.selectFamilyMember();
         if (familyMember.getInActionSpace()) {
             System.out.println("Il familiare è occupato");
@@ -103,7 +111,7 @@ public class ActionPhase {
 
     }
 
-    public ActionSpace selectionActionSpacePhase(){
+    private ActionSpace selectionActionSpacePhase(){
         Area area = player.selectArea(board);
         ActionSpace actionSpace = player.selectActionSpace(area);
         if (actionSpace.getCovered()) {

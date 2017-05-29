@@ -1,6 +1,7 @@
 package player;
 
-import java.awt.*;
+
+import board.Color;
 
 /**
  * Created by IBM on 18/05/2017.

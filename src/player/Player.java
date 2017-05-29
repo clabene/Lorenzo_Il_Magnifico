@@ -2,7 +2,7 @@ package player;
 
 import actionSpaces.ActionSpace;
 import board.Board;
-import cardEffects.CardEffect;
+import board.Color;
 import exceptions.NegativePointsException;
 import exceptions.NegativeResourceQuantityException;
 import interfaces.Losable;
@@ -15,7 +15,6 @@ import interfaces.Gainable;
 import resources.*;
 import board.Area;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
