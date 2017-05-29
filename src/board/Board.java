@@ -1,6 +1,5 @@
 package board;
 
-import board.*;
 
 /**
  * Created by IBM on 09/05/2017.
@@ -10,7 +9,7 @@ public class Board {
 
     public void show(){
         int i = 0;
-        for(Area tmp: areas){
+        for(Area tmp: areas) {
             i++;
             System.out.println(i+" "+ " Area: "+ tmp.toString()+ "\n");
         }

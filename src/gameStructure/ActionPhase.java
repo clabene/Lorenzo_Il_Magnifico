@@ -53,7 +53,7 @@ public class ActionPhase {
     }
 
     private boolean putFamilyMemberOnActionSpace(FamilyMember familyMember, ActionSpace actionSpace) {
-        if (familyMember.getValue() < actionSpace.getMinValueToPlaceFamiliar() ) {
+        if (familyMember.getValue() >= actionSpace.getMinValueToPlaceFamiliar() ) {
             familyMember.setInActionSpace(true);
             //player.gain(actionSpace.familiarAdded());
             //actionSpace.action(player);
@@ -63,7 +63,9 @@ public class ActionPhase {
 
             return true;
         }else
-            return false;
+            System.out.println("Your family member is not valuable enough for this action space");
+
+        return false;
     }
 
     private boolean checkPhasePlayable() {
@@ -74,8 +76,8 @@ public class ActionPhase {
 
             System.out.println("Sei spacciato");
             return false;
-        } else
-            return true;
+        }
+        return true;
 
     }
 
@@ -88,10 +90,11 @@ public class ActionPhase {
             Scanner input = new Scanner(System.in);
 
             if (player.lose(new SetOfResources(new Slave(input.nextInt())))) {
+                //todo increment family member value
                 b = false;
-            } else {
+            } else
                 System.out.println("Non hai abbastanza schiavi\n");
-            }
+
         }
     }
 
@@ -106,8 +109,8 @@ public class ActionPhase {
         if (familyMember.getInActionSpace()) {
             System.out.println("Il familiare è occupato");
             return null;
-        }else
-            return familyMember;
+        }
+        return familyMember;
 
     }
 
@@ -118,9 +121,7 @@ public class ActionPhase {
             System.out.println("Spazio azione occupato");
             return null;
         }
-        else
-            return actionSpace;
-
+        return actionSpace;
     }
 
 }
