@@ -10,7 +10,7 @@ import cardEffects.bonuses.Bonus;
 public class MalusOnTowerBonuses implements Bonus {
 
     @Override
-    public void activate(ActionSpace actionSpace) {
+    public void activateBonus(ActionSpace actionSpace) {
         if(actionSpace.getActionSpaceType() == ActionSpaceType.TOWER)
             actionSpace.setBonus(null);
     }

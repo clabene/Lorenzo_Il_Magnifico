@@ -32,7 +32,7 @@ public class BonusOnCardTake implements Bonus {
     }
 
     @Override
-    public void activate(ActionSpace actionSpace){
+    public void activateBonus(ActionSpace actionSpace){
         if(actionSpace.getActionSpaceType() == ActionSpaceType.TOWER)
             decrementCardCost( ((TowerActionSpace) actionSpace).getCard() );
     }

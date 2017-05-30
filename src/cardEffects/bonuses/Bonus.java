@@ -17,6 +17,6 @@ public interface Bonus {
     *
     * */
 
-    void activate(ActionSpace actionSpace);
+    void activateBonus(ActionSpace actionSpace);
 
 }

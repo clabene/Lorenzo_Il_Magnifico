@@ -18,7 +18,7 @@ public class BonusOnFamilyMemberPlacement implements Bonus {
     }
 
     @Override
-    public void activate(ActionSpace actionSpace) {
+    public void activateBonus(ActionSpace actionSpace) {
         if(actionSpace.getActionSpaceType() == this.actionSpaceType)
             actionSpace.decreaseMinValueRequested(discount);
     }

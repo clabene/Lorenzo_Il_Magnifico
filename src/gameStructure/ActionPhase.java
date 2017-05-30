@@ -136,7 +136,7 @@ public class ActionPhase {
 
     private void activateBonuses(ActionSpace actionSpace){
         for(Bonus tmp : player.getBonuses())
-            tmp.activate(actionSpace);
+            tmp.activateBonus(actionSpace);
     }
 
 }
