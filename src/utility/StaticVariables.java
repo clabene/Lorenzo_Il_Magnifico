@@ -1,6 +1,7 @@
 package utility;
 
 import actionSpaces.TowerActionSpace;
+import board.Tower;
 import interfaces.Gainable;
 import pointsTrack.FaithPointsTrack;
 import pointsTrack.MilitaryPointsTrack;
@@ -46,6 +47,12 @@ public class StaticVariables {
                                                                       new TowerActionSpace(1),
                                                                       new TowerActionSpace(1)};
 
+    public static final TowerActionSpace[] PERSON_TOWER = {new TowerActionSpace(1), new TowerActionSpace(3), new TowerActionSpace (5, new Stone(1)), new TowerActionSpace (7, new Stone(2))};
+    public static final TowerActionSpace[] BUILDING_TOWER = {new TowerActionSpace(1), new TowerActionSpace(3), new TowerActionSpace (5, new MilitaryPointsTrack(1)), new TowerActionSpace (7, new MilitaryPointsTrack(2))};
+    public static final TowerActionSpace[] LAND_TOWER = {new TowerActionSpace(1), new TowerActionSpace(3), new TowerActionSpace (5, new Wood(1)), new TowerActionSpace (7, new Wood(2))};
+    public static final TowerActionSpace[] VENTURE = {new TowerActionSpace(1), new TowerActionSpace(3), new TowerActionSpace (5, new Money(1)), new TowerActionSpace (7, new Money(2))};
+
+    public static final Tower[] TOWERS = {new Tower(PERSON_TOWER), new Tower(BUILDING_TOWER), new Tower(LAND_TOWER), new Tower(VENTURE)};
 
     /*
     //max value requested to activate a land card or a building card when a family member is on the relative action spaces

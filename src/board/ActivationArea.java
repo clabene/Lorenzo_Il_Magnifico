@@ -31,4 +31,9 @@ public class ActivationArea implements Area {
     public ActionSpace getActionSpace(int index) {
         return spaces[index];
     }
+
+    @Override
+    public String toString() {
+        return "Activation Area";
+    }
 }

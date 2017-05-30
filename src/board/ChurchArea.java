@@ -15,4 +15,8 @@ public class ChurchArea implements Area {
     public void show() {
     }
 
+    @Override
+    public String toString() {
+        return "Church Area";
+    }
 }

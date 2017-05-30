@@ -3,6 +3,7 @@ package player;
 import actionSpaces.ActionSpace;
 import board.Board;
 import board.Color;
+import board.TowerArea;
 import exceptions.NegativePointsException;
 import exceptions.NegativeResourceQuantityException;
 import interfaces.Losable;
@@ -103,6 +104,9 @@ public class Player {
 
         System.out.println("Quale spazio azione vuoi selezionare?");
         area.show();
+        if(area instanceof TowerArea)
+            System.out.println("Inserisci la Torre corrispondente");
+
         Scanner input = new Scanner(System.in);
         int index = input.nextInt() -1 ;
         return area.getActionSpace(index);
@@ -200,5 +204,9 @@ public class Player {
             }
         }
         return available;
+    }
+
+    public FamilyMember[] getFamilyMembers(){
+        return this.familyMembers;
     }
 }

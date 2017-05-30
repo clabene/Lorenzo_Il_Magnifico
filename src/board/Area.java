@@ -8,4 +8,5 @@ import actionSpaces.ActionSpace;
 public interface Area {
     public void show();
     public ActionSpace getActionSpace(int index);
+    public String toString();
 }

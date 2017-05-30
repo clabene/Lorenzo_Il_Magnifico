@@ -19,7 +19,10 @@ public class Period {
     }
 
     public void stardPeriod(){
-        Turn firstTurn = new Turn(players, board);
+
+        //todo read from file and get cards
+
+        //Turn firstTurn = new Turn(players, board);
 
     }
 

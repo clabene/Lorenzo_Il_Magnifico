@@ -28,4 +28,9 @@ public class CouncilArea implements Area {
     public ArrayList<String> getTurnOrder(){
         return this.space.getFamilyMemberArrayList();
     }
+
+    @Override
+    public String toString() {
+        return "Council Area";
+    }
 }
