@@ -3,6 +3,7 @@ package player;
 import actionSpaces.ActionSpace;
 import board.Board;
 import board.Color;
+import cardEffects.BonusHandler;
 import exceptions.NegativePointsException;
 import exceptions.NegativeResourceQuantityException;
 import interfaces.Losable;
@@ -25,17 +26,13 @@ public class Player {
 
     private String id;
     private int victoryPoints = 0; //todo
+
     private MilitaryPointsTrack militaryPoints = new MilitaryPointsTrack();
     private FaithPointsTrack faithPoints = new FaithPointsTrack();
     private PersonCardsPointsTrack personCardsPoints = new PersonCardsPointsTrack();
     private LandCardsPointsTrack landCardsPoints = new LandCardsPointsTrack();
 
-
     private Plank plank;
-
-    public Player(Resource ... resources){
-        this.plank = new Plank(resources);
-    }
 
     private final int BLACK_FAMILY_MEMBER_INDEX = 0;
     private final int RED_FAMILY_MEMBER_INDEX = 1;
@@ -46,6 +43,12 @@ public class Player {
             new FamilyMember(Color.WHITE, 0), new FamilyMember(null, 0)};
 
 
+    private BonusHandler bonusHandler = new BonusHandler();
+
+
+    public Player(Resource ... resources){
+        this.plank = new Plank(resources);
+    }
 
     /*
     * Players gains all the points and all the resources given as parameters
@@ -120,7 +123,6 @@ public class Player {
         return familyMembers[index];
     }
 
-
     public void showFamilyMembers(){
         System.out.println("Scegli un familiare \n");
         int i = 0;
@@ -134,7 +136,11 @@ public class Player {
 
 
 
-    public String getId(){return this.id;};
+    public BonusHandler getBonusHandler() {
+        return bonusHandler;
+    }
+
+    public String getId(){return this.id;}
 
     public void takeCard(Card card){
         plank.getCards().cardAdded(card);

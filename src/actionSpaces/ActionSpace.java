@@ -62,6 +62,14 @@ public abstract class ActionSpace {
         return (Gainable[]) bonus.toArray(new Gainable[bonus.size()]);
     }
 
+    public ActionSpaceType getActionSpaceType() {
+        return actionSpaceType;
+    }
+
+    public void decreaseMinValueRequested(int number){
+        this.minValueToPlaceFamiliar -= number ;
+    }
+
     public boolean getCovered(){
         return this.covered;
     }
