@@ -18,13 +18,19 @@ public class TowerActionSpace extends ActionSpace {
     }
 
     public boolean action(Player player){
+        /*
+
+        //todo check if 3 coins are to be paid
+
         if(card == null) return false;
         if(player.lose(card.getCardCost())){
-            player.takeCard(card); //todo check
+            player.takeCard(card);
             card = null;
             return true;
         }
         return false;
+        */
+        return true;
     }
 
     public void setCard(Card card){

@@ -1,5 +1,8 @@
 package cardEffects;
 
+import actionSpaces.ActionSpace;
+import actionSpaces.ActionSpaceType;
+import actionSpaces.TowerActionSpace;
 import cards.Card;
 import cards.CardType;
 import exceptions.NegativeResourceQuantityException;
@@ -19,13 +22,19 @@ public class BonusOnCardTake implements Bonus {
         this.discount = discount;
     }
 
-    public void activate(Card card){
+    public void decrementCardCost(Card card){
         if(card.getCardType() == this.cardType)
             try{
                 card.getCardCost().getCost().resourcesSpent(discount);
             } catch (NegativeResourceQuantityException e){
                 card.getCardCost().setCost(new SetOfResources());
             }
+    }
+
+    @Override
+    public void activate(ActionSpace actionSpace){
+        if(actionSpace.getActionSpaceType() == ActionSpaceType.TOWER)
+            decrementCardCost( ((TowerActionSpace) actionSpace).getCard() );
     }
 
 }
