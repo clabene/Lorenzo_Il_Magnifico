@@ -9,7 +9,7 @@ import player.Player;
  */
 public class TowerActionSpace extends ActionSpace {
 
-    Card card;
+    private Card card;
 
     public TowerActionSpace(int minValueToPlaceFamiliar,  Gainable ... gainables){
         super(1, ActionSpaceType.TOWER, minValueToPlaceFamiliar, gainables);
@@ -18,7 +18,13 @@ public class TowerActionSpace extends ActionSpace {
     }
 
     public boolean action(Player player){
-        return true;
+        if(card == null) return false;
+        if(player.lose(card.getCardCost())){
+            player.takeCard(card); //todo check
+            card = null;
+            return true;
+        }
+        return false;
     }
 
     public void setCard(Card card){

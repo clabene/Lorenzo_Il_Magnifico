@@ -1,11 +1,14 @@
 package cards;
 
+import exceptions.NegativeResourceQuantityException;
 import interfaces.Losable;
+import player.Player;
+import resources.SetOfResources;
 
 /**
  * Created by IBM on 13/05/2017.
  */
-public class CardCost {
+public class CardCost implements Losable{
 
     /*
     * Right now this class can be easily replaced by Expandable objects. It will be worth not deleting if will encapsulate more functionality
@@ -14,14 +17,40 @@ public class CardCost {
     *
     * */
 
-    private Losable cost;
+    private SetOfResources cost;
+    private Losable cost2 = null;
 
-    public CardCost(Losable cost){
+    public CardCost(SetOfResources cost){
         this.cost = cost;
     }
 
-    public Losable getCost() {
+    public CardCost(SetOfResources cost, Losable cost2){
+        this.cost = cost;
+        this.cost2 = cost2;
+    }
+
+    public SetOfResources getCost() {
         return cost;
+    }
+
+    public void setCost(SetOfResources cost) {
+        this.cost = cost;
+    }
+
+    public Losable getCost2(){
+        return cost2;
+    }
+
+    @Override
+    public void lostByPlayer(Player player) throws NegativeResourceQuantityException {
+        if(cost2 == null)
+            cost.lostByPlayer(player);
+        else {
+            //todo
+            // player selects what cost he prefers to pay
+            // lostByPlayer(player) is called on the chosen cost
+        }
+
     }
 
 

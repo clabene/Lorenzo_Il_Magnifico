@@ -7,11 +7,10 @@ import cardEffects.CardEffect;
  */
 public class VentureCard extends Card {
 
-    public VentureCard(String name, PeriodNumber periodNumber, CardCost cardCost, CardCost cardCost2, CardEffect immediateCardEffect, CardEffect permanentCardEffect){
+    public VentureCard(String name, PeriodNumber periodNumber, CardCost cardCost, CardEffect immediateCardEffect, CardEffect permanentCardEffect){
         super(name, CardType.VENTURE, periodNumber);
         super.setActivationValue(null);
         super.setCardCost(cardCost);
-        super.setCardCost2(cardCost2);
         super.setImmediateEffect(immediateCardEffect);
         super.setPermanentEffect(permanentCardEffect);
     }

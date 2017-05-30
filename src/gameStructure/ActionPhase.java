@@ -105,11 +105,6 @@ public class ActionPhase {
     }
 
 
-    public void addFamiliar(ActionSpace actionSpace, FamilyMember familyMember) {
-
-
-    }
-
     private FamilyMember selectionFamilyMemberPhase(){
         FamilyMember familyMember = player.selectFamilyMember();
         if (familyMember.getInActionSpace()) {

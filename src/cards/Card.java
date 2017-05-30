@@ -20,10 +20,9 @@ public abstract class Card {
 
 
     private String name;
-    private CardType cardType; //might wanna delete this attribute
+    private CardType cardType;
     private PeriodNumber period;
     private CardCost cardCost;
-    private CardCost cardCost2 = null;
     private CardEffect immediateEffect;
     private CardEffect permanentEffect;
 
@@ -41,10 +40,6 @@ public abstract class Card {
         this.cardCost = cardCost;
     }
 
-    public void setCardCost2(CardCost cardCost2) {
-        this.cardCost2 = cardCost2;
-    }
-
     public void setImmediateEffect(CardEffect immediateEffect) {
         this.immediateEffect = immediateEffect;
     }
@@ -57,7 +52,9 @@ public abstract class Card {
         this.activationValue= activationValue;
     }
 
-
+    public CardCost getCardCost() {
+        return cardCost;
+    }
 
     public CardType getCardType() {
         return cardType;
