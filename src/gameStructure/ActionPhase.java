@@ -2,8 +2,10 @@ package gameStructure;
 
 import actionSpaces.ActionSpace;
 
+import actionSpaces.ActionSpaceType;
 import board.Area;
 import board.Board;
+import cardEffects.BonusOnFamilyMemberPlacement;
 import player.FamilyMember;
 import player.Player;
 import resources.SetOfResources;
@@ -22,6 +24,7 @@ public class ActionPhase {
     public ActionPhase(Player player, Board board){
         this.player = player;
         this.board = board;
+
     }
 
 
@@ -38,6 +41,7 @@ public class ActionPhase {
 
             incrementFamilyMemberValueRequest(player);
 
+            activateBonuses(actionSpace);
             if(putFamilyMemberOnActionSpace(familyMember, actionSpace)) return;
 
         }
@@ -46,10 +50,12 @@ public class ActionPhase {
 
     public static void main(String[] ar){
         Player p = new Player(new Slave(2));
+        p.getBonusHandler().addBonus(new BonusOnFamilyMemberPlacement(ActionSpaceType.MARKET, 1));
+        p.getBonusHandler().addBonus(new BonusOnFamilyMemberPlacement(ActionSpaceType.TOWER, 6));
+        p.getBonusHandler().addBonus(new BonusOnFamilyMemberPlacement(ActionSpaceType.MARKET, -1));
         ActionPhase a = new ActionPhase(p, new Board());
         a.playActionPhase();
         System.out.println(p.getPlank().getSetOfResources());
-
     }
 
     private boolean putFamilyMemberOnActionSpace(FamilyMember familyMember, ActionSpace actionSpace) {
@@ -63,7 +69,7 @@ public class ActionPhase {
 
             return true;
         }else
-            System.out.println("Your family member is not valuable enough for this action space");
+            System.out.println("Your family member is not valuable enough for this action space\n");
 
         return false;
     }
@@ -122,6 +128,11 @@ public class ActionPhase {
             return null;
         }
         return actionSpace;
+    }
+
+    private void activateBonuses(ActionSpace actionSpace){
+        for(BonusOnFamilyMemberPlacement tmp : player.getBonusHandler().getBonusesOnFamilyMemberPlacement())
+            tmp.activate(actionSpace);
     }
 
 }

@@ -1,3 +1,5 @@
+import actionSpaces.ActionSpace;
+import actionSpaces.ActionSpaceType;
 import cards.CardType;
 import interfaces.Gainable;
 import pointsTrack.FaithPointsTrack;
@@ -7,6 +9,7 @@ import resources.Resource;
 import resources.Stone;
 import resources.Wood;
 
+import java.util.AbstractCollection;
 import java.util.ResourceBundle;
 
 /**
@@ -61,6 +64,9 @@ public class Main {
         System.out.println(g instanceof PointsTrack);
         System.out.println(g instanceof FaithPointsTrack);
         System.out.println(g instanceof MilitaryPointsTrack);
+
+        ActionSpaceType a = ActionSpaceType.ACTIVATION;
+        System.out.println(ActionSpaceType.ACTIVATION == a);
 
     }
 

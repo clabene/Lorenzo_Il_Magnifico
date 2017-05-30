@@ -4,6 +4,7 @@ import actionSpaces.ActionSpace;
 import board.Board;
 import board.Color;
 import board.TowerArea;
+import cardEffects.BonusHandler;
 import exceptions.NegativePointsException;
 import exceptions.NegativeResourceQuantityException;
 import interfaces.Losable;
@@ -47,6 +48,12 @@ public class Player {
             new FamilyMember(Color.WHITE, 0), new FamilyMember(null, 0)};
 
 
+    private BonusHandler bonusHandler = new BonusHandler();
+
+
+    public Player(Resource ... resources){
+        this.plank = new Plank(resources);
+    }
 
     /*
     * Players gains all the points and all the resources given as parameters
@@ -138,7 +145,11 @@ public class Player {
 
 
 
-    public String getId(){return this.id;};
+    public BonusHandler getBonusHandler() {
+        return bonusHandler;
+    }
+
+    public String getId(){return this.id;}
 
     public void takeCard(Card card){
         plank.getCards().cardAdded(card);
