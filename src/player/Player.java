@@ -35,9 +35,7 @@ public class Player {
 
     private Plank plank;
 
-    public Player(Resource ... resources){
-        this.plank = new Plank(resources);
-    }
+
 
     private final int BLACK_FAMILY_MEMBER_INDEX = 0;
     private final int RED_FAMILY_MEMBER_INDEX = 1;
