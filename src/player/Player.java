@@ -4,7 +4,7 @@ import actionSpaces.ActionSpace;
 import board.Board;
 import board.Color;
 import board.TowerArea;
-import cardEffects.Bonus;
+import cardEffects.bonuses.Bonus;
 import exceptions.NegativePointsException;
 import exceptions.NegativeResourceQuantityException;
 import interfaces.Losable;

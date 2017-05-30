@@ -1,4 +1,4 @@
-package cardEffects;
+package cardEffects.bonuses;
 
 import actionSpaces.ActionSpace;
 import actionSpaces.ActionSpaceType;

@@ -3,12 +3,10 @@ package gameStructure;
 import actionSpaces.ActionSpace;
 
 import actionSpaces.ActionSpaceType;
-import actionSpaces.TowerActionSpace;
 import board.Area;
 import board.Board;
-import cardEffects.Bonus;
-import cardEffects.BonusOnFamilyMemberPlacement;
-import interfaces.Gainable;
+import cardEffects.bonuses.Bonus;
+import cardEffects.bonuses.BonusOnFamilyMemberPlacement;
 import player.FamilyMember;
 import player.Player;
 import resources.SetOfResources;
