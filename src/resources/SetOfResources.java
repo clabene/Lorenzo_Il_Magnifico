@@ -32,6 +32,14 @@ public class SetOfResources implements Losable, Gainable {
         resources[MONEY_INDEX] = new Money(0);
     }
 
+    public int getQuantityOfResources(){
+        int quantity =0;
+        for(Resource tmp: resources){
+            quantity += tmp.getQuantity();
+        }
+        return  quantity;
+    }
+
     public Resource[] getResources() {
         return resources;
     }

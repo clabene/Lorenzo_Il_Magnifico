@@ -21,6 +21,7 @@ public class CouncilActionSpace extends ActionSpace {
         if(!familyMemberArrayList.contains(player.getId()))
             familyMemberArrayList.add(player.getId());
 
+
         return true;
     }
 

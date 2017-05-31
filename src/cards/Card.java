@@ -36,6 +36,10 @@ public abstract class Card {
         this.period = period;
     }
 
+    public CardEffect getPermanentEffect() {
+        return permanentEffect;
+    }
+
     public void setCardCost(CardCost cardCost) {
         this.cardCost = cardCost;
     }
