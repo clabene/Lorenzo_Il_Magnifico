@@ -28,9 +28,6 @@ public class Period {
     public Period( ArrayList<Player> players){
 
         this.players = players;
-
-
-
     }
 
     public void startPeriod(int minFaithPoints ){
