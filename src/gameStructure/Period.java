@@ -22,21 +22,26 @@ public class Period {
 
     ArrayList<Player> players;
     Stack<Card> cards;
+    boolean isTheLastPeriod;
 
 
     public Period( ArrayList<Player> players){
-        this.board = board;
+
         this.players = players;
+
+
 
     }
 
-    public void stardPeriod(){
+    public void startPeriod(int minFaithPoints ){
         Stack<Card> PeriodDeck = setPeriodDeck();
         Turn firstTurn= new Turn(players);
         firstTurn.playTurn(PeriodDeck);
 
         Turn secondTurn = new Turn(players);
         secondTurn.playTurn(PeriodDeck);
+
+        exchomunicationCheck(players, minFaithPoints);
 
         //todo church  operations
 
@@ -58,6 +63,7 @@ public class Period {
             return gson.fromJson(s, Card.class);
 
         }catch (IOException e){}
+        return null;
 
     }
 
@@ -66,15 +72,16 @@ public class Period {
      */
     public Stack<Card> getCardsOfSameType (CardType cardType){
         Stack<Card> cardsOfSameType = new Stack<>();
-        Card card;
+        /*Card card;
         for(int i = 0; i < 32; i++){
             card = cardJsonStringReader(file);
             if(card.getCardType() == cardType)
                 cardsOfSameType.push(card);
 
-        }
+        }*/
 
         return cardsOfSameType;
+
     }
 
     /*
@@ -143,6 +150,23 @@ public class Period {
         while(!fromdeck.empty()){
             todeck.push(fromdeck.pop());
         }
+    }
+
+    public void exchomunicationCheck(ArrayList<Player> players, int minFaithPoints){
+
+
+        for(Player tmp: players){
+            if(tmp.getFaithPoints().getTrackPosition().getValue() < minFaithPoints){
+                System.out.println("You faith points are not enough, so you receive an exchomunication from the Church");
+
+                //todo player takes exchomunication
+
+            }
+            else{
+                tmp.exchomunicationDecision();
+            }
+        }
+
     }
 
 

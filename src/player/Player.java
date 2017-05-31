@@ -195,6 +195,8 @@ public class Player {
         this.victoryPoints -= points;
     }
 
+
+
     public int getVictoryPoints() {
         return victoryPoints;
     }
@@ -227,4 +229,22 @@ public class Player {
     public FamilyMember[] getFamilyMembers(){
         return this.familyMembers;
     }
+
+    public void exchomunicationDecision(){
+        System.out.println("What do you want to do? \n 0: take exchomunication \n 1: lose you faithPoints");
+        Scanner input = new Scanner(System.in);
+        int decision = input.nextInt();
+        if(decision == 0){
+
+
+        }else if(decision == 1){
+            this.addVictoryPoints(this.getFaithPoints().calculateVictoryPointsFromPosition(this.getFaithPoints().getTrackPosition().getValue()));
+            this.lose(this.getFaithPoints());
+
+        }else{
+            exchomunicationDecision();
+        }
+    }
+
+    //todo method to take the exchomunication
 }
