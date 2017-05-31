@@ -5,7 +5,8 @@ import actionSpaces.ActionSpace;
 import actionSpaces.ActionSpaceType;
 import board.Area;
 import board.Board;
-import cardEffects.BonusOnFamilyMemberPlacement;
+import cardEffects.bonuses.Bonus;
+import cardEffects.bonuses.BonusOnFamilyMemberPlacement;
 import player.FamilyMember;
 import player.Player;
 import resources.SetOfResources;
@@ -41,18 +42,27 @@ public class ActionPhase {
 
             incrementFamilyMemberValueRequest(player);
 
-            activateBonuses(actionSpace);
+            activateBonuses(actionSpace); //here i check for bonuses that can be activated
             if(putFamilyMemberOnActionSpace(familyMember, actionSpace)) return;
+            /*todo
+            here board is to be restored as if no bonus was activated (i.e. if a card cost was decreased but the card
+            was not taken, the cost has to go back to its previous value)
 
+            Observation: only actionSpaces that can cause the problem described up-here are tower action spaces, therefore
+            something like this could be a solution:
+                Card card = ( (TowerActionSpace) actionSpace).getCard();
+                actionSpace = new TowerActionSpace(actionSpace.getMinValueToPlaceFamiliar(), actionSpace.getBonus().toArray(new Gainable[actionSpace.getBonus().size()]));
+                actionSpace.setCard(card);
+            */
         }
 
     }
 
     public static void main(String[] ar){
         Player p = new Player(new Slave(2));
-        p.getBonusHandler().addBonus(new BonusOnFamilyMemberPlacement(ActionSpaceType.MARKET, 1));
-        p.getBonusHandler().addBonus(new BonusOnFamilyMemberPlacement(ActionSpaceType.TOWER, 6));
-        p.getBonusHandler().addBonus(new BonusOnFamilyMemberPlacement(ActionSpaceType.MARKET, -1));
+        p.getBonuses().add(new BonusOnFamilyMemberPlacement(ActionSpaceType.MARKET, 1));
+        p.getBonuses().add(new BonusOnFamilyMemberPlacement(ActionSpaceType.TOWER, 6));
+        p.getBonuses().add(new BonusOnFamilyMemberPlacement(ActionSpaceType.MARKET, -1));
         ActionPhase a = new ActionPhase(p, new Board());
         a.playActionPhase();
         System.out.println(p.getPlank().getSetOfResources());
@@ -60,13 +70,12 @@ public class ActionPhase {
 
     private boolean putFamilyMemberOnActionSpace(FamilyMember familyMember, ActionSpace actionSpace) {
         if (familyMember.getValue() >= actionSpace.getMinValueToPlaceFamiliar() ) {
-            familyMember.setInActionSpace(true);
-            //player.gain(actionSpace.familiarAdded());
-            //actionSpace.action(player);
-
-            if(actionSpace.action(player))
+            familyMember.setInActionSpace(true); // todo should not this go inside the if statement?
+                                                 // Indeed, if a tower card is too expensive for the player, they will
+                                                 // take their familiar back!
+            if(actionSpace.action(player)) {
                 player.gain(actionSpace.familiarAdded());
-
+            }
             return true;
         }else
             System.out.println("Your family member is not valuable enough for this action space\n");
@@ -126,8 +135,8 @@ public class ActionPhase {
     }
 
     private void activateBonuses(ActionSpace actionSpace){
-        for(BonusOnFamilyMemberPlacement tmp : player.getBonusHandler().getBonusesOnFamilyMemberPlacement())
-            tmp.activate(actionSpace);
+        for(Bonus tmp : player.getBonuses())
+            tmp.activateBonus(actionSpace);
     }
 
 }

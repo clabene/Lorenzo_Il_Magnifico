@@ -4,7 +4,7 @@ import actionSpaces.ActionSpace;
 import board.Board;
 import board.Color;
 import board.TowerArea;
-import cardEffects.BonusHandler;
+import cardEffects.bonuses.Bonus;
 import exceptions.NegativePointsException;
 import exceptions.NegativeResourceQuantityException;
 import interfaces.Losable;
@@ -26,16 +26,14 @@ import java.util.Scanner;
 public class Player {
 
     private String id;
+
     private int victoryPoints = 0; //todo
     private MilitaryPointsTrack militaryPoints = new MilitaryPointsTrack();
     private FaithPointsTrack faithPoints = new FaithPointsTrack();
     private PersonCardsPointsTrack personCardsPoints = new PersonCardsPointsTrack();
     private LandCardsPointsTrack landCardsPoints = new LandCardsPointsTrack();
 
-
     private Plank plank;
-
-
 
     private final int BLACK_FAMILY_MEMBER_INDEX = 0;
     private final int RED_FAMILY_MEMBER_INDEX = 1;
@@ -46,7 +44,7 @@ public class Player {
             new FamilyMember(Color.WHITE, 0), new FamilyMember(null, 0)};
 
 
-    private BonusHandler bonusHandler = new BonusHandler();
+    private ArrayList<Bonus> bonuses = new ArrayList<>();
 
 
     public Player(Resource ... resources){
@@ -141,10 +139,8 @@ public class Player {
 
     }
 
-
-
-    public BonusHandler getBonusHandler() {
-        return bonusHandler;
+    public ArrayList<Bonus> getBonuses() {
+        return bonuses;
     }
 
     public String getId(){return this.id;}

@@ -55,10 +55,10 @@ public class StaticVariables {
     public static final Tower[] TOWERS = {new Tower(PERSON_TOWER), new Tower(BUILDING_TOWER), new Tower(LAND_TOWER), new Tower(VENTURE)};
 
     /*
-    //max value requested to activate a land card or a building card when a family member is on the relative action spaces
+    //max value requested to activateBonus a land card or a building card when a family member is on the relative action spaces
     //Note that this is not necessarily the same as dice max value. Indeed, slaves can be used to increase a family member activation power
     public static final int MAX_ACTIVATION_VALUE= 6;
-    public static final int MIN_ACTIVATION_VALUE= 1; //min value requested to activate a land card or a building card when a family member is on the relative action spaces
+    public static final int MIN_ACTIVATION_VALUE= 1; //min value requested to activateBonus a land card or a building card when a family member is on the relative action spaces
     */
 
     public static final int NUMBER_OF_CARD_TYPES = 4; //land, building, person, venture
