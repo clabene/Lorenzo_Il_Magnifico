@@ -49,4 +49,8 @@ public class TowerArea implements Area {
     public String toString(){
         return "Tower Area";
     }
+
+    public Tower[] getTowers(){
+        return this.towers;
+    }
 }

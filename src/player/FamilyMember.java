@@ -46,5 +46,9 @@ public class FamilyMember {
         return this.color + " Family Member " + " value: " +this.value;
     }
 
+    public void incrementFamilyMemberValue(int value){
+        this.value += value;
+    }
+
 
 }

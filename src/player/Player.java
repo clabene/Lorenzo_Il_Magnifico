@@ -20,6 +20,7 @@ import board.Area;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 /**
  * Created by IBM on 14/05/2017.
  */
@@ -200,6 +201,10 @@ public class Player {
         return i;
     }
 */
+
+    /*
+    return the family members of the player that are not on any action space
+    */
     public ArrayList<FamilyMember> getFamilyMembersAvailable(){
         ArrayList<FamilyMember> available = new ArrayList<>();
         for(FamilyMember tmp: familyMembers){

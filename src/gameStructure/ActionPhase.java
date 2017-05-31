@@ -40,7 +40,7 @@ public class ActionPhase {
             ActionSpace actionSpace = selectionActionSpacePhase();
             if(actionSpace == null) continue;
 
-            incrementFamilyMemberValueRequest(player);
+            incrementFamilyMemberValueRequest(player, familyMember);
 
             activateBonuses(actionSpace); //here i check for bonuses that can be activated
             if(putFamilyMemberOnActionSpace(familyMember, actionSpace)) return;
@@ -97,15 +97,15 @@ public class ActionPhase {
     }
 
 
-    private void incrementFamilyMemberValueRequest(Player player) {
+    private void incrementFamilyMemberValueRequest(Player player, FamilyMember familyMember) {
         boolean b = true;
         while (b) {
 
             System.out.println("Quanti schiavi vuoi sacrificare? (Nessuno = 0)\n");
             Scanner input = new Scanner(System.in);
-
-            if (player.lose(new SetOfResources(new Slave(input.nextInt())))) {
-                //todo increment family member value
+            int quantity = input.nextInt();
+            if (player.lose(new SetOfResources(new Slave(quantity)))) {
+                familyMember.incrementFamilyMemberValue(quantity);
                 b = false;
             } else
                 System.out.println("Non hai abbastanza schiavi\n");

@@ -23,4 +23,6 @@ public class Board {
         return areas[index];
     }
 
+    public TowerArea getTowerArea(){return (TowerArea) this.areas[0];}
+
 }
