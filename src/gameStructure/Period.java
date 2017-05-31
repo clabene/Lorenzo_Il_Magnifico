@@ -19,12 +19,12 @@ import java.util.Stack;
  * Created by Pinos on 25/05/2017.
  */
 public class Period {
-    Board board;
+
     ArrayList<Player> players;
     Stack<Card> cards;
 
 
-    public Period(Board board, ArrayList<Player> players){
+    public Period( ArrayList<Player> players){
         this.board = board;
         this.players = players;
 
