@@ -47,10 +47,13 @@ public class Player {
 
     private ArrayList<Bonus> bonuses = new ArrayList<>();
 
+    private Board board;
 
     public Player(Resource ... resources){
         this.plank = new Plank(resources);
     }
+
+
 
     /*
     * Players gains all the points and all the resources given as parameters
@@ -138,6 +141,11 @@ public class Player {
         }
 
 
+    }
+
+
+    public Board getBoard() {
+        return board;
     }
 
     public ArrayList<Bonus> getBonuses() {

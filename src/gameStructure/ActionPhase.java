@@ -33,7 +33,13 @@ public class ActionPhase {
 
         while(true){
 
-            if(!checkPhasePlayable()) return;
+            if(!checkPhasePlayable()) return; //todo
+                                              // what about if player has bonuses?!
+                                              // We could make a copy of the board, apply the bonuses to all of its
+                                              // available action spaces and then make a control on checkPhasePlayable
+                                              // using that copy of the board (i.e. if i have 0 slaves and only a 0-value
+                                              // family member but there is an available action space with minValueToPlaceFamilyMember < 0,
+                                              // i still can (/must) make an action)
             FamilyMember familyMember = selectionFamilyMemberPhase();
             if(familyMember == null) continue;
 
@@ -121,6 +127,7 @@ public class ActionPhase {
             return null;
         }
         return familyMember;
+
 
     }
 

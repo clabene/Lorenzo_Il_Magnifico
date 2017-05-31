@@ -2,6 +2,7 @@ import actionSpaces.ActionSpace;
 import actionSpaces.ActionSpaceType;
 import cards.CardType;
 import interfaces.Gainable;
+import player.Plank;
 import pointsTrack.FaithPointsTrack;
 import pointsTrack.MilitaryPointsTrack;
 import pointsTrack.PointsTrack;
@@ -56,7 +57,7 @@ public class Main {
         System.out.println("land "+player.getLandCardsPoints().getTrackPosition().getValue());
         System.out.println("victory "+player.getVictoryPoints());
         */
-
+        /*
         Gainable g = new FaithPointsTrack(2);
         System.out.println(g instanceof Stone);
         System.out.println(g instanceof Wood);
@@ -67,6 +68,14 @@ public class Main {
 
         ActionSpaceType a = ActionSpaceType.ACTIVATION;
         System.out.println(ActionSpaceType.ACTIVATION == a);
+        */
+        Plank p = new Plank();
+        Plank p2 = p;
+        System.out.println(p);
+        System.out.println(p2);
+        p = new Plank();
+        System.out.println(p);
+        System.out.println(p2);
 
     }
 

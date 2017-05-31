@@ -14,6 +14,7 @@ public class ActivationActionSpace extends ActionSpace {
         this.activationType = activationType;
     }
 
+
     public boolean action(Player player){
 
         return true;
