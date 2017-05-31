@@ -2,6 +2,7 @@ package pointsTrack;
 
 import exceptions.LimitedValueOffRangeException;
 import interfaces.Gainable;
+import player.VictoryPoint;
 import utility.LimitedInteger;
 
 /**
@@ -15,7 +16,7 @@ public abstract class PointsTrack implements Gainable{
     *
     * A few examples follow:
     * At the end of the game, a player will gain some victory points based on their position on the faith track. Using this
-    * class to represent their faith points will make the calculations easier thanks to the victoryPointsOfPositions attribute.
+    * class to represent their faith points will make the calculations easier thanks to the numberOfVictoryPointsOfPositions attribute.
     * Same when it comes to calculating those points coming from the number of person cards the player has at the end of the game:
     * player just needs to have a PersonCardsPointsTrack attribute of type pointsTrack, that updates going ahead every time they
     * get a person card.
@@ -38,12 +39,12 @@ public abstract class PointsTrack implements Gainable{
     * */
 
     private LimitedInteger trackPosition;
-    private int[] victoryPointsOfPositions;
+    private int[] numberOfVictoryPointsOfPositions;
 
 
-    public PointsTrack(int[] victoryPointsOfPositions) {
-        initializeTrackPosition(victoryPointsOfPositions.length, 0);
-        this.victoryPointsOfPositions = victoryPointsOfPositions; //this shall be loaded from a file or got from StaticVariables class
+    public PointsTrack(int[] numberOfVictoryPointsOfPositions) {
+        initializeTrackPosition(numberOfVictoryPointsOfPositions.length, 0);
+        this.numberOfVictoryPointsOfPositions = numberOfVictoryPointsOfPositions; //this shall be loaded from a file or got from StaticVariables class
     }
 
     //this constructor is helpful because it allows to avoid giving Player a different parameter for each point they gain
@@ -76,8 +77,12 @@ public abstract class PointsTrack implements Gainable{
         }
     }
 
-   public int calculateVictoryPointsFromPosition(int trackPosition){
-        return victoryPointsOfPositions[trackPosition];
+   public VictoryPoint calculateVictoryPointsFromPosition(int trackPosition){
+        return new VictoryPoint(numberOfVictoryPointsOfPositions[trackPosition]);
+    }
+
+    public VictoryPoint calculateVictoryPointsFromPosition(){
+        return new VictoryPoint(numberOfVictoryPointsOfPositions[trackPosition.getValue()]);
     }
 
 

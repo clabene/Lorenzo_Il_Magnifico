@@ -1,7 +1,7 @@
-package cardEffects;
+package cards.cardEffects;
 
 
-import cardEffects.bonuses.Bonus;
+import cards.cardEffects.bonuses.Bonus;
 import player.Player;
 
 /**

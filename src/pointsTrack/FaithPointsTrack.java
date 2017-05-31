@@ -15,7 +15,7 @@ public class FaithPointsTrack extends PointsTrack implements Losable {
     }
 
     public FaithPointsTrack(){
-        super(StaticVariables.FAITH_TRACK_VICTORY_POINTS);
+        super(StaticVariables.NUMBER_OF_FAITH_TRACK_VICTORY_POINTS);
     }
 
     @Override

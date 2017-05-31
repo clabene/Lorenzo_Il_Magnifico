@@ -1,4 +1,4 @@
-package cardEffects;
+package cards.cardEffects;
 
 import cards.Card;
 import cards.CardType;
@@ -40,9 +40,9 @@ public class ReceiveGainablesForCardTypeEffect extends ReceiveGainablesEffect {
 
     public static void main(String[] a){
         Player p = new Player();
-        p.getPlank().getCards().cardAdded(new LandCard("po", PeriodNumber.SECOND, 0, null, null));
-        p.getPlank().getCards().cardAdded(new LandCard("po", PeriodNumber.SECOND, 0, null, null));
-        p.getPlank().getCards().cardAdded(new LandCard("po", PeriodNumber.SECOND, 0, null, null));
+        //p.getPlank().getCards().cardAdded(new LandCard("po", PeriodNumber.SECOND, 0, null, null));
+        //p.getPlank().getCards().cardAdded(new LandCard("po", PeriodNumber.SECOND, 0, null, null));
+        //p.getPlank().getCards().cardAdded(new LandCard("po", PeriodNumber.SECOND, 0, null, null));
         ReceiveGainablesForCardTypeEffect r = new ReceiveGainablesForCardTypeEffect(CardType.LAND, new Wood(2), new MilitaryPointsTrack(1));
         r.activate(p);
         System.out.println(p.getPlank().getSetOfResources());

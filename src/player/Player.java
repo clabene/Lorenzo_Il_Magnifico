@@ -4,7 +4,8 @@ import actionSpaces.ActionSpace;
 import board.Board;
 import board.Color;
 import board.TowerArea;
-import cardEffects.bonuses.Bonus;
+import cards.cardEffects.bonuses.Bonus;
+import exceptions.LimitedValueOffRangeException;
 import exceptions.NegativePointsException;
 import exceptions.NegativeResourceQuantityException;
 import interfaces.Losable;
@@ -28,7 +29,7 @@ public class Player {
 
     private String id;
 
-    private int victoryPoints = 0; //todo
+    private VictoryPoint points = new VictoryPoint(0);
     private MilitaryPointsTrack militaryPoints = new MilitaryPointsTrack();
     private FaithPointsTrack faithPoints = new FaithPointsTrack();
     private PersonCardsPointsTrack personCardsPoints = new PersonCardsPointsTrack();
@@ -67,7 +68,7 @@ public class Player {
     * Player loses all the points and all the resources given as parameter. Further information follow:
     *
     * Player loses all the losable objects that can lose without an exception to be thrown. The catching of an Exception will not
-    * cause the method to stop. Also, player will not lose a portion of a SetOfResources, but either all of it or none of it.
+    * cause the method to stop. Also, player will not lose a portion of a Losable, but either all of it or none of it.
     *
     * If player is asked to loose a certain quantity of some resource but has less of it, they won't lose any of that resource
     * and false will be returned. When it comes to points, they will always return true and lose all possible points.
@@ -166,7 +167,7 @@ public class Player {
 
     public String getId(){return this.id;}
 
-    public void takeCard(Card card){
+    public void takeCard(Card card) throws IndexOutOfBoundsException, LimitedValueOffRangeException{
         plank.getCards().cardAdded(card);
     }
 
@@ -198,6 +199,11 @@ public class Player {
         return landCardsPoints;
     }
 
+    public VictoryPoint getPoints() {
+        return points;
+    }
+
+    /*
     public void addVictoryPoints(int points) {
         this.victoryPoints += points;
     }
@@ -207,12 +213,13 @@ public class Player {
         this.victoryPoints -= points;
     }
 
-
-
-    public int getVictoryPoints() {
+    public int getQuantity() {
         return victoryPoints;
     }
-/*
+    */
+
+
+    /*
     public int getNumberOfFamilyMembersAvailable(){
         int i = 0;
         for(FamilyMember tmp: familyMembers){
@@ -222,7 +229,7 @@ public class Player {
         }
         return i;
     }
-*/
+    */
 
     /*
     return the family members of the player that are not on any action space
@@ -250,7 +257,7 @@ public class Player {
 
 
         }else if(decision == 1){
-            this.addVictoryPoints(this.getFaithPoints().calculateVictoryPointsFromPosition(this.getFaithPoints().getTrackPosition().getValue()));
+            this.gain(this.getFaithPoints().calculateVictoryPointsFromPosition());
             this.lose(this.getFaithPoints());
 
         }else{

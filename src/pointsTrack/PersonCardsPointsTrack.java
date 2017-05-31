@@ -15,7 +15,7 @@ public class PersonCardsPointsTrack extends PointsTrack {
     }
 
     public PersonCardsPointsTrack(){
-        super(StaticVariables.PERSON_CARDS_VICTORY_POINTS);
+        super(StaticVariables.NUMBER_OF_PERSON_CARDS_VICTORY_POINTS);
     }
 
     @Override

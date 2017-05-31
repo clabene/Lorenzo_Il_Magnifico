@@ -1,9 +1,8 @@
-package cardEffects.bonuses;
+package cards.cardEffects.bonuses;
 
 import actionSpaces.ActionSpace;
 import actionSpaces.ActionSpaceType;
 import actionSpaces.TowerActionSpace;
-import cardEffects.bonuses.Bonus;
 import cards.CardType;
 
 /**

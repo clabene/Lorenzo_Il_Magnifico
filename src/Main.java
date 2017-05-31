@@ -29,9 +29,9 @@ public class Main {
         System.out.println("faith "+player.getFaithPoints().getTrackPosition().getValue());
         System.out.println("person "+player.getPersonCardsPoints().getTrackPosition().getValue());
         System.out.println("land "+player.getLandCardsPoints().getTrackPosition().getValue());
-        System.out.println("vitory "+player.getVictoryPoints());
+        System.out.println("vitory "+player.getQuantity());
 
-        player.gain(new SetOfResources(new Money(3), new Stone(7)), new MilitaryPointsTrack(27),
+        player.gain(new Losable(new Money(3), new Stone(7)), new MilitaryPointsTrack(27),
                 new FaithPointsTrack(3), new FaithPointsTrack(1), new LandCardsPointsTrack(7),
                 new VictoryPoint(21), new Wood(3));
 
@@ -43,9 +43,9 @@ public class Main {
         System.out.println("faith "+player.getFaithPoints().getTrackPosition().getValue());
         System.out.println("person "+player.getPersonCardsPoints().getTrackPosition().getValue());
         System.out.println("land "+player.getLandCardsPoints().getTrackPosition().getValue());
-        System.out.println("victory "+player.getVictoryPoints());
+        System.out.println("victory "+player.getQuantity());
 
-        player.lose(new Stone(4), new MilitaryPointsTrack(3), new SetOfResources(new Money(1), new Stone(4)),
+        player.lose(new Stone(4), new MilitaryPointsTrack(3), new Losable(new Money(1), new Stone(4)),
                 new Money(2), new VictoryPoint(31));
 
         System.out.println("---------------------------------------------------");
@@ -56,7 +56,7 @@ public class Main {
         System.out.println("faith "+player.getFaithPoints().getTrackPosition().getValue());
         System.out.println("person "+player.getPersonCardsPoints().getTrackPosition().getValue());
         System.out.println("land "+player.getLandCardsPoints().getTrackPosition().getValue());
-        System.out.println("victory "+player.getVictoryPoints());
+        System.out.println("victory "+player.getQuantity());
         */
         /*
         Gainable g = new FaithPointsTrack(2);

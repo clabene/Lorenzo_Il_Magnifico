@@ -2,6 +2,7 @@ package gameStructure;
 
 import cards.VentureCard;
 import player.Player;
+import player.VictoryPoint;
 
 import java.util.ArrayList;
 
@@ -36,10 +37,10 @@ public class Game {
 
 
         for(Player tmp: players){
-            tmp.addVictoryPoints(tmp.getFaithPoints().calculateVictoryPointsFromPosition(tmp.getFaithPoints().getTrackPosition().getValue()));
-            tmp.addVictoryPoints(tmp.getLandCardsPoints().calculateVictoryPointsFromPosition(tmp.getLandCardsPoints().getTrackPosition().getValue()));
-            tmp.addVictoryPoints(tmp.getPersonCardsPoints().calculateVictoryPointsFromPosition(tmp.getPersonCardsPoints().getTrackPosition().getValue()));
-            tmp.addVictoryPoints(tmp.getPlank().getSetOfResources().getQuantityOfResources()/5);
+            tmp.gain(tmp.getFaithPoints().calculateVictoryPointsFromPosition(tmp.getFaithPoints().getTrackPosition().getValue()));
+            tmp.gain(tmp.getLandCardsPoints().calculateVictoryPointsFromPosition(tmp.getLandCardsPoints().getTrackPosition().getValue()));
+            tmp.gain(tmp.getPersonCardsPoints().calculateVictoryPointsFromPosition(tmp.getPersonCardsPoints().getTrackPosition().getValue()));
+            tmp.gain(new VictoryPoint(tmp.getPlank().getSetOfResources().getQuantityOfResources()/5));
             for(VentureCard tmp1: (VentureCard[]) tmp.getPlank().getCards().getVentureCards()){
                 tmp1.getPermanentEffect().activate(tmp);
             }
@@ -70,15 +71,15 @@ public class Game {
         if(positions[1] == positions[0]){
             for(Player tmp: players){
                 if(tmp.getMilitaryPoints().getTrackPosition().getValue() == positions[1])
-                    tmp.addVictoryPoints(5);
+                    tmp.gain(new VictoryPoint(5));
             }
         }else{
             for(Player tmp: players){
                 if(tmp.getMilitaryPoints().getTrackPosition().getValue() == positions[0]){
-                    tmp.addVictoryPoints(5);
+                    tmp.gain(new VictoryPoint(5));
                 }
                 if(tmp.getMilitaryPoints().getTrackPosition().getValue() == positions[1]){
-                    tmp.addVictoryPoints(2);
+                    tmp.gain(new VictoryPoint(2));
                 }
             }
         }
@@ -91,9 +92,9 @@ public class Game {
         Player winner = null;
         int winnerPoints = 0;
         for(Player tmp: players){
-            if(winnerPoints < tmp.getVictoryPoints()){
+            if(winnerPoints < tmp.getPoints().getQuantity()){
                 winner = tmp;
-                winnerPoints = tmp.getVictoryPoints();
+                winnerPoints = tmp.getPoints().getQuantity();
             }
         }
         return winner;

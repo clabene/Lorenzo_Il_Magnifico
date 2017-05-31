@@ -1,6 +1,6 @@
 package cards;
 
-import cardEffects.CardEffect;
+import cards.cardEffects.CardEffect;
 
 /**
  * Created by IBM on 09/05/2017.

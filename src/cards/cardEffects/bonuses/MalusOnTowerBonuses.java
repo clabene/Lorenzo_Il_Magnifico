@@ -1,8 +1,7 @@
-package cardEffects.bonuses;
+package cards.cardEffects.bonuses;
 
 import actionSpaces.ActionSpace;
 import actionSpaces.ActionSpaceType;
-import cardEffects.bonuses.Bonus;
 
 /**
  * Created by IBM on 30/05/2017.

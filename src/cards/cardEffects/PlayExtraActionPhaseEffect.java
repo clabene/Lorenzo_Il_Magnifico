@@ -1,14 +1,15 @@
-package cardEffects;
+package cards.cardEffects;
 
 import actionSpaces.ActionSpace;
 import actionSpaces.ActivationActionSpace;
 import actionSpaces.TowerActionSpace;
 import board.Tower;
-import cardEffects.bonuses.Bonus;
+import cards.cardEffects.bonuses.Bonus;
 import cards.CardType;
 import gameStructure.ActionPhase;
 import player.FamilyMember;
 import player.Player;
+
 import resources.SetOfResources;
 import resources.Slave;
 

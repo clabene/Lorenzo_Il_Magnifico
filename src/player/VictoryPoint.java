@@ -1,7 +1,8 @@
+package player;
+
 import exceptions.NegativePointsException;
 import interfaces.Losable;
 import interfaces.Gainable;
-import player.Player;
 
 /**
  * Created by IBM on 23/05/2017.
@@ -15,16 +16,24 @@ public class VictoryPoint implements Gainable, Losable {
     }
 
 
-    public int getVictoryPoints() {
+    public int getQuantity() {
         return victoryPoints;
     }
+
+    public void addVictoryPoints(int quantity){
+        this.victoryPoints += quantity;
+    }
+    public void loseVictoryPoints(int quantity){
+        this.victoryPoints -= quantity;
+    }
+
     @Override
     public void gainedByPlayer(Player player) {
-        player.addVictoryPoints(getVictoryPoints());
+        player.getPoints().addVictoryPoints(this.getQuantity());
     }
     @Override
     public void lostByPlayer(Player player) throws NegativePointsException{
-        player.loseVictoryPoints(getVictoryPoints());
+        player.getPoints().loseVictoryPoints(this.getQuantity());
     }
 
 }

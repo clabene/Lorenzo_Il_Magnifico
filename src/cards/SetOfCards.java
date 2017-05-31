@@ -37,7 +37,7 @@ public class SetOfCards {
             e.printStackTrace();
         }
     }
-
+    /*
     public void cardAdded(Card card) {
         try {
             if (card instanceof LandCard) {
@@ -55,6 +55,22 @@ public class SetOfCards {
             }
         } catch (LimitedValueOffRangeException | ArrayIndexOutOfBoundsException e) {
             System.out.println("Action denied, no room for the selected card");
+        }
+    }
+    */
+    public void cardAdded(Card card) throws ArrayIndexOutOfBoundsException, LimitedValueOffRangeException{
+        if (card instanceof LandCard) {
+            cards[LAND_CARD_INDEX][numberOfLandCards.getValue()] = card;
+            numberOfLandCards.increment();
+        } else if (card instanceof BuildingCard) {
+            cards[BUILDING_CARD_INDEX][numberOfBuildingCards.getValue()] = card;
+            numberOfBuildingCards.increment();
+        } else if (card instanceof PersonCard) {
+            cards[PERSON_CARD_INDEX][numberOfPersonCards.getValue()] = card;
+            numberOfPersonCards.increment();
+        } else if (card instanceof VentureCard) {
+            cards[VENTURE_CARD_INDEX][numberOfVentureCards.getValue()] = card;
+            numberOfVentureCards.increment();
         }
     }
 
@@ -85,9 +101,18 @@ public class SetOfCards {
 
     public static void main(String args[]) {
         SetOfCards s = new SetOfCards();
-        s.cardAdded(new LandCard("pp", PeriodNumber.SECOND, 2, null, null));
-        System.out.println(s.getLandCards()[0]);
-        System.out.println(s.getBuildingCards()[0]);
+        try {
+            s.cardAdded(new LandCard("pp", PeriodNumber.SECOND, 2, null, null));
+            s.cardAdded(new LandCard("pp", PeriodNumber.SECOND, 2, null, null));
+            s.cardAdded(new LandCard("pp", PeriodNumber.SECOND, 2, null, null));
+            s.cardAdded(new LandCard("pp", PeriodNumber.SECOND, 2, null, null));
+            s.cardAdded(new LandCard("pp", PeriodNumber.SECOND, 2, null, null));
+            s.cardAdded(new LandCard("pp", PeriodNumber.SECOND, 2, null, null));
+            s.cardAdded(new LandCard("pp", PeriodNumber.SECOND, 2, null, null));
+        } catch (ArrayIndexOutOfBoundsException | LimitedValueOffRangeException e){
+            System.out.println("ninsivs");
+        }
+
     }
 
 

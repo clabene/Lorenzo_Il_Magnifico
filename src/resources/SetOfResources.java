@@ -1,15 +1,14 @@
 package resources;
 
 import exceptions.NegativeResourceQuantityException;
-import interfaces.Losable;
 import interfaces.Gainable;
+import interfaces.Losable;
 import player.Player;
 
 /**
  * Created by IBM on 09/05/2017.
  */
-public class SetOfResources implements Losable, Gainable {
-
+public class SetOfResources implements Gainable, Losable{
     private Resource[] resources = new Resource[4];
     private final int WOOD_INDEX = 0;
     private final int STONE_INDEX = 1;
@@ -71,17 +70,15 @@ public class SetOfResources implements Losable, Gainable {
     //true if NegativeResourceQuantityException is not to be thrown
     private boolean enoughResourcesQuantity(Resource resource) {
         if(resource instanceof Wood && resources[WOOD_INDEX].getQuantity() < resource.getQuantity())
-                return false;
+            return false;
         else if(resource instanceof Stone&& resources[STONE_INDEX].getQuantity() < resource.getQuantity())
             return false;
         else if(resource instanceof Slave && resources[SLAVE_INDEX].getQuantity() < resource.getQuantity())
-                return false;
+            return false;
         else if(resource instanceof Money && resources[MONEY_INDEX].getQuantity() < resource.getQuantity())
-                return false;
+            return false;
         return true;
     }
-
-
 
     public void resourcesSpent(Resource ... resources) throws NegativeResourceQuantityException {
         for(Resource tmp : resources)

@@ -8,7 +8,7 @@ import resources.SetOfResources;
 /**
  * Created by IBM on 13/05/2017.
  */
-public class CardCost implements Losable{
+public class CardCost implements interfaces.Losable {
 
     /*
     * Right now this class can be easily replaced by Expandable objects. It will be worth not deleting if will encapsulate more functionality
@@ -18,13 +18,13 @@ public class CardCost implements Losable{
     * */
 
     private SetOfResources cost;
-    private Losable cost2 = null;
+    private interfaces.Losable cost2 = null;
 
     public CardCost(SetOfResources cost){
         this.cost = cost;
     }
 
-    public CardCost(SetOfResources cost, Losable cost2){
+    public CardCost(SetOfResources cost, interfaces.Losable cost2){
         this.cost = cost;
         this.cost2 = cost2;
     }
@@ -37,9 +37,10 @@ public class CardCost implements Losable{
         this.cost = cost;
     }
 
-    public Losable getCost2(){
+    public interfaces.Losable getCost2(){
         return cost2;
     }
+
 
     @Override
     public void lostByPlayer(Player player) throws NegativeResourceQuantityException {

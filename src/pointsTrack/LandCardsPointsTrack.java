@@ -15,7 +15,7 @@ public class LandCardsPointsTrack extends PointsTrack{
     }
 
     public LandCardsPointsTrack(){
-        super(StaticVariables.LAND_CARDS_VICTORY_POINTS);
+        super(StaticVariables.NUMBER_OF_LAND_CARDS_VICTORY_POINTS);
     }
 
 

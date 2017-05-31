@@ -21,10 +21,17 @@ public class TowerActionSpace extends ActionSpace {
         /*
 
         //todo check if 3 coins are to be paid
+        //todo is the number of cards to be controlled here? max 6 per player
 
         if(card == null) return false;
         if(player.lose(card.getCardCost())){
-            player.takeCard(card);
+            try{
+                player.takeCard(card);
+            } catch(IndexOutOfBoundsException | LimitedValueOffRangeException e){
+                System.out.println("You already have 6 cards of this type");
+                player.gain(card.getCardCost()); //what if card has two costs?
+                return false;
+            }
             card = null;
             return true;
         }

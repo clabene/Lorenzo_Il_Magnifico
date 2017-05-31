@@ -16,7 +16,9 @@ public class ActivationActionSpace extends ActionSpace {
 
 
     public boolean action(Player player){
-
+        //todo
+        //abilitato vs attivato
+        //risorse guadagnate solo alla fine
         return true;
     }
 

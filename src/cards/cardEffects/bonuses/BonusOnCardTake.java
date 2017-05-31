@@ -1,4 +1,4 @@
-package cardEffects.bonuses;
+package cards.cardEffects.bonuses;
 
 import actionSpaces.ActionSpace;
 import actionSpaces.ActionSpaceType;
@@ -6,8 +6,8 @@ import actionSpaces.TowerActionSpace;
 import cards.Card;
 import cards.CardType;
 import exceptions.NegativeResourceQuantityException;
-import resources.Resource;
 import resources.SetOfResources;
+import resources.Resource;
 
 /**
  * Created by IBM on 30/05/2017.
@@ -23,7 +23,7 @@ public class BonusOnCardTake implements Bonus {
     }
 
     public void decrementCardCost(Card card){
-        if(card.getCardType() == this.cardType)
+        if(card.getCardType() == this.cardType && card.getCardCost().getCost() instanceof SetOfResources  )
             try{
                 card.getCardCost().getCost().resourcesSpent(discount);
             } catch (NegativeResourceQuantityException e){

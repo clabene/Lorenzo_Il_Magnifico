@@ -1,4 +1,4 @@
-package cardEffects;
+package cards.cardEffects;
 
 import interfaces.Gainable;
 import player.Player;
