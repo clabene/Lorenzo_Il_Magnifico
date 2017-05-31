@@ -120,6 +120,18 @@ public class Player {
 
 
     }
+    public ActionSpace selectActionSpace (ActionSpace ... actionSpaces){
+
+        System.out.println("Quale spazio azione vuoi selezionare?");
+        for(ActionSpace tmp : actionSpaces)
+            System.out.println(tmp);
+
+        Scanner input = new Scanner(System.in);
+        int index = input.nextInt() -1 ;
+        return actionSpaces[index];
+
+
+    }
 
     public FamilyMember selectFamilyMember() {
         System.out.println("Quale familiare vuoi selezionare?");

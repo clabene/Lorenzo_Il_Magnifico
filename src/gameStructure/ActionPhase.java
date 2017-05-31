@@ -25,7 +25,6 @@ public class ActionPhase {
     public ActionPhase(Player player, Board board){
         this.player = player;
         this.board = board;
-
     }
 
 
@@ -74,7 +73,7 @@ public class ActionPhase {
         System.out.println(p.getPlank().getSetOfResources());
     }
 
-    private boolean putFamilyMemberOnActionSpace(FamilyMember familyMember, ActionSpace actionSpace) {
+    public boolean putFamilyMemberOnActionSpace(FamilyMember familyMember, ActionSpace actionSpace) {
         if (familyMember.getValue() >= actionSpace.getMinValueToPlaceFamiliar() ) {
             familyMember.setInActionSpace(true); // todo should not this go inside the if statement?
                                                  // Indeed, if a tower card is too expensive for the player, they will
@@ -103,7 +102,7 @@ public class ActionPhase {
     }
 
 
-    private void incrementFamilyMemberValueRequest(Player player, FamilyMember familyMember) {
+    public void incrementFamilyMemberValueRequest(Player player, FamilyMember familyMember) {
         boolean b = true;
         while (b) {
 
@@ -141,7 +140,7 @@ public class ActionPhase {
         return actionSpace;
     }
 
-    private void activateBonuses(ActionSpace actionSpace){
+    public void activateBonuses(ActionSpace actionSpace){
         for(Bonus tmp : player.getBonuses())
             tmp.activateBonus(actionSpace);
     }

@@ -60,7 +60,6 @@ public abstract class PointsTrack implements Gainable{
         }
     }
 
-
     public void incrementTrackPosition(){
         try{
             trackPosition.increment();
@@ -77,9 +76,10 @@ public abstract class PointsTrack implements Gainable{
         }
     }
 
-    public int calculateVictoryPointsFromPosition(int trackPosition){
+   public int calculateVictoryPointsFromPosition(int trackPosition){
         return victoryPointsOfPositions[trackPosition];
     }
+
 
     public LimitedInteger getTrackPosition() {
         return trackPosition;

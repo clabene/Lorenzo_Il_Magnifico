@@ -9,6 +9,7 @@ import pointsTrack.PointsTrack;
 import resources.Resource;
 import resources.Stone;
 import resources.Wood;
+import utility.StaticVariables;
 
 import java.util.AbstractCollection;
 import java.util.ResourceBundle;
@@ -69,6 +70,7 @@ public class Main {
         ActionSpaceType a = ActionSpaceType.ACTIVATION;
         System.out.println(ActionSpaceType.ACTIVATION == a);
         */
+        /*
         Plank p = new Plank();
         Plank p2 = p;
         System.out.println(p);
@@ -76,6 +78,13 @@ public class Main {
         p = new Plank();
         System.out.println(p);
         System.out.println(p2);
+        */
+        for(int i = 0; i<3;i++){
+            for(int j = 0; j<3; j++){
+                if(j == 2) continue;
+                System.out.println("a");
+            }
+        }
 
     }
 

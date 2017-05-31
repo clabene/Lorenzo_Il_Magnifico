@@ -14,10 +14,6 @@ public class TowerArea implements Area {
     //private TowerActionSpace[] spaces = StaticVariables.TOWER_ACTION_SPACES;
     private Tower[] towers = StaticVariables.TOWERS;
 
-    public Tower[] getTowers() {
-        return towers;
-    }
-
     @Override
     public void show() {
         int i = 0;

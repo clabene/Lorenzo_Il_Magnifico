@@ -9,7 +9,7 @@ import player.Player;
  */
 public class ReceiveBonusEffect implements CardEffect {
 
-    private Bonus bonus;
+    private Bonus bonus; //todo array??
 
     public ReceiveBonusEffect(Bonus bonus) {
         this.bonus = bonus;

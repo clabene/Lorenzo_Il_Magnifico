@@ -22,7 +22,6 @@ public class Period {
 
     ArrayList<Player> players;
     Stack<Card> cards;
-    boolean isTheLastPeriod;
 
 
     public Period( ArrayList<Player> players){
@@ -48,6 +47,7 @@ public class Period {
     /*
     the input is a json file were there are cards setted such that
     each row correspond to a card
+    If returns null something went wrong
     */
 
     public Card cardJsonStringReader(File file){
@@ -61,7 +61,6 @@ public class Period {
 
         }catch (IOException e){}
         return null;
-
     }
 
     /*
@@ -78,7 +77,6 @@ public class Period {
         }*/
 
         return cardsOfSameType;
-
     }
 
     /*
