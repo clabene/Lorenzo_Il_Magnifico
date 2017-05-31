@@ -1,8 +1,9 @@
 package cards;
 
+import exceptions.NegativePointsException;
 import exceptions.NegativeResourceQuantityException;
-import interfaces.Losable;
 import player.Player;
+import pointsTrack.MilitaryPointsTrack;
 import resources.SetOfResources;
 
 /**
@@ -17,39 +18,44 @@ public class CardCost implements interfaces.Losable {
     *
     * */
 
-    private SetOfResources cost;
-    private interfaces.Losable cost2 = null;
+    private SetOfResources resourcesCost;
+    private MilitaryPointsTrack militaryPointsCost;
 
-    public CardCost(SetOfResources cost){
-        this.cost = cost;
+    public CardCost(SetOfResources resourcesCost){
+        this.resourcesCost = resourcesCost;
+    }
+    public CardCost(MilitaryPointsTrack militaryPointsCost){
+        this.militaryPointsCost = militaryPointsCost;
+    }
+    public CardCost(SetOfResources resourcesCost, MilitaryPointsTrack militaryPointsCost){
+        this.resourcesCost = resourcesCost;
+        this.militaryPointsCost = militaryPointsCost;
     }
 
-    public CardCost(SetOfResources cost, interfaces.Losable cost2){
-        this.cost = cost;
-        this.cost2 = cost2;
+    public SetOfResources getResourcesCost() {
+        return resourcesCost;
     }
 
-    public SetOfResources getCost() {
-        return cost;
+    public void setResourcesCost(SetOfResources resourcesCost) {
+        this.resourcesCost = resourcesCost;
     }
 
-    public void setCost(SetOfResources cost) {
-        this.cost = cost;
+    public MilitaryPointsTrack getMilitaryPointsCost() {
+        return militaryPointsCost;
     }
-
-    public interfaces.Losable getCost2(){
-        return cost2;
-    }
-
 
     @Override
-    public void lostByPlayer(Player player) throws NegativeResourceQuantityException {
-        if(cost2 == null)
-            cost.lostByPlayer(player);
+    public void lostByPlayer(Player player) throws NegativeResourceQuantityException, NegativePointsException {
+        if(militaryPointsCost == null)
+            resourcesCost.lostByPlayer(player);
+        if(resourcesCost == null) {
+            //todo check if enough points
+            militaryPointsCost.lostByPlayer(player);
+        }
         else {
             //todo
-            // player selects what cost he prefers to pay
-            // lostByPlayer(player) is called on the chosen cost
+            // player selects what resourcesCost he prefers to pay
+            // lostByPlayer(player) is called on the chosen resourcesCost
         }
 
     }

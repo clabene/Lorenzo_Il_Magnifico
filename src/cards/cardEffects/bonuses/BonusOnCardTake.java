@@ -23,11 +23,11 @@ public class BonusOnCardTake implements Bonus {
     }
 
     public void decrementCardCost(Card card){
-        if(card.getCardType() == this.cardType && card.getCardCost().getCost() instanceof SetOfResources  )
+        if(card.getCardCost().getResourcesCost() != null && card.getCardType() == this.cardType)
             try{
-                card.getCardCost().getCost().resourcesSpent(discount);
+                card.getCardCost().getResourcesCost().resourcesSpent(discount);
             } catch (NegativeResourceQuantityException e){
-                card.getCardCost().setCost(new SetOfResources());
+                card.getCardCost().setResourcesCost(new SetOfResources());
             }
     }
 
