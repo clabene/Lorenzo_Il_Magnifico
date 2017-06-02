@@ -17,8 +17,18 @@ import java.util.Scanner;
  */
 public class ExchangeGainablesEffect implements CardEffect{
 
+    //todo make this class decent, it is terrible right now. Just use ArrayList!
+
+
     private Losable[] losables = new Losable[2];
     private Gainable[] gainables = new Gainable[2];
+
+    public ExchangeGainablesEffect(Losable losable, Gainable gainable, Gainable gainable2) {
+        this.losables[0] = losable;
+        this.gainables[0] = gainable;
+        this.losables[1] = null;
+        this.gainables[1] = gainable2;
+    }
 
     public ExchangeGainablesEffect(Losable losable, Gainable gainable) {
         this.losables[0] = losable;
@@ -37,7 +47,9 @@ public class ExchangeGainablesEffect implements CardEffect{
     private void printMenu(){
         System.out.println("What do you wish to do? You can:");
         System.out.println("0 Do nothing");
-        System.out.println("1 Exchange "+losables[0]+" in order to get "+gainables[0]);
+        System.out.print("1 Exchange "+losables[0]+" in order to get "+gainables[0]);
+        if(losables[1] == null && gainables[1] != null) System.out.println(" and "+gainables[1]);
+        else System.out.println("");
         if(losables[1] != null && gainables[1] != null)
             System.out.println("or\n2 Exchange "+losables[1]+" in order to get "+gainables[1]);
     }

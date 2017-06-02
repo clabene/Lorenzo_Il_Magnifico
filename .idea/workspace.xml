@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cards/CardCost.java" afterPath="$PROJECT_DIR$/src/cards/CardCost.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/excommunicationTessels/MalusOnFamilyMemberPlacementTessel.java" afterPath="$PROJECT_DIR$/src/excommunicationTessels/MalusOnFamilyMemberPlacementTessel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/excommunicationTessels/PointsTrackToZeroTessel.java" afterPath="$PROJECT_DIR$/src/excommunicationTessels/PointsTrackToZeroTessel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gameStructure/ActionPhase.java" afterPath="$PROJECT_DIR$/src/gameStructure/ActionPhase.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cards/cardEffects/ExchangeGainablesEffect.java" afterPath="$PROJECT_DIR$/src/cards/cardEffects/ExchangeGainablesEffect.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resources/SetOfResources.java" afterPath="$PROJECT_DIR$/src/resources/SetOfResources.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utility/CardJsonWriter.java" afterPath="$PROJECT_DIR$/src/utility/CardJsonWriter.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,46 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MalusOnFamilyMemberPlacementTessel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/excommunicationTessels/MalusOnFamilyMemberPlacementTessel.java">
+      <file leaf-file-name="ExchangeGainablesEffect.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/cards/cardEffects/ExchangeGainablesEffect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActionPhase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gameStructure/ActionPhase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="124" column="66" selection-start-line="124" selection-start-column="66" selection-end-line="124" selection-end-column="66" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/player/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="62">
-              <caret line="68" column="6" selection-start-line="68" selection-start-column="6" selection-end-line="68" selection-end-column="6" />
-              <folding>
-                <element signature="method#removeResourcesFromPlank#0;class#Player#0" expanded="false" />
-                <element signature="method#getFamilyMembersAvailable#0;class#Player#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CardCost.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/cards/CardCost.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1054">
-              <caret line="77" column="83" selection-start-line="77" selection-start-column="83" selection-end-line="77" selection-end-column="83" />
+            <state relative-caret-position="255">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -116,7 +76,6 @@
         <option value="$PROJECT_DIR$/src/actionSpaces/MarketActionSpace.java" />
         <option value="$PROJECT_DIR$/src/actionSpaces/ActivationActionSpace.java" />
         <option value="$PROJECT_DIR$/src/player/Plank.java" />
-        <option value="$PROJECT_DIR$/src/cards/cardEffects/ExchangeGainablesEffect.java" />
         <option value="$PROJECT_DIR$/src/player/FamilyMember.java" />
         <option value="$PROJECT_DIR$/src/cards/cardEffects/bonuses/BonusOnFamilyMemberPlacement.java" />
         <option value="$PROJECT_DIR$/src/gameStructure/PeriodNumber.java" />
@@ -143,6 +102,7 @@
         <option value="$PROJECT_DIR$/src/gameStructure/ActionPhase.java" />
         <option value="$PROJECT_DIR$/src/player/Player.java" />
         <option value="$PROJECT_DIR$/src/cards/CardCost.java" />
+        <option value="$PROJECT_DIR$/src/cards/cardEffects/ExchangeGainablesEffect.java" />
       </list>
     </option>
   </component>
@@ -233,7 +193,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="player" />
+              <option name="myItemId" value="cards" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -251,43 +211,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="gameStructure" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lorenzo_Il_Magnifico_Git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lorenzo_Il_Magnifico_Git" />
+              <option name="myItemId" value="cards" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="excommunicationTessels" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lorenzo_Il_Magnifico_Git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lorenzo_Il_Magnifico_Git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bonuses" />
+              <option name="myItemId" value="cardEffects" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1095,7 +1023,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496435435203</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="card cost completed">
+      <created>1496438721061</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1496438721061</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1216,7 +1151,8 @@
     <MESSAGE value="New bonuses added &amp; new comments added to ActionPhase" />
     <MESSAGE value="bonuses finished" />
     <MESSAGE value="excommunication tassels &amp; bugs fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="excommunication tassels &amp; bugs fixed" />
+    <MESSAGE value="card cost completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="card cost completed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1507,14 +1443,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cards/cardEffects/ExchangeGainablesEffect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="22" column="69" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cards/BuildingCard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1563,9 +1491,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="453">
           <caret line="28" column="74" selection-start-line="28" selection-start-column="74" selection-end-line="28" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1603,32 +1529,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/excommunicationTessels/MalusOnFamilyMemberPlacementTessel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gameStructure/ActionPhase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="335">
           <caret line="124" column="66" selection-start-line="124" selection-start-column="66" selection-end-line="124" selection-end-column="66" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/player/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="68" column="6" selection-start-line="68" selection-start-column="6" selection-end-line="68" selection-end-column="6" />
-          <folding>
-            <element signature="method#removeResourcesFromPlank#0;class#Player#0" expanded="false" />
-            <element signature="method#getFamilyMembersAvailable#0;class#Player#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1644,6 +1549,35 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
           <caret line="77" column="83" selection-start-line="77" selection-start-column="83" selection-end-line="77" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/player/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="68" column="6" selection-start-line="68" selection-start-column="6" selection-end-line="68" selection-end-column="6" />
+          <folding>
+            <element signature="method#removeResourcesFromPlank#0;class#Player#0" expanded="false" />
+            <element signature="method#getFamilyMembersAvailable#0;class#Player#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/excommunicationTessels/MalusOnFamilyMemberPlacementTessel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cards/cardEffects/ExchangeGainablesEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
