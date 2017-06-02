@@ -39,3 +39,6 @@ Both value of FamilyMember and minValueToPlaceFamilyMember of ActionSpace can go
 for both attributes of 0. There are some differences among the two choices in some scenarios, for instance a FamilyMember
 of value -2 won't be able be put on a ActionSpace with minVTPFM set to -1 in the current program, while it would with the
 alternative solution.
+
+Note 7
+Losable and Gainable are to be merged into one interface

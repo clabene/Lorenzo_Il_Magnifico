@@ -1,5 +1,4 @@
 package utility;
-
 import actionSpaces.ActivationActionSpace;
 import actionSpaces.ActivationActionSpaceType;
 import cards.*;
@@ -110,45 +109,44 @@ public class CardJsonWriter {
         cards.add(new VentureCard("Scavare Canalizzazioni", PeriodNumber.SECOND, new CardCost(new SetOfResources(new Slave(2), new Money(3)), new PlayExtraActionPhaseEffect(4, new ActivationActionSpace(1, ActivationActionSpaceType.HARVEST))));
 
         //venture terzo periodo------------------------------------------------
-        cards.add(new VentureCard("Ingaggiare Mercenari", 3, ));
-        cards.add(new VentureCard("Conquista Militare", 3, ));
-        cards.add(new VentureCard("SOstegno al Papa", 3, ));
-        cards.add(new VentureCard("Migliorare le Strade", 3, ));
-        cards.add(new VentureCard("Riparare la Cattedrale", 3, ));
-        cards.add(new VentureCard("Costruire le Torri", 3, ));
-        cards.add(new VentureCard("Commissionare Arte Sacra", 3, ));
-        cards.add(new VentureCard("Guerra Santa", 3, ));
+        cards.add(new VentureCard("Ingaggiare Mercenari", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(8))), new ReceiveGainablesEffect(new MilitaryPointsTrack(7)),new ReceiveGainablesEffect(new VictoryPoint(6))));
+        cards.add(new VentureCard("Conquista Militare", PeriodNumber.THIRD, new CardCost(new MilitaryPointsTrack(6), ), new ReceiveGainablesEffect(new SetOfResources(new Money(3), new Wood(3), new Stone(3))),new ReceiveGainablesEffect(new VictoryPoint(7)));
+        cards.add(new VentureCard("SOstegno al Papa", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(4), new Stone(3), new Wood(3)), new MilitaryPointsTrack(5), 10), new ReceiveGainablesEffect(new FaithPointsTrack(10)),new ReceiveGainablesEffect(new VictoryPoint(5)) ));
+        cards.add(new VentureCard("Migliorare le Strade", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Slave(3), new Money(4))), new  ,new ReceiveGainablesEffect(new VictoryPoint(5))));
+        cards.add(new VentureCard("Riparare la Cattedrale", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(3), new Wood(3), new Stone(3))), ,new ReceiveGainablesEffect(new VictoryPoint(5))));
+        cards.add(new VentureCard("Costruire le Torri", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Stone(6))), , new ReceiveGainablesEffect(new VictoryPoint(4))));
+        cards.add(new VentureCard("Commissionare Arte Sacra",PeriodNumber.THIRD, new CardCost(new SetOfResources(new Wood(6))),new ReceiveGainablesEffect(new FaithPointsTrack(3)),new ReceiveGainablesEffect(new VictoryPoint(3)) ));
+        cards.add(new VentureCard("Guerra Santa", PeriodNumber.THIRD, new CardCost(new MilitaryPointsTrack(8),15), new ReceiveGainablesEffect(new FaithPointsTrack(4)),new ReceiveGainablesEffect(new VictoryPoint(8))));
 
         //person primo periodo------------------------------------------------
-        cards.add(new PersonCard("Artigiano", 1, ));
-        cards.add(new PersonCard("Condottiero", 1, ));
-        cards.add(new PersonCard("Costruttore", 1, ));
-        cards.add(new PersonCard("Cavaliere", 1, ));
-        cards.add(new PersonCard("Dama", 1, ));
-        cards.add(new PersonCard("Contadino", 1, ));
-        cards.add(new PersonCard("Badessa", 1, ));
-        cards.add(new PersonCard("Predicatore", 1, ));
+        cards.add(new PersonCard("Artigiano", PeriodNumber.FIRST,new CardCost(new Money(3)), ));
+        cards.add(new PersonCard("Condottiero", PeriodNumber.FIRST,new CardCost(new Money(2)), ));
+        cards.add(new PersonCard("Costruttore", PeriodNumber.FIRST, new CardCost(new Money(4)), ));
+        cards.add(new PersonCard("Cavaliere", PeriodNumber.FIRST,new CardCost(new Money(2)), ));
+        cards.add(new PersonCard("Dama", PeriodNumber.FIRST,new CardCost(new Money(4)), ));
+        cards.add(new PersonCard("Contadino", PeriodNumber.FIRST,new CardCost(new Money(3)), ));
+        cards.add(new PersonCard("Badessa",PeriodNumber.FIRST,new CardCost(new Money(3)), ));
+        cards.add(new PersonCard("Predicatore", PeriodNumber.FIRST,new CardCost(new Money(2)), ));
 
         //person secondo periodo------------------------------------------------
-        cards.add(new PersonCard("Eroe", 2, ));
-        cards.add(new PersonCard("Mecenate", 2, ));
-        cards.add(new PersonCard("Fattore", 2, ));
-        cards.add(new PersonCard("Architetto", 2, ));
-        cards.add(new PersonCard("Messo Papale", 2, ));
-        cards.add(new PersonCard("Capitano", 2, ));
-        cards.add(new PersonCard("Messo Reale", 2, ));
-        cards.add(new PersonCard("Studioso", 2, ));
+        cards.add(new PersonCard("Eroe", PeriodNumber.SECOND,new CardCost(new Money(4)), ));
+        cards.add(new PersonCard("Mecenate", PeriodNumber.SECOND,new CardCost(new Money(3)), ));
+        cards.add(new PersonCard("Fattore", PeriodNumber.SECOND, new CardCost(new Money(4)),));
+        cards.add(new PersonCard("Architetto", PeriodNumber.SECOND, new CardCost(new Money(4)),));
+        cards.add(new PersonCard("Messo Papale", PeriodNumber.SECOND, new CardCost(new Money(5)),));
+        cards.add(new PersonCard("Capitano", PeriodNumber.SECOND, new CardCost(new Money(4)),));
+        cards.add(new PersonCard("Messo Reale", PeriodNumber.SECOND, new CardCost(new Money(5)),));
+        cards.add(new PersonCard("Studioso", PeriodNumber.SECOND, new CardCost(new Money(4)),));
 
         //person terzo periodo------------------------------------------------
-        cards.add(new PersonCard("Governatore", 3, ));
-        cards.add(new PersonCard("Vescovo", 3, ));
-        cards.add(new PersonCard("Cardinale", 3, ));
-        cards.add(new PersonCard("Cortigiana", 3, ));
-        cards.add(new PersonCard("Araldo", 3, ));
-        cards.add(new PersonCard("Generale", 3, ));
-        cards.add(new PersonCard("Nobile", 3, ));
-        cards.add(new PersonCard("Ambasciatore", 3, ));
-
+        cards.add(new PersonCard("Governatore", PeriodNumber.THIRD, new CardCost(new Money(6)),));
+        cards.add(new PersonCard("Vescovo", PeriodNumber.THIRD, new CardCost(new Money(5)),));
+        cards.add(new PersonCard("Cardinale", PeriodNumber.THIRD, new CardCost(new Money(4)),));
+        cards.add(new PersonCard("Cortigiana", PeriodNumber.THIRD, new CardCost(new Money(7)),));
+        cards.add(new PersonCard("Araldo", PeriodNumber.THIRD, new CardCost(new Money(6)),));
+        cards.add(new PersonCard("Generale", PeriodNumber.THIRD, new CardCost(new Money(5)),));
+        cards.add(new PersonCard("Nobile", PeriodNumber.THIRD, new CardCost(new Money(6)),));
+        cards.add(new PersonCard("Ambasciatore", PeriodNumber.THIRD, new CardCost(new Money(6)),));
 
 
 
@@ -179,17 +177,20 @@ public class CardJsonWriter {
 
     public void writeCards(ArrayList<Card> cards) throws IOException {
         Gson gson = new Gson();
+        FileWriter w = new FileWriter("file.txt");
+        BufferedWriter b = new BufferedWriter(w);
 
         for(Card tmp: cards){
 
             String json = gson.toJson(tmp);
 
-            FileWriter w = new FileWriter("file.txt");
-            BufferedWriter b = new BufferedWriter(w);
+
             b.write(json+ "\n");
-            b.flush();
+
 
         }
+
+        b.flush();
     }
 
 
