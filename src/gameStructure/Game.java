@@ -34,8 +34,6 @@ public class Game {
 
     public void winnerCheck(){
 
-
-
         for(Player tmp: players){
             tmp.gain(tmp.getFaithPoints().calculateVictoryPointsFromPosition(tmp.getFaithPoints().getTrackPosition().getValue()));
             tmp.gain(tmp.getLandCardsPoints().calculateVictoryPointsFromPosition(tmp.getLandCardsPoints().getTrackPosition().getValue()));

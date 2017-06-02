@@ -34,7 +34,12 @@ public class CouncilFavour implements Gainable {
             System.out.println(toString());
 
             //player selects favour
-            int chosenIndex = input.nextInt()-1; //todo controls are needed here
+            int chosenIndex = input.nextInt()-1;
+            //todo controls are needed here
+            if( chosenIndex +1 > favours.length){
+                System.out.println("Input not valid, try again!");
+                continue;
+            }
 
             if(favours[chosenIndex] == null){
                 System.out.println("Not valid input");
