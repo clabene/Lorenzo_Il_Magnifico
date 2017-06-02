@@ -1,4 +1,5 @@
 package utility;
+
 import actionSpaces.ActivationActionSpace;
 import actionSpaces.ActivationActionSpaceType;
 import cards.*;
@@ -7,9 +8,10 @@ import cards.cardEffects.PlayExtraActionPhaseEffect;
 import cards.cardEffects.ReceiveGainablesEffect;
 import cards.cardEffects.ReceiveGainablesForCardTypeEffect;
 import com.google.gson.*;
+import gameStructure.PeriodNumber;
 import player.VictoryPoint;
-import pointsTrack.FaithPointsTrack;
-import pointsTrack.MilitaryPointsTrack;
+import pointsTracks.FaithPointsTrack;
+import pointsTracks.MilitaryPointsTrack;
 import resources.*;
 
 import java.io.BufferedWriter;
@@ -86,7 +88,7 @@ public class CardJsonWriter {
         cards.add(new BuildingCard("Banca", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(3), new Wood(1), new Stone(3))), 2, new ReceiveGainablesEffect(new VictoryPoint(7)), new ReceiveGainablesEffect(new Money(5))));
         cards.add(new BuildingCard("Giardino", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Slave(2), new Wood(4), new Stone(2))), 1, new ReceiveGainablesEffect(new VictoryPoint(10)), new ReceiveGainablesEffect(new VictoryPoint(3))));
         cards.add(new BuildingCard("Cattedrale", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Wood(4), new Stone(4))), 2, new ReceiveGainablesEffect(new FaithPointsTrack(3), new VictoryPoint(7)), new ReceiveGainablesEffect(new VictoryPoint(1))));
-/*
+
         //venture primo periodo------------------------------------------------
         cards.add(new VentureCard("Ingaggiare Reclute", PeriodNumber.FIRST, new CardCost(new SetOfResources(new Money(4))), new ReceiveGainablesEffect(new MilitaryPointsTrack(5)), new ReceiveGainablesEffect(new VictoryPoint(4))));
         cards.add(new VentureCard("Riparare la Chiesa", PeriodNumber.FIRST, new CardCost(new SetOfResources(new Money(), new Wood(), new Stone())), new ReceiveGainablesEffect(new FaithPointsTrack(1)), new ReceiveGainablesEffect(new VictoryPoint(5))));
@@ -150,7 +152,7 @@ public class CardJsonWriter {
 
 
 
-*/
+
 
 
 

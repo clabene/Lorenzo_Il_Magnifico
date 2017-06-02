@@ -47,9 +47,10 @@ public class ActionPhase {
             ActionSpace actionSpace = selectionActionSpacePhase();
             if(actionSpace == null) continue;
 
+            activateBonuses(actionSpace); //bonuses of player are activated
+
             incrementFamilyMemberValueRequest(player, familyMember);
 
-            activateBonuses(actionSpace); //bonuses of player are activated
             if(putFamilyMemberOnActionSpace(familyMember, actionSpace)) return;
             /*todo
             here board is to be restored as if no bonus was activated (if a card cost was decreased but the card was not taken,
@@ -84,12 +85,6 @@ public class ActionPhase {
                 player.gain(actionSpace.familiarAdded());
             */
 
-            /*
-            action space.family members add family member
-            family member in action space
-            gain bonus
-            if(!action) lose bonus & action space.family members remove family member & family member not in action space
-            */
             actionSpace.familyMemberAdded(familyMember);
             familyMember.setInActionSpace(true);
             player.gain(actionSpace.getBonus().toArray(new Gainable[actionSpace.getBonus().size()]));

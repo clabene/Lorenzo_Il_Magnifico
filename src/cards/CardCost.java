@@ -7,6 +7,8 @@ import player.Player;
 import pointsTracks.MilitaryPointsTrack;
 import resources.SetOfResources;
 
+import java.util.Scanner;
+
 /**
  * Created by IBM on 13/05/2017.
  */
@@ -22,17 +24,19 @@ public class CardCost implements Losable {
     private SetOfResources resourcesCost;
 
     private MilitaryPointsTrack militaryPointsCost;
-    private MilitaryPointsTrack necessaryMilitaryPointsTrack;
+    private int necessaryQuantityOfMilitaryPoints;
 
     public CardCost(SetOfResources resourcesCost){
         this.resourcesCost = resourcesCost;
     }
-    public CardCost(MilitaryPointsTrack militaryPointsCost){
+    public CardCost(MilitaryPointsTrack militaryPointsCost, int necessaryQuantityOfMilitaryPoints){
         this.militaryPointsCost = militaryPointsCost;
+        this.necessaryQuantityOfMilitaryPoints = necessaryQuantityOfMilitaryPoints;
     }
-    public CardCost(SetOfResources resourcesCost, MilitaryPointsTrack militaryPointsCost){
+    public CardCost(SetOfResources resourcesCost, MilitaryPointsTrack militaryPointsCost, int necessaryQuantityOfMilitaryPoints){
         this.resourcesCost = resourcesCost;
         this.militaryPointsCost = militaryPointsCost;
+        this.necessaryQuantityOfMilitaryPoints = necessaryQuantityOfMilitaryPoints;
     }
 
     public SetOfResources getResourcesCost() {
@@ -52,15 +56,39 @@ public class CardCost implements Losable {
         if(militaryPointsCost == null)
             resourcesCost.lostByPlayer(player);
         if(resourcesCost == null) {
-            //todo check if enough points
-            militaryPointsCost.lostByPlayer(player);
+            payMilitaryPoints(player);
         }
         else {
-            //todo
-            // player selects what resourcesCost he prefers to pay
-            // lostByPlayer(player) is called on the chosen resourcesCost
+            printMenu();
+            int i = getIntegerFromPlayer();
+            while(i != 1 && i != 2) {
+                System.out.println("Invalid input");
+                printMenu();
+                i = getIntegerFromPlayer();
+            }
+            if(i == 1) resourcesCost.lostByPlayer(player);
+            else payMilitaryPoints(player);
         }
 
+    }
+
+    private void payMilitaryPoints(Player player) throws NegativeResourceQuantityException, NegativePointsException {
+        if(player.getMilitaryPoints().getTrackPosition().getValue() < necessaryQuantityOfMilitaryPoints) {
+            System.out.println("You don't have enough military points to pay the card");
+            throw new  NegativePointsException(); //might wanna have a new exception for this
+        }
+        else militaryPointsCost.lostByPlayer(player);
+    }
+
+    private int getIntegerFromPlayer(){
+        Scanner input = new Scanner(System.in);
+        return input.nextInt();
+    }
+
+    private void printMenu(){
+        System.out.println("How do you want to pay?");
+        System.out.println("1 " + resourcesCost);
+        System.out.println("2 " + militaryPointsCost);
     }
 
 

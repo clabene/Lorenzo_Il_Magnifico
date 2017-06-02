@@ -18,7 +18,7 @@ public class MalusOnFamilyMemberPlacementTessel extends ExcommunicationTassel{
     private int malus;
 
     /*
-    * if action space type is market and malus = Integer.MIN_VALUE the "no market for you" tassel is implemented too
+    * Observation: if action space type is market and malus = Integer.MIN_VALUE, the "no market for you" tassel is implemented too
     * */
 
     public MalusOnFamilyMemberPlacementTessel(PeriodNumber periodNumber, CardType cardType, int malus){

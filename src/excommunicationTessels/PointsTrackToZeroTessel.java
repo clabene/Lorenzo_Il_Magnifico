@@ -2,8 +2,10 @@ package excommunicationTessels;
 
 import cards.Card;
 import cards.CardType;
+import cards.cardEffects.ReceiveGainablesEffect;
 import gameStructure.PeriodNumber;
 import player.Player;
+import player.VictoryPoint;
 
 /**
  * Created by IBM on 02/06/2017.
@@ -25,6 +27,6 @@ public class PointsTrackToZeroTessel extends ExcommunicationTassel{
             player.getPersonCardsPoints().setTrackPosition(0);
         else if(cardType == CardType.VENTURE)
             for(Card tmp : player.getPlank().getCards().getVentureCards())
-                tmp.setPermanentEffect(null);
+                tmp.setPermanentEffect(new ReceiveGainablesEffect(new VictoryPoint(0)));
     }
 }
