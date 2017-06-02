@@ -2,7 +2,7 @@ package cards.cardEffects;
 
 import interfaces.Gainable;
 import player.Player;
-import pointsTrack.FaithPointsTrack;
+import pointsTracks.FaithPointsTrack;
 import resources.Wood;
 
 import java.util.ArrayList;

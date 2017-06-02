@@ -13,12 +13,7 @@ public class MarketActionSpace extends ActionSpace {
         super(1, ActionSpaceType.MARKET, 1, gainables);
     }
 
-    public boolean action(Player player){
-
-        //player.gain( this.familiarAdded() );
-
-        /**/
-
+    public boolean action(Player player) {
         return true;
     }
 

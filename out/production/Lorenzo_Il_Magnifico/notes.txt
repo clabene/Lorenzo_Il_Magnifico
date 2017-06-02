@@ -18,10 +18,10 @@ and player has method:
 Same can be done with Losable
 
 UPDATE: this is idea has been put into practise for both Gainable and Losable.
-For Losable, different politics have been chosen when the scenario of a potential below-0 resource/pointsTrack presents.
+For Losable, different politics have been chosen when the scenario of a potential below-0 resource/pointsTracks presents.
 
 Note 4
-Might wanna extend pointsTrack to all possible pointsTrack's in order to have a more readable code and no ugly
+Might wanna extend pointsTracks to all possible pointsTracks's in order to have a more readable code and no ugly
 victoryPointsOfPosition "exposed" in the constructor. On the other hand, it might be an excessively complicated solution.
 
 UPDATE: The class was extended.

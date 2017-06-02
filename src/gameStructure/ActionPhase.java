@@ -5,8 +5,10 @@ import actionSpaces.ActionSpace;
 import actionSpaces.ActionSpaceType;
 import board.Area;
 import board.Board;
-import cards.cardEffects.bonuses.Bonus;
-import cards.cardEffects.bonuses.BonusOnFamilyMemberPlacement;
+import bonuses.Bonus;
+import bonuses.BonusOnFamilyMemberPlacement;
+import interfaces.Gainable;
+import interfaces.Losable;
 import player.FamilyMember;
 import player.Player;
 import resources.SetOfResources;
@@ -47,20 +49,19 @@ public class ActionPhase {
 
             incrementFamilyMemberValueRequest(player, familyMember);
 
-            activateBonuses(actionSpace); //here i check for bonuses that can be activated
+            activateBonuses(actionSpace); //bonuses of player are activated
             if(putFamilyMemberOnActionSpace(familyMember, actionSpace)) return;
             /*todo
-            here board is to be restored as if no bonus was activated (i.e. if a card cost was decreased but the card
-            was not taken, the cost has to go back to its previous value)
+            here board is to be restored as if no bonus was activated (if a card cost was decreased but the card was not taken,
+            the cost has to go back to its previous value)
 
-            Observation: only actionSpaces that can cause the problem described up-here are tower action spaces, therefore
+            Observation: the only actionSpaces that can cause the problem described up-here are the tower action spaces, therefore
             something like this could be a solution:
                 Card card = ( (TowerActionSpace) actionSpace).getCard();
                 actionSpace = new TowerActionSpace(actionSpace.getMinValueToPlaceFamiliar(), actionSpace.getBonus().toArray(new Gainable[actionSpace.getBonus().size()]));
                 actionSpace.setCard(card);
             */
         }
-
     }
 
     public static void main(String[] ar){
@@ -75,11 +76,28 @@ public class ActionPhase {
 
     public boolean putFamilyMemberOnActionSpace(FamilyMember familyMember, ActionSpace actionSpace) {
         if (familyMember.getValue() >= actionSpace.getMinValueToPlaceFamiliar() ) {
-            familyMember.setInActionSpace(true); // todo should not this go inside the if statement?
+            /*
+            familyMember.setInActionSpace(true); // Should not this go inside the if statement?
                                                  // Indeed, if a tower card is too expensive for the player, they will
                                                  // take their familiar back!
-            if(actionSpace.action(player)) {
+            if(actionSpace.action(player))
                 player.gain(actionSpace.familiarAdded());
+            */
+
+            /*
+            action space.family members add family member
+            family member in action space
+            gain bonus
+            if(!action) lose bonus & action space.family members remove family member & family member not in action space
+            */
+            actionSpace.familyMemberAdded(familyMember);
+            familyMember.setInActionSpace(true);
+            player.gain(actionSpace.getBonus().toArray(new Gainable[actionSpace.getBonus().size()]));
+            if(!actionSpace.action(player)) {
+                player.lose(actionSpace.getBonus().toArray(new Losable[actionSpace.getBonus().size()])); //todo check if this works
+                actionSpace.familyMemberRemoved(familyMember);
+                familyMember.setInActionSpace(false);
+                return false;
             }
             return true;
         }else
@@ -92,7 +110,6 @@ public class ActionPhase {
         if (player.getFamilyMembersAvailable().size() == 1 &&
                 player.getFamilyMembersAvailable().contains(new FamilyMember(null, 0)) &&
                 player.getPlank().getSetOfResources().getQuantityOfSlaves() == 0) {
-
 
             System.out.println("Sei spacciato");
             return false;
@@ -114,7 +131,6 @@ public class ActionPhase {
                 b = false;
             } else
                 System.out.println("Non hai abbastanza schiavi\n");
-
         }
     }
 

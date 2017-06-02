@@ -1,9 +1,8 @@
 package actionSpaces;
 
-import exceptions.LimitedValueOffRangeException;
 import interfaces.Gainable;
+import player.FamilyMember;
 import player.Player;
-import utility.LimitedInteger;
 
 import java.util.ArrayList;
 
@@ -14,7 +13,7 @@ public abstract class ActionSpace {
 
     private ArrayList<Gainable> bonus = new ArrayList<>();
 
-    private ActionSpaceType actionSpaceType; //might wanna delete this attribute
+    private ActionSpaceType actionSpaceType;
 
     //Some action spaces are only available when enough players are playing the game
     //Note that MAX_NUMBER_OF_FAMILIARS = 0 is not a better solution than this boolean. Indeed, M_N_O_F is a final value
@@ -24,11 +23,13 @@ public abstract class ActionSpace {
 
     private int minValueToPlaceFamiliar;
     private final int MAX_NUMBER_OF_FAMILIARS; //= (int) Double.POSITIVE_INFINITY; if no limit
-    private LimitedInteger numberOfFamiliars;
+    //private LimitedInteger numberOfFamiliars;
+
+    private ArrayList<FamilyMember> familyMembers = new ArrayList<>();
 
     public ActionSpace(int MAX_NUMBER_OF_FAMILIARS, ActionSpaceType actionSpaceType, int minValueToPlaceFamiliar, Gainable ... bonuses){
         this.MAX_NUMBER_OF_FAMILIARS = MAX_NUMBER_OF_FAMILIARS;
-        initializeNumberOfFamiliars();
+        //initializeNumberOfFamiliars();
         this.minValueToPlaceFamiliar = minValueToPlaceFamiliar;
 
         for(Gainable tmp : bonuses)
@@ -37,7 +38,19 @@ public abstract class ActionSpace {
         this.actionSpaceType = actionSpaceType;
     }
 
+    public void familyMemberAdded(FamilyMember familyMember) {
+        this.familyMembers.add(familyMember);
+        if(familyMembers.size() == MAX_NUMBER_OF_FAMILIARS) covered = true;
+    }
+    public void familyMemberRemoved(FamilyMember familyMember) {
+        this.familyMembers.remove(familyMember);
+        if(familyMembers.isEmpty()) covered = false;
+    }
+    public FamilyMember getLastFamilyMemberAdded() {
+        return familyMembers.get(familyMembers.size()-1);
+    }
 
+    /*
     private void initializeNumberOfFamiliars(){
         try{
             numberOfFamiliars = new LimitedInteger(MAX_NUMBER_OF_FAMILIARS, 0, 0);
@@ -45,6 +58,7 @@ public abstract class ActionSpace {
             System.out.println("Can not put your familiar here, this action space is full already");
         }
     }
+    */
 
     /*
      * New familiar is added to the action space
@@ -53,6 +67,7 @@ public abstract class ActionSpace {
      * in this method, which would not have been very fancy.
      *
      **/
+    /*
     public Gainable[] familiarAdded(){
         try{
             numberOfFamiliars.increment();
@@ -61,6 +76,8 @@ public abstract class ActionSpace {
         }
         return bonus.toArray(new Gainable[bonus.size()]);
     }
+    */
+
 
     public ActionSpaceType getActionSpaceType() {
         return actionSpaceType;
@@ -87,7 +104,7 @@ public abstract class ActionSpace {
     //this method is the one to call when the action space is activated
     //action will be so implemented by subclasses:
     // tower -> (try to) take card
-    // market -> null (??* check bonus2 attribute)
+    // market -> null
     // activation -> do the activation
     // council -> set order for next turn
     //returns true if familiar was correctly added

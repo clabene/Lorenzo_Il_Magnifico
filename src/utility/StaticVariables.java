@@ -3,8 +3,8 @@ package utility;
 import actionSpaces.TowerActionSpace;
 import board.Tower;
 import interfaces.Gainable;
-import pointsTrack.FaithPointsTrack;
-import pointsTrack.MilitaryPointsTrack;
+import pointsTracks.FaithPointsTrack;
+import pointsTracks.MilitaryPointsTrack;
 import resources.*;
 
 /**

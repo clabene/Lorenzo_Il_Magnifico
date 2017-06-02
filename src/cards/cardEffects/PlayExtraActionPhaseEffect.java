@@ -4,17 +4,13 @@ import actionSpaces.ActionSpace;
 import actionSpaces.ActivationActionSpace;
 import actionSpaces.TowerActionSpace;
 import board.Tower;
-import cards.cardEffects.bonuses.Bonus;
 import cards.CardType;
 import gameStructure.ActionPhase;
 import player.FamilyMember;
 import player.Player;
 
-import resources.SetOfResources;
-import resources.Slave;
-
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 /**
  * Created by IBM on 30/05/2017.
@@ -59,25 +55,6 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
         return false;
     }
 
-    private void incrementFamilyMemberValueRequest(Player player, FamilyMember familyMember) {
-        boolean b = true;
-        while (b) {
-            System.out.println("Quanti schiavi vuoi sacrificare? (Nessuno = 0)\n");
-            Scanner input = new Scanner(System.in);
-            int quantity = input.nextInt();
-            if (player.lose(new SetOfResources(new Slave(quantity)))) {
-                familyMember.incrementFamilyMemberValue(quantity);
-                b = false;
-            } else
-                System.out.println("Non hai abbastanza schiavi\n");
-        }
-    }
-    private void activateBonuses(Player player, ActionSpace actionSpace){
-        for(Bonus tmp : player.getBonuses())
-            tmp.activateBonus(actionSpace);
-    }
-
-
     @Override
     public void activate(Player player) {
 
@@ -88,7 +65,7 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
         while(true) {
             if(isPhasePlayable(player)) break;
 
-            //select action space
+            // select action space
             ActionSpace selectedActionSpace = player.selectActionSpace(actionSpaces.toArray(new ActionSpace[actionSpaces.size()]));
             if(selectedActionSpace == null) continue;
 
@@ -107,12 +84,5 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
         this.familyMember = null;
 
     }
-
-
-
-
-
-
-
 
 }

@@ -2,11 +2,9 @@ package cards.cardEffects;
 
 import cards.Card;
 import cards.CardType;
-import cards.LandCard;
-import cards.PeriodNumber;
 import interfaces.Gainable;
 import player.Player;
-import pointsTrack.MilitaryPointsTrack;
+import pointsTracks.MilitaryPointsTrack;
 import resources.Wood;
 
 

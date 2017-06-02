@@ -1,12 +1,7 @@
 package board;
 
-import java.util.ArrayList;
-
-
 import actionSpaces.ActionSpace;
-import board.Area;
-import interfaces.Gainable;
-import pointsTrack.MilitaryPointsTrack;
+import pointsTracks.MilitaryPointsTrack;
 import resources.*;
 import actionSpaces.MarketActionSpace;
 

@@ -1,6 +1,7 @@
 package actionSpaces;
 
 import cards.Card;
+import exceptions.LimitedValueOffRangeException;
 import interfaces.Gainable;
 import player.Player;
 
@@ -18,26 +19,22 @@ public class TowerActionSpace extends ActionSpace {
     }
 
     public boolean action(Player player){
-        /*
 
         //todo check if 3 coins are to be paid
-        //todo is the number of cards to be controlled here? max 6 per player
 
         if(card == null) return false;
-        if(player.lose(card.getCardCost())){
+        if(player.lose(card.getCardCost())){ //true: player can pay the card
             try{
-                player.takeCard(card);
-            } catch(IndexOutOfBoundsException | LimitedValueOffRangeException e){
-                System.out.println("You already have 6 cards of this type");
-                player.gain(card.getCardCost()); //what if card has two costs?
+                player.tryToTakeCard(card);
+            } catch(IndexOutOfBoundsException | LimitedValueOffRangeException e) { //goes here if player has 6 cards of the given type already
+                System.out.println("You already have 6 cards of type "+card.getCardType());
+                //todo player.gain(card.getCardCost()); Also, what if card has two costs?
                 return false;
             }
-            card = null;
+            this.card = null;
             return true;
         }
         return false;
-        */
-        return true;
     }
 
     public void setCard(Card card){

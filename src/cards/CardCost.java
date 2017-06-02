@@ -2,14 +2,15 @@ package cards;
 
 import exceptions.NegativePointsException;
 import exceptions.NegativeResourceQuantityException;
+import interfaces.Losable;
 import player.Player;
-import pointsTrack.MilitaryPointsTrack;
+import pointsTracks.MilitaryPointsTrack;
 import resources.SetOfResources;
 
 /**
  * Created by IBM on 13/05/2017.
  */
-public class CardCost implements interfaces.Losable {
+public class CardCost implements Losable {
 
     /*
     * Right now this class can be easily replaced by Expandable objects. It will be worth not deleting if will encapsulate more functionality
@@ -19,7 +20,9 @@ public class CardCost implements interfaces.Losable {
     * */
 
     private SetOfResources resourcesCost;
+
     private MilitaryPointsTrack militaryPointsCost;
+    private MilitaryPointsTrack necessaryMilitaryPointsTrack;
 
     public CardCost(SetOfResources resourcesCost){
         this.resourcesCost = resourcesCost;

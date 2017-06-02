@@ -16,6 +16,9 @@ public class CouncilFavour implements Gainable {
 
     private Gainable[] favours = StaticVariables.COUNCIL_FAVOURS;
 
+    public CouncilFavour(){
+    }
+
     public CouncilFavour(int numberOfFavours){
         if(numberOfFavours >= favours.length) numberOfFavours = favours.length;
         this.numberOfFavours = numberOfFavours;

@@ -1,6 +1,7 @@
 package cards;
 
 import exceptions.LimitedValueOffRangeException;
+import gameStructure.PeriodNumber;
 import utility.LimitedInteger;
 import utility.StaticVariables;
 

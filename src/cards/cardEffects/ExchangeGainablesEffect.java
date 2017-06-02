@@ -4,8 +4,8 @@ package cards.cardEffects;
 import interfaces.Gainable;
 import interfaces.Losable;
 import player.Player;
-import pointsTrack.FaithPointsTrack;
-import pointsTrack.MilitaryPointsTrack;
+import pointsTracks.FaithPointsTrack;
+import pointsTracks.MilitaryPointsTrack;
 import resources.Resource;
 import resources.Slave;
 import resources.Wood;
@@ -48,8 +48,11 @@ public class ExchangeGainablesEffect implements CardEffect{
 
     private boolean doSelectedAction(int selectedInteger, Player player){
         if(selectedInteger == -1) return true;
+
         if(checkTypeOfLosable(selectedInteger, player)){
+            player.getPlank().setToUseSeparateResources(false); //player can only use the resources they had before starting the activation
             if(player.lose(losables[selectedInteger])){
+                player.getPlank().setToUseSeparateResources(true);
                 player.gain(gainables[selectedInteger]);
                 return true;
             }
@@ -57,6 +60,7 @@ public class ExchangeGainablesEffect implements CardEffect{
         System.out.println("\nYou cannot afford the exchange");
         return false;
     }
+
     private boolean checkTypeOfLosable(int selectedInteger, Player player){
         if(losables[selectedInteger] instanceof Resource)
             return true;
@@ -67,7 +71,7 @@ public class ExchangeGainablesEffect implements CardEffect{
         if(losables[selectedInteger] instanceof FaithPointsTrack)
             return ((FaithPointsTrack) losables[selectedInteger]).getTrackPosition().getValue() <= player.getFaithPoints().getTrackPosition().getValue();
 
-        //might wanna add VictoryPoint eventually
+        //might wanna add VictoryPoint
 
         return false;
     }

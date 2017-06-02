@@ -1,6 +1,7 @@
 package cards;
 
 import cards.cardEffects.CardEffect;
+import gameStructure.PeriodNumber;
 
 /**
  * Created by IBM on 09/05/2017.
@@ -54,6 +55,9 @@ public abstract class Card {
 
     public void setActivationValue(Integer activationValue) {
         this.activationValue= activationValue;
+    }
+    public Integer getActivationValue() {
+        return activationValue;
     }
 
     public CardCost getCardCost() {

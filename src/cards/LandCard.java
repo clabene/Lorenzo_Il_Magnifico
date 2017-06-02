@@ -1,6 +1,7 @@
 package cards;
 
 import cards.cardEffects.CardEffect;
+import gameStructure.PeriodNumber;
 
 /**
  * Created by IBM on 14/05/2017.
@@ -14,6 +15,5 @@ public class LandCard extends Card {
         super.setImmediateEffect(immediateCardEffect);
         super.setPermanentEffect(permanentCardEffect);
     }
-
 
 }

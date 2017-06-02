@@ -2,8 +2,8 @@ package cards.cardEffects;
 
 import interfaces.Gainable;
 import player.Player;
-import pointsTrack.FaithPointsTrack;
-import pointsTrack.MilitaryPointsTrack;
+import pointsTracks.FaithPointsTrack;
+import pointsTracks.MilitaryPointsTrack;
 import resources.SetOfResources;
 import resources.Slave;
 import resources.Wood;

@@ -1,18 +1,8 @@
-import actionSpaces.ActionSpace;
-import actionSpaces.ActionSpaceType;
-import cards.CardType;
-import interfaces.Gainable;
 import player.Plank;
-import pointsTrack.FaithPointsTrack;
-import pointsTrack.MilitaryPointsTrack;
-import pointsTrack.PointsTrack;
-import resources.Resource;
-import resources.Stone;
-import resources.Wood;
-import utility.StaticVariables;
+import player.Player;
+import pointsTracks.MilitaryPointsTrack;
 
-import java.util.AbstractCollection;
-import java.util.ResourceBundle;
+import java.util.ArrayList;
 
 /**
  * Created by IBM on 09/05/2017.
@@ -79,12 +69,21 @@ public class Main {
         System.out.println(p);
         System.out.println(p2);
         */
+        /*
         for(int i = 0; i<3;i++){
             for(int j = 0; j<3; j++){
                 if(j == 2) continue;
                 System.out.println("a");
             }
         }
+        */
+        Player p = new Player();
+        p.gain(new MilitaryPointsTrack(7));
+        System.out.println(p.lose(new MilitaryPointsTrack(10)));
+
+        ArrayList<Plank> planks = new ArrayList<>();
+        planks.add(new Plank());
+        System.out.println(planks.get(planks.size()-1));
 
     }
 

@@ -1,6 +1,5 @@
 package gameStructure;
 
-import board.Board;
 import cards.Card;
 import cards.CardType;
 import com.google.gson.Gson;
@@ -37,7 +36,7 @@ public class Period {
         Turn secondTurn = new Turn(players);
         secondTurn.playTurn(PeriodDeck);
 
-        exchomunicationCheck(players, minFaithPoints);
+        excommunicationCheck(players, minFaithPoints);
 
         //todo church  operations
 
@@ -147,18 +146,18 @@ public class Period {
         }
     }
 
-    public void exchomunicationCheck(ArrayList<Player> players, int minFaithPoints){
+    public void excommunicationCheck(ArrayList<Player> players, int minFaithPoints){
 
 
         for(Player tmp: players){
             if(tmp.getFaithPoints().getTrackPosition().getValue() < minFaithPoints){
-                System.out.println("You faith points are not enough, so you receive an exchomunication from the Church");
+                System.out.println("You faith points are not enough, so you receive an excommunication from the Church");
 
-                //todo player takes exchomunication
+                //todo player takes excommunication
 
             }
             else{
-                tmp.exchomunicationDecision();
+                tmp.excommunicationDecision();
             }
         }
 

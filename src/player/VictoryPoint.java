@@ -1,6 +1,5 @@
 package player;
 
-import exceptions.NegativePointsException;
 import interfaces.Losable;
 import interfaces.Gainable;
 
@@ -20,6 +19,10 @@ public class VictoryPoint implements Gainable, Losable {
         return victoryPoints;
     }
 
+    public void setQuantity(int victoryPoints) {
+        this.victoryPoints = victoryPoints;
+    }
+
     public void addVictoryPoints(int quantity){
         this.victoryPoints += quantity;
     }
@@ -31,8 +34,13 @@ public class VictoryPoint implements Gainable, Losable {
     public void gainedByPlayer(Player player) {
         player.getPoints().addVictoryPoints(this.getQuantity());
     }
+
+
+    /*
+    * Player can have negative victory points: no exceptions concerning negative victory points are thrown
+    * */
     @Override
-    public void lostByPlayer(Player player) throws NegativePointsException{
+    public void lostByPlayer(Player player){
         player.getPoints().loseVictoryPoints(this.getQuantity());
     }
 

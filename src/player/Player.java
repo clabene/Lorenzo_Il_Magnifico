@@ -4,15 +4,17 @@ import actionSpaces.ActionSpace;
 import board.Board;
 import board.Color;
 import board.TowerArea;
-import cards.cardEffects.bonuses.Bonus;
+import cards.LandCard;
+import gameStructure.PeriodNumber;
+import bonuses.Bonus;
 import exceptions.LimitedValueOffRangeException;
 import exceptions.NegativePointsException;
 import exceptions.NegativeResourceQuantityException;
 import interfaces.Losable;
-import pointsTrack.FaithPointsTrack;
-import pointsTrack.LandCardsPointsTrack;
-import pointsTrack.MilitaryPointsTrack;
-import pointsTrack.PersonCardsPointsTrack;
+import pointsTracks.FaithPointsTrack;
+import pointsTracks.LandCardsPointsTrack;
+import pointsTracks.MilitaryPointsTrack;
+import pointsTracks.PersonCardsPointsTrack;
 import cards.Card;
 import interfaces.Gainable;
 import resources.*;
@@ -65,15 +67,25 @@ public class Player {
     }
 
     /*
-    * Player loses all the points and all the resources given as parameter. Further information follow:
+    * Player (tries to) lose all the points and all the resources given as parameters.
     *
-    * Player loses all the losable objects that can lose without an exception to be thrown. The catching of an Exception will not
-    * cause the method to stop. Also, player will not lose a portion of a Losable, but either all of it or none of it.
+    * If player is asked to lose more than what they actually have, the output changes based on the type of losable:
     *
-    * If player is asked to loose a certain quantity of some resource but has less of it, they won't lose any of that resource
-    * and false will be returned. When it comes to points, they will always return true and lose all possible points.
+    * - Resource/SetOfResources : player will not lose any of that resource/set of resources and a NegativeResourceQuantityException
+    *  exception is thrown, and false is returned.
+    *  Observation: if the player is asked to lose SetOfResources(new Wood(10), new Stone(10)) and has enough wood but not
+    *  enough stone, they will lose neither wood nor stone. On the other hand, if the same player is asked to lose Wood(10)
+    *  and Stone(10), they will lose 10 woods but no stone.
     *
-    * true: all was lost
+    * - PointsTrack : player will lose all of their points, a NegativePointsException is thrown and false is returned.
+    *
+    * - VictoryPoint : player can have a negative amount of victory points.
+    *
+    *
+    * Player loses all the losable objects that can lose without an exception to be thrown. The catching of an Exception does
+    * not cause the method to stop.
+    *
+    * True: Losable parameters were all completely lost (no exception was thrown).
     *
     * */
     public boolean lose(Losable... losables) {
@@ -90,26 +102,31 @@ public class Player {
     public static void main(String[] a){
         Player player = new Player(new Slave(21));
         player.gain(new FaithPointsTrack(10));
-        boolean b = player.lose(new FaithPointsTrack(15), new Slave(20));
+        boolean b = player.lose(new FaithPointsTrack(15), new Slave(22));
         System.out.println("fede "+ player.getFaithPoints().getTrackPosition().getValue());
         System.out.println(player.getPlank().getSetOfResources().toString());
         System.out.println(b);
 
-    }
+        for(int i = 7; i >= 0; i--)
+            try{
+                player.tryToTakeCard(new LandCard("sapa", PeriodNumber.SECOND, 1, null, null));
+            } catch (ArrayIndexOutOfBoundsException | LimitedValueOffRangeException e){
+                System.out.println("assgbarnhahnahnagaedsh");
+            }
 
+
+    }
 
     public Area selectArea(Board board){
         System.out.println("Quale area vuoi selezionare?");
         board.show();
+
         Scanner input = new Scanner(System.in);
         int index = input.nextInt() -1 ;
         return board.getArea(index);
-
-
     }
 
     public ActionSpace selectActionSpace (Area area){
-
         System.out.println("Quale spazio azione vuoi selezionare?");
         area.show();
         if(area instanceof TowerArea)
@@ -118,11 +135,9 @@ public class Player {
         Scanner input = new Scanner(System.in);
         int index = input.nextInt() -1 ;
         return area.getActionSpace(index);
-
-
     }
-    public ActionSpace selectActionSpace (ActionSpace ... actionSpaces){
 
+    public ActionSpace selectActionSpace (ActionSpace ... actionSpaces){
         System.out.println("Quale spazio azione vuoi selezionare?");
         for(ActionSpace tmp : actionSpaces)
             System.out.println(tmp);
@@ -130,20 +145,16 @@ public class Player {
         Scanner input = new Scanner(System.in);
         int index = input.nextInt() -1 ;
         return actionSpaces[index];
-
-
     }
 
     public FamilyMember selectFamilyMember() {
         System.out.println("Quale familiare vuoi selezionare?");
         this.showFamilyMembers();
+
         Scanner input = new Scanner(System.in);
         int index = input.nextInt() -1;
-
-
         return familyMembers[index];
     }
-
 
     public void showFamilyMembers(){
         System.out.println("Scegli un familiare \n");
@@ -152,8 +163,35 @@ public class Player {
             i++;
             System.out.println(i+ " " + tmp.toString()+ " del giocatore " + this.id +"\n");
         }
+    }
+
+    /*
+
+    //true: card successfully added to the plank
+    //false: player already has 6 cards of the same type
+    public boolean tryToTakeCard(Card card) {//throws IndexOutOfBoundsException, LimitedValueOffRangeException{
+        try {
+            plank.getCards().cardAdded(card);
+        } catch (IndexOutOfBoundsException | LimitedValueOffRangeException e) {
+            System.out.println("No room for more cards of type "+card.getCardType());
+            return false;
+        }
+        return true;
+    }
+    */
+    public void tryToTakeCard(Card card) throws IndexOutOfBoundsException, LimitedValueOffRangeException{
+        plank.getCards().cardAdded(card);
+    }
 
 
+
+
+    public void addResourcesToPlank(Resource ... resources){
+        plank.getSetOfResources().resourcesAdded(resources);
+    }
+
+    public void removeResourcesFromPlank(Resource ... resources) throws NegativeResourceQuantityException {
+        plank.getSetOfResources().resourcesSpent(resources);
     }
 
 
@@ -165,18 +203,8 @@ public class Player {
         return bonuses;
     }
 
-    public String getId(){return this.id;}
-
-    public void takeCard(Card card) throws IndexOutOfBoundsException, LimitedValueOffRangeException{
-        plank.getCards().cardAdded(card);
-    }
-
-    public void addResourcesToPlank(Resource ... resources){
-        plank.getSetOfResources().resourcesAdded(resources);
-    }
-
-    public void removeResourcesFromPlank(Resource ... resources) throws NegativeResourceQuantityException {
-        plank.getSetOfResources().resourcesSpent(resources);
+    public String getId(){
+        return this.id;
     }
 
     public Plank getPlank() {
@@ -202,21 +230,6 @@ public class Player {
     public VictoryPoint getPoints() {
         return points;
     }
-
-    /*
-    public void addVictoryPoints(int points) {
-        this.victoryPoints += points;
-    }
-
-    public void loseVictoryPoints(int points) {
-        if(this.victoryPoints < points) this.victoryPoints = 0;
-        this.victoryPoints -= points;
-    }
-
-    public int getQuantity() {
-        return victoryPoints;
-    }
-    */
 
 
     /*
@@ -249,8 +262,8 @@ public class Player {
         return this.familyMembers;
     }
 
-    public void exchomunicationDecision(){
-        System.out.println("What do you want to do? \n 0: take exchomunication \n 1: lose you faithPoints");
+    public void excommunicationDecision(){
+        System.out.println("What do you want to do? \n 0: take excommunication \n 1: lose you faithPoints");
         Scanner input = new Scanner(System.in);
         int decision = input.nextInt();
         if(decision == 0){
@@ -261,9 +274,9 @@ public class Player {
             this.lose(this.getFaithPoints());
 
         }else{
-            exchomunicationDecision();
+            excommunicationDecision();
         }
     }
 
-    //todo method to take the exchomunication
+    //todo method to take the excommunication
 }
