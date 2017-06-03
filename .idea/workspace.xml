@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="">
+    <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="bug fixed">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/excommunicationTessels/MalusOnFamilyMemberPlacementTessel.java" afterPath="$PROJECT_DIR$/src/excommunicationTessels/MalusOnFamilyMemberPlacementTessel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resources/SetOfResources.java" afterPath="$PROJECT_DIR$/src/resources/SetOfResources.java" />
@@ -35,8 +35,8 @@
       <file leaf-file-name="MalusOnFamilyMemberPlacementTessel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/excommunicationTessels/MalusOnFamilyMemberPlacementTessel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+            <state relative-caret-position="199">
+              <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -1132,7 +1132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496491839234</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="bug fixed">
+      <created>1496492283800</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1496492283800</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1257,7 +1264,8 @@
     <MESSAGE value="bugs fixed" />
     <MESSAGE value="Card written" />
     <MESSAGE value="Tower action space done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tower action space done" />
+    <MESSAGE value="bug fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1693,8 +1701,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/excommunicationTessels/MalusOnFamilyMemberPlacementTessel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+        <state relative-caret-position="199">
+          <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
           <folding />
         </state>
       </provider>
