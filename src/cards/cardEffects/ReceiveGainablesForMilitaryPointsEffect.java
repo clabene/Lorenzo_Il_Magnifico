@@ -2,6 +2,7 @@ package cards.cardEffects;
 
 import interfaces.Gainable;
 import player.Player;
+import player.VictoryPoint;
 import pointsTracks.FaithPointsTrack;
 import pointsTracks.MilitaryPointsTrack;
 import resources.SetOfResources;
@@ -14,8 +15,8 @@ import resources.Wood;
  */
 public class ReceiveGainablesForMilitaryPointsEffect extends ReceiveGainablesEffect {
 
-    public ReceiveGainablesForMilitaryPointsEffect(Gainable ... gainables){
-        super(gainables);
+    public ReceiveGainablesForMilitaryPointsEffect(){
+        super(new VictoryPoint(1));
     }
 
     @Override
@@ -28,7 +29,7 @@ public class ReceiveGainablesForMilitaryPointsEffect extends ReceiveGainablesEff
     public static void main(String[] args){
         Player p = new Player();
         p.gain(new MilitaryPointsTrack(11));
-        ReceiveGainablesForMilitaryPointsEffect r = new ReceiveGainablesForMilitaryPointsEffect(new SetOfResources(new Wood(2), new Slave(3)), new FaithPointsTrack(2));
+        ReceiveGainablesForMilitaryPointsEffect r = new ReceiveGainablesForMilitaryPointsEffect();
         r.activate(p);
         System.out.println(p.getPlank().getSetOfResources());
         System.out.println(p.getFaithPoints());

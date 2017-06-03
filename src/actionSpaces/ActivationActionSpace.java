@@ -53,6 +53,10 @@ public class ActivationActionSpace extends ActionSpace {
         return cards.get(input.nextInt()-1);
     }
 
+    public ActivationActionSpaceType getActivationType() {
+        return activationType;
+    }
+
     private void activateCardEffect(Card card, Player player){
         card.getPermanentEffect().activate(player);
         cards.remove(card);

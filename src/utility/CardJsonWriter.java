@@ -1,11 +1,12 @@
 package utility;
+import actionSpaces.ActionSpaceType;
 import actionSpaces.ActivationActionSpace;
 import actionSpaces.ActivationActionSpaceType;
+import bonuses.BonusOnCardTake;
+import bonuses.BonusOnFamilyMemberPlacement;
+import bonuses.MalusOnTowerBonuses;
 import cards.*;
-import cards.cardEffects.ExchangeGainablesEffect;
-import cards.cardEffects.PlayExtraActionPhaseEffect;
-import cards.cardEffects.ReceiveGainablesEffect;
-import cards.cardEffects.ReceiveGainablesForCardTypeEffect;
+import cards.cardEffects.*;
 import com.google.gson.*;
 import gameStructure.PeriodNumber;
 import player.VictoryPoint;
@@ -119,34 +120,35 @@ public class CardJsonWriter {
         cards.add(new VentureCard("Guerra Santa", PeriodNumber.THIRD, new CardCost(new MilitaryPointsTrack(8),15), new ReceiveGainablesEffect(new FaithPointsTrack(4)),new ReceiveGainablesEffect(new VictoryPoint(8))));
 
         //person primo periodo------------------------------------------------
-        cards.add(new PersonCard("Artigiano", PeriodNumber.FIRST,new CardCost(new SetOfResources(new Money(3))),null,));
-        cards.add(new PersonCard("Condottiero", PeriodNumber.FIRST,new CardCost(new SetOfResources(new Money(2))), new ReceiveGainablesEffect(new MilitaryPointsTrack(3)), ));
-        cards.add(new PersonCard("Costruttore", PeriodNumber.FIRST, new CardCost(new SetOfResources(new Money(4))), null,));
-        cards.add(new PersonCard("Cavaliere", PeriodNumber.FIRST,new CardCost(new SetOfResources(new Money(2))), new ReceiveGainablesEffect(new CouncilFavour(1)),));
-        cards.add(new PersonCard("Dama", PeriodNumber.FIRST,new CardCost(new SetOfResources(new Money(4))), null,));
-        cards.add(new PersonCard("Contadino", PeriodNumber.FIRST,new CardCost(new SetOfResources(new Money(3))), null,));
-        cards.add(new PersonCard("Badessa",PeriodNumber.FIRST,new CardCost(new SetOfResources(new Money(3))), , null ));
-        cards.add(new PersonCard("Predicatore", PeriodNumber.FIRST,new CardCost(new SetOfResources(new Money(2))), new ReceiveGainablesEffect(new FaithPointsTrack(4)),));
+        cards.add(new PersonCard("Artigiano", PeriodNumber.FIRST,new CardCost(new SetOfResources(new Money(3))),null, new ReceiveBonusesEffect(new BonusOnFamilyMemberPlacement(ActivationActionSpaceType.PRODUCTION, 2))));
+        cards.add(new PersonCard("Condottiero", PeriodNumber.FIRST,new CardCost(new SetOfResources(new Money(2))), new ReceiveGainablesEffect(new MilitaryPointsTrack(3)), new ReceiveBonusesEffect(new BonusOnFamilyMemberPlacement(CardType.LAND, 2))));
+        cards.add(new PersonCard("Costruttore", PeriodNumber.FIRST, new CardCost(new SetOfResources(new Money(4))), null, new ReceiveBonusesEffect(new BonusOnFamilyMemberPlacement(CardType.BUILDING, 2), new BonusOnCardTake(CardType.BUILDING, new Wood()))));
+        cards.add(new PersonCard("Cavaliere", PeriodNumber.FIRST,new CardCost(new SetOfResources(new Money(2))), new ReceiveGainablesEffect(new CouncilFavour(1)), new ReceiveBonusesEffect(new BonusOnFamilyMemberPlacement(CardType.VENTURE, 2))));
+        cards.add(new PersonCard("Dama", PeriodNumber.FIRST,new CardCost(new SetOfResources(new Money(4))), null, new ReceiveBonusesEffect(new BonusOnFamilyMemberPlacement(CardType.PERSON, 2), new BonusOnCardTake(CardType.PERSON, new Money()))));
+        cards.add(new PersonCard("Contadino", PeriodNumber.FIRST,new CardCost(new SetOfResources(new Money(3))), null, new ReceiveBonusesEffect(new BonusOnFamilyMemberPlacement(ActivationActionSpaceType.HARVEST, 2))));
+        cards.add(new PersonCard("Badessa",PeriodNumber.FIRST,new CardCost(new SetOfResources(new Money(3))), new SetOfCardEffects(new PlayExtraActionPhaseEffect(4), new ReceiveGainablesEffect(new FaithPointsTrack(1))) , null));
+        cards.add(new PersonCard("Predicatore", PeriodNumber.FIRST,new CardCost(new SetOfResources(new Money(2))), new ReceiveGainablesEffect(new FaithPointsTrack(4)), new ReceiveBonusesEffect(new MalusOnTowerBonuses())));
 
         //person secondo periodo------------------------------------------------
-        cards.add(new PersonCard("Eroe", PeriodNumber.SECOND,new CardCost(new SetOfResources(new  Money(4))), , null));
-        cards.add(new PersonCard("Mecenate", PeriodNumber.SECOND,new CardCost(new SetOfResources( new Money(3))), , null ));
-        cards.add(new PersonCard("Fattore", PeriodNumber.SECOND, new CardCost(new SetOfResources(new Money(4))),null,));
-        cards.add(new PersonCard("Architetto", PeriodNumber.SECOND, new CardCost(new SetOfResources( new Money(4))), , null));
+        cards.add(new PersonCard("Eroe", PeriodNumber.SECOND,new CardCost(new SetOfResources(new Money(4))), new SetOfCardEffects(new PlayExtraActionPhaseEffect(6, CardType.VENTURE), new ReceiveGainablesEffect(new CouncilFavour(1))) , null));
+        cards.add(new PersonCard("Mecenate", PeriodNumber.SECOND,new CardCost(new SetOfResources(new Money(3))), new SetOfCardEffects(new PlayExtraActionPhaseEffect(6, CardType.PERSON), new ReceiveGainablesEffect(new Money(2))) , null ));
+        cards.add(new PersonCard("Fattore", PeriodNumber.SECOND, new CardCost(new SetOfResources(new Money(4))),null, new ReceiveBonusesEffect(new BonusOnFamilyMemberPlacement(ActivationActionSpaceType.HARVEST, 3))));
+        cards.add(new PersonCard("Architetto", PeriodNumber.SECOND, new CardCost(new SetOfResources(new Money(4))), new SetOfCardEffects(new PlayExtraActionPhaseEffect(6, CardType.BUILDING), new ReceiveGainablesEffect(new Wood(), new Stone())), null));
         cards.add(new PersonCard("Messo Papale", PeriodNumber.SECOND, new CardCost(new SetOfResources(new Money(5))), new ReceiveGainablesEffect(new FaithPointsTrack(3)), null));
-        cards.add(new PersonCard("Capitano", PeriodNumber.SECOND, new CardCost(new SetOfResources(new Money(4))), , null));
-        cards.add(new PersonCard("Messo Reale", PeriodNumber.SECOND, new CardCost(new SetOfResources(new Money(5))), , null));
-        cards.add(new PersonCard("Studioso", PeriodNumber.SECOND, new CardCost(new SetOfResources(new Money(4))), null,));
+        cards.add(new PersonCard("Capitano", PeriodNumber.SECOND, new CardCost(new SetOfResources(new Money(4))), new SetOfCardEffects( new PlayExtraActionPhaseEffect(6, CardType.LAND), new ReceiveGainablesEffect(new MilitaryPointsTrack(2))), null));
+        cards.add(new PersonCard("Messo Reale", PeriodNumber.SECOND, new CardCost(new SetOfResources(new Money(5))), new ReceiveGainablesEffect(new CouncilFavour(3)), null));
+        cards.add(new PersonCard("Studioso", PeriodNumber.SECOND, new CardCost(new SetOfResources(new Money(4))), null, new ReceiveBonusesEffect(new BonusOnFamilyMemberPlacement(ActivationActionSpaceType.PRODUCTION, 3))));
+
 
         //person terzo periodo------------------------------------------------
-        cards.add(new PersonCard("Governatore", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(6))), , null));
-        cards.add(new PersonCard("Vescovo", PeriodNumber.THIRD, new CardCost(new SetOfResources(new  Money(5))), , null));
-        cards.add(new PersonCard("Cardinale", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(4))), , null));
-        cards.add(new PersonCard("Cortigiana", PeriodNumber.THIRD, new CardCost(new SetOfResources(new  Money(7))), , null));
-        cards.add(new PersonCard("Araldo", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(6))), , null));
-        cards.add(new PersonCard("Generale", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(5))), , null));
-        cards.add(new PersonCard("Nobile", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(6))), , null));
-        cards.add(new PersonCard("Ambasciatore", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(6))), , null));
+        cards.add(new PersonCard("Governatore", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(6))), new ReceiveGainablesForCardTypeEffect(CardType.BUILDING, new VictoryPoint(2)) , null));
+        cards.add(new PersonCard("Vescovo", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(5))), new SetOfCardEffects(new PlayExtraActionPhaseEffect(4, new ActivationActionSpace(1, ActivationActionSpaceType.PRODUCTION)), new ReceiveGainablesEffect(new FaithPointsTrack(1))), null));
+        cards.add(new PersonCard("Cardinale", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(4))), new SetOfCardEffects(new PlayExtraActionPhaseEffect(4, new ActivationActionSpace(1, ActivationActionSpaceType.HARVEST)), new ReceiveGainablesEffect(new FaithPointsTrack(2))), null));
+        cards.add(new PersonCard("Cortigiana", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(7))),  new ReceiveGainablesForCardTypeEffect(CardType.PERSON, new VictoryPoint(2)) , null));
+        cards.add(new PersonCard("Araldo", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(6))), new ReceiveGainablesForCardTypeEffect(CardType.VENTURE, new VictoryPoint(2)), null));
+        cards.add(new PersonCard("Generale", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(5))), new ReceiveGainablesForMilitaryPointsEffect(), null));
+        cards.add(new PersonCard("Nobile", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(6))), new ReceiveGainablesForCardTypeEffect(CardType.LAND, new VictoryPoint(2)) , null));
+        cards.add(new PersonCard("Ambasciatore", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(6))), new SetOfCardEffects(new PlayExtraActionPhaseEffect(7), new ReceiveGainablesEffect(new CouncilFavour(1))) , null));
 
 
 
