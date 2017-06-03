@@ -1,6 +1,7 @@
 package gameStructure;
 
 import cards.VentureCard;
+import excommunicationTessels.ExcommunicationTassel;
 import player.Player;
 import player.VictoryPoint;
 
@@ -11,19 +12,27 @@ import java.util.ArrayList;
  */
 public class Game {
     ArrayList<Player> players = new ArrayList<>();
+    ExcommunicationTassel[] tessels = new ExcommunicationTassel[3];
+
+
+
+
+
+
+
 
     //todo add players
 
     public void startGame(){
 
         Period firstPeriod = new Period(players);
-        firstPeriod.startPeriod(3);
+        firstPeriod.startPeriod(3, tessels[0]);
         //todo change of turn order also between periods
         Period secondPeriod = new Period(players);
-        secondPeriod.startPeriod(4);
+        secondPeriod.startPeriod(4, tessels[1]);
 
         Period thirdPeriod = new Period(players);
-        thirdPeriod.startPeriod(5);
+        thirdPeriod.startPeriod(5, tessels[2]);
 
 
         getWinner();
@@ -96,6 +105,21 @@ public class Game {
             }
         }
         return winner;
+    }
+
+    public void addPlayer(Player player){
+        this.players.add(player);
+    }
+
+    public static void main(String[] args) {
+
+        Game game = new Game();
+        Player player = new Player("claudio");
+        game.addPlayer(player);
+        game.startGame();
+
+        return;
+
     }
 
 

@@ -1,8 +1,8 @@
 package gameStructure;
 
-import cards.Card;
-import cards.CardType;
+import cards.*;
 import com.google.gson.Gson;
+import excommunicationTessels.ExcommunicationTassel;
 import player.Player;
 
 import java.io.BufferedReader;
@@ -28,7 +28,7 @@ public class Period {
         this.players = players;
     }
 
-    public void startPeriod(int minFaithPoints ){
+    public void startPeriod(int minFaithPoints, ExcommunicationTassel tessel ){
         Stack<Card> PeriodDeck = setPeriodDeck();
         Turn firstTurn= new Turn(players);
         firstTurn.playTurn(PeriodDeck);
@@ -36,7 +36,7 @@ public class Period {
         Turn secondTurn = new Turn(players);
         secondTurn.playTurn(PeriodDeck);
 
-        excommunicationCheck(players, minFaithPoints);
+        excommunicationCheck(players, minFaithPoints, tessel);
 
         //todo church  operations
 
@@ -49,14 +49,22 @@ public class Period {
     If returns null something went wrong
     */
 
-    public Card cardJsonStringReader(File file){
+    public Card cardJsonStringReader(String fileName,CardType cardType){
         try{
             //todo handle file json in the right way (divided by period)
             Gson gson = new Gson();
-            FileReader r = new FileReader("a.txt");
+            FileReader r = new FileReader(fileName);
             BufferedReader rb = new BufferedReader(r);
             String s = rb.readLine();
-            return gson.fromJson(s, Card.class);
+            if(cardType == CardType.VENTURE)
+                return gson.fromJson(s, VentureCard.class);
+            if(cardType == CardType.LAND)
+                return gson.fromJson(s, LandCard.class);
+            if(cardType == CardType.BUILDING)
+                return gson.fromJson(s, BuildingCard.class);
+            if(cardType == CardType.PERSON)
+                return gson.fromJson(s, PersonCard.class);
+
 
         }catch (IOException e){}
         return null;
@@ -67,14 +75,12 @@ public class Period {
      */
     public Stack<Card> getCardsOfSameType (CardType cardType){
         Stack<Card> cardsOfSameType = new Stack<>();
-        /*Card card;
+        Card card;
         for(int i = 0; i < 32; i++){
-            card = cardJsonStringReader(file);
+            card = cardJsonStringReader("file.txt", cardType);
             if(card.getCardType() == cardType)
                 cardsOfSameType.push(card);
-
-        }*/
-
+        }
         return cardsOfSameType;
     }
 
@@ -102,7 +108,6 @@ public class Period {
         insertCardFromDeckToDeck(deck4, cards);
 
         return cards;
-
     }
 
     /*
@@ -127,10 +132,7 @@ public class Period {
         Stack<Card> PersonDeck = getCardsOfSameType(CardType.PERSON);
         Stack<Card> VentureDeck = getCardsOfSameType(CardType.VENTURE);
         Stack<Card> BuildingDeck = getCardsOfSameType(CardType.BUILDING);
-
         shuffleDecks(LandDeck,   PersonDeck,   BuildingDeck,   VentureDeck);
-
-
         Stack<Card> cards1 = mergeDecks(getFourCardsFromDeck(LandDeck), getFourCardsFromDeck(PersonDeck), getFourCardsFromDeck(BuildingDeck), getFourCardsFromDeck(VentureDeck));
         Stack<Card> cards2 = mergeDecks(getFourCardsFromDeck(LandDeck), getFourCardsFromDeck(PersonDeck), getFourCardsFromDeck(BuildingDeck), getFourCardsFromDeck(VentureDeck));
         return mergeDecks(cards1, cards2, null, null);
@@ -140,20 +142,19 @@ public class Period {
     /*
     put the cards of the "fromdeck" and put them in "todeck"
      */
-    public void insertCardFromDeckToDeck(Stack<Card> fromdeck, Stack<Card> todeck){
-        while(!fromdeck.empty()){
-            todeck.push(fromdeck.pop());
+    public void insertCardFromDeckToDeck(Stack<Card> fromDeck, Stack<Card> toDeck){
+        while(!fromDeck.empty()){
+            toDeck.push(fromDeck.pop());
         }
     }
 
-    public void excommunicationCheck(ArrayList<Player> players, int minFaithPoints){
+    public void excommunicationCheck(ArrayList<Player> players, int minFaithPoints, ExcommunicationTassel tessel){
 
 
         for(Player tmp: players){
             if(tmp.getFaithPoints().getTrackPosition().getValue() < minFaithPoints){
                 System.out.println("You faith points are not enough, so you receive an excommunication from the Church");
-
-                //todo player takes excommunication
+                tessel.activate(tmp);
 
             }
             else{

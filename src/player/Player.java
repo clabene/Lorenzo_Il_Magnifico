@@ -56,6 +56,10 @@ public class Player {
         this.plank = new Plank(resources);
     }
 
+    public Player(String id){
+        this.id = id;
+    }
+
 
 
     /*
