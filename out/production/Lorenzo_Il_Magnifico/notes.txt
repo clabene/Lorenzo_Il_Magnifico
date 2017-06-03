@@ -1,6 +1,6 @@
 Note 1
 Right now classes Wood, Stone, Slave, Money have the only advantage to make it easier to distinguish among the different
-types of resources. On the other hand it could be a good idea to just make an Enum "ResourceType" and give a ResourceType
+types of logic.resources. On the other hand it could be a good idea to just make an Enum "ResourceType" and give a ResourceType
 attribute to class Resource.
 
 Note 2
@@ -8,8 +8,8 @@ Might wanna have Gainable to extend Expendable. However, have them distinguished
 
 Note 3
 Idea:
-Gainable has this method-declaration: gainedByPlayer(player.Player player);
-and player has method:
+Gainable has this method-declaration: gainedByPlayer(logic.player.Player logic.player);
+and logic.player has method:
     gain(Gainable gainable){
         //controls & details omitted here
         gainable.gainedByPlayer(this);
@@ -18,10 +18,10 @@ and player has method:
 Same can be done with Losable
 
 UPDATE: this is idea has been put into practise for both Gainable and Losable.
-For Losable, different politics have been chosen when the scenario of a potential below-0 resource/pointsTracks presents.
+For Losable, different politics have been chosen when the scenario of a potential below-0 resource/logic.pointsTracks presents.
 
 Note 4
-Might wanna extend pointsTracks to all possible pointsTracks's in order to have a more readable code and no ugly
+Might wanna extend logic.pointsTracks to all possible logic.pointsTracks's in order to have a more readable code and no ugly
 victoryPointsOfPosition "exposed" in the constructor. On the other hand, it might be an excessively complicated solution.
 
 UPDATE: The class was extended.
@@ -32,7 +32,7 @@ Note 5
 DiceValue is a quite useless class (also, it has been badly implemented so far -see notes on the class). Better is, using
 a LimitedInteger object to represent dice values (using static variables w/ meaningful names in order to keep code readable
 and clean) and maybe implementing a Dice class to get random values.
-
+UPDATE: DiceValue was deleted
 
 Note 6
 Both value of FamilyMember and minValueToPlaceFamilyMember of ActionSpace can go below 0. Alternative is to have a min value

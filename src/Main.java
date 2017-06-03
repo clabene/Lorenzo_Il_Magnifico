@@ -1,6 +1,6 @@
-import player.Plank;
-import player.Player;
-import pointsTracks.MilitaryPointsTrack;
+import logic.player.Plank;
+import logic.player.Player;
+import logic.pointsTracks.MilitaryPointsTrack;
 
 import java.util.ArrayList;
 
