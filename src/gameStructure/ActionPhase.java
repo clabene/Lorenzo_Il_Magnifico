@@ -3,10 +3,12 @@ package gameStructure;
 import actionSpaces.ActionSpace;
 
 import actionSpaces.ActionSpaceType;
+import actionSpaces.TowerActionSpace;
 import board.Area;
 import board.Board;
 import bonuses.Bonus;
 import bonuses.BonusOnFamilyMemberPlacement;
+import cards.Card;
 import interfaces.Gainable;
 import interfaces.Losable;
 import player.FamilyMember;
@@ -58,10 +60,11 @@ public class ActionPhase {
 
             Observation: the only actionSpaces that can cause the problem described up-here are the tower action spaces, therefore
             something like this could be a solution:
-                Card card = ( (TowerActionSpace) actionSpace).getCard();
-                actionSpace = new TowerActionSpace(actionSpace.getMinValueToPlaceFamiliar(), actionSpace.getBonus().toArray(new Gainable[actionSpace.getBonus().size()]));
-                actionSpace.setCard(card);
             */
+            Card card = ( (TowerActionSpace) actionSpace).getCard();
+            actionSpace = new TowerActionSpace(actionSpace.getMinValueToPlaceFamiliar(), actionSpace.getBonus().toArray(new Gainable[actionSpace.getBonus().size()]));
+            ((TowerActionSpace)actionSpace).setCard(card);
+
         }
     }
 

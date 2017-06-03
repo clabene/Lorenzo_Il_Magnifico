@@ -23,15 +23,20 @@ public class CardCost implements Losable {
 
     private SetOfResources resourcesCost;
 
+    private Losable selectedCost;
+
     private MilitaryPointsTrack militaryPointsCost;
     private int necessaryQuantityOfMilitaryPoints;
 
     public CardCost(SetOfResources resourcesCost){
         this.resourcesCost = resourcesCost;
+        this.selectedCost = resourcesCost;
     }
+
     public CardCost(MilitaryPointsTrack militaryPointsCost, int necessaryQuantityOfMilitaryPoints){
         this.militaryPointsCost = militaryPointsCost;
         this.necessaryQuantityOfMilitaryPoints = necessaryQuantityOfMilitaryPoints;
+        this.selectedCost = militaryPointsCost;
     }
     public CardCost(SetOfResources resourcesCost, MilitaryPointsTrack militaryPointsCost, int necessaryQuantityOfMilitaryPoints){
         this.resourcesCost = resourcesCost;
@@ -66,10 +71,20 @@ public class CardCost implements Losable {
                 printMenu();
                 i = getIntegerFromPlayer();
             }
-            if(i == 1) resourcesCost.lostByPlayer(player);
-            else payMilitaryPoints(player);
+            if(i == 1) {
+                selectedCost = resourcesCost;
+                resourcesCost.lostByPlayer(player);
+            }
+            else{
+                selectedCost = militaryPointsCost;
+                payMilitaryPoints(player);
+            }
         }
 
+    }
+
+    public Losable getSelectedCost() {
+        return selectedCost;
     }
 
     private void payMilitaryPoints(Player player) throws NegativeResourceQuantityException, NegativePointsException {
