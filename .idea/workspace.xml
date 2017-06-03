@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actionSpaces/TowerActionSpace.java" afterPath="$PROJECT_DIR$/src/actionSpaces/TowerActionSpace.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cards/CardCost.java" afterPath="$PROJECT_DIR$/src/cards/CardCost.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gameStructure/ActionPhase.java" afterPath="$PROJECT_DIR$/src/gameStructure/ActionPhase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/player/FamilyMember.java" afterPath="$PROJECT_DIR$/src/player/FamilyMember.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resources/SetOfResources.java" afterPath="$PROJECT_DIR$/src/resources/SetOfResources.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -1111,7 +1107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496489371952</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Tower action space done">
+      <created>1496491788302</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1496491788302</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1235,7 +1238,8 @@
     <MESSAGE value="card cost completed" />
     <MESSAGE value="bugs fixed" />
     <MESSAGE value="Card written" />
-    <option name="LAST_COMMIT_MESSAGE" value="Card written" />
+    <MESSAGE value="Tower action space done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tower action space done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
