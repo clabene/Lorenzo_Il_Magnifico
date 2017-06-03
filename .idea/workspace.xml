@@ -1,81 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="bug fixed">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DiceValue.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/actionSpaces/ActionSpace.java" afterPath="$PROJECT_DIR$/src/logic/actionSpaces/ActionSpace.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/actionSpaces/ActionSpaceType.java" afterPath="$PROJECT_DIR$/src/logic/actionSpaces/ActionSpaceType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/actionSpaces/ActivationActionSpace.java" afterPath="$PROJECT_DIR$/src/logic/actionSpaces/ActivationActionSpace.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/actionSpaces/ActivationActionSpaceType.java" afterPath="$PROJECT_DIR$/src/logic/actionSpaces/ActivationActionSpaceType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/actionSpaces/CouncilActionSpace.java" afterPath="$PROJECT_DIR$/src/logic/actionSpaces/CouncilActionSpace.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/actionSpaces/MarketActionSpace.java" afterPath="$PROJECT_DIR$/src/logic/actionSpaces/MarketActionSpace.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/actionSpaces/TowerActionSpace.java" afterPath="$PROJECT_DIR$/src/logic/actionSpaces/TowerActionSpace.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/board/ActivationArea.java" afterPath="$PROJECT_DIR$/src/logic/board/ActivationArea.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/board/Area.java" afterPath="$PROJECT_DIR$/src/logic/board/Area.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/board/Board.java" afterPath="$PROJECT_DIR$/src/logic/board/Board.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/board/ChurchArea.java" afterPath="$PROJECT_DIR$/src/logic/board/ChurchArea.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/board/Color.java" afterPath="$PROJECT_DIR$/src/logic/board/Color.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/board/CouncilArea.java" afterPath="$PROJECT_DIR$/src/logic/board/CouncilArea.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/board/MarketArea.java" afterPath="$PROJECT_DIR$/src/logic/board/MarketArea.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/board/Tower.java" afterPath="$PROJECT_DIR$/src/logic/board/Tower.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/board/TowerArea.java" afterPath="$PROJECT_DIR$/src/logic/board/TowerArea.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/bonuses/Bonus.java" afterPath="$PROJECT_DIR$/src/logic/bonuses/Bonus.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/bonuses/BonusOnCardTake.java" afterPath="$PROJECT_DIR$/src/logic/bonuses/BonusOnCardTake.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/bonuses/BonusOnFamilyMemberPlacement.java" afterPath="$PROJECT_DIR$/src/logic/bonuses/BonusOnFamilyMemberPlacement.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/bonuses/MalusOnTowerBonuses.java" afterPath="$PROJECT_DIR$/src/logic/bonuses/MalusOnTowerBonuses.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/cards/BuildingCard.java" afterPath="$PROJECT_DIR$/src/logic/cards/BuildingCard.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/cards/Card.java" afterPath="$PROJECT_DIR$/src/logic/cards/Card.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/cards/CardCost.java" afterPath="$PROJECT_DIR$/src/logic/cards/CardCost.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/cards/CardType.java" afterPath="$PROJECT_DIR$/src/logic/cards/CardType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/cards/LandCard.java" afterPath="$PROJECT_DIR$/src/logic/cards/LandCard.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/cards/PersonCard.java" afterPath="$PROJECT_DIR$/src/logic/cards/PersonCard.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/cards/SetOfCards.java" afterPath="$PROJECT_DIR$/src/logic/cards/SetOfCards.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/cards/VentureCard.java" afterPath="$PROJECT_DIR$/src/logic/cards/VentureCard.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/cards/cardEffects/CardEffect.java" afterPath="$PROJECT_DIR$/src/logic/cards/cardEffects/CardEffect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/cards/cardEffects/ExchangeGainablesEffect.java" afterPath="$PROJECT_DIR$/src/logic/cards/cardEffects/ExchangeGainablesEffect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/cards/cardEffects/PlayExtraActionPhaseEffect.java" afterPath="$PROJECT_DIR$/src/logic/cards/cardEffects/PlayExtraActionPhaseEffect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/cards/cardEffects/ReceiveBonusesEffect.java" afterPath="$PROJECT_DIR$/src/logic/cards/cardEffects/ReceiveBonusesEffect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/cards/cardEffects/ReceiveGainablesEffect.java" afterPath="$PROJECT_DIR$/src/logic/cards/cardEffects/ReceiveGainablesEffect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/cards/cardEffects/ReceiveGainablesForCardTypeEffect.java" afterPath="$PROJECT_DIR$/src/logic/cards/cardEffects/ReceiveGainablesForCardTypeEffect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/cards/cardEffects/ReceiveGainablesForMilitaryPointsEffect.java" afterPath="$PROJECT_DIR$/src/logic/cards/cardEffects/ReceiveGainablesForMilitaryPointsEffect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/cards/cardEffects/SetOfCardEffects.java" afterPath="$PROJECT_DIR$/src/logic/cards/cardEffects/SetOfCardEffects.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/exceptions/LimitedValueOffRangeException.java" afterPath="$PROJECT_DIR$/src/logic/exceptions/LimitedValueOffRangeException.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/exceptions/NegativePointsException.java" afterPath="$PROJECT_DIR$/src/logic/exceptions/NegativePointsException.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/exceptions/NegativeResourceQuantityException.java" afterPath="$PROJECT_DIR$/src/logic/exceptions/NegativeResourceQuantityException.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/excommunicationTessels/ExcommunicationTassel.java" afterPath="$PROJECT_DIR$/src/logic/excommunicationTessels/ExcommunicationTassel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/excommunicationTessels/MalusOnFamilyMemberPlacementTessel.java" afterPath="$PROJECT_DIR$/src/logic/excommunicationTessels/MalusOnFamilyMemberPlacementTessel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/excommunicationTessels/PointsTrackToZeroTessel.java" afterPath="$PROJECT_DIR$/src/logic/excommunicationTessels/PointsTrackToZeroTessel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gameStructure/ActionPhase.java" afterPath="$PROJECT_DIR$/src/logic/gameStructure/ActionPhase.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gameStructure/Game.java" afterPath="$PROJECT_DIR$/src/logic/gameStructure/Game.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gameStructure/Period.java" afterPath="$PROJECT_DIR$/src/logic/gameStructure/Period.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gameStructure/PeriodNumber.java" afterPath="$PROJECT_DIR$/src/logic/gameStructure/PeriodNumber.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gameStructure/Turn.java" afterPath="$PROJECT_DIR$/src/logic/gameStructure/Turn.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/interfaces/Gainable.java" afterPath="$PROJECT_DIR$/src/logic/interfaces/Gainable.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/interfaces/Losable.java" afterPath="$PROJECT_DIR$/src/logic/interfaces/Losable.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/player/FamilyMember.java" afterPath="$PROJECT_DIR$/src/logic/player/FamilyMember.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/player/Plank.java" afterPath="$PROJECT_DIR$/src/logic/player/Plank.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/player/Player.java" afterPath="$PROJECT_DIR$/src/logic/player/Player.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/player/VictoryPoint.java" afterPath="$PROJECT_DIR$/src/logic/player/VictoryPoint.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pointsTracks/FaithPointsTrack.java" afterPath="$PROJECT_DIR$/src/logic/pointsTracks/FaithPointsTrack.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pointsTracks/LandCardsPointsTrack.java" afterPath="$PROJECT_DIR$/src/logic/pointsTracks/LandCardsPointsTrack.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pointsTracks/MilitaryPointsTrack.java" afterPath="$PROJECT_DIR$/src/logic/pointsTracks/MilitaryPointsTrack.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pointsTracks/PersonCardsPointsTrack.java" afterPath="$PROJECT_DIR$/src/logic/pointsTracks/PersonCardsPointsTrack.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pointsTracks/PointsTrack.java" afterPath="$PROJECT_DIR$/src/logic/pointsTracks/PointsTrack.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/resources/CouncilFavour.java" afterPath="$PROJECT_DIR$/src/logic/resources/CouncilFavour.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/resources/Money.java" afterPath="$PROJECT_DIR$/src/logic/resources/Money.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/resources/Resource.java" afterPath="$PROJECT_DIR$/src/logic/resources/Resource.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/resources/SetOfResources.java" afterPath="$PROJECT_DIR$/src/logic/resources/SetOfResources.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/resources/Slave.java" afterPath="$PROJECT_DIR$/src/logic/resources/Slave.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/resources/Stone.java" afterPath="$PROJECT_DIR$/src/logic/resources/Stone.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/resources/Wood.java" afterPath="$PROJECT_DIR$/src/logic/resources/Wood.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/utility/CardJsonWriter.java" afterPath="$PROJECT_DIR$/src/logic/utility/CardJsonWriter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/utility/LimitedInteger.java" afterPath="$PROJECT_DIR$/src/logic/utility/LimitedInteger.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/utility/StaticVariables.java" afterPath="$PROJECT_DIR$/src/logic/utility/StaticVariables.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lorenzo_Il_Magnifico/Main.class" afterPath="$PROJECT_DIR$/out/production/Lorenzo_Il_Magnifico/Main.class" />
+    <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Lorenzo_Il_Magnifico/notes.txt" afterPath="$PROJECT_DIR$/out/production/Lorenzo_Il_Magnifico/notes.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/notes.txt" afterPath="$PROJECT_DIR$/src/notes.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/player/Player.java" afterPath="$PROJECT_DIR$/src/logic/player/Player.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -1184,7 +1112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496492491484</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="bug fixed">
+      <created>1496520665700</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1496520665715</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1198,7 +1133,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32565284" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1207,12 +1142,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24116744" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24116744" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32411674" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21028744" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21028744" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6697389" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
