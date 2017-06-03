@@ -110,7 +110,7 @@ public class CardJsonWriter {
 
         //venture terzo periodo------------------------------------------------
         cards.add(new VentureCard("Ingaggiare Mercenari", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(8))), new ReceiveGainablesEffect(new MilitaryPointsTrack(7)),new ReceiveGainablesEffect(new VictoryPoint(6))));
-        cards.add(new VentureCard("Conquista Militare", PeriodNumber.THIRD, new CardCost(new MilitaryPointsTrack(6), 12), new ReceiveGainablesEffect(new SetOfResources(new Money(3), new Wood(3), new Stone(3))),new ReceiveGainablesEffect(new VictoryPoint(7)));
+        cards.add(new VentureCard("Conquista Militare", PeriodNumber.THIRD, new CardCost(new MilitaryPointsTrack(6), 12), new ReceiveGainablesEffect(new SetOfResources(new Money(3), new Wood(3), new Stone(3))),new ReceiveGainablesEffect(new VictoryPoint(7))));
         cards.add(new VentureCard("SOstegno al Papa", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(4), new Stone(3), new Wood(3)), new MilitaryPointsTrack(5), 10), new ReceiveGainablesEffect(new FaithPointsTrack(10)),new ReceiveGainablesEffect(new VictoryPoint(5)) ));
         cards.add(new VentureCard("Migliorare le Strade", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Slave(3), new Money(4))), new PlayExtraActionPhaseEffect(3, new ActivationActionSpace(1, ActivationActionSpaceType.PRODUCTION)) ,new ReceiveGainablesEffect(new VictoryPoint(5))));
         cards.add(new VentureCard("Riparare la Cattedrale", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(3), new Wood(3), new Stone(3))), new PlayExtraActionPhaseEffect(7) ,new ReceiveGainablesEffect(new VictoryPoint(5))));
@@ -129,24 +129,24 @@ public class CardJsonWriter {
         cards.add(new PersonCard("Predicatore", PeriodNumber.FIRST,new CardCost(new SetOfResources(new Money(2))), new ReceiveGainablesEffect(new FaithPointsTrack(4)),));
 
         //person secondo periodo------------------------------------------------
-        cards.add(new PersonCard("Eroe", PeriodNumber.SECOND,new CardCost(new Money(4)), , null));
-        cards.add(new PersonCard("Mecenate", PeriodNumber.SECOND,new CardCost(new Money(3)), , null ));
-        cards.add(new PersonCard("Fattore", PeriodNumber.SECOND, new CardCost(new Money(4)),null,));
-        cards.add(new PersonCard("Architetto", PeriodNumber.SECOND, new CardCost(new Money(4)), , null));
-        cards.add(new PersonCard("Messo Papale", PeriodNumber.SECOND, new CardCost(new Money(5)), new ReceiveGainablesEffect(new FaithPointsTrack(3)), null));
-        cards.add(new PersonCard("Capitano", PeriodNumber.SECOND, new CardCost(new Money(4)), , null));
-        cards.add(new PersonCard("Messo Reale", PeriodNumber.SECOND, new CardCost(new Money(5)), , null));
-        cards.add(new PersonCard("Studioso", PeriodNumber.SECOND, new CardCost(new Money(4)), null,));
+        cards.add(new PersonCard("Eroe", PeriodNumber.SECOND,new CardCost(new SetOfResources(new  Money(4))), , null));
+        cards.add(new PersonCard("Mecenate", PeriodNumber.SECOND,new CardCost(new SetOfResources( new Money(3))), , null ));
+        cards.add(new PersonCard("Fattore", PeriodNumber.SECOND, new CardCost(new SetOfResources(new Money(4))),null,));
+        cards.add(new PersonCard("Architetto", PeriodNumber.SECOND, new CardCost(new SetOfResources( new Money(4))), , null));
+        cards.add(new PersonCard("Messo Papale", PeriodNumber.SECOND, new CardCost(new SetOfResources(new Money(5))), new ReceiveGainablesEffect(new FaithPointsTrack(3)), null));
+        cards.add(new PersonCard("Capitano", PeriodNumber.SECOND, new CardCost(new SetOfResources(new Money(4))), , null));
+        cards.add(new PersonCard("Messo Reale", PeriodNumber.SECOND, new CardCost(new SetOfResources(new Money(5))), , null));
+        cards.add(new PersonCard("Studioso", PeriodNumber.SECOND, new CardCost(new SetOfResources(new Money(4))), null,));
 
         //person terzo periodo------------------------------------------------
-        cards.add(new PersonCard("Governatore", PeriodNumber.THIRD, new CardCost(new Money(6)), , null));
-        cards.add(new PersonCard("Vescovo", PeriodNumber.THIRD, new CardCost(new Money(5)), , null));
-        cards.add(new PersonCard("Cardinale", PeriodNumber.THIRD, new CardCost(new Money(4)), , null));
-        cards.add(new PersonCard("Cortigiana", PeriodNumber.THIRD, new CardCost(new Money(7)), , null));
-        cards.add(new PersonCard("Araldo", PeriodNumber.THIRD, new CardCost(new Money(6)), , null));
-        cards.add(new PersonCard("Generale", PeriodNumber.THIRD, new CardCost(new Money(5)), , null));
-        cards.add(new PersonCard("Nobile", PeriodNumber.THIRD, new CardCost(new Money(6)), , null));
-        cards.add(new PersonCard("Ambasciatore", PeriodNumber.THIRD, new CardCost(new Money(6)), , null));
+        cards.add(new PersonCard("Governatore", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(6))), , null));
+        cards.add(new PersonCard("Vescovo", PeriodNumber.THIRD, new CardCost(new SetOfResources(new  Money(5))), , null));
+        cards.add(new PersonCard("Cardinale", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(4))), , null));
+        cards.add(new PersonCard("Cortigiana", PeriodNumber.THIRD, new CardCost(new SetOfResources(new  Money(7))), , null));
+        cards.add(new PersonCard("Araldo", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(6))), , null));
+        cards.add(new PersonCard("Generale", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(5))), , null));
+        cards.add(new PersonCard("Nobile", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(6))), , null));
+        cards.add(new PersonCard("Ambasciatore", PeriodNumber.THIRD, new CardCost(new SetOfResources(new Money(6))), , null));
 
 
 
