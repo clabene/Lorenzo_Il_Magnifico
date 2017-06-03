@@ -28,10 +28,12 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
         this.familyMember = new FamilyMember(null, valueOfFamilyMember);
         this.actionSpaces.add(activationActionSpace);
     }
-
     public PlayExtraActionPhaseEffect(int valueOfFamilyMember, CardType cardType){
         this.familyMember = new FamilyMember(null, valueOfFamilyMember);
-        this.cardType = cardType;
+        this.cardType = cardType; //null -> all of them (towers)
+    }
+    public PlayExtraActionPhaseEffect(int valueOfFamilyMember){ //action spaces -> all of tower area
+        this.familyMember = new FamilyMember(null, valueOfFamilyMember);
     }
 
     /*
@@ -40,7 +42,9 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
     private void addActionSpaces(Player player){
         for(Tower tmp : player.getBoard().getTowerArea().getTowers())
             for(TowerActionSpace tmp1 : tmp.getSpaces()) //itero sugli spazi azione delle torri
-                if(tmp1.getCard() != null && tmp1.getCard().getCardType() == this.cardType)
+                if(tmp1.getCard() != null && this.cardType == null) //cardType == null -> i take all tower action space
+                    this.actionSpaces.add(tmp1);
+                else if(tmp1.getCard() != null && tmp1.getCard().getCardType() == this.cardType)
                     this.actionSpaces.add(tmp1);
                 else break;
     }
@@ -60,7 +64,7 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
 
         this.actionPhase = new ActionPhase(player, null);
 
-        if(cardType != null) addActionSpaces(player);
+        if(cardType != null && actionSpaces.isEmpty()) addActionSpaces(player);
 
         while(true) {
             if(isPhasePlayable(player)) break;

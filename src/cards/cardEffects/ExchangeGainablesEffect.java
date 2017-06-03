@@ -10,15 +10,13 @@ import resources.Resource;
 import resources.Slave;
 import resources.Wood;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  * Created by IBM on 27/05/2017.
  */
-public class ExchangeGainablesEffect implements CardEffect{
-
-    //todo make this class decent, it is terrible right now. Just use ArrayList!
-
+public class ExchangeGainablesEffect implements CardEffect{ //todo make this decent
 
     private Losable[] losables = new Losable[2];
     private Gainable[] gainables = new Gainable[2];
@@ -66,6 +64,7 @@ public class ExchangeGainablesEffect implements CardEffect{
             if(player.lose(losables[selectedInteger])){
                 player.getPlank().setToUseSeparateResources(true);
                 player.gain(gainables[selectedInteger]);
+                if(losables[1] == null && gainables[1] != null) player.gain(gainables[1]);
                 return true;
             }
         }
