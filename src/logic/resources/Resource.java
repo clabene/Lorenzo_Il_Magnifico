@@ -20,6 +20,7 @@ public abstract class Resource implements Losable, Gainable {
     }
 
     public void resourceAdded(int quantity){
+        if(quantity < 0) quantity = 0;
         this.quantity += quantity;
     }
 

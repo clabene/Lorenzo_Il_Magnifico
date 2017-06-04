@@ -84,6 +84,7 @@ public class SetOfResources implements Gainable, Losable{
         for(Resource tmp : resources)
             if(!enoughResourcesQuantity(tmp))
                 throw new NegativeResourceQuantityException();
+        System.out.println("asfbadfbadsbs");
         for (Resource tmp : resources)
             oneResourceSpent(tmp);
     }
