@@ -40,12 +40,13 @@ public class Player {
     private PersonCardsPointsTrack personCardsPoints = new PersonCardsPointsTrack();
     private LandCardsPointsTrack landCardsPoints = new LandCardsPointsTrack();
 
-    private Plank plank;
+    private Plank plank = new Plank();
 
     private final int BLACK_FAMILY_MEMBER_INDEX = 0;
     private final int RED_FAMILY_MEMBER_INDEX = 1;
     private final int WHITE_FAMILY_MEMBER_INDEX = 2;
     private final int NEUTRAL_FAMILY_MEMBER_INDEX = 3;
+
 
     FamilyMember[] familyMembers = {new FamilyMember(Color.BLACK, 0), new FamilyMember(Color.RED, 0),
             new FamilyMember(Color.WHITE, 0), new FamilyMember(null, 0)};
@@ -62,6 +63,8 @@ public class Player {
     public Player(String id){
         this.id = id;
     }
+
+
 
 
 

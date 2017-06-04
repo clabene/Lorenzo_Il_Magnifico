@@ -44,7 +44,7 @@ public abstract class ActionSpace {
     }
     public void familyMemberRemoved(FamilyMember familyMember) {
         this.familyMembers.remove(familyMember);
-        if(familyMembers.isEmpty()) covered = false;
+        if(familyMembers.size() < MAX_NUMBER_OF_FAMILIARS) covered = false;
     }
     public FamilyMember getLastFamilyMemberAdded() {
         return familyMembers.get(familyMembers.size()-1);

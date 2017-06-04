@@ -29,5 +29,12 @@ public class CouncilActionSpace extends ActionSpace {
     }
 
 
+    public static void main(String[] args) {
+        CouncilActionSpace councilActionSpace  = new CouncilActionSpace();
+        System.out.println("A:"+ councilActionSpace.getBonus().toArray()[0]);
+        System.out.println("B:"+ councilActionSpace.getBonus().toArray()[1]);
+    }
+
+
 
 }

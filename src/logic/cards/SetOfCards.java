@@ -2,6 +2,7 @@ package logic.cards;
 
 import logic.exceptions.LimitedValueOffRangeException;
 import logic.gameStructure.PeriodNumber;
+import logic.player.Player;
 import logic.utility.LimitedInteger;
 import logic.utility.StaticVariables;
 
@@ -100,10 +101,19 @@ public class SetOfCards {
         return cards[VENTURE_CARD_INDEX];
     }
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws LimitedValueOffRangeException {
         SetOfCards s = new SetOfCards();
+        Player player = new Player();
         try {
-            s.cardAdded(new LandCard("pp", PeriodNumber.SECOND, 2, null, null));
+            player.tryToTakeCard( new LandCard("pp", PeriodNumber.SECOND, 2, null, null));
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        } catch (LimitedValueOffRangeException e) {
+            e.printStackTrace();
+        }
+
+
+        try {
             s.cardAdded(new LandCard("pp", PeriodNumber.SECOND, 2, null, null));
             s.cardAdded(new LandCard("pp", PeriodNumber.SECOND, 2, null, null));
             s.cardAdded(new LandCard("pp", PeriodNumber.SECOND, 2, null, null));
@@ -113,6 +123,8 @@ public class SetOfCards {
         } catch (ArrayIndexOutOfBoundsException | LimitedValueOffRangeException e){
             System.out.println("ninsivs");
         }
+
+        System.out.println(player.getPlank().getCards());
 
     }
 
