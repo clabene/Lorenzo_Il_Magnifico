@@ -27,8 +27,12 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
 
             Registry registry = LocateRegistry.getRegistry(ipAddress, port);
             RMIServerInterface obj = (RMIServerInterface) registry.lookup("RMIServerInterface");
-            obj.sendMessage("cane");
-            //UnicastRemoteObject.exportObject(obj, 0);
+            UnicastRemoteObject.exportObject(this, 0);
+
+            obj.sendMessage("cane", this);
+
+
+
 
         }
         catch (RemoteException e) {}
