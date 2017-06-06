@@ -14,8 +14,8 @@ public class WinnerElector {
 
     private ArrayList<Player> players = new ArrayList<>();
 
-    public WinnerElector(Player ... players){
-        Collections.addAll(this.players, players);
+    public void setPlayers(ArrayList<Player> players) {
+        this.players = players;
     }
 
     private void winnerCheck(){
