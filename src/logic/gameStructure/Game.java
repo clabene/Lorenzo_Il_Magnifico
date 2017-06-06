@@ -1,6 +1,8 @@
 package logic.gameStructure;
 
 import logic.actionSpaces.ActionSpace;
+import logic.board.Board;
+import logic.cards.Card;
 import logic.cards.VentureCard;
 import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.player.FamilyMember;
@@ -8,6 +10,7 @@ import logic.player.Player;
 import logic.player.VictoryPoint;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 
 /**
@@ -64,7 +67,6 @@ public class Game {
 
     public void selectionFamilyMember(ActionPhase actionPhase){
         actionPhase.selectionFamilyMemberPhase();
-
     }
 
     public void selectionActionSpace(ActionPhase actionPhase){
@@ -78,5 +80,27 @@ public class Game {
     public void movingFamilyMemberOnActionSpace(ActionPhase actionPhase, FamilyMember familyMember, ActionSpace actionSpace){
         actionPhase.putFamilyMemberOnActionSpace(familyMember, actionSpace);
     }
+
+    public void takingBackFamilyMembers(Turn turn){
+        turn.takeBackFamilyMembers();
+    }
+
+    public void puttingCardsOnBoard(Turn turn, Stack<Card> cards, Board board){
+        turn.putCardsOnBoard(cards, board);
+    }
+
+    private  void gettingNextTurnOrder(Turn turn){
+        turn.getNextTurnOrder();
+    }
+
+    private void settingPeriodDeck(Period period){
+        period.setPeriodDeck();
+    }
+
+    private void checkingExcomunication(Period period, ArrayList<Player> players, int minFaithPoints, ExcommunicationTassel tassel){
+        period.excommunicationCheck(players, minFaithPoints, tassel);
+    }
+
+
 
 }
