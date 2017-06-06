@@ -1,4 +1,4 @@
-package network;
+package network.server;
 
 /**
  * Created by Pinos on 06/06/2017.

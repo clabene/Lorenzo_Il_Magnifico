@@ -66,8 +66,6 @@ public class Player {
 
 
 
-
-
     /*
     * Players gains all the points and all the resources given as parameters
     * */
