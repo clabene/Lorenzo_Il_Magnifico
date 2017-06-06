@@ -15,6 +15,7 @@ public abstract class AbstractClient {
         return this.clientController;
     }
 
-    public abstract void connect();
+    public abstract void connect() ;
+
 
 }

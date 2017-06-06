@@ -46,7 +46,6 @@ public class Game {
         Period thirdPeriod = new Period(players);
         thirdPeriod.startPeriod(5, tassels[2]);
 
-
         winnerElector.getWinner();
     }
 

@@ -15,6 +15,6 @@ public abstract class AbstractServer {
         this.serverController = serverController;
     }
 
-    public abstract void startServer();
+    public abstract void startServer(int port);
 
 }
