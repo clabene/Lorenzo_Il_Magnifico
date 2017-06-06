@@ -15,6 +15,7 @@ public class SocketServer extends AbstractServer {
         try {
             ServerSocket serverSocket = new ServerSocket(port);
             Socket clientSocket = serverSocket.accept();
+            System.out.println("siamo alla frutta");
         } catch (IOException e){
             e.printStackTrace();
         }

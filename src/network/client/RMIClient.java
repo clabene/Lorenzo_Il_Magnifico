@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 
 /**
  * Created by IBM on 06/06/2017.
@@ -26,10 +27,17 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
 
             Registry registry = LocateRegistry.getRegistry(ipAddress, port);
             RMIServerInterface obj = (RMIServerInterface) registry.lookup("RMIServerInterface");
+            obj.sendMessage("cane");
+            //UnicastRemoteObject.exportObject(obj, 0);
 
         }
         catch (RemoteException e) {}
 
         catch (NotBoundException e) {}
+    }
+
+    @Override
+    public void sendMessage2(String string) {
+        System.out.println("chiamato metodo di client" + string);
     }
 }

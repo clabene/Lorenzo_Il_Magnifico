@@ -11,6 +11,7 @@ import java.rmi.server.UnicastRemoteObject;
 public class RMIServer extends AbstractServer implements RMIServerInterface{
 
 
+
     @Override
     public void startServer(int port) {
         System.out.println("RMI Server started");
@@ -28,10 +29,20 @@ public class RMIServer extends AbstractServer implements RMIServerInterface{
                 reg = LocateRegistry.getRegistry();
             }
 
-            reg.rebind("Server", stub);
+            reg.rebind("RMIServerInterface", stub);
+            System.out.println("ooooooooooooooooooooooo");
+
+            
         }catch (RemoteException e){
             e.printStackTrace();
         }
+
+
+    }
+
+    @Override
+    public void sendMessage(String string) {
+        System.out.println("chiamato metodo di server");
     }
 
 

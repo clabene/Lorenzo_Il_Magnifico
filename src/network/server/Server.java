@@ -6,8 +6,8 @@ package network.server;
  */
 public class Server implements ServerInterface {
 
-    private RMIServer rmiServer;
-    private SocketServer socketServer;
+    private RMIServer rmiServer = new RMIServer();
+    private SocketServer socketServer = new SocketServer();
 
     private final int RMI_PORT = 6789;
     private final int SOCKET_PORT = 9876;
@@ -19,6 +19,12 @@ public class Server implements ServerInterface {
     public void startServer(){
         rmiServer.startServer(RMI_PORT);
         socketServer.startServer(SOCKET_PORT);
+    }
+
+    public static void main(String[] args) {
+        Server server = new Server();
+        server.startServer();
+
     }
 
 }

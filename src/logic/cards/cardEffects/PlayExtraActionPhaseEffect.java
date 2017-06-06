@@ -62,7 +62,7 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
     @Override
     public void activate(Player player) {
 
-        this.actionPhase = new ActionPhase(player, null);
+        this.actionPhase = new ActionPhase();
 
         if(cardType != null && actionSpaces.isEmpty()) addActionSpaces(player);
 
@@ -77,9 +77,9 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
             actionPhase.incrementFamilyMemberValueRequest(player, familyMember);
 
             // bonuses activation
-            actionPhase.activateBonuses(selectedActionSpace);
+            actionPhase.activateBonuses(player ,selectedActionSpace);
 
-            if(actionPhase.putFamilyMemberOnActionSpace(familyMember, selectedActionSpace)) break;
+            if(actionPhase.putFamilyMemberOnActionSpace(player,familyMember, selectedActionSpace)) break;
 
             //todo restore board as if no bonus was activated (see comment in ActionPhase class for some idea)
         }
