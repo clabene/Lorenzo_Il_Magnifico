@@ -1,40 +1,24 @@
 package logic.gameStructure;
 
 import logic.cards.VentureCard;
-import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.player.Player;
 import logic.player.VictoryPoint;
 
 import java.util.ArrayList;
-
+import java.util.Collections;
 
 /**
- * Created by Pinos on 25/05/2017.
+ * Created by IBM on 06/06/2017.
  */
-public class Game {
-    ArrayList<Player> players = new ArrayList<>();
-    ExcommunicationTassel[] tessels = new ExcommunicationTassel[3];
+public class WinnerElector {
 
+    private ArrayList<Player> players = new ArrayList<>();
 
-    public void startGame(){
-
-        Period firstPeriod = new Period(players);
-        firstPeriod.startPeriod(3, tessels[0]);
-        //todo change of turn order also between periods
-        Period secondPeriod = new Period(players);
-        secondPeriod.startPeriod(4, tessels[1]);
-
-        Period thirdPeriod = new Period(players);
-        thirdPeriod.startPeriod(5, tessels[2]);
-
-
-        getWinner();
-
-
-
+    public WinnerElector(Player ... players){
+        Collections.addAll(this.players, players);
     }
 
-    public void winnerCheck(){
+    private void winnerCheck(){
 
         for(Player tmp: players){
             tmp.gain(tmp.getFaithPoints().calculateVictoryPointsFromPosition(tmp.getFaithPoints().getTrackPosition().getValue()));
@@ -49,7 +33,7 @@ public class Game {
 
     }
 
-    public int[] checkFirstPositionMilitaryTrack(){
+    private int[] checkFirstPositionMilitaryTrack(){
         int[] positions = {-1, -1};
 
         for(Player tmp: players){
@@ -66,7 +50,7 @@ public class Game {
 
     }
 
-    public void getVictoryPointsFromMilitaryPosition(){
+    private void getVictoryPointsFromMilitaryPosition(){
         int[] positions = checkFirstPositionMilitaryTrack();
         if(positions[1] == positions[0]){
             for(Player tmp: players){
@@ -97,24 +81,5 @@ public class Game {
         }
         return winner;
     }
-
-    public void addPlayer(Player player){
-        this.players.add(player);
-    }
-
-    public static void main(String[] args) {
-
-        Game game = new Game();
-        Player player = new Player("claudio");
-        game.addPlayer(player);
-        game.startGame();
-
-        return;
-
-    }
-
-
-
-
 
 }

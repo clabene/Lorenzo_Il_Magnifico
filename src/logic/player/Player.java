@@ -56,12 +56,9 @@ public class Player {
 
     private Board board;
 
-    public Player(Resource ... resources){
-        this.plank = new Plank(resources);
-    }
-
-    public Player(String id){
+    public Player(String id, Resource ... resources){
         this.id = id;
+        this.plank = new Plank(resources);
     }
 
 
@@ -108,7 +105,7 @@ public class Player {
     }
 
     public static void main(String[] a){
-        Player player = new Player(new Slave(21));
+        Player player = new Player(null, new Slave(21));
         player.gain(new FaithPointsTrack(10));
         boolean b = player.lose(new FaithPointsTrack(15), new Slave(22));
         System.out.println("fede "+ player.getFaithPoints().getTrackPosition().getValue());
