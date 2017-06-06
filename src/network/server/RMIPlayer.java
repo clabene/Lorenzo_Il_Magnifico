@@ -3,5 +3,5 @@ package network.server;
 /**
  * Created by Pinos on 06/06/2017.
  */
-public class RMIPlayer {
+public class RMIPlayer extends RemotePlayer {
 }
