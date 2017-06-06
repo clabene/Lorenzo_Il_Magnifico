@@ -69,7 +69,7 @@ public class ActionPhase {
     }
 
     public static void main(String[] ar){
-        Player p = new Player(new Slave(2));
+        Player p = new Player(null, new Slave(2));
         p.getBonuses().add(new BonusOnFamilyMemberPlacement(ActionSpaceType.MARKET, 1));
         p.getBonuses().add(new BonusOnFamilyMemberPlacement(ActionSpaceType.TOWER, 6));
         p.getBonuses().add(new BonusOnFamilyMemberPlacement(ActionSpaceType.MARKET, -1));
