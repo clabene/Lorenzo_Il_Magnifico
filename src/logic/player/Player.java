@@ -62,10 +62,8 @@ public class Player {
         this.plank = new Plank(resources);
     }
 
-    public Player (String id){
-        this.id = id;
+    public Player(String s){
     }
-
 
     /*
     * Players gains all the points and all the resources given as parameters
