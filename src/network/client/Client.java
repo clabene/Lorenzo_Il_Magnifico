@@ -7,6 +7,10 @@ import java.util.Scanner;
  */
 public class Client implements ClientInterface {
 
+    private final int RMI_PORT = 6789;
+    private final int SOCKET_PORT = 9876;
+    private int port;
+
     private AbstractClient abstractClient;
 
     private int selectNetworkType(){
@@ -14,14 +18,19 @@ public class Client implements ClientInterface {
         System.out.println("1 : RMI");
         System.out.println("2 : Socket");
         Scanner in = new Scanner(System.in);
-        int a = in.nextInt();
-        return a;
+        return in.nextInt();
+
     }
 
-    public void selectNetworkSetting(){
+    public void setNetworkType(){
         if(selectNetworkType() == 1) abstractClient = new RMIClient();
-        if(selectNetworkType() == 2) abstractClient = new SocketClient();
-
+        if(selectNetworkType() == 2) abstractClient = new SocketClient(SOCKET_PORT);
     }
+
+    public static void main(String[] args){
+        Client client = new Client();
+        client.setNetworkType();
+    }
+
 
 }
