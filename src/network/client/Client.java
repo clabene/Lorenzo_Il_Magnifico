@@ -9,9 +9,8 @@ public class Client implements ClientInterface {
 
     private final int RMI_PORT = 6789;
     private final int SOCKET_PORT = 9876;
-    private int port;
 
-    private AbstractClient abstractClient;
+    private AbstractClient myClient;
 
     private int selectNetworkType(){
         System.out.println("What network is preferred?");
@@ -19,17 +18,21 @@ public class Client implements ClientInterface {
         System.out.println("2 : Socket");
         Scanner in = new Scanner(System.in);
         return in.nextInt();
-
     }
 
     public void setNetworkType(){
-        if(selectNetworkType() == 1) abstractClient = new RMIClient();
-        if(selectNetworkType() == 2) abstractClient = new SocketClient(SOCKET_PORT);
+        if(selectNetworkType() == 1) myClient = new RMIClient(RMI_PORT);
+        if(selectNetworkType() == 2) myClient = new SocketClient(SOCKET_PORT);
+    }
+
+    public AbstractClient getMyClient() {
+        return myClient;
     }
 
     public static void main(String[] args){
         Client client = new Client();
         client.setNetworkType();
+        client.getMyClient().connect();
     }
 
 

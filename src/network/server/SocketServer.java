@@ -9,20 +9,14 @@ import java.net.Socket;
  */
 public class SocketServer extends AbstractServer {
 
-    private int port;
-
-    public SocketServer (int port){
-        this.port = port;
-    }
 
     @Override
-    public void startServer() {
+    public void startServer(int port) {
         try {
             ServerSocket serverSocket = new ServerSocket(port);
             Socket clientSocket = serverSocket.accept();
-
         } catch (IOException e){
-            System.out.println("main, Server class\n"+e.getMessage());
+            e.printStackTrace();
         }
     }
     /*
