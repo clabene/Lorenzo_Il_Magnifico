@@ -83,8 +83,8 @@ public class Game {
         this.selectedFamilyMember = actionPhase.selectionFamilyMemberPhase(player);
         if(selectedActionSpace != null) puttingFamilyMemberOnActionSpace(player);
     }
-    public void selectionActionSpace(Player player, ActionPhase actionPhase){
-        this.selectedActionSpace = actionPhase.selectionActionSpacePhase(player, turn.getBoard());
+    public void selectionActionSpace(Player player, ActionPhase actionPhase, Board board){
+        this.selectedActionSpace = actionPhase.selectionActionSpacePhase(player, board);
         if(selectedFamilyMember != null) puttingFamilyMemberOnActionSpace(player);
     }
 
@@ -107,8 +107,8 @@ public class Game {
         turn.putCardsOnBoard(cards, board);
     }
 
-    private  void gettingNextTurnOrder(Turn turn){
-        this.players = turn.getNextTurnOrder(players);
+    private  void gettingNextTurnOrder(Board board){
+        this.players = turn.getNextTurnOrder(players, board);
     }
 
     private void settingPeriodDeck(){

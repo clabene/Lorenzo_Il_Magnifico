@@ -16,17 +16,17 @@ import java.util.Stack;
  */
 public class Turn {
     //private ArrayList<Player> players;
-    private Board board;
+    //private Board board;
 
     public Turn(){
         //this.players = players;
-        this.board = new Board();
+        //this.board = new Board();
     }
-
+/*
     public Board getBoard() {
         return board;
     }
-
+*/
     /*
     cards are putted on board
     run action phase for each player and at the end of the turn get the
@@ -56,7 +56,7 @@ public class Turn {
     and return the turn order as an arrayList of players
     */
 
-    public ArrayList<Player> getNextTurnOrder(ArrayList<Player> players){
+    public ArrayList<Player> getNextTurnOrder(ArrayList<Player> players, Board board){
 
         ArrayList<Player> newTurn  = new ArrayList<>();
         ArrayList<String> ids = board.getCouncilArea().getTurnOrder();
