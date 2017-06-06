@@ -15,15 +15,17 @@ import java.util.Stack;
  * Created by Pinos on 25/05/2017.
  */
 public class Turn {
-    ArrayList<Player> players;
-    Board board;
+    //private ArrayList<Player> players;
+    private Board board;
 
-    public Turn(ArrayList<Player> players){
-        this.players = players;
+    public Turn(){
+        //this.players = players;
         this.board = new Board();
-
     }
 
+    public Board getBoard() {
+        return board;
+    }
 
     /*
     cards are putted on board
@@ -31,7 +33,7 @@ public class Turn {
     order of the next turn from the council space.
      */
 
-
+    /*
     public void playTurn(Stack<Card> cards){
 
         putCardsOnBoard(cards , board);
@@ -44,24 +46,25 @@ public class Turn {
         this.players = getNextTurnOrder();
     }
 
+    public Board getBoard() {
+        return board;
+    }
+    */
+
     /*
     Take the turn order from as an arrayList of Strings (id)
     and return the turn order as an arrayList of players
     */
 
-    public ArrayList<Player> getNextTurnOrder(){
+    public ArrayList<Player> getNextTurnOrder(ArrayList<Player> players){
 
         ArrayList<Player> newTurn  = new ArrayList<>();
         ArrayList<String> ids = board.getCouncilArea().getTurnOrder();
-        for(String id : ids){
-            for(Player player: players){
-                if(player.getId() == id)
+        for(String id : ids)
+            for(Player player: players)
+                if (player.getId() == id)
                     newTurn.add(player);
-            }
-        }
-
         return newTurn;
-
     }
 
     /*
@@ -69,7 +72,7 @@ public class Turn {
     */
 
 
-    public void takeBackFamilyMembers(){
+    public void takeBackFamilyMembers(ArrayList<Player> players){
         for(Player tmp: players){
             for(FamilyMember familyMember: tmp.getFamilyMembers()){
                 familyMember.setInActionSpace(false);

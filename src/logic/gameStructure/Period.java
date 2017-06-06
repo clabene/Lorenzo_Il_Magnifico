@@ -19,10 +19,10 @@ import java.util.Stack;
  */
 public class Period {
 
-    ArrayList<Player> players;
-    Stack<Card> cards;
+    //private ArrayList<Player> players;
+    private Stack<Card> cards;
 
-
+/*
     public Period( ArrayList<Player> players){
 
         this.players = players;
@@ -42,6 +42,8 @@ public class Period {
 
 
     }
+    */
+
 
     /*
     the input is a json file were there are cards setted such that
@@ -156,7 +158,6 @@ public class Period {
             if(tmp.getFaithPoints().getTrackPosition().getValue() < minFaithPoints){
                 System.out.println("You faith points are not enough, so you receive an excommunication from the Church");
                 tassel.activate(tmp);
-
             }
             else{
                 tmp.excommunicationDecision();

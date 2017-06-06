@@ -25,6 +25,7 @@ import logic.board.Area;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.UUID;
 
 
 /**
@@ -56,11 +57,10 @@ public class Player {
 
     private Board board;
 
-    public Player(String id, Resource ... resources){
-        this.id = id;
+    public Player(Resource ... resources){
+        this.id = UUID.randomUUID().toString();
         this.plank = new Plank(resources);
     }
-
 
 
     /*

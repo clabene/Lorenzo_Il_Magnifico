@@ -3,11 +3,10 @@ package logic.gameStructure;
 import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
 import logic.cards.Card;
-import logic.cards.VentureCard;
 import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.player.FamilyMember;
 import logic.player.Player;
-import logic.player.VictoryPoint;
+
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -21,15 +20,17 @@ public class Game {
     private ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
     private WinnerElector winnerElector = new WinnerElector();
 
-    private Period period;
-    private Turn turn;
-    private ActionPhase actionPhase;
+    private Period period = new Period();
+    private Turn turn = new Turn();
+    private ActionPhase actionPhase = new ActionPhase();
     private FamilyMember selectedFamilyMember;
     private ActionSpace selectedActionSpace;
 
+    public Game(){
 
+    }
 
-
+/*
     //todo add players
 
     public void startGame(){
@@ -49,8 +50,7 @@ public class Game {
         winnerElector.getWinner();
     }
 
-
-
+*/
 
 
     public void addPlayer(Player player){
@@ -60,47 +60,62 @@ public class Game {
     public static void main(String[] args) {
 
         Game game = new Game();
-        Player player = new Player("claudio");
+        Player player = new Player();
         game.addPlayer(player);
-        game.startGame();
+        //game.startGame();
 
         return;
 
     }
 
-    public void selectionFamilyMember(ActionPhase actionPhase){
-        this.selectedFamilyMember = actionPhase.selectionFamilyMemberPhase();
+    public void setPeriod(Period period) {
+        this.period = period;
+    }
+    public void setTurn(Turn turn) {
+        this.turn = turn;
+    }
+    public void setActionPhase(ActionPhase actionPhase) {
+        this.actionPhase = actionPhase;
     }
 
-    public void selectionActionSpace(ActionPhase actionPhase){
-        this.selectedActionSpace = actionPhase.selectionActionSpacePhase();
+
+    public void selectionFamilyMember(Player player, ActionPhase actionPhase){
+        this.selectedFamilyMember = actionPhase.selectionFamilyMemberPhase(player);
+        if(selectedActionSpace != null) puttingFamilyMemberOnActionSpace(player);
+    }
+    public void selectionActionSpace(Player player, ActionPhase actionPhase){
+        this.selectedActionSpace = actionPhase.selectionActionSpacePhase(player, turn.getBoard());
+        if(selectedFamilyMember != null) puttingFamilyMemberOnActionSpace(player);
     }
 
-    public void activationBonuses( ActionSpace actionSpace){
-        actionPhase.activateBonuses(actionSpace);
+    private void puttingFamilyMemberOnActionSpace(Player player){
+        actionPhase.activateBonuses(player, selectedActionSpace);
+        actionPhase.putFamilyMemberOnActionSpace(player, selectedFamilyMember, selectedActionSpace);
+        selectedFamilyMember = null;
+        selectedActionSpace = null;
     }
 
-    public void movingFamilyMemberOnActionSpace( FamilyMember familyMember, ActionSpace actionSpace){
-        actionPhase.putFamilyMemberOnActionSpace(familyMember, actionSpace);
+    public void checkingIfPlayable(Player player){
+        actionPhase.checkPhasePlayable(player);
     }
 
-    public void takingBackFamilyMembers(Turn turn){
-        turn.takeBackFamilyMembers();
+    public void takingBackFamilyMembers(){
+        turn.takeBackFamilyMembers(players);
     }
 
-    public void puttingCardsOnBoard(Turn turn, Stack<Card> cards, Board board){
+    public void puttingCardsOnBoard( Stack<Card> cards, Board board){
         turn.putCardsOnBoard(cards, board);
     }
 
     private  void gettingNextTurnOrder(Turn turn){
-        this.players = turn.getNextTurnOrder();
+        this.players = turn.getNextTurnOrder(players);
     }
 
-    private void settingPeriodDeck(Period period){
+    private void settingPeriodDeck(){
         period.setPeriodDeck();
     }
 
-    private void checkingExcomunication(Period period, ArrayList<Player> players, int minFaithPoints, ExcommunicationTassel tassel){
+    private void checkingExcomunication(int minFaithPoints, ExcommunicationTassel tassel){
         period.excommunicationCheck(players, minFaithPoints, tassel);
     }
 

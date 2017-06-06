@@ -23,15 +23,23 @@ import java.util.Scanner;
  */
 public class ActionPhase {
 
-    private Player player;
-    private Board board;
-
+    //private Player player;
+    //private Board board;
+/*
     public ActionPhase(Player player, Board board){
         this.player = player;
         this.board = board;
     }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+*/
+    /*
     public void playActionPhase(){
 
         while(true){
@@ -60,25 +68,26 @@ public class ActionPhase {
 
             Observation: the only actionSpaces that can cause the problem described up-here are the tower action spaces, therefore
             something like this could be a solution:
-            */
+
             Card card = ( (TowerActionSpace) actionSpace).getCard();
             actionSpace = new TowerActionSpace(actionSpace.getMinValueToPlaceFamiliar(), actionSpace.getBonus().toArray(new Gainable[actionSpace.getBonus().size()]));
             ((TowerActionSpace)actionSpace).setCard(card);
 
         }
     }
+    */
 
     public static void main(String[] ar){
         Player p = new Player(null, new Slave(2));
         p.getBonuses().add(new BonusOnFamilyMemberPlacement(ActionSpaceType.MARKET, 1));
         p.getBonuses().add(new BonusOnFamilyMemberPlacement(ActionSpaceType.TOWER, 6));
         p.getBonuses().add(new BonusOnFamilyMemberPlacement(ActionSpaceType.MARKET, -1));
-        ActionPhase a = new ActionPhase(p, new Board());
-        a.playActionPhase();
+        //ActionPhase a = new ActionPhase(p, new Board());
+        //a.playActionPhase();
         System.out.println(p.getPlank().getSetOfResources());
     }
 
-    public boolean putFamilyMemberOnActionSpace(FamilyMember familyMember, ActionSpace actionSpace) {
+    public boolean putFamilyMemberOnActionSpace(Player player, FamilyMember familyMember, ActionSpace actionSpace) {
         if (familyMember.getValue() >= actionSpace.getMinValueToPlaceFamiliar() ) {
             /*
             familyMember.setInActionSpace(true); // Should not this go inside the if statement?
@@ -104,7 +113,7 @@ public class ActionPhase {
         return false;
     }
 
-    private boolean checkPhasePlayable() {
+    public boolean checkPhasePlayable(Player player) {
         if (player.getFamilyMembersAvailable().size() == 1 &&
                 player.getFamilyMembersAvailable().contains(new FamilyMember(null, 0)) &&
                 player.getPlank().getSetOfResources().getQuantityOfSlaves() == 0) {
@@ -133,7 +142,7 @@ public class ActionPhase {
     }
 
 
-    public FamilyMember selectionFamilyMemberPhase(){
+    public FamilyMember selectionFamilyMemberPhase(Player player){
         FamilyMember familyMember = player.selectFamilyMember();
         if (familyMember.getInActionSpace()) {
             System.out.println("Il familiare è occupato");
@@ -143,7 +152,7 @@ public class ActionPhase {
 
     }
 
-    public ActionSpace selectionActionSpacePhase(){
+    public ActionSpace selectionActionSpacePhase(Player player, Board board){
         Area area = player.selectArea(board);
         ActionSpace actionSpace = player.selectActionSpace(area);
         if (actionSpace.getCovered()) {
@@ -153,7 +162,7 @@ public class ActionPhase {
         return actionSpace;
     }
 
-    public void activateBonuses(ActionSpace actionSpace){
+    public void activateBonuses(Player player, ActionSpace actionSpace){
         for(Bonus tmp : player.getBonuses())
             tmp.activateBonus(actionSpace);
     }
