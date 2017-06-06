@@ -1,5 +1,7 @@
 package network.server;
 
+import network.client.RMIClientInterface;
+
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -8,19 +10,18 @@ import java.rmi.server.UnicastRemoteObject;
 /**
  * Created by Pinos on 06/06/2017.
  */
-public class RMIServer extends AbstractServer implements RMIServerInterface{
+public class RMIServer extends AbstractServer  implements RMIServerInterface{
 
 
 
     @Override
     public void startServer(int port) {
         System.out.println("RMI Server started");
-        RMIServer obj = new RMIServer();
+
 
         try{
-            RMIServerInterface stub = (RMIServerInterface) UnicastRemoteObject.exportObject(obj, 0);
-            Registry reg;
 
+            Registry reg;
             try{
                 reg = LocateRegistry.createRegistry(port);
                 System.out.println("java RMI registry created");
@@ -29,10 +30,12 @@ public class RMIServer extends AbstractServer implements RMIServerInterface{
                 reg = LocateRegistry.getRegistry();
             }
 
-            reg.rebind("RMIServerInterface", stub);
+            reg.rebind("RMIServerInterface", this);
+            UnicastRemoteObject.exportObject(this, port);
             System.out.println("ooooooooooooooooooooooo");
 
-            
+
+
         }catch (RemoteException e){
             e.printStackTrace();
         }
@@ -41,8 +44,10 @@ public class RMIServer extends AbstractServer implements RMIServerInterface{
     }
 
     @Override
-    public void sendMessage(String string) {
-        System.out.println("chiamato metodo di server");
+    public void sendMessage(String string, RMIClientInterface c) throws RemoteException {
+        System.out.println("chiamato metodo di server" +string);
+        c.sendMessage2(string);
+
     }
 
 
