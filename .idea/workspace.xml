@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/AbstractClient.java" afterPath="$PROJECT_DIR$/src/network/client/AbstractClient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/SocketClient.java" afterPath="$PROJECT_DIR$/src/network/client/SocketClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/server/SocketServer.java" afterPath="$PROJECT_DIR$/src/network/server/SocketServer.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,22 +36,45 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SocketClient.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SocketClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/network/client/SocketClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+            <state relative-caret-position="306">
+              <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AbstractClient.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AbstractClient.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/network/client/AbstractClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-              <folding />
+            <state relative-caret-position="238">
+              <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+              <folding>
+                <element signature="e#223#224#0" expanded="true" />
+                <element signature="e#279#280#0" expanded="true" />
+                <element signature="e#331#332#0" expanded="true" />
+                <element signature="e#375#376#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractClient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../src fatto bene/main/java/it/polimi/cof/network/client/AbstractClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="75" column="32" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1492#1493#0" expanded="false" />
+                <element signature="e#1523#1524#0" expanded="false" />
+                <element signature="e#1648#1649#0" expanded="false" />
+                <element signature="e#1676#1677#0" expanded="false" />
+                <element signature="e#1829#1830#0" expanded="false" />
+                <element signature="e#1863#1864#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -124,10 +147,10 @@
         <option value="$PROJECT_DIR$/src/logic/gameStructure/Turn.java" />
         <option value="$PROJECT_DIR$/src/logic/gameStructure/Game.java" />
         <option value="$PROJECT_DIR$/src/network/client/Client.java" />
-        <option value="$PROJECT_DIR$/src/network/client/AbstractClient.java" />
         <option value="$PROJECT_DIR$/src/network/client/RMIClient.java" />
         <option value="$PROJECT_DIR$/src/network/server/SocketServer.java" />
         <option value="$PROJECT_DIR$/src/network/client/SocketClient.java" />
+        <option value="$PROJECT_DIR$/src/network/client/AbstractClient.java" />
       </list>
     </option>
   </component>
@@ -710,13 +733,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495533735855</updated>
     </task>
-    <task id="LOCAL-00010" summary="Losable interface (former Expendable) &amp; lose method">
-      <created>1495564719743</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1495564719743</updated>
-    </task>
     <task id="LOCAL-00011" summary="Losable interface (former Expendable) &amp; lose method">
       <created>1495571315821</created>
       <option name="number" value="00011" />
@@ -1053,7 +1069,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496767018194</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="network skeleton">
+      <created>1496768012117</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1496768012117</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1196,13 +1219,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../src fatto bene/main/java/it/polimi/cof/network/protocol/socket/ClientProtocol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="796" column="29" selection-start-line="796" selection-start-column="29" selection-end-line="796" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../src fatto bene/main/java/it/polimi/cof/network/protocol/socket/ServerProtocol.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="563">
@@ -1556,14 +1572,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/network/client/AbstractClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/OneDrive/Documenti/UNO da demolire knockout/src/com/company/client/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
@@ -1598,9 +1606,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/network/client/SocketClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+        <state relative-caret-position="306">
+          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../src fatto bene/main/java/it/polimi/cof/network/client/AbstractClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="75" column="32" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1492#1493#0" expanded="false" />
+            <element signature="e#1523#1524#0" expanded="false" />
+            <element signature="e#1648#1649#0" expanded="false" />
+            <element signature="e#1676#1677#0" expanded="false" />
+            <element signature="e#1829#1830#0" expanded="false" />
+            <element signature="e#1863#1864#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/client/AbstractClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+          <folding>
+            <element signature="e#223#224#0" expanded="true" />
+            <element signature="e#279#280#0" expanded="true" />
+            <element signature="e#331#332#0" expanded="true" />
+            <element signature="e#375#376#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

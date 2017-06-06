@@ -5,6 +5,15 @@ package network.client;
  */
 public abstract class AbstractClient {
 
+    private ClientInterface clientController;
+
+    public void setClientController(ClientInterface clientController) {
+        this.clientController = clientController;
+    }
+
+    public ClientInterface getClientController() {
+        return this.clientController;
+    }
 
     public abstract void connect();
 
