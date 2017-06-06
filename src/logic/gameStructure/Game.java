@@ -1,7 +1,11 @@
 package logic.gameStructure;
 
+import logic.actionSpaces.ActionSpace;
+import logic.cards.VentureCard;
 import logic.excommunicationTessels.ExcommunicationTassel;
+import logic.player.FamilyMember;
 import logic.player.Player;
+import logic.player.VictoryPoint;
 
 import java.util.ArrayList;
 
@@ -14,30 +18,33 @@ public class Game {
     private ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
     private WinnerElector winnerElector = new WinnerElector();
 
-    public Game(){
+    private Period period;
+    private Turn turn;
+    private ActionPhase actionPhase;
 
-    }
 
-    public ArrayList<Player> getPlayers() {
-        return players;
-    }
+
+    //todo add players
 
     public void startGame(){
 
         winnerElector.setPlayers(this.players); //game starts when all players joined
 
         Period firstPeriod = new Period(players);
-        firstPeriod.startPeriod(3, tassels[0]);
+        firstPeriod.startPeriod(3, tessels[0]);
         //todo change of turn order also between periods
         Period secondPeriod = new Period(players);
-        secondPeriod.startPeriod(4, tassels[1]);
+        secondPeriod.startPeriod(4, tessels[1]);
 
         Period thirdPeriod = new Period(players);
-        thirdPeriod.startPeriod(5, tassels[2]);
+        thirdPeriod.startPeriod(5, tessels[2]);
 
 
         winnerElector.getWinner();
     }
+
+
+
 
 
     public void addPlayer(Player player){
@@ -55,8 +62,21 @@ public class Game {
 
     }
 
+    public void selectionFamilyMember(ActionPhase actionPhase){
+        actionPhase.selectionFamilyMemberPhase();
 
+    }
 
+    public void selectionActionSpace(ActionPhase actionPhase){
+        actionPhase.selectionActionSpacePhase();
+    }
 
+    public void activationBonuses(ActionPhase actionPhase, ActionSpace actionSpace){
+        actionPhase.activateBonuses(actionSpace);
+    }
+
+    public void movingFamilyMemberOnActionSpace(ActionPhase actionPhase, FamilyMember familyMember, ActionSpace actionSpace){
+        actionPhase.putFamilyMemberOnActionSpace(familyMember, actionSpace);
+    }
 
 }

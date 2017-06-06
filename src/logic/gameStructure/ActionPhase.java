@@ -133,7 +133,7 @@ public class ActionPhase {
     }
 
 
-    private FamilyMember selectionFamilyMemberPhase(){
+    public FamilyMember selectionFamilyMemberPhase(){
         FamilyMember familyMember = player.selectFamilyMember();
         if (familyMember.getInActionSpace()) {
             System.out.println("Il familiare è occupato");
@@ -141,10 +141,9 @@ public class ActionPhase {
         }
         return familyMember;
 
-
     }
 
-    private ActionSpace selectionActionSpacePhase(){
+    public ActionSpace selectionActionSpacePhase(){
         Area area = player.selectArea(board);
         ActionSpace actionSpace = player.selectActionSpace(area);
         if (actionSpace.getCovered()) {
