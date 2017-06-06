@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="testing">
+    <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/gameStructure/ActionPhase.java" afterPath="$PROJECT_DIR$/src/logic/gameStructure/ActionPhase.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/gameStructure/Game.java" afterPath="$PROJECT_DIR$/src/logic/gameStructure/Game.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -105,8 +104,8 @@
       <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/logic/gameStructure/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="22" column="12" lean-forward="false" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+            <state relative-caret-position="978">
+              <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1222#1223#0" expanded="true" />
@@ -1000,13 +999,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495533735855</updated>
     </task>
-    <task id="LOCAL-00002" summary="no">
-      <created>1495553021356</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1495553021357</updated>
-    </task>
     <task id="LOCAL-00003" summary="no">
       <created>1495553621642</created>
       <option name="number" value="00003" />
@@ -1343,7 +1335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496739955307</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="testing">
+      <created>1496741727891</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1496741727891</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1884,8 +1883,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/gameStructure/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="22" column="12" lean-forward="false" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+        <state relative-caret-position="978">
+          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1222#1223#0" expanded="true" />
