@@ -24,6 +24,9 @@ public class Game {
     private Period period;
     private Turn turn;
     private ActionPhase actionPhase;
+    private FamilyMember selectedFamilyMember;
+    private ActionSpace selectedActionSpace;
+
 
 
 
@@ -66,18 +69,18 @@ public class Game {
     }
 
     public void selectionFamilyMember(ActionPhase actionPhase){
-        actionPhase.selectionFamilyMemberPhase();
+        this.selectedFamilyMember = actionPhase.selectionFamilyMemberPhase();
     }
 
     public void selectionActionSpace(ActionPhase actionPhase){
-        actionPhase.selectionActionSpacePhase();
+        this.selectedActionSpace = actionPhase.selectionActionSpacePhase();
     }
 
-    public void activationBonuses(ActionPhase actionPhase, ActionSpace actionSpace){
+    public void activationBonuses( ActionSpace actionSpace){
         actionPhase.activateBonuses(actionSpace);
     }
 
-    public void movingFamilyMemberOnActionSpace(ActionPhase actionPhase, FamilyMember familyMember, ActionSpace actionSpace){
+    public void movingFamilyMemberOnActionSpace( FamilyMember familyMember, ActionSpace actionSpace){
         actionPhase.putFamilyMemberOnActionSpace(familyMember, actionSpace);
     }
 
@@ -90,7 +93,7 @@ public class Game {
     }
 
     private  void gettingNextTurnOrder(Turn turn){
-        turn.getNextTurnOrder();
+        this.players = turn.getNextTurnOrder();
     }
 
     private void settingPeriodDeck(Period period){
