@@ -10,14 +10,17 @@ import java.util.ArrayList;
  * Created by Pinos on 25/05/2017.
  */
 public class Game {
-    ArrayList<Player> players = new ArrayList<>();
-    ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
-    WinnerElector winnerElector = new WinnerElector();
+    private ArrayList<Player> players = new ArrayList<>();
+    private ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
+    private WinnerElector winnerElector = new WinnerElector();
 
     public Game(){
 
     }
 
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
 
     public void startGame(){
 
@@ -34,9 +37,6 @@ public class Game {
 
 
         winnerElector.getWinner();
-
-
-
     }
 
 

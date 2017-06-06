@@ -5,7 +5,6 @@ import logic.player.Player;
 import logic.player.VictoryPoint;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Created by IBM on 06/06/2017.
