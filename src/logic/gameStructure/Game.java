@@ -31,8 +31,6 @@ public class Game {
     }
 
 /*
-    //todo add players
-
     public void startGame(){
 
         winnerElector.setPlayers(this.players); //game starts when all players joined
@@ -63,8 +61,6 @@ public class Game {
         game.addPlayer(player);
         //game.startGame();
 
-        return;
-
     }
 
     public void setPeriod(Period period) {
@@ -82,6 +78,7 @@ public class Game {
         this.selectedFamilyMember = actionPhase.selectionFamilyMemberPhase(player);
         if(selectedActionSpace != null) puttingFamilyMemberOnActionSpace(player);
     }
+
     public void selectionActionSpace(Player player, ActionPhase actionPhase, Board board){
         this.selectedActionSpace = actionPhase.selectionActionSpacePhase(player, board);
         if(selectedFamilyMember != null) puttingFamilyMemberOnActionSpace(player);
@@ -102,7 +99,7 @@ public class Game {
         turn.takeBackFamilyMembers(players);
     }
 
-    public void puttingCardsOnBoard( Stack<Card> cards, Board board){
+    public void puttingCardsOnBoard(Stack<Card> cards, Board board){
         turn.putCardsOnBoard(cards, board);
     }
 

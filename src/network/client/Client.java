@@ -34,12 +34,6 @@ public class Client implements ClientInterface {
         client.setNetworkType();
         client.getMyClient().connect();
 
-        Scanner input = new Scanner(System.in);
-
-        while(true){
-            if(input.nextInt() == 5)
-                System.out.println("ciao");
-        }
     }
 
 

@@ -1,6 +1,6 @@
 package network.client;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 
 /**
@@ -21,13 +21,16 @@ public class SocketClient extends AbstractClient {
     public void connect() {
         try {
             socket = new Socket(ipAddress, port);
+            sendStringMessage("Prova di messaggio via socket da client a server");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-
-
-
+    private void sendStringMessage(String s) throws IOException{
+        PrintWriter p = new PrintWriter(new BufferedOutputStream(socket.getOutputStream()));
+        p.write(s);
+        p.flush();
+    }
 
 }

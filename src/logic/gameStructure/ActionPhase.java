@@ -101,7 +101,7 @@ public class ActionPhase {
             familyMember.setInActionSpace(true);
             player.gain(actionSpace.getBonus().toArray(new Gainable[actionSpace.getBonus().size()]));
             if(!actionSpace.action(player)) {
-                player.lose(actionSpace.getBonus().toArray(new Losable[actionSpace.getBonus().size()])); //todo check if this works
+                player.lose(actionSpace.getBonus().toArray(new Losable[actionSpace.getBonus().size()]));
                 actionSpace.familyMemberRemoved(familyMember);
                 familyMember.setInActionSpace(false);
                 return false;
@@ -149,7 +149,6 @@ public class ActionPhase {
             return null;
         }
         return familyMember;
-
     }
 
     public ActionSpace selectionActionSpacePhase(Player player, Board board){
