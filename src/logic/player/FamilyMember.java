@@ -11,7 +11,7 @@ public class FamilyMember {
     private Color color; //null iff neutral
     private int value;
     private boolean inActionSpace;
-    private String playerId; //same of player that owns the fmaily member
+    private String playerId; //same of player that owns the family member
 
     public FamilyMember(Color color, int value){
         this.color = color;

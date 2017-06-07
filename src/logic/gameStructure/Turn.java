@@ -4,6 +4,7 @@ package logic.gameStructure;
 import logic.actionSpaces.TowerActionSpace;
 import logic.board.Board;
 import logic.board.Tower;
+import logic.board.TowerArea;
 import logic.cards.Card;
 import logic.player.FamilyMember;
 import logic.player.Player;
@@ -78,6 +79,8 @@ public class Turn {
                 familyMember.setInActionSpace(false);
             }
         }
+        //todo in areas where there is an array of familymembers we should remove all the elements
+
     }
 
     /*

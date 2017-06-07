@@ -6,6 +6,7 @@ import logic.cards.Card;
 import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.player.FamilyMember;
 import logic.player.Player;
+import logic.utility.CardSetupHandler;
 
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import java.util.Stack;
  */
 public class Game {
     private ArrayList<Player> players = new ArrayList<>();
+
     private ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
     private WinnerElector winnerElector = new WinnerElector();
 
@@ -25,8 +27,12 @@ public class Game {
     private ActionPhase actionPhase = new ActionPhase();
     private FamilyMember selectedFamilyMember;
     private ActionSpace selectedActionSpace;
+    Stack<Card> deck = new Stack<>();
 
     public Game(){
+
+
+
 
     }
 
@@ -113,6 +119,11 @@ public class Game {
 
     private void checkingExcomunication(int minFaithPoints, ExcommunicationTassel tassel){
         period.excommunicationCheck(players, minFaithPoints, tassel);
+    }
+
+    public void setDeck(){
+        CardSetupHandler cartSetupHandler = new CardSetupHandler();
+        this.deck = cartSetupHandler.readFromFile();
     }
 
 
