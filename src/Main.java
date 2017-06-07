@@ -1,6 +1,10 @@
+import logic.actionSpaces.ActionSpace;
+import logic.actionSpaces.TowerActionSpace;
+import logic.interfaces.Losable;
 import logic.player.Plank;
 import logic.player.Player;
 import logic.pointsTracks.MilitaryPointsTrack;
+import logic.resources.Wood;
 
 import java.util.ArrayList;
 
@@ -76,7 +80,7 @@ public class Main {
                 System.out.println("a");
             }
         }
-        */
+
         Player p = new Player();
         p.gain(new MilitaryPointsTrack(7));
         System.out.println(p.lose(new MilitaryPointsTrack(10)));
@@ -84,6 +88,12 @@ public class Main {
         ArrayList<Plank> planks = new ArrayList<>();
         planks.add(new Plank());
         System.out.println(planks.get(planks.size()-1));
+        */
+        Player p = new Player(new Wood(3));
+        System.out.println(p.getPlank().getSetOfResources());
+        ActionSpace a = new TowerActionSpace(0, new Wood(3));
+        p.lose(a.getBonus().toArray(new Losable[a.getBonus().size()]));
+        System.out.println(p.getPlank().getSetOfResources());
 
     }
 
