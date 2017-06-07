@@ -27,4 +27,23 @@ public class Server implements ServerInterface {
 
     }
 
+    @Override
+    public void tryToLogIn() {
+
+    }
+
+    @Override
+    public void tryToJoinGame() {
+
+    }
+
+    @Override
+    public void tryToCreateRoom() {
+
+    }
+
+    @Override
+    public void leaveGame() {
+
+    }
 }

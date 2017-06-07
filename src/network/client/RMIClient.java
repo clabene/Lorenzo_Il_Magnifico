@@ -41,6 +41,56 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
     }
 
     @Override
+    public void tryToLogIn() {
+
+    }
+
+    @Override
+    public void tryToJoinGame() {
+
+    }
+
+    @Override
+    public void tryToCreateRoom() {
+
+    }
+
+    @Override
+    public void selectFamilyMember() {
+
+    }
+
+    @Override
+    public void selectBoardArea() {
+
+    }
+
+    @Override
+    public void selectActionSpace() {
+
+    }
+
+    @Override
+    public void dealWithVatican() {
+
+    }
+
+    @Override
+    public void selectCouncilFavour() {
+
+    }
+
+    @Override
+    public void useSlaves() {
+
+    }
+
+    @Override
+    public void leaveGame() {
+
+    }
+
+    @Override
     public void sendMessage2(String string) {
         System.out.println("chiamato metodo di client" + string);
     }

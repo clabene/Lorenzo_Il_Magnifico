@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BuildingCardTest {
     @Test
     void getPermanentEffect() {
+        B
     }
 
     @Test
