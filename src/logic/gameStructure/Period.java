@@ -21,6 +21,7 @@ public class Period {
 
     //private ArrayList<Player> players;
     private Stack<Card> cards;
+    private Stack<Card> deck;
 
 /*
     public Period( ArrayList<Player> players){
@@ -57,7 +58,13 @@ public class Period {
             Gson gson = new Gson();
             FileReader r = new FileReader(fileName);
             BufferedReader rb = new BufferedReader(r);
+
             String s = rb.readLine();
+            while(s != null) {
+
+                s = rb.readLine();
+            }
+
             if(cardType == CardType.VENTURE)
                 return gson.fromJson(s, VentureCard.class);
             if(cardType == CardType.LAND)
@@ -163,6 +170,42 @@ public class Period {
                 tmp.excommunicationDecision();
             }
         }
+
+    }
+
+
+    public void readFileJson(){
+
+        try{
+            Gson gson = new Gson();
+            FileReader r = new FileReader("file.txt");
+            BufferedReader rb = new BufferedReader(r);
+            Stack<Card> cards = new Stack<>();
+            Card card;
+
+            String s = rb.readLine();
+            while(s != null) {
+                card = gson.fromJson(s, Card.class);
+                cards.push(card);
+
+
+                s = rb.readLine();
+            }
+        }catch (IOException e){}
+
+
+
+
+
+    }
+
+    public void  shuffleDeck(Stack<Card> cards){
+        Collections.shuffle(cards);
+        while(!cards.isEmpty()){
+
+            deck.push(cards.pop());
+        }
+
 
     }
 
