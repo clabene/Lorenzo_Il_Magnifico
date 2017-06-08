@@ -5,48 +5,47 @@ import logic.actionSpaces.*;
 import logic.pointsTracks.MilitaryPointsTrack;
 import logic.resources.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Created by IBM on 09/05/2017.
  */
 public class Board {
-    private Area[] areas = {new TowerArea(), new MarketArea(), new CouncilArea(), new ActivationArea(), new ChurchArea()};
 
-    public void show(){
-        int i = 0;
-        for(Area tmp: areas) {
-            i++;
-            System.out.println(i+" "+ " Area: "+ tmp.toString()+ "\n");
-        }
+    public Board(){
+        setHashMap();
     }
 
-    public CouncilArea getCouncilArea(){
-        return (CouncilArea) this.areas[2];
-    }
 
-    public Area getArea(int index){
-        return areas[index];
-    }
+
+
+
+
+
 
 
     //todo exception
-    public Area tryToSelectArea(Area area){
-        if(area instanceof TowerArea) return this.areas[0];
-        else if(area instanceof MarketArea) return this.areas[1];
-        else if(area instanceof CouncilArea) return this.areas[2];
-        else if(area instanceof ActivationArea) return this.areas[3];
-        return null;
-    }
 
 
-    public TowerArea getTowerArea(){return (TowerArea) this.areas[0];}
+
+
 
     //-------------------------------------------------------------------
 
     private HashMap<String, ActionSpace> actionSpaceHashMap = new HashMap<>();
 
-    public void setHashMap(){
+    /**
+     * first letter: T = tower ; C = council; A = activation; M = market.
+     * second letter: L = land; P = person; B = building; V = venture; P = production; H = harvest.
+     *
+     */
+
+
+
+
+    private void setHashMap(){
+
         actionSpaceHashMap.put("TL1", new TowerActionSpace(1) );
         actionSpaceHashMap.put("TL2", new TowerActionSpace(3));
         actionSpaceHashMap.put("TL3", new TowerActionSpace (5, new Wood(1)));
@@ -77,11 +76,17 @@ public class Board {
     //todo  exceptions
     public ActionSpace tryToSelectActionSpace(String key){
         ActionSpace actionSpace = actionSpaceHashMap.get(key);
-
         if(actionSpace.getCovered()) return null;
-
         return actionSpace;
     }
 
+    public ArrayList<String> getTurnOrder(){
+        CouncilActionSpace a = new CouncilActionSpace();
+        a = (CouncilActionSpace) actionSpaceHashMap.get("C");
+        return a.getFamilyMemberArrayList();
+    }
 
+    public HashMap<String, ActionSpace> getHashMap(){
+        return actionSpaceHashMap;
+    }
 }

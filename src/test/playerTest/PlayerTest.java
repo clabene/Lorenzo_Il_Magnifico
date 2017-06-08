@@ -1,6 +1,5 @@
 package test.playerTest;
 
-import logic.board.TowerArea;
 import logic.cards.*;
 import logic.cards.cardEffects.ExchangeGainablesEffect;
 import logic.cards.cardEffects.ReceiveGainablesEffect;
@@ -15,8 +14,6 @@ import logic.pointsTracks.MilitaryPointsTrack;
 import logic.pointsTracks.PersonCardsPointsTrack;
 import logic.resources.*;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 

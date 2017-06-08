@@ -3,12 +3,8 @@ package logic.gameStructure;
 import logic.actionSpaces.ActionSpace;
 
 import logic.actionSpaces.ActionSpaceType;
-import logic.actionSpaces.TowerActionSpace;
-import logic.board.Area;
-import logic.board.Board;
 import logic.bonuses.Bonus;
 import logic.bonuses.BonusOnFamilyMemberPlacement;
-import logic.cards.Card;
 import logic.interfaces.Gainable;
 import logic.interfaces.Losable;
 import logic.player.FamilyMember;

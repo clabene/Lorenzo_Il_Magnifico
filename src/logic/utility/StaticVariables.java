@@ -1,7 +1,6 @@
 package logic.utility;
 
 import logic.actionSpaces.TowerActionSpace;
-import logic.board.Tower;
 import logic.interfaces.Gainable;
 import logic.pointsTracks.FaithPointsTrack;
 import logic.pointsTracks.MilitaryPointsTrack;

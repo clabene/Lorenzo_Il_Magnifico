@@ -1,9 +1,7 @@
 package logic.player;
 
-import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
 import logic.board.Color;
-import logic.board.TowerArea;
 import logic.cards.LandCard;
 import logic.gameStructure.PeriodNumber;
 import logic.bonuses.Bonus;
@@ -11,9 +9,6 @@ import logic.exceptions.LimitedValueOffRangeException;
 import logic.exceptions.NegativePointsException;
 import logic.exceptions.NegativeResourceQuantityException;
 import logic.interfaces.Losable;
-import logic.player.FamilyMember;
-import logic.player.Plank;
-import logic.player.VictoryPoint;
 import logic.pointsTracks.FaithPointsTrack;
 import logic.pointsTracks.LandCardsPointsTrack;
 import logic.pointsTracks.MilitaryPointsTrack;
@@ -21,11 +16,9 @@ import logic.pointsTracks.PersonCardsPointsTrack;
 import logic.cards.Card;
 import logic.interfaces.Gainable;
 import logic.resources.*;
-import logic.board.Area;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.UUID;
 
 
 /**

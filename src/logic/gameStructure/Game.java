@@ -1,7 +1,6 @@
 package logic.gameStructure;
 
 import logic.actionSpaces.ActionSpace;
-import logic.board.Area;
 import logic.board.Board;
 import logic.cards.Card;
 import logic.excommunicationTessels.ExcommunicationTassel;

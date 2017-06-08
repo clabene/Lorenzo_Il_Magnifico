@@ -3,7 +3,6 @@ package logic.cards.cardEffects;
 import logic.actionSpaces.ActionSpace;
 import logic.actionSpaces.ActivationActionSpace;
 import logic.actionSpaces.TowerActionSpace;
-import logic.board.Tower;
 import logic.cards.CardType;
 import logic.gameStructure.ActionPhase;
 import logic.player.FamilyMember;

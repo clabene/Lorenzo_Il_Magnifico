@@ -1,10 +1,9 @@
 package logic.gameStructure;
 
 
+import logic.actionSpaces.ActionSpace;
 import logic.actionSpaces.TowerActionSpace;
 import logic.board.Board;
-import logic.board.Tower;
-import logic.board.TowerArea;
 import logic.cards.Card;
 import logic.player.FamilyMember;
 import logic.player.Player;
@@ -17,7 +16,7 @@ import java.util.Stack;
  */
 public class Turn {
     //private ArrayList<Player> players;
-    //private Board board;
+    private Board board;
 
     public Turn(){
         //this.players = players;
@@ -60,10 +59,10 @@ public class Turn {
     public ArrayList<Player> getNextTurnOrder(ArrayList<Player> players, Board board){
 
         ArrayList<Player> newTurn  = new ArrayList<>();
-        ArrayList<String> ids = board.getCouncilArea().getTurnOrder();
+        ArrayList<String> ids = board.getTurnOrder();
         for(String id : ids)
             for(Player player: players)
-                if (player.getId() == id)
+                if (player.getId().equals(id))
                     newTurn.add(player);
 
         return newTurn;
@@ -80,8 +79,11 @@ public class Turn {
                 familyMember.setInActionSpace(false);
             }
         }
-        //todo in areas where there is an array of familymembers we should remove all the elements
 
+        for(ActionSpace tmp : board.getHashMap().values()){
+            tmp.resetActionSpace();
+            tmp.setCovered(false);
+        }
     }
 
     /*
@@ -90,10 +92,11 @@ public class Turn {
      */
 
     public void putCardsOnBoard(Stack<Card> cards, Board board){
-        for(Tower tmp: board.getTowerArea().getTowers()){
-            for(TowerActionSpace tmp1: tmp.getSpaces()){
-                tmp1.setCard(cards.pop());
-            }
+        int i = 1;
+        for(ActionSpace tmp : board.getHashMap().values()){
+            ((TowerActionSpace) tmp).setCard(cards.pop());
+            i++;
+            if(i == 16)break;
         }
     }
 

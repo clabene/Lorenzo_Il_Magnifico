@@ -1,6 +1,5 @@
 package logic.actionSpaces;
 
-import logic.board.ActivationArea;
 import logic.interfaces.Gainable;
 import logic.player.FamilyMember;
 import logic.player.Player;
@@ -33,6 +32,14 @@ public abstract class ActionSpace {
             this.bonus.add(tmp);
 
         this.actionSpaceType = actionSpaceType;
+    }
+
+    public void resetActionSpace(){
+        familyMembers.clear();
+    }
+
+    public void setCovered(boolean covered){
+        this.covered = covered;
     }
 
     public void familyMemberAdded(FamilyMember familyMember) {
