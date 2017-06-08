@@ -6,7 +6,7 @@ import java.net.Socket;
 /**
  * Created by IBM on 06/06/2017.
  */
-public class SocketClient extends AbstractClient {
+public class SocketClient /*extends AbstractClient*/ {
 
     private String ipAddress;
     private int port;
@@ -17,7 +17,7 @@ public class SocketClient extends AbstractClient {
         this.port = port;
     }
 
-    @Override
+//    @Override
     public void connect() {
         try {
             socket = new Socket(ipAddress, port);

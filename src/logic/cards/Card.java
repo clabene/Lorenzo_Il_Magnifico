@@ -40,6 +40,10 @@ public abstract class Card {
         return permanentEffect;
     }
 
+    public CardEffect getImmediateEffect() {
+        return immediateEffect;
+    }
+
     public void setCardCost(CardCost cardCost) {
         this.cardCost = cardCost;
     }

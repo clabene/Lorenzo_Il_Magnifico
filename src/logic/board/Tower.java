@@ -24,10 +24,8 @@ public class Tower {
     public ArrayList<FamilyMember> getFamilyMembers(){
         ArrayList<FamilyMember> familyMembers = new ArrayList<>();
         for(TowerActionSpace tmp: this.spaces){
-            if(tmp.getCovered() ){
-                //familyMembers.add(tmp.getLastFamilyMember);
-
-            }
+            if(tmp.getCovered())
+                familyMembers.add(tmp.getLastFamilyMemberAdded());
         }
         return familyMembers;
     }

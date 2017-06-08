@@ -2,6 +2,7 @@ package network.server;
 
 
 import logic.gameStructure.GameRoom;
+import logic.player.FamilyMember;
 import logic.player.Player;
 
 /**
@@ -23,7 +24,7 @@ public abstract class RemotePlayer extends Player{
     /*
     * Client selects a family member from theirs
     * */
-    public abstract void selectFamilyMember();
+    public abstract void selectFamilyMember(FamilyMember familyMember, RemotePlayer player);
 
     /*
     * Client selects an area from the board

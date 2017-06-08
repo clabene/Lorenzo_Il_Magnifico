@@ -39,6 +39,7 @@ public abstract class ActionSpace {
     }
 
     public void familyMemberAdded(FamilyMember familyMember) {
+        if(covered) return;
         this.familyMembers.add(familyMember);
         if(familyMembers.size() == MAX_NUMBER_OF_FAMILIARS) covered = true;
     }

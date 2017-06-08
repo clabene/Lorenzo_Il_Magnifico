@@ -1,5 +1,6 @@
 package logic.gameStructure;
 
+import logic.player.Player;
 import network.server.RemotePlayer;
 
 import java.util.ArrayList;
@@ -20,8 +21,6 @@ public class GameRoom {
     public void addPlayer(RemotePlayer remotePlayer){
         players.add(remotePlayer);
     }
-
-
 
 
 

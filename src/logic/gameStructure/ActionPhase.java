@@ -141,7 +141,7 @@ public class ActionPhase {
         }
     }
 
-
+/*
     public FamilyMember selectionFamilyMemberPhase(Player player){
         FamilyMember familyMember = player.selectFamilyMember();
         if (familyMember.getInActionSpace()) {
@@ -160,7 +160,7 @@ public class ActionPhase {
         }
         return actionSpace;
     }
-
+*/
     public void activateBonuses(Player player, ActionSpace actionSpace){
         for(Bonus tmp : player.getBonuses())
             tmp.activateBonus(actionSpace);

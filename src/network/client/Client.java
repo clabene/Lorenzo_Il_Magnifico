@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Created by IBM on 06/06/2017.
  */
 public class Client implements ClientInterface {
-
+/*
     private final int RMI_PORT = 6789;
     private final int SOCKET_PORT = 9876;
 
@@ -35,6 +35,5 @@ public class Client implements ClientInterface {
         client.getMyClient().connect();
 
     }
-
-
+*/
 }

@@ -7,5 +7,5 @@ import java.rmi.RemoteException;
  * Created by IBM on 06/06/2017.
  */
 public interface RMIClientInterface extends Remote {
-    public void sendMessage2(String string) throws RemoteException;
+    void sendMessage2(String string) throws RemoteException;
 }

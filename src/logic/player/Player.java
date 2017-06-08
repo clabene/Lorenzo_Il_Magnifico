@@ -49,19 +49,29 @@ public class Player {
     private final int NEUTRAL_FAMILY_MEMBER_INDEX = 3;
 
 
-    FamilyMember[] familyMembers = {new FamilyMember(Color.BLACK, 0), new FamilyMember(Color.RED, 0),
-            new FamilyMember(Color.WHITE, 0), new FamilyMember(null, 0)};
-
+    private FamilyMember[] familyMembers = new FamilyMember[4];
 
     private ArrayList<Bonus> bonuses = new ArrayList<>();
 
     private Board board;
 
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
     public Player(Resource ... resources){
         this.id = UUID.randomUUID().toString();
         this.plank = new Plank(resources);
+        initializeFamilyMembers();
     }
 
+    private void initializeFamilyMembers(){
+        FamilyMember[] familyMembers = {new FamilyMember(Color.BLACK, 0, this.id), new FamilyMember(Color.RED, 0, this.id),
+                new FamilyMember(Color.WHITE, 0, this.id), new FamilyMember(null, 0, this.id)};
+        this.familyMembers = familyMembers;
+    }
+
+    @Deprecated
     public Player(String s){
     }
 
@@ -69,8 +79,10 @@ public class Player {
     * Players gains all the points and all the resources given as parameters
     * */
     public void gain(Gainable ... gainables) {
-        for (Gainable tmp : gainables)
+        for (Gainable tmp : gainables) {
+            if(tmp == null) return;
             tmp.gainedByPlayer(this);
+        }
     }
 
     /*
@@ -99,6 +111,7 @@ public class Player {
         boolean toReturn = true;
         for (Losable tmp : losables)
             try {
+                if(tmp == null) return true;
                 tmp.lostByPlayer(this);
             } catch (NegativeResourceQuantityException | NegativePointsException e) {
                 toReturn = false;
@@ -124,6 +137,16 @@ public class Player {
 
     }
 
+    //todo throw exceptions
+    public FamilyMember tryToSelectFamilyMember(FamilyMember familyMember){
+        if(familyMember.getPlayerId().equals(id)) return null;
+        for(FamilyMember tmp : familyMembers)
+            if(tmp.getColor().equals(familyMember.getColor()) && !tmp.getInActionSpace())
+                return tmp;
+        return null;
+    }
+
+/*
     public Area selectArea(Board board){
         System.out.println("Quale area vuoi selezionare?");
         board.show();
@@ -160,6 +183,7 @@ public class Player {
 
         Scanner input = new Scanner(System.in);
         int index = input.nextInt() -1;
+
         return familyMembers[index];
     }
 
@@ -171,7 +195,7 @@ public class Player {
             System.out.println(i+ " " + tmp.toString()+ " del giocatore " + this.id +"\n");
         }
     }
-
+*/
     /*
 
     //true: card successfully added to the plank
@@ -189,9 +213,6 @@ public class Player {
     public void tryToTakeCard(Card card) throws IndexOutOfBoundsException, LimitedValueOffRangeException{
         plank.getCards().cardAdded(card);
     }
-
-
-
 
     public void addResourcesToPlank(Resource ... resources){
         plank.getSetOfResources().resourcesAdded(resources);

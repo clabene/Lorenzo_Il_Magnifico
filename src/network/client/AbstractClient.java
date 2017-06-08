@@ -1,5 +1,7 @@
 package network.client;
 
+import logic.player.FamilyMember;
+
 /**
  * Created by IBM on 06/06/2017.
  */
@@ -35,16 +37,20 @@ public abstract class AbstractClient {
     * */
     public abstract void tryToCreateRoom();
 
-
     /*
     * Client selects a family member from theirs
     * */
-    public abstract void selectFamilyMember();
+    public abstract void selectFamilyMember(FamilyMember familyMember);
 
     /*
     * Client selects an area from the board
     * */
     public abstract void selectBoardArea();
+
+    /*
+    * Client sends request to use slaves to increment selected family member value
+    * */
+    public abstract void useSlaves();
 
     /*
     * Client selects an action space from the board
@@ -56,15 +62,12 @@ public abstract class AbstractClient {
     * This method is triggered by the server side.
     * */
     public abstract void dealWithVatican();
+
     /*
     * Client decides what bonus they will get form a council favour.
     * This method is triggered by the server side.
     * */
     public abstract void selectCouncilFavour();
-    /*
-    * Client sends request to use slaves to increment selected family member value
-    * */
-    public abstract void useSlaves();
 
     /*
     * Client leaves the game

@@ -80,12 +80,12 @@ public class Game {
     }
 
 
-    public void selectionFamilyMember(Player player, ActionPhase actionPhase){
-        this.selectedFamilyMember = actionPhase.selectionFamilyMemberPhase(player);
+    public void selectionFamilyMember(FamilyMember familyMember, Player player){
+        this.selectedFamilyMember = player.tryToSelectFamilyMember(familyMember);
         if(selectedActionSpace != null) puttingFamilyMemberOnActionSpace(player);
     }
 
-    public void selectionActionSpace(Player player, ActionPhase actionPhase, Board board){
+    public void selectionActionSpace(Player player, Board board){
         this.selectedActionSpace = actionPhase.selectionActionSpacePhase(player, board);
         if(selectedFamilyMember != null) puttingFamilyMemberOnActionSpace(player);
     }

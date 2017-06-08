@@ -11,7 +11,7 @@ import java.rmi.server.UnicastRemoteObject;
 /**
  * Created by IBM on 06/06/2017.
  */
-public class RMIClient extends AbstractClient implements RMIClientInterface{
+public class RMIClient /*extends AbstractClient*/ implements RMIClientInterface{
     private String ipAddress;
     private int port;
 
@@ -20,7 +20,7 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
         this.port = port;
     }
 
-    @Override
+//    @Override
     public void connect() {
         //connect to RMIServer
         try{

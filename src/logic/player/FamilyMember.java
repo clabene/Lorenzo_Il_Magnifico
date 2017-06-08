@@ -13,13 +13,19 @@ public class FamilyMember {
     private boolean inActionSpace;
     private String playerId; //same of player that owns the family member
 
+    @Deprecated
     public FamilyMember(Color color, int value){
         this.color = color;
         this.value = value;
         this.inActionSpace = false;
         this.playerId = null;
     }
-
+    public FamilyMember(Color color, int value, String playerId){
+        this.color = color;
+        this.value = value;
+        this.playerId = playerId;
+        this.inActionSpace = false;
+    }
     public FamilyMember(Color color, int value, String playerId, boolean inActionSpace){
         this.color = color;
         this.value = value;
@@ -44,7 +50,9 @@ public class FamilyMember {
     public void setInActionSpace(boolean inActionSpace) {
         this.inActionSpace = inActionSpace;
     }
-    public boolean getInActionSpace(){return this.inActionSpace;};
+    public boolean getInActionSpace(){
+        return this.inActionSpace;
+    }
 
     public String toString(){
         return this.color + " Family Member " + " value: " +this.value;

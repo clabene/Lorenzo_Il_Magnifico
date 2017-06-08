@@ -65,6 +65,7 @@ public class Turn {
             for(Player player: players)
                 if (player.getId() == id)
                     newTurn.add(player);
+
         return newTurn;
     }
 

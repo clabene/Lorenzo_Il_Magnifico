@@ -8,8 +8,10 @@ import logic.player.FamilyMember;
 import logic.player.Player;
 import logic.resources.Wood;
 
+import javax.swing.text.html.HTMLDocument;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Scanner;
 
 /**
@@ -30,9 +32,15 @@ public class ActivationActionSpace extends ActionSpace {
             Collections.addAll(cards, player.getPlank().getCards().getBuildingCards());
         else if(activationType == ActivationActionSpaceType.HARVEST)
             Collections.addAll(cards, player.getPlank().getCards().getLandCards());
+
+        Iterator iterator = cards.iterator();
+        while(iterator.hasNext())
+            if(iterator.next() == null)
+                iterator.remove();
     }
 
     private void removeNotValidCard(Card card) {
+        System.out.println(cards);
         if(card.getActivationValue() > getLastFamilyMemberAdded().getValue())
             cards.remove(card);
     }
@@ -40,6 +48,7 @@ public class ActivationActionSpace extends ActionSpace {
     private void validateCardEffects(){
         for(Card tmp : cards)
             removeNotValidCard(tmp);
+
     }
 
     private void showCardEffects(){
