@@ -22,7 +22,7 @@ public class ActivationActionSpace extends ActionSpace {
     private ActivationActionSpaceType activationType;
     public ArrayList<Card> cards = new ArrayList<>();
 
-    public ActivationActionSpace(int MAX_NUMBER_OF_FAMILIARS, ActivationActionSpaceType activationType ){
+    public ActivationActionSpace( int MAX_NUMBER_OF_FAMILIARS, ActivationActionSpaceType activationType ){
         super(MAX_NUMBER_OF_FAMILIARS, ActionSpaceType.ACTIVATION, 1);
         this.activationType = activationType;
     }
@@ -97,22 +97,6 @@ public class ActivationActionSpace extends ActionSpace {
         return true;
     }
 
-    public static void main(String[] a){
-
-        Player p = new Player();
-        ActivationActionSpace as = new ActivationActionSpace(1, ActivationActionSpaceType.HARVEST);
-        as.familyMemberAdded(new FamilyMember(null, 7));
-        Card c = new LandCard("Foresta", PeriodNumber.FIRST, 5, new ReceiveGainablesEffect(new Wood()), new ReceiveGainablesEffect(new Wood(3)));
-        try{
-            p.tryToTakeCard(c);
-        }catch (Exception e){
-            System.out.println("ojdbnafslnbasnbanbasàb");
-        }
-        System.out.println(as.cards.size());
-        System.out.println(as.action(p));
-
-
-    }
 
 
 }

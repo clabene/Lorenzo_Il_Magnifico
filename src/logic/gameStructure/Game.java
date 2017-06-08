@@ -1,11 +1,13 @@
 package logic.gameStructure;
 
 import logic.actionSpaces.ActionSpace;
+import logic.board.Area;
 import logic.board.Board;
 import logic.cards.Card;
 import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.player.FamilyMember;
 import logic.player.Player;
+import logic.resources.SetOfResources;
 import logic.utility.CardSetupHandler;
 
 
@@ -27,14 +29,10 @@ public class Game {
     private ActionPhase actionPhase = new ActionPhase();
     private FamilyMember selectedFamilyMember;
     private ActionSpace selectedActionSpace;
-    Stack<Card> deck = new Stack<>();
+    private Stack<Card> deck = new Stack<>();
 
-    public Game(){
+    private final SetOfResources initialResources = new SetOfResources(); //todo
 
-
-
-
-    }
 
 /*
     public void startGame(){
@@ -55,19 +53,11 @@ public class Game {
 
 */
 
-
-    public void addPlayer(Player player){
-        this.players.add(player);
+    //todo this has to return boolean. True: could add, false: could not add player to the game (i.e. game is full already)
+    public void addPlayer(String id){
+        players.add(new Player(id, initialResources.getResources()));
     }
 
-    public static void main(String[] args) {
-
-        Game game = new Game();
-        Player player = new Player();
-        game.addPlayer(player);
-        //game.startGame();
-
-    }
 
     public void setPeriod(Period period) {
         this.period = period;
@@ -85,12 +75,12 @@ public class Game {
         if(selectedActionSpace != null) puttingFamilyMemberOnActionSpace(player);
     }
 
-    public void selectionActionSpace(Player player, Board board){
-        this.selectedActionSpace = actionPhase.selectionActionSpacePhase(player, board);
+    public void selectionActionSpace(String actionSpaceId, Player player, Board board){
+        this.selectedActionSpace = board.tryToSelectActionSpace(actionSpaceId);
         if(selectedFamilyMember != null) puttingFamilyMemberOnActionSpace(player);
     }
 
-    private void puttingFamilyMemberOnActionSpace(Player player){
+    private void puttingFamilyMemberOnActionSpace(Player player) {
         actionPhase.activateBonuses(player, selectedActionSpace);
         actionPhase.putFamilyMemberOnActionSpace(player, selectedFamilyMember, selectedActionSpace);
         selectedFamilyMember = null;

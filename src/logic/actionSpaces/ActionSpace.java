@@ -1,5 +1,6 @@
 package logic.actionSpaces;
 
+import logic.board.ActivationArea;
 import logic.interfaces.Gainable;
 import logic.player.FamilyMember;
 import logic.player.Player;
@@ -15,10 +16,6 @@ public abstract class ActionSpace {
 
     private ActionSpaceType actionSpaceType;
 
-    //Some action spaces are only available when enough players are playing the game
-    //Note that MAX_NUMBER_OF_FAMILIARS = 0 is not a better solution than this boolean. Indeed, M_N_O_F is a final value
-    //and therefore not changeable, while the number of players might have to be allowed to dynamically change throughout the game
-    //(which causes some action spaces to be covered and uncovered more times during the game, not just at the beginning)
     private boolean covered = false;
 
     private int minValueToPlaceFamiliar;
@@ -27,7 +24,7 @@ public abstract class ActionSpace {
 
     private ArrayList<FamilyMember> familyMembers = new ArrayList<>();
 
-    public ActionSpace(int MAX_NUMBER_OF_FAMILIARS, ActionSpaceType actionSpaceType, int minValueToPlaceFamiliar, Gainable ... bonuses){
+    public ActionSpace( int MAX_NUMBER_OF_FAMILIARS, ActionSpaceType actionSpaceType, int minValueToPlaceFamiliar, Gainable ... bonuses){
         this.MAX_NUMBER_OF_FAMILIARS = MAX_NUMBER_OF_FAMILIARS;
         //initializeNumberOfFamiliars();
         this.minValueToPlaceFamiliar = minValueToPlaceFamiliar;
@@ -110,5 +107,6 @@ public abstract class ActionSpace {
     // council -> set order for next turn
     //returns true if familiar was correctly added
     public abstract boolean action(Player player);
+
 
 }

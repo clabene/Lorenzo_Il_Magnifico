@@ -20,7 +20,6 @@ public class Tower {
         return this.spaces;
     }
 
-
     public ArrayList<FamilyMember> getFamilyMembers(){
         ArrayList<FamilyMember> familyMembers = new ArrayList<>();
         for(TowerActionSpace tmp: this.spaces){
@@ -29,7 +28,5 @@ public class Tower {
         }
         return familyMembers;
     }
-
-
 
 }

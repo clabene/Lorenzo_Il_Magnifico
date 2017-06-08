@@ -11,7 +11,7 @@ import java.util.HashMap;
  * Created by IBM on 09/05/2017.
  */
 public class Board {
-    private Area[] areas = {new TowerArea(), new MarketArea(), new CouncilArea(), new ChurchArea(), new ActivationArea()};
+    private Area[] areas = {new TowerArea(), new MarketArea(), new CouncilArea(), new ActivationArea(), new ChurchArea()};
 
     public void show(){
         int i = 0;
@@ -29,14 +29,24 @@ public class Board {
         return areas[index];
     }
 
+
+    //todo exception
+    public Area tryToSelectArea(Area area){
+        if(area instanceof TowerArea) return this.areas[0];
+        else if(area instanceof MarketArea) return this.areas[1];
+        else if(area instanceof CouncilArea) return this.areas[2];
+        else if(area instanceof ActivationArea) return this.areas[3];
+        return null;
+    }
+
+
     public TowerArea getTowerArea(){return (TowerArea) this.areas[0];}
 
     //-------------------------------------------------------------------
 
-    HashMap<String, ActionSpace> actionSpaceHashMap = new HashMap<>();
+    private HashMap<String, ActionSpace> actionSpaceHashMap = new HashMap<>();
 
     public void setHashMap(){
-
         actionSpaceHashMap.put("TL1", new TowerActionSpace(1) );
         actionSpaceHashMap.put("TL2", new TowerActionSpace(3));
         actionSpaceHashMap.put("TL3", new TowerActionSpace (5, new Wood(1)));
@@ -62,13 +72,16 @@ public class Board {
         actionSpaceHashMap.put("M2", new  MarketActionSpace(new Slave(5)));
         actionSpaceHashMap.put("M3", new MarketActionSpace(new Money(2), new MilitaryPointsTrack(3)));
         actionSpaceHashMap.put("M4", new MarketActionSpace(new CouncilFavour(2)));
-
-
-
-
     }
 
+    //todo  exceptions
+    public ActionSpace tryToSelectActionSpace(String key){
+        ActionSpace actionSpace = actionSpaceHashMap.get(key);
 
+        if(actionSpace.getCovered()) return null;
+
+        return actionSpace;
+    }
 
 
 }

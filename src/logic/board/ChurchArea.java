@@ -15,6 +15,10 @@ public class ChurchArea implements Area {
     public void show() {}
 
     @Override
+    public ActionSpace tryToSelectActionSpace(ActionSpace actionSpace){
+        return null;
+    }
+    @Override
     public String toString() {
         return "Church Area";
     }

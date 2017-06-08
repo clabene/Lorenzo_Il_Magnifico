@@ -59,9 +59,10 @@ public class Player {
         this.board = board;
     }
 
-    public Player(Resource ... resources){
-        this.id = UUID.randomUUID().toString();
+
+    public Player(String id, Resource ... resources){
         this.plank = new Plank(resources);
+        this.id = id;
         initializeFamilyMembers();
     }
 
@@ -71,9 +72,6 @@ public class Player {
         this.familyMembers = familyMembers;
     }
 
-    @Deprecated
-    public Player(String s){
-    }
 
     /*
     * Players gains all the points and all the resources given as parameters

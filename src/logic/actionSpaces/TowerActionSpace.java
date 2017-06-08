@@ -19,7 +19,6 @@ public class TowerActionSpace extends ActionSpace {
     public TowerActionSpace(int minValueToPlaceFamiliar, Gainable ... gainables){
         super(1, ActionSpaceType.TOWER, minValueToPlaceFamiliar, gainables);
         this.card = null;
-
     }
 
     private boolean towerAlreadyHasColoredOfSameType(Player player){

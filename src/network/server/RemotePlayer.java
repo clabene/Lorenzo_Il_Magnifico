@@ -5,6 +5,8 @@ import logic.gameStructure.GameRoom;
 import logic.player.FamilyMember;
 import logic.player.Player;
 
+import java.util.UUID;
+
 /**
  * Created by Pinos on 06/06/2017.
  */
@@ -12,6 +14,9 @@ public abstract class RemotePlayer extends Player{
 
     private GameRoom gameRoom;
 
+    public RemotePlayer(String id){ //todo check if this work or if is useful at all!!
+        super(id);
+    }
 
     public GameRoom getGameRoom() {
         return gameRoom;

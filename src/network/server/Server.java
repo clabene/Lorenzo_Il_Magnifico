@@ -1,5 +1,8 @@
 package network.server;
 
+import logic.gameStructure.GameRoom;
+
+import java.util.ArrayList;
 
 /**
  * Created by IBM on 06/06/2017.
@@ -11,6 +14,8 @@ public class Server implements ServerInterface {
 
     private final int RMI_PORT = 6789;
     private final int SOCKET_PORT = 9876;
+
+    private ArrayList<GameRoom> gameRooms = new ArrayList<>();
 
     public Server(){
 

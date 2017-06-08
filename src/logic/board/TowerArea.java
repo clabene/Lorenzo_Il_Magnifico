@@ -26,12 +26,8 @@ public class TowerArea implements Area {
                 j++;
                 System.out.println(i+"."+j + "TowerActionSpace"+ tmp1.toString()+"\n");
             }
-
         }
-
     }
-
-
 
     @Override
     public ActionSpace getActionSpace(int index) {

@@ -2,12 +2,16 @@ package network.client;
 
 import logic.player.FamilyMember;
 
+import java.util.UUID;
+
 /**
  * Created by IBM on 06/06/2017.
  */
 public abstract class AbstractClient {
 
     private ClientInterface clientController;
+
+    private String id = UUID.randomUUID().toString();
 
     public void setClientController(ClientInterface clientController) {
         this.clientController = clientController;
@@ -23,9 +27,10 @@ public abstract class AbstractClient {
     public abstract void connect() ;
 
     /*
-    * Client sends request to be logged in with a specific name
+    * Client sends request to be logged in with a specific name and id
+    * Id is to be the same id of the RemotePlayer associated with this client
     * */
-    public abstract void tryToLogIn();
+    public abstract void tryToLogIn(String name, String id);
 
     /*
     * Client sends request to join a room

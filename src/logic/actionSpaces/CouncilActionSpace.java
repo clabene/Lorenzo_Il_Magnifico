@@ -13,7 +13,7 @@ public class CouncilActionSpace extends ActionSpace {
     ArrayList<String> familyMemberArrayList = new ArrayList<>();
 
     public CouncilActionSpace(){
-        super( (int) Double.POSITIVE_INFINITY, ActionSpaceType.COUNCIL, 1, new Money(1), new CouncilFavour(1));
+        super((int) Double.POSITIVE_INFINITY, ActionSpaceType.COUNCIL, 1, new Money(1), new CouncilFavour(1));
 
     }
 

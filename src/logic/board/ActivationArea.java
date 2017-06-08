@@ -1,6 +1,7 @@
 package logic.board;
 
 import logic.actionSpaces.*;
+import sun.rmi.server.Activation;
 
 /**
  * Created by Pinos on 25/05/2017.
@@ -23,9 +24,9 @@ public class ActivationArea implements Area {
         for( ActivationActionSpace tmp : spaces){
             i++;
             System.out.println(i+ " "+ "ActivationActionSpace"+ tmp.toString() + "\n");
-
         }
     }
+
 
     @Override
     public ActionSpace getActionSpace(int index) {
