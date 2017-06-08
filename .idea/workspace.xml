@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/board/Board.java" afterPath="$PROJECT_DIR$/src/logic/board/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/cardsTest/BuildingCardTest.java" afterPath="$PROJECT_DIR$/src/test/cardsTest/BuildingCardTest.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -1205,13 +1203,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495533735855</updated>
     </task>
-    <task id="LOCAL-00017" summary="Action Spaces">
-      <created>1495718508946</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1495718508946</updated>
-    </task>
     <task id="LOCAL-00018" summary="Action Spaces">
       <created>1495720267502</created>
       <option name="number" value="00018" />
@@ -1548,7 +1539,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496931096814</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="hashmap done">
+      <created>1496943368462</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1496943368463</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1703,7 +1701,8 @@
     <MESSAGE value="card creation" />
     <MESSAGE value="testing" />
     <MESSAGE value="game changing" />
-    <option name="LAST_COMMIT_MESSAGE" value="game changing" />
+    <MESSAGE value="hashmap done" />
+    <option name="LAST_COMMIT_MESSAGE" value="hashmap done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
