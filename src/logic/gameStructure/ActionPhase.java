@@ -111,7 +111,7 @@ public class ActionPhase {
 
     public boolean checkPhasePlayable(Player player) {
         if (player.getFamilyMembersAvailable().size() == 1 &&
-                player.getFamilyMembersAvailable().contains(new FamilyMember(null, 0)) &&
+                player.getFamilyMembersAvailable().contains(new FamilyMember(null, 0, player.getId())) &&
                 player.getPlank().getSetOfResources().getQuantityOfSlaves() == 0) {
 
             System.out.println("Sei spacciato");

@@ -62,20 +62,14 @@ public class Period {
 
 
 
-
-
-    public void excommunicationCheck(ArrayList<Player> players, int minFaithPoints, ExcommunicationTassel tassel){
-
-
-        for(Player tmp: players){
-            if(tmp.getFaithPoints().getTrackPosition().getValue() < minFaithPoints){
+    public void excommunicationCheck(Player player, int minFaithPoints, ExcommunicationTassel tassel){
+        if(player.getFaithPoints().getTrackPosition().getValue() < minFaithPoints){
                 System.out.println("You faith points are not enough, so you receive an excommunication from the Church");
-                tassel.activate(tmp);
+                tassel.activate(player);
             }
             else{
-                tmp.excommunicationDecision();
+                player.excommunicationDecision();
             }
-        }
 
     }
 

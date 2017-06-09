@@ -2,9 +2,13 @@ package logic.cards.cardEffects;
 
 import logic.actionSpaces.ActionSpace;
 import logic.actionSpaces.ActivationActionSpace;
+import logic.actionSpaces.CouncilActionSpace;
 import logic.actionSpaces.TowerActionSpace;
+import logic.cards.Card;
 import logic.cards.CardType;
 import logic.gameStructure.ActionPhase;
+import logic.gameStructure.Game;
+import logic.interfaces.Gainable;
 import logic.player.FamilyMember;
 import logic.player.Player;
 
@@ -21,7 +25,6 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
     private ArrayList<ActionSpace> actionSpaces = new ArrayList<>();
     private FamilyMember familyMember;
     private CardType cardType;
-    private ActionPhase actionPhase;
 
     public PlayExtraActionPhaseEffect(int valueOfFamilyMember, ActivationActionSpace activationActionSpace){
         this.familyMember = new FamilyMember(null, valueOfFamilyMember);
@@ -39,13 +42,15 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
     * Tower action spaces with a card of the given type are added to actionSpaces
     * */
     private void addActionSpaces(Player player){
-        for(Tower tmp : player.getBoard().getTowerArea().getTowers())
-            for(TowerActionSpace tmp1 : tmp.getSpaces()) //itero sugli spazi azione delle torri
-                if(tmp1.getCard() != null && this.cardType == null) //cardType == null -> i take all tower action space
-                    this.actionSpaces.add(tmp1);
-                else if(tmp1.getCard() != null && tmp1.getCard().getCardType() == this.cardType)
-                    this.actionSpaces.add(tmp1);
-                else break;
+        for(ActionSpace tmp : player.getBoard().getHashMap().values()){
+            if((tmp instanceof TowerActionSpace)) continue;
+            TowerActionSpace tmp1 = (TowerActionSpace) tmp;
+            if(tmp1.getCard() != null && this.cardType == null) //cardType == null -> i take all tower action space
+                this.actionSpaces.add(tmp1);
+            else if(tmp1.getCard() != null && tmp1.getCard().getCardType() == this.cardType)
+                this.actionSpaces.add(tmp1);
+            else break;
+        }
     }
 
     //todo add check considering bonus
@@ -60,16 +65,16 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
 
     @Override
     public void activate(Player player) {
-
-        this.actionPhase = new ActionPhase();
-
         if(cardType != null && actionSpaces.isEmpty()) addActionSpaces(player);
+
+        ActionPhase actionPhase = new ActionPhase();
 
         while(true) {
             if(isPhasePlayable(player)) break;
 
-            // select action space
-            ActionSpace selectedActionSpace = player.selectActionSpace(actionSpaces.toArray(new ActionSpace[actionSpaces.size()]));
+            ActionSpace selectedActionSpace = new CouncilActionSpace();//player.selectActionSpace(actionSpaces.toArray(new ActionSpace[actionSpaces.size()]));
+            //todo input from client is needed here. See if Game or GameRoom is needed instead of ActionPhase
+
             if(selectedActionSpace == null) continue;
 
             // slaves sacrifices
@@ -80,7 +85,9 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
 
             if(actionPhase.putFamilyMemberOnActionSpace(player,familyMember, selectedActionSpace)) break;
 
-            //todo restore board as if no bonus was activated (see comment in ActionPhase class for some idea)
+            Card card = ( (TowerActionSpace) selectedActionSpace).getCard();
+            selectedActionSpace = new TowerActionSpace(selectedActionSpace.getMinValueToPlaceFamiliar(), selectedActionSpace.getBonus().toArray(new Gainable[selectedActionSpace.getBonus().size()]));
+            ((TowerActionSpace)selectedActionSpace).setCard(card);
         }
 
         // family member gets removed from game

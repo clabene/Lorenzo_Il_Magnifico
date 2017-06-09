@@ -63,7 +63,7 @@ public class CardSetupHandler {
         personCards.add(new PersonCard("Badessa", PeriodNumber.FIRST, new CardCost(new SetOfResources(new Money(3))), new SetOfCardEffects(new PlayExtraActionPhaseEffect(4), new ReceiveGainablesEffect(new FaithPointsTrack(1))), null));
         personCards.add(new PersonCard("Predicatore", PeriodNumber.FIRST, new CardCost(new SetOfResources(new Money(2))), new ReceiveGainablesEffect(new FaithPointsTrack(4)), new ReceiveBonusesEffect(new MalusOnTowerBonuses())));
 
-//territorio primo periodo-----------------------------------------------------
+        //territorio primo periodo-----------------------------------------------------
         landCards.add(new LandCard("Foresta", PeriodNumber.FIRST, 5, new ReceiveGainablesEffect(new Wood()), new ReceiveGainablesEffect(new Wood(3))));
         landCards.add(new LandCard("Monastero", PeriodNumber.FIRST, 6, new ReceiveGainablesEffect(new MilitaryPointsTrack(2), new Slave()), new ReceiveGainablesEffect(new FaithPointsTrack(), new Stone())));
         landCards.add(new LandCard("Cava di Ghiaia", PeriodNumber.FIRST, 4, new ReceiveGainablesEffect(new Stone(2)), new ReceiveGainablesEffect(new Stone(2))));
@@ -332,7 +332,7 @@ public class CardSetupHandler {
         return definitive_deck;
     }
 
-    public <T extends Card> Stack<T> c(Stack<T> deck){
+    private <T extends Card> Stack<T> c(Stack<T> deck){
 
         Stack<T> cards = new Stack<>();
         for(int i = 0; i < 4; i++){

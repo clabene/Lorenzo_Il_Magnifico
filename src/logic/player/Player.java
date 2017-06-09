@@ -48,10 +48,11 @@ public class Player {
 
     private Board board;
 
-    public void setBoard(Board board) {
-        this.board = board;
+    @Deprecated
+    public Player(Resource ... resources){
+        this.plank = new Plank(resources);
+        initializeFamilyMembers();
     }
-
 
     public Player(String id, Resource ... resources){
         this.plank = new Plank(resources);
@@ -63,6 +64,10 @@ public class Player {
         FamilyMember[] familyMembers = {new FamilyMember(Color.BLACK, 0, this.id), new FamilyMember(Color.RED, 0, this.id),
                 new FamilyMember(Color.WHITE, 0, this.id), new FamilyMember(null, 0, this.id)};
         this.familyMembers = familyMembers;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
     }
 
 
@@ -111,7 +116,7 @@ public class Player {
     }
 
     public static void main(String[] a){
-        Player player = new Player(null, new Slave(21));
+        Player player = new Player(new Slave(21));
         player.gain(new FaithPointsTrack(10));
         boolean b = player.lose(new FaithPointsTrack(15), new Slave(22));
         System.out.println("fede "+ player.getFaithPoints().getTrackPosition().getValue());

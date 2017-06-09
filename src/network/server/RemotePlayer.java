@@ -1,11 +1,10 @@
 package network.server;
 
-
 import logic.gameStructure.GameRoom;
 import logic.player.FamilyMember;
 import logic.player.Player;
 
-import java.util.UUID;
+
 
 /**
  * Created by Pinos on 06/06/2017.
@@ -29,7 +28,7 @@ public abstract class RemotePlayer extends Player{
     /*
     * Client selects a family member from theirs
     * */
-    public abstract void selectFamilyMember(FamilyMember familyMember, RemotePlayer player);
+    public abstract void selectFamilyMember(FamilyMember familyMember);
 
     /*
     * Client selects an area from the board
@@ -43,17 +42,26 @@ public abstract class RemotePlayer extends Player{
 
     /*
     * Client decides if they want to support the Vatican or not.
-    * This method is triggered by the server side.
     * */
     public abstract void dealWithVatican();
+
     /*
     * Client decides what bonus they will get form a council favour.
-    * This method is triggered by the server side.
     * */
     public abstract void selectCouncilFavour();
+
     /*
     * Client sends request to use slaves to increment selected family member value
     * */
     public abstract void useSlaves();
+
+    /*
+    * Send an ArrayList of action spaces to the client
+    * Client has to pick one of those
+    * This method is triggered by the server side (see PlayExtraActionPhaseEffect in package cards.cardEffects)
+    * */
+    public abstract void selectActionSpaceForExtraAction();
+
+    public abstract void notifyRequestHandleOutcome(String responseCode);
 
 }

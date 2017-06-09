@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Created by IBM on 06/06/2017.
  */
 public class Client implements ClientInterface {
-/*
+
     private final int RMI_PORT = 6789;
     private final int SOCKET_PORT = 9876;
 
@@ -29,11 +29,16 @@ public class Client implements ClientInterface {
         return myClient;
     }
 
+    @Override
+    public void showOutcome(String outcomeCode) {
+        if(outcomeCode.equals("OK")) System.out.println("Your request was correctly handled");
+        else if(outcomeCode.equals("NOT_OK")) System.out.println("Your request has not been correctly processed");
+    }
+
     public static void main(String[] args){
         Client client = new Client();
         client.setNetworkType();
         client.getMyClient().connect();
-
     }
-*/
+
 }

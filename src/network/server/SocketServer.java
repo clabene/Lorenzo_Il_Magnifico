@@ -5,44 +5,45 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.UUID;
 
 /**
  * Created by Pinos on 06/06/2017.
  */
 public class SocketServer extends AbstractServer {
 
+    private ServerSocket serverSocket;
+
+    public SocketServer(ServerInterface serverController){
+        super(serverController);
+    }
+
     @Override
     public void startServer(int port) {
         try {
-            ServerSocket serverSocket = new ServerSocket(port);
-            Socket clientSocket = serverSocket.accept();
-            System.out.println("siamo alla frutta");
-            printReadMessage(clientSocket);
+            serverSocket = new ServerSocket(port);
+            new SocketPlayerCreator().start();
         } catch (IOException e){
             e.printStackTrace();
         }
     }
 
-    private void printReadMessage(Socket clientSocket) throws IOException{
-        Scanner s = new Scanner(new BufferedInputStream(clientSocket.getInputStream()));
-        System.out.println(s.nextLine());
-    }
+    private class SocketPlayerCreator extends Thread{
 
-    /*
-    private void handleConnection(Socket clientSocket){
-        while(true) {
-            ExecutorService service = Executors.newCachedThreadPool();
-            try {
-                System.out.println("Connected");
-                service.submit( /* runnable goes here * / );
-
-            } catch (IOException e) {
-                System.out.println("run, Acceptor class\n" + e.getMessage());
+        @Override
+        public void run(){
+            while (true) {
+                try {
+                    Socket socket = serverSocket.accept();
+                    SocketPlayer socketPlayer = new SocketPlayer(getServerController(), socket, UUID.randomUUID().toString());
+                    new Thread(socketPlayer).start();
+                } catch (IOException e) {
+                    System.out.println("Could not create socket player");
+                    break;
+                }
             }
         }
+
     }
-    */
-
-
 
 }

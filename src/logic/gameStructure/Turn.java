@@ -8,6 +8,7 @@ import logic.cards.Card;
 import logic.player.FamilyMember;
 import logic.player.Player;
 
+import javax.print.attribute.standard.PrinterLocation;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -16,7 +17,7 @@ import java.util.Stack;
  */
 public class Turn {
     //private ArrayList<Player> players;
-    private Board board;
+    //private Board board;
 
     public Turn(){
         //this.players = players;
@@ -73,18 +74,16 @@ public class Turn {
     */
 
 
-    public void takeBackFamilyMembers(ArrayList<Player> players){
-        for(Player tmp: players){
-            for(FamilyMember familyMember: tmp.getFamilyMembers()){
+    public void takeBackFamilyMembers(Player player, Board board){
+        for(FamilyMember familyMember: player.getFamilyMembers())
                 familyMember.setInActionSpace(false);
-            }
-        }
 
         for(ActionSpace tmp : board.getHashMap().values()){
             tmp.resetActionSpace();
             tmp.setCovered(false);
         }
     }
+
 
     /*
     input the deck of cards of the period from which the method will take the needed cards and put them on the board (input)
@@ -99,15 +98,6 @@ public class Turn {
             if(i == 16)break;
         }
     }
-
-
-
-
-
-
-
-
-
 
 
 }

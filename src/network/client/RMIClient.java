@@ -1,5 +1,6 @@
 package network.client;
 
+import logic.player.FamilyMember;
 import network.server.RMIServerInterface;
 
 import java.rmi.NotBoundException;
@@ -11,7 +12,7 @@ import java.rmi.server.UnicastRemoteObject;
 /**
  * Created by IBM on 06/06/2017.
  */
-public class RMIClient /*extends AbstractClient*/ implements RMIClientInterface{
+public class RMIClient extends AbstractClient implements RMIClientInterface{
     private String ipAddress;
     private int port;
 

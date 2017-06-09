@@ -1,5 +1,7 @@
 package network.server;
 
+import logic.player.FamilyMember;
+
 /**
  * Created by Pinos on 06/06/2017.
  */

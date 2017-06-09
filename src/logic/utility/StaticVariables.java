@@ -51,7 +51,7 @@ public class StaticVariables {
     private static final TowerActionSpace[] LAND_TOWER = {new TowerActionSpace(1), new TowerActionSpace(3), new TowerActionSpace (5, new Wood(1)), new TowerActionSpace (7, new Wood(2))};
     private static final TowerActionSpace[] VENTURE_TOWER = {new TowerActionSpace(1), new TowerActionSpace(3), new TowerActionSpace (5, new Money(1)), new TowerActionSpace (7, new Money(2))};
 
-    public static final Tower[] TOWERS = {new Tower(PERSON_TOWER), new Tower(BUILDING_TOWER), new Tower(LAND_TOWER), new Tower(VENTURE_TOWER)};
+    //public static final Tower[] TOWERS = {new Tower(PERSON_TOWER), new Tower(BUILDING_TOWER), new Tower(LAND_TOWER), new Tower(VENTURE_TOWER)};
 
 
     /*

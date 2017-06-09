@@ -7,12 +7,12 @@ public abstract class AbstractServer {
 
     private ServerInterface serverController;
 
-    public ServerInterface getServerController() {
-        return serverController;
+    public AbstractServer(ServerInterface serverController){
+        this.serverController = serverController;
     }
 
-    public void setServerController(ServerInterface serverController) {
-        this.serverController = serverController;
+    public ServerInterface getServerController() {
+        return serverController;
     }
 
     public abstract void startServer(int port);

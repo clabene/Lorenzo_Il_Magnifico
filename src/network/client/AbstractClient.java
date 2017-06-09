@@ -75,6 +75,13 @@ public abstract class AbstractClient {
     public abstract void selectCouncilFavour();
 
     /*
+    * Send an ArrayList of action spaces to the client
+    * Client has to pick one of those
+    * This method is triggered by the server side (see PlayExtraActionPhaseEffect in package cards.cardEffects)
+    * */
+    public abstract void selectActionSpaceForExtraAction();
+
+    /*
     * Client leaves the game
     * */
     public abstract void leaveGame();

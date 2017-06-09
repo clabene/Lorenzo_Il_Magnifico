@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Server implements ServerInterface {
 
     private RMIServer rmiServer = new RMIServer();
-    private SocketServer socketServer = new SocketServer();
+    private SocketServer socketServer = new SocketServer(this);
 
     private final int RMI_PORT = 6789;
     private final int SOCKET_PORT = 9876;

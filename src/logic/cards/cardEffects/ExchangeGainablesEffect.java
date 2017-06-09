@@ -93,7 +93,7 @@ public class ExchangeGainablesEffect implements CardEffect{ //todo make this dec
         } while(!doSelectedAction(selectedFromMenu(), player));
     }
 
-
+/*
     public static void main(String[] a){
         Player p = new Player();
         p.gain(new Wood(2), new Slave(3));
@@ -107,7 +107,7 @@ public class ExchangeGainablesEffect implements CardEffect{ //todo make this dec
         System.out.println(p.getMilitaryPoints());
 
     }
-
+*/
 
 
 
