@@ -1,7 +1,7 @@
 package network.client;
 
 import logic.player.FamilyMember;
-import network.server.RMIServerInterface;
+import network.server.rmi.RMIServerInterface;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -15,6 +15,7 @@ import java.rmi.server.UnicastRemoteObject;
 public class RMIClient extends AbstractClient implements RMIClientInterface{
     private String ipAddress;
     private int port;
+    private RMIServerInterface rmiServerInterface;
 
     public RMIClient(int port){
         this.ipAddress = "127.0.0.1";
@@ -27,10 +28,10 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
         try{
 
             Registry registry = LocateRegistry.getRegistry(ipAddress, port);
-            RMIServerInterface obj = (RMIServerInterface) registry.lookup("RMIServerInterface");
+            rmiServerInterface = (RMIServerInterface) registry.lookup("RMIServerInterface");
             UnicastRemoteObject.exportObject(this, 0);
 
-            obj.sendMessage("cane", this);
+            rmiServerInterface.sendMessage("cane", this);
 
 
 
@@ -39,6 +40,10 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
         catch (RemoteException e) {}
 
         catch (NotBoundException e) {}
+    }
+
+    public String getId(){
+        return super.getId();
     }
 
     @Override
@@ -57,7 +62,10 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
     }
 
     @Override
-    public void selectFamilyMember() {
+    public void selectFamilyMember(FamilyMember familyMember) {
+        rmiServerInterface.selectFamilyMember(familyMember, getId() );
+
+
 
     }
 
@@ -68,6 +76,7 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
 
     @Override
     public void selectActionSpace() {
+        rmiServerInterface.selectActionSpace();
 
     }
 

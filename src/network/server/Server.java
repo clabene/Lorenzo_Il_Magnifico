@@ -1,6 +1,7 @@
 package network.server;
 
 import logic.gameStructure.GameRoom;
+import network.server.rmi.RMIServer;
 
 import java.util.ArrayList;
 

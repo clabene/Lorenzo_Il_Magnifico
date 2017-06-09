@@ -81,9 +81,12 @@ public class Game {
         return true;
     }
 
-    public void selectionActionSpace(String actionSpaceId, Player player, Board board){
+    public boolean selectionActionSpace(String actionSpaceId, Player player, Board board){
         this.selectedActionSpace = board.tryToSelectActionSpace(actionSpaceId);
-        if(selectedActionSpace != null && selectedFamilyMember != null) puttingFamilyMemberOnActionSpace(player);
+        if(selectedActionSpace == null) return false;
+        if(selectedActionSpace != null)puttingFamilyMemberOnActionSpace(player);
+        //if(selectedActionSpace != null && selectedFamilyMember != null) puttingFamilyMemberOnActionSpace(player);
+        return true;
     }
 
     public void puttingFamilyMemberOnActionSpace(Player player) {

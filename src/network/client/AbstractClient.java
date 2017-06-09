@@ -17,6 +17,11 @@ public abstract class AbstractClient {
         this.clientController = clientController;
     }
 
+
+    public String getId(){
+        return id;
+    }
+
     public ClientInterface getClientController() {
         return this.clientController;
     }

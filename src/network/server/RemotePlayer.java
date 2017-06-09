@@ -25,6 +25,10 @@ public abstract class RemotePlayer extends Player{
         this.gameRoom = gameRoom;
     }
 
+    public RemotePlayer getRemotePlayer(){
+        return this;
+    }
+
     /*
     * Client selects a family member from theirs
     * */

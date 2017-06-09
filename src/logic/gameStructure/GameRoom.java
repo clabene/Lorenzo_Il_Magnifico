@@ -1,5 +1,6 @@
 package logic.gameStructure;
 
+import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
 import logic.player.FamilyMember;
 import logic.player.Player;
@@ -39,6 +40,15 @@ public class GameRoom {
             players.get(playerId).notifyRequestHandleOutcome("OK");
         else players.get(playerId).notifyRequestHandleOutcome("NOT_OK");
     }
+
+    public void selectActionSpace(String actionSpaceId, String playerId) {
+        Boolean actionSpaceCorrectlySelected = game.selectionActionSpace(actionSpaceId, players.get(playerId), getBoard());
+        if(actionSpaceCorrectlySelected)
+            players.get(playerId).notifyRequestHandleOutcome("OK");
+        else players.get(playerId).notifyRequestHandleOutcome("NOT_OK");
+    }
+
+
 
     //todo use this to handle turn switching
     private ArrayList<Player> getNextTurnOrder() {

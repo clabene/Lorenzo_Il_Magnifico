@@ -35,7 +35,7 @@ public class ReceiveGainablesForCardTypeEffect extends ReceiveGainablesEffect {
             if(tmp != null)
                 super.activate(player);
     }
-
+/*
     public static void main(String[] a){
         Player p = new Player();
         //p.getPlank().getCards().cardAdded(new LandCard("po", PeriodNumber.SECOND, 0, null, null));
@@ -47,6 +47,6 @@ public class ReceiveGainablesForCardTypeEffect extends ReceiveGainablesEffect {
         System.out.println(p.getMilitaryPoints());
     }
 
-
+*/
 
 }

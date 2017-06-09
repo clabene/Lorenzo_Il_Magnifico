@@ -20,7 +20,7 @@ public class ReceiveGainablesForMilitaryPointsEffect extends ReceiveGainablesEff
             super.activate(player);
     }
 
-
+/*
     public static void main(String[] args){
         Player p = new Player();
         p.gain(new MilitaryPointsTrack(11));
@@ -30,7 +30,7 @@ public class ReceiveGainablesForMilitaryPointsEffect extends ReceiveGainablesEff
         System.out.println(p.getFaithPoints());
     }
 
-
+*/
 
 }
 
