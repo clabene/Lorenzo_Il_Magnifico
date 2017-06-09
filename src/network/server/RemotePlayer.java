@@ -31,14 +31,9 @@ public abstract class RemotePlayer extends Player{
     public abstract void selectFamilyMember(FamilyMember familyMember);
 
     /*
-    * Client selects an area from the board
-    * */
-    public abstract void selectBoardArea();
-
-    /*
     * Client selects an action space from the board
     * */
-    public abstract void selectActionSpace();
+    public abstract void selectActionSpace(String actionSpaceId);
 
     /*
     * Client decides if they want to support the Vatican or not.

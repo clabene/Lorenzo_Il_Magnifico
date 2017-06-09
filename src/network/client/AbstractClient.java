@@ -50,7 +50,7 @@ public abstract class AbstractClient {
     /*
     * Client sends request to start a game in a new room. Can specify the number of player that can join the game.
     * */
-    public abstract void tryToCreateRoom();
+    public abstract void tryToCreateRoom(int numberOfPlayers);
 
     /*
     * Client selects a family member from theirs

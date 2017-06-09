@@ -1,9 +1,11 @@
-package network.server;
+package network.server.socket;
+
+import network.server.AbstractServer;
+import network.server.ServerInterface;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.UUID;
 
 /**
  * Created by Pinos on 06/06/2017.

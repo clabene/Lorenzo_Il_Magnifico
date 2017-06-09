@@ -1,11 +1,9 @@
 package network.server;
 
-import com.sun.applet2.AppletParameters;
 import logic.exceptions.LimitedValueOffRangeException;
-import logic.gameStructure.Game;
 import logic.gameStructure.GameRoom;
-import logic.player.Player;
 import network.server.rmi.RMIServer;
+import network.server.socket.SocketServer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +13,7 @@ import java.util.HashMap;
  */
 public class Server implements ServerInterface {
 
-    private RMIServer rmiServer = new RMIServer();
+    private RMIServer rmiServer = new RMIServer(this);
     private SocketServer socketServer = new SocketServer(this);
 
     private final int RMI_PORT = 6789;
@@ -58,6 +56,7 @@ public class Server implements ServerInterface {
             System.out.println("Room not available");
             getPlayer(playerId).notifyRequestHandleOutcome("NOT_OK");
         }
+        getPlayer(playerId).notifyRequestHandleOutcome("OK");
     }
 
     @Override
@@ -71,10 +70,11 @@ public class Server implements ServerInterface {
             return;
         }
         gameRooms.add(gameRoom);
+        getPlayer(playerId).notifyRequestHandleOutcome("OK");
     }
 
     @Override
-    public void leaveGame() {
+    public void leaveGame(String id) {
 
     }
 }

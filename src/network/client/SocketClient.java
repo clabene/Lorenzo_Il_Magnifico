@@ -1,5 +1,6 @@
 package network.client;
 
+import com.sun.javafx.collections.ObservableIntegerArrayImpl;
 import logic.player.FamilyMember;
 
 import java.io.*;
@@ -66,12 +67,25 @@ public class SocketClient extends AbstractClient {
 
     @Override
     public void tryToJoinGame() {
-
+        try{
+            output.writeObject("JOIN_GAME_REQUEST");
+            output.flush();
+        } catch (IOException e){
+            System.out.println("Could not send join game in request");
+        }
+        notifyRequestHandleOutcome();
     }
 
     @Override
-    public void tryToCreateRoom() {
-
+    public void tryToCreateRoom(int numberOfPlayers) {
+        try{
+            output.writeObject("CREATE_NEW_ROOM_REQUEST");
+            output.writeObject(numberOfPlayers); //check if boxing is necessary
+            output.flush();
+        } catch (IOException e){
+            System.out.println("Could not send join game in request");
+        }
+        notifyRequestHandleOutcome();
     }
 
     @Override

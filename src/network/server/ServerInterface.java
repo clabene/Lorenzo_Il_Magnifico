@@ -22,5 +22,5 @@ public interface ServerInterface {
     /*
     * Client leaves the game
     * */
-    void leaveGame();
+    void leaveGame(String id);
 }

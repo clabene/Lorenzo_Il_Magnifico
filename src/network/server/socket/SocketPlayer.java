@@ -1,7 +1,9 @@
-package network.server;
+package network.server.socket;
 
 import logic.gameStructure.GameRoom;
 import logic.player.FamilyMember;
+import network.server.RemotePlayer;
+import network.server.ServerInterface;
 
 import java.io.*;
 import java.net.Socket;
@@ -70,19 +72,22 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
         serverController.tryToLogIn(clientId, this);
     }
 
+    public void tryToJoinGame(){
+        serverController.tryToJoinGame(getId());
+    }
+
+    public void tryToJoinNewRoom(Integer NUMBER_OF_PLAYERS){
+        serverController.tryToCreateRoom(getId(), NUMBER_OF_PLAYERS);
+    }
+
     @Override
     public void selectFamilyMember(FamilyMember familyMember) {
         getGameRoom().selectFamilyMember(familyMember, getId());
     }
 
     @Override
-    public void selectBoardArea() {
-
-    }
-
-    @Override
-    public void selectActionSpace() {
-
+    public void selectActionSpace(String actionSpaceId) {
+        getGameRoom().selectActionSpace(actionSpaceId, getId());
     }
 
     @Override
@@ -104,6 +109,8 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
     public void selectActionSpaceForExtraAction(){
 
     }
+
+
 
     @Override
     public void notifyRequestHandleOutcome(String responseCode) {

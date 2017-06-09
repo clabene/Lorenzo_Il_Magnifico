@@ -27,11 +27,6 @@ public class RMIPlayer extends RemotePlayer {
     }
 
     @Override
-    public void selectBoardArea() {
-
-    }
-
-    @Override
     public void selectActionSpace(String actionSpaceId) {
         getGameRoom().selectActionSpace(actionSpaceId, getId());
     }
