@@ -2,8 +2,10 @@ package logic.gameStructure;
 
 import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
+import logic.exceptions.LimitedValueOffRangeException;
 import logic.player.FamilyMember;
 import logic.player.Player;
+import logic.utility.LimitedInteger;
 import network.server.RemotePlayer;
 
 import java.util.ArrayList;
@@ -17,10 +19,27 @@ public class GameRoom {
 
     private Game game = new Game();
     private Board board = new Board();
-    private HashMap<String, RemotePlayer> players;
 
+    private final int NUMBER_OF_PLAYERS;
 
-    public void addPlayerToRoom(RemotePlayer remotePlayer){
+    private LimitedInteger numberOfPlayers;
+
+    private HashMap<String, RemotePlayer> players; //key: playerId
+
+    public GameRoom(int NUMBER_OF_PLAYERS) {
+        this.NUMBER_OF_PLAYERS = NUMBER_OF_PLAYERS;
+        try {
+            numberOfPlayers = new LimitedInteger(NUMBER_OF_PLAYERS, 1, 1);
+        } catch (LimitedValueOffRangeException e){
+            System.out.println("Could not initialize numberOfPlayers");
+        }
+
+        //todo board changes based on the number of players in the game
+    }
+
+    public void addPlayerToRoom(RemotePlayer remotePlayer) throws LimitedValueOffRangeException{
+        numberOfPlayers.increment();
+
         remotePlayer.setGameRoom(this);
         remotePlayer.setBoard(board);
         players.put(remotePlayer.getId(), remotePlayer);
@@ -34,11 +53,17 @@ public class GameRoom {
         return game.checkingIfPlayable(player);
     }
 
+    private boolean canPlaceFamilyMember(){
+        return game.getSelectedActionSpace() != null && game.getSelectedFamilyMember() != null;
+    }
+
     public void selectFamilyMember(FamilyMember familyMember, String playerId){
         Boolean familyMemberCorrectlySelected = game.selectionFamilyMember(familyMember, players.get(playerId));
         if(familyMemberCorrectlySelected)
             players.get(playerId).notifyRequestHandleOutcome("OK");
         else players.get(playerId).notifyRequestHandleOutcome("NOT_OK");
+
+        if(canPlaceFamilyMember()) puttingFamilyMemberOnActionSpace(playerId);
     }
 
     public void selectActionSpace(String actionSpaceId, String playerId) {
@@ -46,8 +71,14 @@ public class GameRoom {
         if(actionSpaceCorrectlySelected)
             players.get(playerId).notifyRequestHandleOutcome("OK");
         else players.get(playerId).notifyRequestHandleOutcome("NOT_OK");
+
+        if(canPlaceFamilyMember()) puttingFamilyMemberOnActionSpace(playerId);
     }
 
+    private void puttingFamilyMemberOnActionSpace(String playerId){
+        game.puttingFamilyMemberOnActionSpace(players.get(playerId)); //if == QUALCOSA
+        //players.get(playerId).chiediAlClientQualeFavoreVuole();
+    }
 
 
     //todo use this to handle turn switching

@@ -1,10 +1,8 @@
 package network.server;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
 import java.util.UUID;
 
 /**
@@ -35,7 +33,7 @@ public class SocketServer extends AbstractServer {
             while (true) {
                 try {
                     Socket socket = serverSocket.accept();
-                    SocketPlayer socketPlayer = new SocketPlayer(getServerController(), socket, UUID.randomUUID().toString());
+                    SocketPlayer socketPlayer = new SocketPlayer(getServerController(), socket);
                     new Thread(socketPlayer).start();
                 } catch (IOException e) {
                     System.out.println("Could not create socket player");

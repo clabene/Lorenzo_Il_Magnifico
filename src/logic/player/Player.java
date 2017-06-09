@@ -48,14 +48,12 @@ public class Player {
 
     private Board board;
 
-    @Deprecated
     public Player(Resource ... resources){
         this.plank = new Plank(resources);
-        initializeFamilyMembers();
     }
 
-    public Player(String id, Resource ... resources){
-        this.plank = new Plank(resources);
+    //this has to  be called as first method after constructor
+    public void setId(String id) {
         this.id = id;
         initializeFamilyMembers();
     }

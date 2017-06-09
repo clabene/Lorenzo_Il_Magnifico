@@ -71,21 +71,30 @@ public class Game {
     }
 
 
+    public ActionSpace getSelectedActionSpace() {
+        return selectedActionSpace;
+    }
+    public FamilyMember getSelectedFamilyMember() {
+        return selectedFamilyMember;
+    }
+
     public boolean selectionFamilyMember(FamilyMember familyMember, Player player){
         this.selectedFamilyMember = player.tryToSelectFamilyMember(familyMember);
 
-        if(selectedFamilyMember == null) return false;
+        return selectedFamilyMember != null;
 
-        if(selectedActionSpace != null) puttingFamilyMemberOnActionSpace(player);
 
-        return true;
+        //if(selectedFamilyMember == null) return false;
+
+        //if(selectedActionSpace != null) puttingFamilyMemberOnActionSpace(player);
+
+        //return true;
     }
 
     public boolean selectionActionSpace(String actionSpaceId, Player player, Board board){
         this.selectedActionSpace = board.tryToSelectActionSpace(actionSpaceId);
         if(selectedActionSpace == null) return false;
-        if(selectedActionSpace != null)puttingFamilyMemberOnActionSpace(player);
-        //if(selectedActionSpace != null && selectedFamilyMember != null) puttingFamilyMemberOnActionSpace(player);
+        //if(selectedFamilyMember != null) puttingFamilyMemberOnActionSpace(player);
         return true;
     }
 

@@ -13,10 +13,6 @@ public abstract class RemotePlayer extends Player{
 
     private GameRoom gameRoom;
 
-    public RemotePlayer(String id){ //todo check if this work or if is useful at all!!
-        super(id);
-    }
-
     public GameRoom getGameRoom() {
         return gameRoom;
     }
@@ -65,6 +61,7 @@ public abstract class RemotePlayer extends Player{
     * This method is triggered by the server side (see PlayExtraActionPhaseEffect in package cards.cardEffects)
     * */
     public abstract void selectActionSpaceForExtraAction();
+
 
     public abstract void notifyRequestHandleOutcome(String responseCode);
 

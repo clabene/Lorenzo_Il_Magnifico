@@ -26,11 +26,21 @@ public class ServerSideStreamHandler {
     }
 
     private void fillMap(){
+        responseMap.put("LOG_IN_REQUEST", this::tryToLogInClient);
         responseMap.put("FAMILY_MEMBER_SELECTION_REQUEST", this::familyMemberSelectionRespond);
-
 
     }
 
+
+    public void tryToLogInClient(){
+        try {
+            String name = (String) input.readObject();
+            String id = (String) input.readObject();
+            player.tryToLogInClient(id);
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Could not handle FAMILY_MEMBER_SELECTION_REQUEST");
+        }
+    }
 
     public void familyMemberSelectionRespond(){
         try {

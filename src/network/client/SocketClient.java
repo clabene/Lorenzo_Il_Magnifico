@@ -53,8 +53,15 @@ public class SocketClient extends AbstractClient {
     }
 
     @Override
-    public void tryToLogIn(String name, String id) {
-
+    public void tryToLogIn() {
+        try{
+            output.writeObject("LOG_IN_REQUEST");
+            output.writeObject(getId());
+            output.flush();
+        } catch (IOException e){
+            System.out.println("Could not send log in request");
+        }
+        notifyRequestHandleOutcome();
     }
 
     @Override

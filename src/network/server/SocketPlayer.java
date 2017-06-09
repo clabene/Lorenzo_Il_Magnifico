@@ -18,8 +18,7 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
 
     private ServerSideStreamHandler streamHandler;
 
-    public SocketPlayer(ServerInterface serverController, Socket clientSocket, String id) {
-        super(id);
+    public SocketPlayer(ServerInterface serverController, Socket clientSocket) {
         this.serverController = serverController;
         try {
             input = new ObjectInputStream(new BufferedInputStream(clientSocket.getInputStream()));
@@ -34,7 +33,6 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
     @Override
     public void run(){
         try {
-            // noinspection InfiniteLoopStatement
             while (true) {
                 String requestCode = (String) input.readObject();
                 streamHandler.respond(requestCode);
@@ -65,6 +63,12 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
         super.setGameRoom(gameRoom);
     }
 
+
+
+    public void tryToLogInClient(String clientId) {
+        setId(clientId);
+        serverController.tryToLogIn(clientId, this);
+    }
 
     @Override
     public void selectFamilyMember(FamilyMember familyMember) {

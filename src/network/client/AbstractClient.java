@@ -12,12 +12,17 @@ public abstract class AbstractClient {
     private ClientInterface clientController;
 
     private String id = UUID.randomUUID().toString();
+    //private String name; //set this in Client class
 
-    public void setClientController(ClientInterface clientController) {
+    public void setClientController(ClientInterface clientController, String name) {
         this.clientController = clientController;
+        //this.name = name;
     }
-
-
+/*
+    public String getName() {
+        return name;
+    }
+*/
     public String getId(){
         return id;
     }
@@ -35,7 +40,7 @@ public abstract class AbstractClient {
     * Client sends request to be logged in with a specific name and id
     * Id is to be the same id of the RemotePlayer associated with this client
     * */
-    public abstract void tryToLogIn(String name, String id);
+    public abstract void tryToLogIn();
 
     /*
     * Client sends request to join a room
