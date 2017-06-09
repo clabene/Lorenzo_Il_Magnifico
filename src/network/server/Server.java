@@ -22,6 +22,7 @@ public class Server implements ServerInterface {
     private HashMap<String, RemotePlayer> playersList = new HashMap<>(); //key: id
 
     private ArrayList<GameRoom> gameRooms = new ArrayList<>();
+    private HashMap<String, RemotePlayer> playerList;
 
     public Server(){
 

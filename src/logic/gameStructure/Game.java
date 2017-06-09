@@ -6,6 +6,7 @@ import logic.cards.Card;
 import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.player.FamilyMember;
 import logic.player.Player;
+import logic.resources.CouncilFavour;
 import logic.resources.SetOfResources;
 import logic.utility.CardSetupHandler;
 
@@ -128,6 +129,16 @@ public class Game {
     public void setDeck(){
         CardSetupHandler cartSetupHandler = new CardSetupHandler();
         this.deck = cartSetupHandler.readFromFile();
+    }
+
+    public void selectCouncilFavour ( int councilFavourIndex, Player player, Board board){
+        CouncilFavour councilFavour  = new CouncilFavour();
+        councilFavour.gainedByPlayer(player);
+
+    }
+
+    public boolean useSlaves(Player player, FamilyMember familyMember, int quantity){
+        return actionPhase.incrementFamilyMemberValueRequest(player, familyMember, quantity);
     }
 
 

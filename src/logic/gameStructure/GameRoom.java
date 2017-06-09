@@ -2,10 +2,8 @@ package logic.gameStructure;
 
 import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
-import logic.exceptions.LimitedValueOffRangeException;
 import logic.player.FamilyMember;
 import logic.player.Player;
-import logic.utility.LimitedInteger;
 import network.server.RemotePlayer;
 
 import java.util.ArrayList;
@@ -19,6 +17,7 @@ public class GameRoom {
 
     private Game game = new Game();
     private Board board = new Board();
+    private HashMap<String, RemotePlayer> players;
 
     private final int NUMBER_OF_PLAYERS;
 
@@ -73,6 +72,18 @@ public class GameRoom {
         else players.get(playerId).notifyRequestHandleOutcome("NOT_OK");
 
         if(canPlaceFamilyMember()) puttingFamilyMemberOnActionSpace(playerId);
+    }
+
+    public void selectCouncilFavour ( int councilFavourIndex, String playerId) {
+
+
+    }
+
+    public void useSlaves(FamilyMember familyMember, int quantity, String playerId){
+        Boolean slavesUsed = game.useSlaves(players.get(playerId), familyMember,  quantity);
+        if(slavesUsed)
+            players.get(playerId).notifyRequestHandleOutcome("OK");
+        else players.get(playerId).notifyRequestHandleOutcome("NOT_OK");
     }
 
     private void puttingFamilyMemberOnActionSpace(String playerId){

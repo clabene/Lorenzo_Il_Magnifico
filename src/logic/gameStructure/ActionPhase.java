@@ -72,7 +72,7 @@ public class ActionPhase {
         }
     }
     */
-
+/*
     public static void main(String[] ar){
         Player p = new Player(null, new Slave(2));
         p.getBonuses().add(new BonusOnFamilyMemberPlacement(ActionSpaceType.MARKET, 1));
@@ -82,7 +82,7 @@ public class ActionPhase {
         //a.playActionPhase();
         System.out.println(p.getPlank().getSetOfResources());
     }
-
+*/
     public boolean putFamilyMemberOnActionSpace(Player player, FamilyMember familyMember, ActionSpace actionSpace) {
         if (familyMember.getValue() >= actionSpace.getMinValueToPlaceFamiliar() ) {
             /*
@@ -122,19 +122,23 @@ public class ActionPhase {
     }
 
 
-    public void incrementFamilyMemberValueRequest(Player player, FamilyMember familyMember) {
+    public boolean incrementFamilyMemberValueRequest(Player player, FamilyMember familyMember, int quantity) {
         boolean b = true;
         while (b) {
 
             System.out.println("Quanti schiavi vuoi sacrificare? (Nessuno = 0)\n");
-            Scanner input = new Scanner(System.in);
-            int quantity = input.nextInt();
+            //Scanner input = new Scanner(System.in);
+            //int quantity = input.nextInt();
             if (player.lose(new SetOfResources(new Slave(quantity)))) {
                 familyMember.incrementFamilyMemberValue(quantity);
                 b = false;
-            } else
+                return true;
+            } else{
                 System.out.println("Non hai abbastanza schiavi\n");
+
+            }
         }
+        return false;
     }
 
 /*

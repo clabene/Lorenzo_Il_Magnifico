@@ -4,6 +4,7 @@ package network.server;
  * Created by Pinos on 06/06/2017.
  */
 public interface ServerInterface {
+    public RemotePlayer getPlayer(String id);
 
     RemotePlayer getPlayer(String id);
 

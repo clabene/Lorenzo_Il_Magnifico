@@ -68,8 +68,8 @@ public class RMIServer extends AbstractServer implements RMIServerInterface {
 
 
     @Override
-    public void selectFamilyMember(FamilyMember familyMember, RemotePlayer player) {
-         player.selectFamilyMember(familyMember);
+    public void selectFamilyMember(FamilyMember familyMember, String playerId) {
+         getServerController().getPlayer(playerId).selectFamilyMember(familyMember);
     }
 
     @Override
@@ -79,13 +79,14 @@ public class RMIServer extends AbstractServer implements RMIServerInterface {
 
 
     @Override
-    public void selectActionSpace(String actionSpaceId, RemotePlayer player) {
-        ((RMIPlayer) player).selectActionSpace(actionSpaceId);
+    public void selectActionSpace(String actionSpaceId, String playerId) {
+        getServerController().getPlayer(playerId).selectActionSpace(actionSpaceId);
 
     }
 
     @Override
     public void dealWithVatican() {
+
 
     }
 

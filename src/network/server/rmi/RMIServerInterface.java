@@ -16,7 +16,7 @@ public interface RMIServerInterface  extends Remote{
 
 
 
-    public  void selectFamilyMember(FamilyMember familyMember, RemotePlayer player);
+    public  void selectFamilyMember(FamilyMember familyMember, String playerId);
 
     /*
     * Client selects an area from the board
@@ -26,7 +26,7 @@ public interface RMIServerInterface  extends Remote{
     /*
     * Client selects an action space from the board
     * */
-    public void selectActionSpace();
+    public void selectActionSpace(String actionSpaceId, String playerId);
 
     /*
     * Client decides if they want to support the Vatican or not.

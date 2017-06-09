@@ -17,6 +17,8 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
     private int port;
     private RMIServerInterface rmiServerInterface;
 
+
+
     public RMIClient(int port){
         this.ipAddress = "127.0.0.1";
         this.port = port;
@@ -63,7 +65,7 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
 
     @Override
     public void selectFamilyMember(FamilyMember familyMember) {
-        rmiServerInterface.selectFamilyMember(familyMember, getId() );
+        rmiServerInterface.selectFamilyMember(familyMember,  getId());
 
 
 
@@ -75,8 +77,8 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
     }
 
     @Override
-    public void selectActionSpace() {
-        rmiServerInterface.selectActionSpace();
+    public void selectActionSpace(String actionSpaceId) {
+        rmiServerInterface.selectActionSpace(actionSpaceId, getId());
 
     }
 

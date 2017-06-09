@@ -24,16 +24,16 @@ public class CouncilFavour implements Gainable {
     }
 
     @Override
-    public void gainedByPlayer(Player player){
+    public void gainedByPlayer(Player player, int chosenIndex){
 
-        Scanner input = new Scanner(System.in);
+        //Scanner input = new Scanner(System.in);
 
         while(numberOfFavours > 0){
             //favours are printed
             System.out.println(toString());
 
             //player selects favour
-            int chosenIndex = input.nextInt()-1;
+            //int chosenIndex = input.nextInt()-1;
             //todo controls are needed here
             if( chosenIndex +1 > favours.length){
                 System.out.println("Input not valid, try again!");
