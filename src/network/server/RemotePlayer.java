@@ -59,11 +59,5 @@ public abstract class RemotePlayer extends Player{
 
     public abstract void notifyRequestHandleOutcome(ResponseCode responseCode);
 
-/*
-    public abstract void tryToLogInClient(String clientId);
 
-    public abstract void tryToJoinGame();
-
-    public abstract void tryToJoinNewRoom(Integer NUMBER_OF_PLAYERS);
-*/
 }

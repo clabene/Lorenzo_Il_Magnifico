@@ -71,23 +71,5 @@ public class RMIPlayer extends RemotePlayer {
         }
     }
 
-    public void tryToLogInClient(String clientId) throws RemoteException {
-        setId(clientId);
-        serverController.tryToLogIn(clientId, this);
-    }
 
-    public void tryToJoinGame() throws RemoteException{
-        try {
-            serverController.tryToJoinGame(getId());
-        } catch (RemoteException e) {
-        }
-    }
-
-    public void tryToJoinNewRoom(Integer NUMBER_OF_PLAYERS) throws RemoteException{
-        try {
-            serverController.tryToCreateRoom(getId(), NUMBER_OF_PLAYERS);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-    }
 }
