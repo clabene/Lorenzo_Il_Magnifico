@@ -123,6 +123,12 @@ public class ActionPhase {
 
 
     public boolean incrementFamilyMemberValueRequest(Player player, FamilyMember familyMember, int quantity) {
+        if(player.lose(new Slave(quantity))) {
+            familyMember.incrementFamilyMemberValue(quantity);
+            return true;
+        }
+        return false;
+        /*
         boolean b = true;
         while (b) {
 
@@ -139,6 +145,7 @@ public class ActionPhase {
             }
         }
         return false;
+        */
     }
 
 /*

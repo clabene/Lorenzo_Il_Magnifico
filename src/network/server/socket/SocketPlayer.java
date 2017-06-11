@@ -94,8 +94,8 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
     }
 
     @Override
-    public void useSlaves(FamilyMember familyMember, int quantity) {
-
+    public void useSlaves(int quantity) {
+        getGameRoom().useSlaves(quantity, getId());
     }
 
     @Override
@@ -126,7 +126,6 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
     public void selectActionSpaceForExtraAction(){
 
     }
-
 
 
     @Override

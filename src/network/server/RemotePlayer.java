@@ -1,9 +1,13 @@
 package network.server;
 
+import logic.board.Board;
 import logic.gameStructure.GameRoom;
 import logic.player.FamilyMember;
 import logic.player.Player;
 import network.ResponseCode;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 /**
@@ -19,10 +23,6 @@ public abstract class RemotePlayer extends Player{
 
     public void setGameRoom(GameRoom gameRoom) {
         this.gameRoom = gameRoom;
-    }
-
-    public RemotePlayer getRemotePlayer(){
-        return this;
     }
 
     /*
@@ -48,7 +48,7 @@ public abstract class RemotePlayer extends Player{
     /*
     * Client sends request to use slaves to increment selected family member value
     * */
-    public abstract void useSlaves(FamilyMember familyMember, int quantity);
+    public abstract void useSlaves(int quantity);
 
     /*
     * Send an ArrayList of action spaces to the client
@@ -57,7 +57,15 @@ public abstract class RemotePlayer extends Player{
     * */
     public abstract void selectActionSpaceForExtraAction();
 
+    /*
+    * Notify client of the result of the processing of their previous request
+    * */
     public abstract void notifyRequestHandleOutcome(ResponseCode responseCode);
+
+    /*
+    * Notify client of new board and new player's data after an action
+    * */
+    public abstract <P extends Player > void updateView(Board board, Collection<P> players);
 
 
 }

@@ -8,8 +8,6 @@ import logic.exceptions.FamilyMemberSelectionException;
 import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.player.FamilyMember;
 import logic.player.Player;
-import logic.resources.CouncilFavour;
-import logic.resources.SetOfResources;
 import logic.utility.CardSetupHandler;
 import network.ResponseCode;
 
@@ -140,8 +138,10 @@ public class Game {
     }
     */
 
-    public ResponseCode useSlaves(Player player, FamilyMember familyMember, int quantity){
-        if(actionPhase.incrementFamilyMemberValueRequest(player, familyMember, quantity))
+    public ResponseCode useSlaves(Player player, int quantity){
+        if(selectedFamilyMember == null) return ResponseCode.NOT_OK;
+
+        if(actionPhase.incrementFamilyMemberValueRequest(player, selectedFamilyMember, quantity))
             return ResponseCode.OK;
         return ResponseCode.NOT_OK;
     }

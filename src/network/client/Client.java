@@ -1,8 +1,12 @@
 package network.client;
 
+import logic.board.Board;
+import logic.player.Player;
 import network.ResponseCode;
 import network.client.socket.SocketClient;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -14,6 +18,9 @@ public class Client implements ClientInterface {
     private final int SOCKET_PORT = 9876;
 
     private AbstractClient myClient;
+
+    private ClientView clientView = new ClientView();
+
 
     private int selectNetworkType(){
         System.out.println("What network is preferred?");
@@ -43,4 +50,8 @@ public class Client implements ClientInterface {
         client.getMyClient().connect();
     }
 
+    @Override
+    public void updateView(Board board, Collection<Player> players) {
+
+    }
 }

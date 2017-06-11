@@ -66,7 +66,7 @@ public abstract class AbstractClient {
     /*
     * Client sends request to use slaves to increment selected family member value
     * */
-    public abstract void useSlaves();
+    public abstract void useSlaves(int quantity);
 
     /*
     * Client selects an action space from the board

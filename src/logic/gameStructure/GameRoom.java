@@ -52,11 +52,11 @@ public class GameRoom {
         return game.checkingIfPlayable(player);
     }
 
-    private boolean canPlaceFamilyMember(){
+    private boolean canPlaceFamilyMember() {
         return game.getSelectedActionSpace() != null && game.getSelectedFamilyMember() != null;
     }
 
-    public void selectFamilyMember(FamilyMember familyMember, String playerId){
+    public void selectFamilyMember(FamilyMember familyMember, String playerId) {
         ResponseCode responseCode = game.selectionFamilyMember(familyMember, players.get(playerId));
         players.get(playerId).notifyRequestHandleOutcome(responseCode);
 
@@ -72,29 +72,36 @@ public class GameRoom {
         if(canPlaceFamilyMember()) puttingFamilyMemberOnActionSpace(playerId);
     }
 
-    public void useSlaves(FamilyMember familyMember, int quantity, String playerId){
-        ResponseCode responseCode = game.useSlaves(players.get(playerId), familyMember,  quantity);
+    public void useSlaves(int quantity, String playerId) {
+        ResponseCode responseCode = game.useSlaves(players.get(playerId),  quantity);
 
         players.get(playerId).notifyRequestHandleOutcome(responseCode);
     }
 
-    private void puttingFamilyMemberOnActionSpace(String playerId){
+    private void puttingFamilyMemberOnActionSpace(String playerId) {
 
         RemotePlayer player = players.get(playerId);
 
         ResponseCode responseCode = game.puttingFamilyMemberOnActionSpace(player);
         useCouncilFavours(player);
 
+        if(responseCode == ResponseCode.OK) updatePlayersView();
+
         players.get(playerId).notifyRequestHandleOutcome(responseCode);
 
     }
 
-    private void useCouncilFavours(RemotePlayer remotePlayer){
+    private void useCouncilFavours(RemotePlayer remotePlayer) {
         Iterator iterator = remotePlayer.getPlank().getCouncilFavours().iterator();
         while(iterator.hasNext()) {
             remotePlayer.selectCouncilFavour();
             iterator.remove();
         }
+    }
+
+    private void updatePlayersView() {
+        for(RemotePlayer tmp : players.values())
+            tmp.updateView(board, players.values());
     }
 
     //todo use this to handle turn switching
