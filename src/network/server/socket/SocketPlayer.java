@@ -1,7 +1,9 @@
 package network.server.socket;
 
+import logic.board.Board;
 import logic.gameStructure.GameRoom;
 import logic.player.FamilyMember;
+import logic.player.Player;
 import network.ResponseCode;
 import network.server.RemotePlayer;
 import network.server.ServerInterface;
@@ -9,6 +11,7 @@ import network.server.ServerInterface;
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by Pinos on 06/06/2017.
@@ -127,7 +130,6 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
 
     }
 
-
     @Override
     public void notifyRequestHandleOutcome(ResponseCode responseCode) {
         try {
@@ -136,5 +138,10 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
         } catch (IOException e) {
             System.out.println("Could not send response code");
         }
+    }
+
+    @Override
+    public <P extends Player> void updateView(Board board, Collection<P> players) {
+
     }
 }

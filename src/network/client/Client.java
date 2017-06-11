@@ -5,6 +5,7 @@ import logic.player.Player;
 import network.ResponseCode;
 import network.client.socket.SocketClient;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Scanner;
@@ -52,6 +53,7 @@ public class Client implements ClientInterface {
 
     @Override
     public void updateView(Board board, Collection<Player> players) {
-
+        clientView.setBoard(board);
+        clientView.setPlayers((ArrayList<Player>) players);
     }
 }

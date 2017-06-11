@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/network/client/ClientView.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/network/client/socket/SocketClientListener.java" afterPath="" />
+    <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="network updated (???)">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/gameStructure/ActionPhase.java" afterPath="$PROJECT_DIR$/src/logic/gameStructure/ActionPhase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/gameStructure/Game.java" afterPath="$PROJECT_DIR$/src/logic/gameStructure/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java" afterPath="$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/AbstractClient.java" afterPath="$PROJECT_DIR$/src/network/client/AbstractClient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/Client.java" afterPath="$PROJECT_DIR$/src/network/client/Client.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/ClientInterface.java" afterPath="$PROJECT_DIR$/src/network/client/ClientInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/socket/SocketClient.java" afterPath="$PROJECT_DIR$/src/network/client/socket/SocketClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/server/RemotePlayer.java" afterPath="$PROJECT_DIR$/src/network/server/RemotePlayer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/server/Server.java" afterPath="$PROJECT_DIR$/src/network/server/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java" afterPath="$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java" afterPath="$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,101 +23,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RemotePlayer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/network/server/RemotePlayer.java">
+      <file leaf-file-name="SocketPlayer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="67" column="81" lean-forward="false" selection-start-line="67" selection-start-column="81" selection-end-line="67" selection-end-column="81" />
+            <state relative-caret-position="532">
+              <caret line="144" column="8" lean-forward="false" selection-start-line="144" selection-start-column="8" selection-end-line="144" selection-end-column="8" />
               <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameRoom.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="105" column="0" lean-forward="true" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActionPhase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/logic/gameStructure/ActionPhase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="85" column="19" lean-forward="false" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractClient.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/network/client/AbstractClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="85" column="4" lean-forward="true" selection-start-line="85" selection-start-column="4" selection-end-line="85" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/network/client/Client.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="21" column="52" lean-forward="false" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
-              <folding>
-                <element signature="e#1078#1079#0" expanded="true" />
-                <element signature="e#1138#1139#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientView.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/network/client/ClientView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="39" lean-forward="false" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#319#320#0" expanded="true" />
-                <element signature="e#349#350#0" expanded="true" />
-                <element signature="e#380#381#0" expanded="true" />
-                <element signature="e#408#409#0" expanded="true" />
-                <element signature="e#465#466#0" expanded="true" />
-                <element signature="e#503#504#0" expanded="true" />
-                <element signature="e#578#579#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SocketClient.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/network/client/socket/SocketClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="165" column="75" lean-forward="true" selection-start-line="165" selection-start-column="75" selection-end-line="165" selection-end-column="75" />
-              <folding>
-                <element signature="method#initializeStreams#0;class#SocketClient#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientInterface.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/network/client/ClientInterface.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="52" lean-forward="false" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="method#tryToLogInClient#0;class#SocketPlayer#0" expanded="false" />
+                <element signature="method#tryToJoinNewRoom#0;class#SocketPlayer#0" expanded="false" />
+                <element signature="e#2796#2797#0" expanded="true" />
+                <element signature="e#2854#2855#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -220,15 +125,15 @@
         <option value="$PROJECT_DIR$/src/network/client/AbstractClient.java" />
         <option value="$PROJECT_DIR$/src/logic/gameStructure/ActionPhase.java" />
         <option value="$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java" />
-        <option value="$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java" />
         <option value="$PROJECT_DIR$/src/logic/gameStructure/Game.java" />
         <option value="$PROJECT_DIR$/src/network/server/Server.java" />
         <option value="$PROJECT_DIR$/src/network/client/socket/SocketClient.java" />
         <option value="$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java" />
-        <option value="$PROJECT_DIR$/src/network/client/ClientInterface.java" />
         <option value="$PROJECT_DIR$/src/network/server/RemotePlayer.java" />
-        <option value="$PROJECT_DIR$/src/network/client/Client.java" />
         <option value="$PROJECT_DIR$/src/network/client/ClientView.java" />
+        <option value="$PROJECT_DIR$/src/network/client/Client.java" />
+        <option value="$PROJECT_DIR$/src/network/client/ClientInterface.java" />
+        <option value="$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java" />
       </list>
     </option>
   </component>
@@ -326,6 +231,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lorenzo_Il_Magnifico_Git" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lorenzo_Il_Magnifico_Git" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="network" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="socket" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -891,13 +822,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495533735855</updated>
     </task>
-    <task id="LOCAL-00023" summary="Lose method returns boolean now">
-      <created>1495820717789</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1495820717789</updated>
-    </task>
     <task id="LOCAL-00024" summary="some card effect">
       <created>1495838347581</created>
       <option name="number" value="00024" />
@@ -1234,7 +1158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1497195660961</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="network updated (???)">
+      <created>1497208785189</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1497208785189</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1340,7 +1271,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Action Spaces" />
     <MESSAGE value="Council Favours" />
     <MESSAGE value="Lose method returns boolean now" />
     <MESSAGE value="some card effect" />
@@ -1365,7 +1295,8 @@
     <MESSAGE value="network is going ahead" />
     <MESSAGE value="familyMemberSelection implemented (not tested) w/ sockets" />
     <MESSAGE value="network updated (?)" />
-    <option name="LAST_COMMIT_MESSAGE" value="network updated (?)" />
+    <MESSAGE value="network updated (???)" />
+    <option name="LAST_COMMIT_MESSAGE" value="network updated (???)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1404,13 +1335,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-604">
           <caret line="29" column="60" lean-forward="false" selection-start-line="29" selection-start-column="60" selection-end-line="29" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/lang/Override.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -1633,14 +1557,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/network/server/socket/ServerSideStreamHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/network/server/socket/SocketServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="73">
@@ -1656,20 +1572,6 @@
           <folding>
             <element signature="e#1269#1270#0" expanded="true" />
             <element signature="e#1327#1328#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="96" column="22" lean-forward="true" selection-start-line="96" selection-start-column="22" selection-end-line="96" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#tryToLogInClient#0;class#SocketPlayer#0" expanded="false" />
-            <element signature="method#tryToJoinNewRoom#0;class#SocketPlayer#0" expanded="false" />
-            <element signature="e#2713#2714#0" expanded="false" />
-            <element signature="e#2771#2772#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1716,10 +1618,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/network/server/RemotePlayer.java">
+    <entry file="file://$PROJECT_DIR$/src/logic/gameStructure/ActionPhase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="67" column="81" lean-forward="false" selection-start-line="67" selection-start-column="81" selection-end-line="67" selection-end-column="81" />
+        <state relative-caret-position="72">
+          <caret line="85" column="19" lean-forward="false" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/client/AbstractClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="85" column="4" lean-forward="true" selection-start-line="85" selection-start-column="4" selection-end-line="85" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/client/ClientView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#319#320#0" expanded="true" />
+            <element signature="e#349#350#0" expanded="true" />
+            <element signature="e#380#381#0" expanded="true" />
+            <element signature="e#408#409#0" expanded="true" />
+            <element signature="e#465#466#0" expanded="true" />
+            <element signature="e#503#504#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#578#579#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/client/ClientInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1736,66 +1672,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/gameStructure/ActionPhase.java">
+    <entry file="file://$PROJECT_DIR$/src/network/server/RemotePlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="85" column="19" lean-forward="false" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/network/client/ClientInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="52" lean-forward="false" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
+        <state relative-caret-position="430">
+          <caret line="67" column="81" lean-forward="false" selection-start-line="67" selection-start-column="81" selection-end-line="67" selection-end-column="81" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/server/socket/ServerSideStreamHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="30" column="68" lean-forward="true" selection-start-line="30" selection-start-column="68" selection-end-line="30" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/lang/Override.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/network/client/socket/SocketClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="165" column="75" lean-forward="true" selection-start-line="165" selection-start-column="75" selection-end-line="165" selection-end-column="75" />
+        <state relative-caret-position="765">
+          <caret line="60" column="8" lean-forward="false" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="8" />
           <folding>
             <element signature="method#initializeStreams#0;class#SocketClient#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/network/client/AbstractClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="85" column="4" lean-forward="true" selection-start-line="85" selection-start-column="4" selection-end-line="85" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/network/client/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="21" column="52" lean-forward="false" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
+        <state relative-caret-position="464">
+          <caret line="56" column="59" lean-forward="true" selection-start-line="56" selection-start-column="59" selection-end-line="56" selection-end-column="59" />
           <folding>
-            <element signature="e#1078#1079#0" expanded="true" />
-            <element signature="e#1138#1139#0" expanded="true" />
+            <element signature="e#1106#1107#0" expanded="true" />
+            <element signature="e#1166#1167#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/network/client/ClientView.java">
+    <entry file="file://$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="39" lean-forward="false" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
+        <state relative-caret-position="532">
+          <caret line="144" column="8" lean-forward="false" selection-start-line="144" selection-start-column="8" selection-end-line="144" selection-end-column="8" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#319#320#0" expanded="true" />
-            <element signature="e#349#350#0" expanded="true" />
-            <element signature="e#380#381#0" expanded="true" />
-            <element signature="e#408#409#0" expanded="true" />
-            <element signature="e#465#466#0" expanded="true" />
-            <element signature="e#503#504#0" expanded="true" />
-            <element signature="e#578#579#0" expanded="true" />
+            <element signature="method#tryToLogInClient#0;class#SocketPlayer#0" expanded="false" />
+            <element signature="method#tryToJoinNewRoom#0;class#SocketPlayer#0" expanded="false" />
+            <element signature="e#2796#2797#0" expanded="true" />
+            <element signature="e#2854#2855#0" expanded="true" />
           </folding>
         </state>
       </provider>
