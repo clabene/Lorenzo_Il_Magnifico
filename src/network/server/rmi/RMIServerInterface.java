@@ -14,32 +14,47 @@ public interface RMIServerInterface  extends Remote{
 
     void sendMessage(String string, RMIClientInterface c) throws RemoteException;
 
-
-
-    public  void selectFamilyMember(FamilyMember familyMember, String playerId);
+    void selectFamilyMember(FamilyMember familyMember, String playerId);
 
     /*
     * Client selects an area from the board
     * */
-    public void selectBoardArea();
+    void selectBoardArea();
 
     /*
     * Client selects an action space from the board
     * */
-    public void selectActionSpace(String actionSpaceId, String playerId);
+    void selectActionSpace(String actionSpaceId, String playerId);
 
     /*
     * Client decides if they want to support the Vatican or not.
     * This method is triggered by the server side.
     * */
-    public  void dealWithVatican();
+    void dealWithVatican();
     /*
     * Client decides what bonus they will get form a council favour.
     * This method is triggered by the server side.
     * */
-    public  void selectCouncilFavour();
+    void selectCouncilFavour();
     /*
     * Client sends request to use slaves to increment selected family member value
     * */
-    public  void useSlaves();
+    void useSlaves();
+
+    void tryToLogIn(String id);
+
+    /*
+    * Client sends request to join a room
+    * */
+    void tryToJoinGame(String id) throws RemoteException;
+
+    /*
+    * Client sends request to start a game in a new room. Can specify the number of player that can join the game.
+    * */
+    void tryToCreateRoom(String id, int NUMBER_OF_PLAYERS);
+
+    /*
+    * Client leaves the game
+    * */
+    void leaveGame(String id);
 }

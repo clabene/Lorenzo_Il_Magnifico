@@ -2,6 +2,7 @@ package network.client;
 
 import logic.player.FamilyMember;
 
+import java.rmi.RemoteException;
 import java.util.UUID;
 
 /**
@@ -45,7 +46,7 @@ public abstract class AbstractClient {
     /*
     * Client sends request to join a room
     * */
-    public abstract void tryToJoinGame();
+    public abstract void tryToJoinGame() throws RemoteException;
 
     /*
     * Client sends request to start a game in a new room. Can specify the number of player that can join the game.
@@ -70,7 +71,7 @@ public abstract class AbstractClient {
     /*
     * Client selects an action space from the board
     * */
-    public abstract void selectActionSpace();
+    public abstract void selectActionSpace(String actionSpaceId);
 
     /*
     * Client decides if they want to support the Vatican or not.

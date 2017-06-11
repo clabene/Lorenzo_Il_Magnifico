@@ -17,15 +17,10 @@ import java.util.HashMap;
  */
 public class RMIServer extends AbstractServer implements RMIServerInterface {
 
-
-
-
     public RMIServer(ServerInterface serverController){
         super(serverController);
 
     }
-
-
 
     @Override
     public void startServer(int port) {
@@ -56,15 +51,11 @@ public class RMIServer extends AbstractServer implements RMIServerInterface {
 
     }
 
-
-
     @Override
     public void sendMessage(String string, RMIClientInterface c) throws RemoteException {
         System.out.println("chiamato metodo di server" +string);
         c.sendMessage2(string);
-
     }
-
 
 
     @Override
@@ -97,6 +88,31 @@ public class RMIServer extends AbstractServer implements RMIServerInterface {
 
     @Override
     public void useSlaves() {
+
+    }
+
+    @Override
+    public void tryToLogIn(String playerid) {
+        getServerController().getPlayer(playerid).tryToLogInClient(playerid);
+    }
+
+    @Override
+    public void tryToJoinGame(String playerid) throws RemoteException {
+        try {
+            getServerController().getPlayer(playerid).tryToJoinGame();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void tryToCreateRoom(String id, int NUMBER_OF_PLAYERS) {
+
+    }
+
+    @Override
+    public void leaveGame(String id) {
 
     }
 

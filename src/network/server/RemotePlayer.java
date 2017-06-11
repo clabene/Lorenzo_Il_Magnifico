@@ -4,6 +4,7 @@ import logic.gameStructure.GameRoom;
 import logic.player.FamilyMember;
 import logic.player.Player;
 
+import java.rmi.RemoteException;
 
 
 /**
@@ -58,6 +59,12 @@ public abstract class RemotePlayer extends Player{
     public abstract void selectActionSpaceForExtraAction();
 
 
-    public abstract void notifyRequestHandleOutcome(String responseCode);
+    public abstract void notifyRequestHandleOutcome(String responseCode) throws RemoteException;
+
+    public abstract void tryToLogInClient(String clientId);
+
+    public abstract void tryToJoinGame() throws RemoteException ;
+
+    public abstract void tryToJoinNewRoom(Integer NUMBER_OF_PLAYERS) throws RemoteException ;
 
 }

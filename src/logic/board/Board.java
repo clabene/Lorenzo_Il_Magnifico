@@ -18,20 +18,8 @@ public class Board {
     }
 
 
-
-
-
-
-
-
-
     //todo exception
 
-
-
-
-
-    //-------------------------------------------------------------------
 
     private HashMap<String, ActionSpace> actionSpaceHashMap = new HashMap<>();
 
@@ -40,9 +28,6 @@ public class Board {
      * second letter: L = land; P = person; B = building; V = venture; P = production; H = harvest.
      *
      */
-
-
-
 
     private void setHashMap(){
 

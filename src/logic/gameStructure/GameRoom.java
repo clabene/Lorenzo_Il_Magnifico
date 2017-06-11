@@ -1,13 +1,14 @@
 package logic.gameStructure;
 
+import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
-import logic.exceptions.LimitedValueOffRangeException;
 import logic.player.FamilyMember;
 import logic.player.Player;
 import logic.utility.LimitedInteger;
 import network.server.RemotePlayer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -75,8 +76,8 @@ public class GameRoom {
 
     public void selectCouncilFavour ( int councilFavourIndex, String playerId) {
 
-    }
 
+    }
 
     public void useSlaves(FamilyMember familyMember, int quantity, String playerId){
         Boolean slavesUsed = game.useSlaves(players.get(playerId), familyMember,  quantity);
@@ -105,6 +106,10 @@ public class GameRoom {
     //todo use this to handle turn switching
     private ArrayList<Player> getNextTurnOrder() {
         return game.gettingNextTurnOrder( (ArrayList) players.values(), board);
+    }
+
+    public void dealWithVatican(String playerId, int minFaithPoints, ExcommunicationTassel tassel){
+        game.checkingExcomunication(players.get(playerId), minFaithPoints, tassel);
     }
 
 }

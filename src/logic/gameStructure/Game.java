@@ -122,8 +122,14 @@ public class Game {
         return turn.getNextTurnOrder(players, board);
     }
 
-    private void checkingExcomunication(Player player, int minFaithPoints, ExcommunicationTassel tassel){
-        period.excommunicationCheck(player, minFaithPoints, tassel);
+    public void checkingExcomunication(Player player, int minFaithPoints, ExcommunicationTassel tassel){
+        if(player.getFaithPoints().getTrackPosition().getValue() < minFaithPoints){
+            System.out.println("You faith points are not enough, so you receive an excommunication from the Church");
+            tassel.activate(player);
+        }
+        else{
+            player.excommunicationDecision();
+        }
     }
 
     public void setDeck(){

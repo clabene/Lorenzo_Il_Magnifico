@@ -5,6 +5,7 @@ import logic.gameStructure.GameRoom;
 import network.server.rmi.RMIServer;
 import network.server.socket.SocketServer;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -50,7 +51,7 @@ public class Server implements ServerInterface {
     }
 
     @Override
-    public void tryToJoinGame(String playerId) {
+    public void tryToJoinGame(String playerId) throws RemoteException {
         try{
             gameRooms.get(gameRooms.size()-1).addPlayerToRoom(getPlayer(playerId));
         } catch (LimitedValueOffRangeException e){
@@ -61,7 +62,7 @@ public class Server implements ServerInterface {
     }
 
     @Override
-    public void tryToCreateRoom(String playerId, int NUMBER_OF_PLAYERS ) {
+    public void tryToCreateRoom(String playerId, int NUMBER_OF_PLAYERS ) throws RemoteException {
         GameRoom gameRoom = new GameRoom(NUMBER_OF_PLAYERS);
         try {
             gameRoom.addPlayerToRoom(getPlayer(playerId));

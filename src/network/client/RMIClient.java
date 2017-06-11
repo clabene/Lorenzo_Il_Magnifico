@@ -28,16 +28,10 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
     public void connect() {
         //connect to RMIServer
         try{
-
             Registry registry = LocateRegistry.getRegistry(ipAddress, port);
             rmiServerInterface = (RMIServerInterface) registry.lookup("RMIServerInterface");
             UnicastRemoteObject.exportObject(this, 0);
-
             rmiServerInterface.sendMessage("cane", this);
-
-
-
-
         }
         catch (RemoteException e) {}
 
@@ -50,25 +44,27 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
 
     @Override
     public void tryToLogIn() {
-
+        rmiServerInterface.tryToLogIn(getId());
     }
 
     @Override
-    public void tryToJoinGame() {
-
+    public void tryToJoinGame() throws RemoteException {
+        try {
+            rmiServerInterface.tryToJoinGame(getId());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void tryToCreateRoom() {
-
+    public void tryToCreateRoom(int numberOfPlayers) {
+        rmiServerInterface.tryToCreateRoom(getId(), numberOfPlayers);
     }
+
 
     @Override
     public void selectFamilyMember(FamilyMember familyMember) {
         rmiServerInterface.selectFamilyMember(familyMember,  getId());
-
-
-
     }
 
     @Override
@@ -79,7 +75,6 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
     @Override
     public void selectActionSpace(String actionSpaceId) {
         rmiServerInterface.selectActionSpace(actionSpaceId, getId());
-
     }
 
     @Override
@@ -93,7 +88,17 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
     }
 
     @Override
+    public void selectActionSpaceForExtraAction() {
+
+    }
+
+    @Override
     public void useSlaves() {
+
+    }
+
+    @Override
+    public void selectActionSpace() {
 
     }
 
@@ -105,5 +110,10 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
     @Override
     public void sendMessage2(String string) {
         System.out.println("chiamato metodo di client" + string);
+    }
+
+    @Override
+    public void notifyRequestHandleOutcome(String requestHandleOutcome ) throws RemoteException{
+        getClientController().showOutcome(requestHandleOutcome);
     }
 }

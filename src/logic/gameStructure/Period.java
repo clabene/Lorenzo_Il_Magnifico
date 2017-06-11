@@ -44,23 +44,7 @@ public class Period {
 
     }
     */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
 
     public void excommunicationCheck(Player player, int minFaithPoints, ExcommunicationTassel tassel){
         if(player.getFaithPoints().getTrackPosition().getValue() < minFaithPoints){
@@ -74,7 +58,7 @@ public class Period {
     }
 
 
-
+*/
 
 
 

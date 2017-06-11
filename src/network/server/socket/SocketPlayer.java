@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class SocketPlayer extends RemotePlayer implements Runnable {
 
     private ServerInterface serverController;
-
     private ObjectInputStream input;
     private ObjectOutputStream output;
 
@@ -116,6 +115,7 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
 
     @Override
     public void useSlaves(FamilyMember familyMember, int quantity) {
+
 
     }
 
