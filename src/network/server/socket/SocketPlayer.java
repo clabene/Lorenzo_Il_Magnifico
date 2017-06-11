@@ -7,6 +7,7 @@ import network.server.ServerInterface;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  * Created by Pinos on 06/06/2017.
@@ -97,11 +98,24 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
 
     @Override
     public void selectCouncilFavour() {
+        try {
+            output.writeObject("SELECT_COUNCIL_FAVOUR");
+            output.flush();
+        } catch (IOException e){
+            System.out.println("Could not ask for council favours");
+        }
+        try {
+            ArrayList<Integer> favoursIndexes = (ArrayList<Integer>) input.readObject();
 
+            gain(); //todo get Gainable[] from favoursIndexes and give it as a parameter in gain();
+
+        } catch (IOException | ClassNotFoundException e){
+            System.out.println("Could not ask for council favours");
+        }
     }
 
     @Override
-    public void useSlaves() {
+    public void useSlaves(FamilyMember familyMember, int quantity) {
 
     }
 

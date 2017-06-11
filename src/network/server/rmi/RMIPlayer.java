@@ -44,7 +44,7 @@ public class RMIPlayer extends RemotePlayer {
 
     @Override
     public void useSlaves(FamilyMember familyMember, int quantity) {
-        getGameRoom().useSlaves(familyMember, quantity,getId());
+        getGameRoom().useSlaves(familyMember, quantity, getId());
 
     }
 

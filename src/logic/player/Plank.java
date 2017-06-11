@@ -1,13 +1,18 @@
 package logic.player;
 
 import logic.cards.SetOfCards;
+import logic.resources.CouncilFavour;
 import logic.resources.Resource;
 import logic.resources.SetOfResources;
+
+import java.util.ArrayList;
 
 /**
  * Created by IBM on 15/05/2017.
  */
 public class Plank {
+
+    private ArrayList<CouncilFavour> councilFavours = new ArrayList<>();
 
     private SetOfCards cards;
     private SetOfResources resources;
@@ -26,6 +31,10 @@ public class Plank {
         return cards;
     }
 
+    public ArrayList<CouncilFavour> getCouncilFavours() {
+        return councilFavours;
+    }
+
     public void setToUseSeparateResources(boolean toUseSeparateResources) {
         this.toUseSeparateResources = toUseSeparateResources;
     }
@@ -40,8 +49,6 @@ public class Plank {
         resources.resourcesAdded(separateResources.getResources());
         separateResources = new SetOfResources();
     }
-
-
 
 
 }

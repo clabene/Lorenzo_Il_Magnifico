@@ -48,7 +48,7 @@ public abstract class RemotePlayer extends Player{
     /*
     * Client sends request to use slaves to increment selected family member value
     * */
-    public abstract void useSlaves();
+    public abstract void useSlaves(FamilyMember familyMember, int quantity);
 
     /*
     * Send an ArrayList of action spaces to the client

@@ -1,10 +1,11 @@
-package network.client;
+package network.client.socket;
 
-import com.sun.javafx.collections.ObservableIntegerArrayImpl;
 import logic.player.FamilyMember;
+import network.client.AbstractClient;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  * Created by IBM on 06/06/2017.
@@ -31,6 +32,8 @@ public class SocketClient extends AbstractClient {
             System.out.println("Could not connect ot the server");
         }
         initializeStreams();
+
+        new SocketClientListener(input, this).start();
     }
 
     private void initializeStreams(){
@@ -43,6 +46,7 @@ public class SocketClient extends AbstractClient {
         }
 
     }
+
 
     private void notifyRequestHandleOutcome(){
         try {
@@ -122,7 +126,14 @@ public class SocketClient extends AbstractClient {
 
     @Override
     public void selectCouncilFavour() {
-
+        ArrayList<Integer> favoursIndexes = new ArrayList<>();
+        //todo ask client what council favours they want. Store correspondent indexes in the favoursIndexes
+        try {
+            output.writeObject(favoursIndexes);
+        } catch (IOException e){
+            System.out.println("Could not send council favours indexes");
+        }
+        notifyRequestHandleOutcome();
     }
 
     @Override

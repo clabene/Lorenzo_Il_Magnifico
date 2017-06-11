@@ -1,5 +1,7 @@
 package network.client;
 
+import network.client.socket.SocketClient;
+
 import java.util.Scanner;
 
 /**

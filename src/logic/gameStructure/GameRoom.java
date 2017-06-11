@@ -1,14 +1,15 @@
 package logic.gameStructure;
 
-import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
+import logic.exceptions.LimitedValueOffRangeException;
 import logic.player.FamilyMember;
 import logic.player.Player;
+import logic.utility.LimitedInteger;
 import network.server.RemotePlayer;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * Created by IBM on 06/06/2017.
@@ -17,13 +18,11 @@ public class GameRoom {
 
     private Game game = new Game();
     private Board board = new Board();
-    private HashMap<String, RemotePlayer> players;
+    private HashMap<String, RemotePlayer> players; //key: playerId
 
     private final int NUMBER_OF_PLAYERS;
 
     private LimitedInteger numberOfPlayers;
-
-    private HashMap<String, RemotePlayer> players; //key: playerId
 
     public GameRoom(int NUMBER_OF_PLAYERS) {
         this.NUMBER_OF_PLAYERS = NUMBER_OF_PLAYERS;
@@ -76,8 +75,8 @@ public class GameRoom {
 
     public void selectCouncilFavour ( int councilFavourIndex, String playerId) {
 
-
     }
+
 
     public void useSlaves(FamilyMember familyMember, int quantity, String playerId){
         Boolean slavesUsed = game.useSlaves(players.get(playerId), familyMember,  quantity);
@@ -87,10 +86,21 @@ public class GameRoom {
     }
 
     private void puttingFamilyMemberOnActionSpace(String playerId){
-        game.puttingFamilyMemberOnActionSpace(players.get(playerId)); //if == QUALCOSA
-        //players.get(playerId).chiediAlClientQualeFavoreVuole();
+
+        RemotePlayer player = players.get(playerId);
+
+        game.puttingFamilyMemberOnActionSpace(player);
+
+        useCouncilFavours(player);
     }
 
+    private void useCouncilFavours(RemotePlayer remotePlayer){
+        Iterator iterator = remotePlayer.getPlank().getCouncilFavours().iterator();
+        while(iterator.hasNext()) {
+            remotePlayer.selectCouncilFavour();
+            iterator.remove();
+        }
+    }
 
     //todo use this to handle turn switching
     private ArrayList<Player> getNextTurnOrder() {
