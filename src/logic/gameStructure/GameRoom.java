@@ -1,7 +1,9 @@
 package logic.gameStructure;
 
 import logic.board.Board;
+import logic.cards.Card;
 import logic.exceptions.LimitedValueOffRangeException;
+import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.player.FamilyMember;
 import logic.player.Player;
 import logic.utility.LimitedInteger;
@@ -11,6 +13,7 @@ import network.server.RemotePlayer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Stack;
 
 /**
  * Created by IBM on 06/06/2017.
@@ -19,7 +22,11 @@ public class GameRoom {
 
     private Game game = new Game();
     private Board board = new Board();
+    private Stack<Card> deck = new Stack();
+
     private HashMap<String, RemotePlayer> players; //key: playerId
+    private int TURN_NUMBER;
+    private int PERIOD_NUMBER;
 
     private final int NUMBER_OF_PLAYERS;
 
@@ -108,6 +115,45 @@ public class GameRoom {
     private ArrayList<Player> getNextTurnOrder() {
         return game.gettingNextTurnOrder( (ArrayList) players.values(), board);
     }
+
+    public void dealWithVatican(String playerId, int minFaithPoints, ExcommunicationTassel tassel){
+        if(!game.hasEnoughFaithPoints(players.get(playerId), minFaithPoints)){
+            game.takeExcomunication(players.get(playerId), tassel, true);
+            players.get(playerId).notifyRequestHandleOutcome();
+        }
+        else
+            boolean choice = players.get(playerId).dealWithVatican();// devo scegliere cosa fare
+            game.takeExcomunication(players.get(playerId), tassel, choice);
+
+    }
+
+    public void changeTurn(){
+        int i = 0;
+
+        for(Player tmp: players.values()){
+            if(checkIfPlayerHasAvaialbeAction(tmp) || tmp.getFamilyMembersAvailable().size() ==  0)
+                i++;
+        }
+
+        if (i == players.size()) {
+            if(TURN_NUMBER == 2){
+                PERIOD_NUMBER++;
+                Period Period = new Period();
+                Turn turn = new Turn;
+                TURN_NUMBER = 1;
+            }
+            else{
+                TURN_NUMBER++;
+                Turn turn = new Turn;
+            }
+        }
+    }
+
+    public void setCardsOnBoard(){
+        board.setCardsOnBoard(deck);
+    }
+
+
 
 
 }

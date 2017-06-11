@@ -116,6 +116,7 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
         }
         try {
             ArrayList<Integer> favoursIndexes = (ArrayList<Integer>) input.readObject();
+            for()
 
             gain(); //todo get Gainable[] from favoursIndexes and give it as a parameter in gain();
 

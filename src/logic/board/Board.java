@@ -2,12 +2,14 @@ package logic.board;
 
 
 import logic.actionSpaces.*;
+import logic.cards.Card;
 import logic.exceptions.ActionSpaceCoveredException;
 import logic.pointsTracks.MilitaryPointsTrack;
 import logic.resources.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Stack;
 
 /**
  * Created by IBM on 09/05/2017.
@@ -73,5 +75,15 @@ public class Board {
 
     public HashMap<String, ActionSpace> getHashMap(){
         return actionSpaceHashMap;
+    }
+
+    public void setCardsOnBoard(Stack<Card> deck){
+        int i = 0;
+        for(ActionSpace tmp: actionSpaceHashMap.values()){
+            ((TowerActionSpace) tmp).setCard(deck.pop());
+            i++;
+            if(i == 16)  break;
+        }
+
     }
 }
