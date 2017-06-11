@@ -79,10 +79,13 @@ public class RMIServer extends AbstractServer implements RMIServerInterface {
     public void dealWithVatican() {
 
 
+
+
     }
 
     @Override
     public void selectCouncilFavour() {
+
 
     }
 

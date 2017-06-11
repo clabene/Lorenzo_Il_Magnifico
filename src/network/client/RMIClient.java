@@ -1,6 +1,8 @@
 package network.client;
 
+import logic.board.Board;
 import logic.player.FamilyMember;
+import logic.player.Player;
 import network.ResponseCode;
 import network.server.rmi.RMIServerInterface;
 
@@ -9,6 +11,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Collection;
 
 /**
  * Created by IBM on 06/06/2017.
@@ -79,7 +82,8 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
     }
 
     @Override
-    public void dealWithVatican() {
+    public boolean dealWithVatican() {
+
 
     }
 
@@ -100,6 +104,8 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
 
 
 
+
+
     @Override
     public void leaveGame() {
 
@@ -114,4 +120,11 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
     public void notifyRequestHandleOutcome(ResponseCode requestHandleOutcome ) throws RemoteException{
         getClientController().showOutcome(requestHandleOutcome);
     }
+
+    @Override
+    public void updateView(Board board, Collection<Player> players) {
+        getClientController().updateView(board, players);
+    }
+
+
 }
