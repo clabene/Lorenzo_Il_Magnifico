@@ -1,6 +1,8 @@
 package network.client.socket;
 
+import logic.board.Board;
 import logic.player.FamilyMember;
+import logic.player.Player;
 import network.ResponseCode;
 import network.client.AbstractClient;
 
@@ -20,9 +22,13 @@ public class SocketClient extends AbstractClient {
     private ObjectOutputStream output;
     private ObjectInputStream input;
 
+    private ClientStreamHandler streamHandler;
+
     public SocketClient(int port){
         this.ipAddress = "127.0.0.1";
         this.port = port;
+
+        streamHandler = new ClientStreamHandler(input, this);
     }
 
     @Override
@@ -164,7 +170,7 @@ public class SocketClient extends AbstractClient {
             try {
                 while (true) {
                     String serverRequestCode = (String) input.readObject();
-                    if(serverRequestCode.equals("SELECT_COUNCIL_FAVOUR")) socketClient.selectCouncilFavour();
+                    streamHandler.respond(serverRequestCode);
                 }
             } catch (IOException | ClassNotFoundException e) {
                 System.out.println("Could not have ServerStreamHandler started");

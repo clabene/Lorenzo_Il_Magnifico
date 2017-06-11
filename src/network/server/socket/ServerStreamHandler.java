@@ -10,7 +10,7 @@ import java.util.HashMap;
 /**
  * Created by IBM on 09/06/2017.
  */
-public class ServerSideStreamHandler {
+public class ServerStreamHandler {
 
     private ObjectOutputStream output;
     private ObjectInputStream input;
@@ -18,7 +18,7 @@ public class ServerSideStreamHandler {
 
     private HashMap<String, ResponseInnerInterface> responseMap = new HashMap<>();
 
-    public ServerSideStreamHandler(ObjectOutputStream output, ObjectInputStream input, SocketPlayer player){
+    public ServerStreamHandler(ObjectOutputStream output, ObjectInputStream input, SocketPlayer player){
         this.input = input;
         this.output = output;
         this.player = player;
@@ -72,7 +72,7 @@ public class ServerSideStreamHandler {
 
 
     @FunctionalInterface
-    private interface ResponseInnerInterface {
+    public interface ResponseInnerInterface {
         void operate();
     }
 

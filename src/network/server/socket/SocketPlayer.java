@@ -23,7 +23,7 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
     private ObjectInputStream input;
     private ObjectOutputStream output;
 
-    private ServerSideStreamHandler streamHandler;
+    private ServerStreamHandler streamHandler;
 
     public SocketPlayer(ServerInterface serverController, Socket clientSocket) {
         this.serverController = serverController;
@@ -34,7 +34,7 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
         } catch (IOException e){
             System.out.println("Could not initialize streams");
         }
-        streamHandler = new ServerSideStreamHandler(output, input, this);
+        streamHandler = new ServerStreamHandler(output, input, this);
     }
 
     @Override
@@ -142,6 +142,13 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
 
     @Override
     public <P extends Player> void updateView(Board board, Collection<P> players) {
-
+        try {
+            output.writeObject("UPDATE_VIEW");
+            output.writeObject(board);
+            output.writeObject(players);
+            output.flush();
+        } catch (IOException e){
+            System.out.println("Could not ask for council favours");
+        }
     }
 }
