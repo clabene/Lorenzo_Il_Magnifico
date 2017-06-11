@@ -2,6 +2,7 @@ package network.server;
 
 import logic.exceptions.LimitedValueOffRangeException;
 import logic.gameStructure.GameRoom;
+import network.ResponseCode;
 import network.server.rmi.RMIServer;
 import network.server.socket.SocketServer;
 
@@ -45,34 +46,35 @@ public class Server implements ServerInterface {
         playersList.put(clientId, player);
     }
 
+
     @Override
     public RemotePlayer getPlayer(String playerId){
         return playersList.get(playerId);
     }
 
     @Override
-    public void tryToJoinGame(String playerId) throws RemoteException {
+    public void tryToJoinGame(String playerId) {
         try{
             gameRooms.get(gameRooms.size()-1).addPlayerToRoom(getPlayer(playerId));
         } catch (LimitedValueOffRangeException e){
             System.out.println("Room not available");
-            getPlayer(playerId).notifyRequestHandleOutcome("NOT_OK");
+            getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.NOT_OK);
         }
-        getPlayer(playerId).notifyRequestHandleOutcome("OK");
+        getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.OK);
     }
 
     @Override
-    public void tryToCreateRoom(String playerId, int NUMBER_OF_PLAYERS ) throws RemoteException {
+    public void tryToCreateRoom(String playerId, int NUMBER_OF_PLAYERS ) {
         GameRoom gameRoom = new GameRoom(NUMBER_OF_PLAYERS);
         try {
             gameRoom.addPlayerToRoom(getPlayer(playerId));
         } catch (LimitedValueOffRangeException e){
             System.out.println("Could not add the player to the room");
-            getPlayer(playerId).notifyRequestHandleOutcome("NOT_OK");
+            getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.NOT_OK);
             return;
         }
         gameRooms.add(gameRoom);
-        getPlayer(playerId).notifyRequestHandleOutcome("OK");
+        getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.OK);
     }
 
     @Override

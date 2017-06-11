@@ -1,14 +1,14 @@
 package logic.gameStructure;
 
-import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
+import logic.exceptions.LimitedValueOffRangeException;
 import logic.player.FamilyMember;
 import logic.player.Player;
 import logic.utility.LimitedInteger;
+import network.ResponseCode;
 import network.server.RemotePlayer;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -57,42 +57,36 @@ public class GameRoom {
     }
 
     public void selectFamilyMember(FamilyMember familyMember, String playerId){
-        Boolean familyMemberCorrectlySelected = game.selectionFamilyMember(familyMember, players.get(playerId));
-        if(familyMemberCorrectlySelected)
-            players.get(playerId).notifyRequestHandleOutcome("OK");
-        else players.get(playerId).notifyRequestHandleOutcome("NOT_OK");
+        ResponseCode responseCode = game.selectionFamilyMember(familyMember, players.get(playerId));
+        players.get(playerId).notifyRequestHandleOutcome(responseCode);
 
         if(canPlaceFamilyMember()) puttingFamilyMemberOnActionSpace(playerId);
     }
 
     public void selectActionSpace(String actionSpaceId, String playerId) {
-        Boolean actionSpaceCorrectlySelected = game.selectionActionSpace(actionSpaceId, players.get(playerId), getBoard());
-        if(actionSpaceCorrectlySelected)
-            players.get(playerId).notifyRequestHandleOutcome("OK");
-        else players.get(playerId).notifyRequestHandleOutcome("NOT_OK");
+        ResponseCode responseCode = game.selectionActionSpace(actionSpaceId, players.get(playerId), getBoard());
+
+        players.get(playerId).notifyRequestHandleOutcome(responseCode);
+
 
         if(canPlaceFamilyMember()) puttingFamilyMemberOnActionSpace(playerId);
     }
 
-    public void selectCouncilFavour ( int councilFavourIndex, String playerId) {
-
-
-    }
-
     public void useSlaves(FamilyMember familyMember, int quantity, String playerId){
-        Boolean slavesUsed = game.useSlaves(players.get(playerId), familyMember,  quantity);
-        if(slavesUsed)
-            players.get(playerId).notifyRequestHandleOutcome("OK");
-        else players.get(playerId).notifyRequestHandleOutcome("NOT_OK");
+        ResponseCode responseCode = game.useSlaves(players.get(playerId), familyMember,  quantity);
+
+        players.get(playerId).notifyRequestHandleOutcome(responseCode);
     }
 
     private void puttingFamilyMemberOnActionSpace(String playerId){
 
         RemotePlayer player = players.get(playerId);
 
-        game.puttingFamilyMemberOnActionSpace(player);
-
+        ResponseCode responseCode = game.puttingFamilyMemberOnActionSpace(player);
         useCouncilFavours(player);
+
+        players.get(playerId).notifyRequestHandleOutcome(responseCode);
+
     }
 
     private void useCouncilFavours(RemotePlayer remotePlayer){
@@ -108,8 +102,5 @@ public class GameRoom {
         return game.gettingNextTurnOrder( (ArrayList) players.values(), board);
     }
 
-    public void dealWithVatican(String playerId, int minFaithPoints, ExcommunicationTassel tassel){
-        game.checkingExcomunication(players.get(playerId), minFaithPoints, tassel);
-    }
 
 }

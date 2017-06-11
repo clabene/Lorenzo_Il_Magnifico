@@ -1,6 +1,7 @@
 package network.client.socket;
 
 import logic.player.FamilyMember;
+import network.ResponseCode;
 import network.client.AbstractClient;
 
 import java.io.*;
@@ -50,7 +51,7 @@ public class SocketClient extends AbstractClient {
 
     private void notifyRequestHandleOutcome(){
         try {
-            String requestHandleOutcome = (String) input.readObject();
+            ResponseCode requestHandleOutcome = (ResponseCode) input.readObject();
             getClientController().showOutcome(requestHandleOutcome);
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Problems in notifying request output");

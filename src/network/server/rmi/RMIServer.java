@@ -93,29 +93,21 @@ public class RMIServer extends AbstractServer implements RMIServerInterface {
 
     @Override
     public void tryToLogIn(String playerid) {
-        RMIPlayer player = new RMIPlayer();
-        getServerController().tryToLogIn(playerid, player);
+        getServerController().tryToLogIn(playerid, new RMIPlayer());
     }
 
     @Override
-    public void tryToJoinGame(String playerid){
-
+    public void tryToJoinGame(String playerid) {
         try {
-            getServerController().tryToJoinGame(playerid);
+            getServerController().getPlayer(playerid).tryToJoinGame();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-
 
     }
 
     @Override
     public void tryToCreateRoom(String id, int NUMBER_OF_PLAYERS) {
-        try {
-            getServerController().tryToCreateRoom(id, NUMBER_OF_PLAYERS);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
 
     }
 

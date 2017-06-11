@@ -2,12 +2,12 @@ package network.server.socket;
 
 import logic.gameStructure.GameRoom;
 import logic.player.FamilyMember;
+import network.ResponseCode;
 import network.server.RemotePlayer;
 import network.server.ServerInterface;
 
 import java.io.*;
 import java.net.Socket;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class SocketPlayer extends RemotePlayer implements Runnable {
 
     private ServerInterface serverController;
+
     private ObjectInputStream input;
     private ObjectOutputStream output;
 
@@ -73,17 +74,14 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
         serverController.tryToLogIn(clientId, this);
     }
 
-    public void tryToJoinGame() throws RemoteException {
-        try {
-            serverController.tryToJoinGame(getId());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+    public void tryToJoinGame() {
+        serverController.tryToJoinGame(getId());
     }
 
-    public void tryToJoinNewRoom(Integer NUMBER_OF_PLAYERS) throws RemoteException {
+    public void tryToJoinNewRoom(Integer NUMBER_OF_PLAYERS) {
         serverController.tryToCreateRoom(getId(), NUMBER_OF_PLAYERS);
     }
+
 
     @Override
     public void selectFamilyMember(FamilyMember familyMember) {
@@ -93,6 +91,11 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
     @Override
     public void selectActionSpace(String actionSpaceId) {
         getGameRoom().selectActionSpace(actionSpaceId, getId());
+    }
+
+    @Override
+    public void useSlaves(FamilyMember familyMember, int quantity) {
+
     }
 
     @Override
@@ -118,11 +121,6 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
         }
     }
 
-    @Override
-    public void useSlaves(FamilyMember familyMember, int quantity) {
-
-
-    }
 
     @Override
     public void selectActionSpaceForExtraAction(){
@@ -132,7 +130,7 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
 
 
     @Override
-    public void notifyRequestHandleOutcome(String responseCode) {
+    public void notifyRequestHandleOutcome(ResponseCode responseCode) {
         try {
             output.writeObject(responseCode);
             output.flush();

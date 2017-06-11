@@ -3,8 +3,7 @@ package network.server;
 import logic.gameStructure.GameRoom;
 import logic.player.FamilyMember;
 import logic.player.Player;
-
-import java.rmi.RemoteException;
+import network.ResponseCode;
 
 
 /**
@@ -42,7 +41,7 @@ public abstract class RemotePlayer extends Player{
     public abstract void dealWithVatican();
 
     /*
-    * Client decides what bonus they will get form a council favour.
+    * Server sends request to client to decide which bonus they will get form corresponding player's council favours.
     * */
     public abstract void selectCouncilFavour();
 
@@ -58,13 +57,13 @@ public abstract class RemotePlayer extends Player{
     * */
     public abstract void selectActionSpaceForExtraAction();
 
+    public abstract void notifyRequestHandleOutcome(ResponseCode responseCode);
 
-    public abstract void notifyRequestHandleOutcome(String responseCode) throws RemoteException;
-
+/*
     public abstract void tryToLogInClient(String clientId);
 
-    public abstract void tryToJoinGame() throws RemoteException ;
+    public abstract void tryToJoinGame();
 
-    public abstract void tryToJoinNewRoom(Integer NUMBER_OF_PLAYERS) throws RemoteException ;
-
+    public abstract void tryToJoinNewRoom(Integer NUMBER_OF_PLAYERS);
+*/
 }

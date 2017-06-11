@@ -3,12 +3,15 @@ package logic.gameStructure;
 import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
 import logic.cards.Card;
+import logic.exceptions.ActionSpaceCoveredException;
+import logic.exceptions.FamilyMemberSelectionException;
 import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.player.FamilyMember;
 import logic.player.Player;
 import logic.resources.CouncilFavour;
 import logic.resources.SetOfResources;
 import logic.utility.CardSetupHandler;
+import network.ResponseCode;
 
 
 import java.util.ArrayList;
@@ -30,9 +33,6 @@ public class Game {
     private FamilyMember selectedFamilyMember;
     private ActionSpace selectedActionSpace;
     private Stack<Card> deck = new Stack<>();
-
-    private final SetOfResources initialResources = new SetOfResources(); //todo
-
 
 
 /*
@@ -61,17 +61,6 @@ public class Game {
     }
 */
 
-    public void setPeriod(Period period) {
-        this.period = period;
-    }
-    public void setTurn(Turn turn) {
-        this.turn = turn;
-    }
-    public void setActionPhase(ActionPhase actionPhase) {
-        this.actionPhase = actionPhase;
-    }
-
-
     public ActionSpace getSelectedActionSpace() {
         return selectedActionSpace;
     }
@@ -79,31 +68,37 @@ public class Game {
         return selectedFamilyMember;
     }
 
-    public boolean selectionFamilyMember(FamilyMember familyMember, Player player){
-        this.selectedFamilyMember = player.tryToSelectFamilyMember(familyMember);
-
-        return selectedFamilyMember != null;
-
-
+    public ResponseCode selectionFamilyMember(FamilyMember familyMember, Player player){
+        try{
+            this.selectedFamilyMember = player.tryToSelectFamilyMember(familyMember);
+        } catch (FamilyMemberSelectionException e){
+            return ResponseCode.NOT_OK;
+        }
+        return ResponseCode.OK;
         //if(selectedFamilyMember == null) return false;
-
         //if(selectedActionSpace != null) puttingFamilyMemberOnActionSpace(player);
-
         //return true;
     }
 
-    public boolean selectionActionSpace(String actionSpaceId, Player player, Board board){
-        this.selectedActionSpace = board.tryToSelectActionSpace(actionSpaceId);
-        if(selectedActionSpace == null) return false;
+    public ResponseCode selectionActionSpace(String actionSpaceId, Player player, Board board){
+        try{
+            this.selectedActionSpace = board.tryToSelectActionSpace(actionSpaceId);
+        } catch (ActionSpaceCoveredException e){
+            return ResponseCode.NOT_OK;
+        }
+        return ResponseCode.OK;
+        //if(selectedActionSpace == null) return false;
         //if(selectedFamilyMember != null) puttingFamilyMemberOnActionSpace(player);
-        return true;
+        //return true;
     }
 
-    public void puttingFamilyMemberOnActionSpace(Player player) {
+    public ResponseCode puttingFamilyMemberOnActionSpace(Player player) {
         actionPhase.activateBonuses(player, selectedActionSpace);
-        actionPhase.putFamilyMemberOnActionSpace(player, selectedFamilyMember, selectedActionSpace);
+        Boolean b = actionPhase.putFamilyMemberOnActionSpace(player, selectedFamilyMember, selectedActionSpace);
         selectedFamilyMember = null;
         selectedActionSpace = null;
+        if(b) return ResponseCode.OK;
+        return ResponseCode.NOT_OK;
     }
 
     public boolean checkingIfPlayable(Player player){
@@ -137,14 +132,18 @@ public class Game {
         this.deck = cartSetupHandler.readFromFile();
     }
 
-    public void selectCouncilFavour ( int councilFavourIndex, Player player, Board board){
+    /*
+    public void selectCouncilFavour (Player player){
         CouncilFavour councilFavour  = new CouncilFavour();
         councilFavour.gainedByPlayer(player);
 
     }
+    */
 
-    public boolean useSlaves(Player player, FamilyMember familyMember, int quantity){
-        return actionPhase.incrementFamilyMemberValueRequest(player, familyMember, quantity);
+    public ResponseCode useSlaves(Player player, FamilyMember familyMember, int quantity){
+        if(actionPhase.incrementFamilyMemberValueRequest(player, familyMember, quantity))
+            return ResponseCode.OK;
+        return ResponseCode.NOT_OK;
     }
 
     public boolean hasEnoughFaithPoints(Player player, int minFaithPoints){

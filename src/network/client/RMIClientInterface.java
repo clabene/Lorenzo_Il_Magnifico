@@ -1,5 +1,7 @@
 package network.client;
 
+import network.ResponseCode;
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
@@ -8,5 +10,5 @@ import java.rmi.RemoteException;
  */
 public interface RMIClientInterface extends Remote {
     void sendMessage2(String string) throws RemoteException;
-    public void notifyRequestHandleOutcome(String requestHandleOutcome )throws RemoteException;
+    void notifyRequestHandleOutcome(ResponseCode requestHandleOutcome )throws RemoteException;
 }

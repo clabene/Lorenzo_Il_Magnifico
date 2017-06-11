@@ -2,6 +2,7 @@ package logic.board;
 
 
 import logic.actionSpaces.*;
+import logic.exceptions.ActionSpaceCoveredException;
 import logic.pointsTracks.MilitaryPointsTrack;
 import logic.resources.*;
 
@@ -58,15 +59,14 @@ public class Board {
         actionSpaceHashMap.put("M4", new MarketActionSpace(new CouncilFavour(2)));
     }
 
-    //todo  exceptions
-    public ActionSpace tryToSelectActionSpace(String key){
+    public ActionSpace tryToSelectActionSpace(String key) throws ActionSpaceCoveredException{
         ActionSpace actionSpace = actionSpaceHashMap.get(key);
-        if(actionSpace.getCovered()) return null;
+        if(actionSpace.getCovered()) throw new ActionSpaceCoveredException();
         return actionSpace;
     }
 
     public ArrayList<String> getTurnOrder(){
-        CouncilActionSpace a = new CouncilActionSpace();
+        CouncilActionSpace a;
         a = (CouncilActionSpace) actionSpaceHashMap.get("C");
         return a.getFamilyMemberArrayList();
     }

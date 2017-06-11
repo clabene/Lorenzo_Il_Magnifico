@@ -25,7 +25,7 @@ public class CouncilFavour implements Gainable {
 
     @Override
     public void gainedByPlayer(Player player){
-        player.getCouncilFavours().add(this);
+        player.getPlank().getCouncilFavours().add(this);
     }
 
     @Override

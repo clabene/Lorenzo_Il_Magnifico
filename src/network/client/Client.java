@@ -1,5 +1,6 @@
 package network.client;
 
+import network.ResponseCode;
 import network.client.socket.SocketClient;
 
 import java.util.Scanner;
@@ -32,9 +33,8 @@ public class Client implements ClientInterface {
     }
 
     @Override
-    public void showOutcome(String outcomeCode) {
-        if(outcomeCode.equals("OK")) System.out.println("Your request was correctly handled");
-        else if(outcomeCode.equals("NOT_OK")) System.out.println("Your request has not been correctly processed");
+    public void showOutcome(ResponseCode outcomeCode) {
+        System.out.println(outcomeCode.getMessage());
     }
 
     public static void main(String[] args){

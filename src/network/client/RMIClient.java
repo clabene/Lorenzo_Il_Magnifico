@@ -1,6 +1,7 @@
 package network.client;
 
 import logic.player.FamilyMember;
+import network.ResponseCode;
 import network.server.rmi.RMIServerInterface;
 
 import java.rmi.NotBoundException;
@@ -110,7 +111,7 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
     }
 
     @Override
-    public void notifyRequestHandleOutcome(String requestHandleOutcome ) throws RemoteException{
+    public void notifyRequestHandleOutcome(ResponseCode requestHandleOutcome ) throws RemoteException{
         getClientController().showOutcome(requestHandleOutcome);
     }
 }

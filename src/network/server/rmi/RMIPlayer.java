@@ -3,6 +3,7 @@ package network.server.rmi;
 import logic.actionSpaces.ActionSpace;
 import logic.gameStructure.GameRoom;
 import logic.player.FamilyMember;
+import network.ResponseCode;
 import network.client.*;
 import network.server.RemotePlayer;
 import network.server.ServerInterface;
@@ -62,7 +63,7 @@ public class RMIPlayer extends RemotePlayer {
     }
 
     @Override
-    public void notifyRequestHandleOutcome(String responseCode) throws RemoteException {
+    public void notifyRequestHandleOutcome(ResponseCode responseCode) {
         try {
             rmiclientInterface.notifyRequestHandleOutcome(responseCode);
         } catch (RemoteException e) {
@@ -70,5 +71,23 @@ public class RMIPlayer extends RemotePlayer {
         }
     }
 
+    public void tryToLogInClient(String clientId) throws RemoteException {
+        setId(clientId);
+        serverController.tryToLogIn(clientId, this);
+    }
 
+    public void tryToJoinGame() throws RemoteException{
+        try {
+            serverController.tryToJoinGame(getId());
+        } catch (RemoteException e) {
+        }
+    }
+
+    public void tryToJoinNewRoom(Integer NUMBER_OF_PLAYERS) throws RemoteException{
+        try {
+            serverController.tryToCreateRoom(getId(), NUMBER_OF_PLAYERS);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
 }

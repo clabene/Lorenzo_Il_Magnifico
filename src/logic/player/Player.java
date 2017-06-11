@@ -3,6 +3,7 @@ package logic.player;
 import logic.board.Board;
 import logic.board.Color;
 import logic.cards.LandCard;
+import logic.exceptions.FamilyMemberSelectionException;
 import logic.gameStructure.PeriodNumber;
 import logic.bonuses.Bonus;
 import logic.exceptions.LimitedValueOffRangeException;
@@ -48,8 +49,10 @@ public class Player {
 
     private Board board;
 
-    public Player(Resource ... resources){
-        this.plank = new Plank(resources);
+    private final SetOfResources initialResources = new SetOfResources(); //todo
+
+    public Player(Resource ... resources /*initialResources*/){
+        this.plank = new Plank(resources /*initialResources*/);
     }
 
     //this has to  be called as first method after constructor
@@ -127,17 +130,14 @@ public class Player {
             } catch (ArrayIndexOutOfBoundsException | LimitedValueOffRangeException e){
                 System.out.println("assgbarnhahnahnagaedsh");
             }
-
-
     }
 
-    //todo throw exceptions
-    public FamilyMember tryToSelectFamilyMember(FamilyMember familyMember){
-        if(familyMember.getPlayerId().equals(id)) return null;
+    public FamilyMember tryToSelectFamilyMember(FamilyMember familyMember) throws FamilyMemberSelectionException{
+        if(!familyMember.getPlayerId().equals(id)) throw new FamilyMemberSelectionException();
         for(FamilyMember tmp : familyMembers)
             if(tmp.getColor().equals(familyMember.getColor()) && !tmp.getInActionSpace())
                 return tmp;
-        return null;
+        throw new FamilyMemberSelectionException();
     }
 
 /*
