@@ -7,6 +7,7 @@ import network.server.ServerInterface;
 
 import java.io.*;
 import java.net.Socket;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -72,11 +73,15 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
         serverController.tryToLogIn(clientId, this);
     }
 
-    public void tryToJoinGame(){
-        serverController.tryToJoinGame(getId());
+    public void tryToJoinGame() throws RemoteException {
+        try {
+            serverController.tryToJoinGame(getId());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void tryToJoinNewRoom(Integer NUMBER_OF_PLAYERS){
+    public void tryToJoinNewRoom(Integer NUMBER_OF_PLAYERS) throws RemoteException {
         serverController.tryToCreateRoom(getId(), NUMBER_OF_PLAYERS);
     }
 

@@ -121,7 +121,7 @@ public class Game {
     public ArrayList<Player> gettingNextTurnOrder(ArrayList<Player> players, Board board){
         return turn.getNextTurnOrder(players, board);
     }
-
+/*
     public void checkingExcomunication(Player player, int minFaithPoints, ExcommunicationTassel tassel){
         if(player.getFaithPoints().getTrackPosition().getValue() < minFaithPoints){
             System.out.println("You faith points are not enough, so you receive an excommunication from the Church");
@@ -131,7 +131,7 @@ public class Game {
             player.excommunicationDecision();
         }
     }
-
+*/
     public void setDeck(){
         CardSetupHandler cartSetupHandler = new CardSetupHandler();
         this.deck = cartSetupHandler.readFromFile();
@@ -145,6 +145,22 @@ public class Game {
 
     public boolean useSlaves(Player player, FamilyMember familyMember, int quantity){
         return actionPhase.incrementFamilyMemberValueRequest(player, familyMember, quantity);
+    }
+
+    public boolean hasEnoughFaithPoints(Player player, int minFaithPoints){
+        if (player.getFaithPoints().getTrackPosition().getValue() < minFaithPoints)
+            return false;
+        return true;
+    }
+
+    public void takeExcomunication(Player player, ExcommunicationTassel tassel, boolean choice){
+        if(choice == false){
+            player.gain(player.getFaithPoints().calculateVictoryPointsFromPosition());
+            player.lose(player.getFaithPoints());
+            return;
+        }
+        tassel.activate(player);
+        return;
     }
 
 

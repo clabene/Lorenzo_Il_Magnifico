@@ -97,10 +97,7 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
 
     }
 
-    @Override
-    public void selectActionSpace() {
 
-    }
 
     @Override
     public void leaveGame() {
