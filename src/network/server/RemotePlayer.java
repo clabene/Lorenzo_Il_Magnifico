@@ -1,5 +1,6 @@
 package network.server;
 
+import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
 import logic.gameStructure.GameRoom;
 import logic.player.FamilyMember;
@@ -43,7 +44,7 @@ public abstract class RemotePlayer extends Player{
     /*
     * Server sends request to client to decide which bonus they will get form corresponding player's council favours.
     * */
-    public abstract void selectCouncilFavour();
+    public abstract void selectCouncilFavour(int numberOfFavours);
 
     /*
     * Client sends request to use slaves to increment selected family member value
@@ -51,11 +52,10 @@ public abstract class RemotePlayer extends Player{
     public abstract void useSlaves(int quantity);
 
     /*
-    * Send an ArrayList of action spaces to the client
-    * Client has to pick one of those
-    * This method is triggered by the server side (see PlayExtraActionPhaseEffect in package cards.cardEffects)
+    * Client has to pick one of the action spaces sent as parameters
+    * This method is triggered by the server side (see PlayExtraActionPhaseEffect in package cardEffects)
     * */
-    public abstract void selectActionSpaceForExtraAction();
+    public abstract ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces);
 
     /*
     * Notify client of the result of the processing of their previous request

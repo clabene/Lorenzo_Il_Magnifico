@@ -83,7 +83,7 @@ public abstract class AbstractClient {
     * Client decides what bonus they will get form a council favour.
     * This method is triggered by the server side.
     * */
-    public abstract void selectCouncilFavour();
+    public abstract void selectCouncilFavour(int numberOfFavours);
 
     /*
     * Send an ArrayList of action spaces to the client

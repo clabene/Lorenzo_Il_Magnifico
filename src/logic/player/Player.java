@@ -49,13 +49,15 @@ public class Player {
 
     private Board board;
 
+    private ExtraAction extraAction;
+
     private final SetOfResources initialResources = new SetOfResources(); //todo
 
     public Player(Resource ... resources /*initialResources*/){
         this.plank = new Plank(resources /*initialResources*/);
     }
 
-    //this has to  be called as first method after constructor
+    //this has to be called as first method after constructor
     public void setId(String id) {
         this.id = id;
         initializeFamilyMembers();
@@ -140,70 +142,6 @@ public class Player {
         throw new FamilyMemberSelectionException();
     }
 
-/*
-    public Area selectArea(Board board){
-        System.out.println("Quale area vuoi selezionare?");
-        board.show();
-
-        Scanner input = new Scanner(System.in);
-        int index = input.nextInt() -1 ;
-        return board.getArea(index);
-    }
-
-    public ActionSpace selectActionSpace (Area area){
-        System.out.println("Quale spazio azione vuoi selezionare?");
-        area.show();
-        if(area instanceof TowerArea)
-            System.out.println("Inserisci la Torre corrispondente");
-
-        Scanner input = new Scanner(System.in);
-        int index = input.nextInt() -1 ;
-        return area.getActionSpace(index);
-    }
-
-    public ActionSpace selectActionSpace (ActionSpace ... actionSpaces){
-        System.out.println("Quale spazio azione vuoi selezionare?");
-        for(ActionSpace tmp : actionSpaces)
-            System.out.println(tmp);
-
-        Scanner input = new Scanner(System.in);
-        int index = input.nextInt() -1 ;
-        return actionSpaces[index];
-    }
-
-    public FamilyMember selectFamilyMember() {
-        System.out.println("Quale familiare vuoi selezionare?");
-        this.showFamilyMembers();
-
-        Scanner input = new Scanner(System.in);
-        int index = input.nextInt() -1;
-
-        return familyMembers[index];
-    }
-
-    public void showFamilyMembers(){
-        System.out.println("Scegli un familiare \n");
-        int i = 0;
-        for(FamilyMember tmp : familyMembers){
-            i++;
-            System.out.println(i+ " " + tmp.toString()+ " del giocatore " + this.id +"\n");
-        }
-    }
-*/
-    /*
-
-    //true: card successfully added to the plank
-    //false: player already has 6 cards of the same type
-    public boolean tryToTakeCard(Card card) {//throws IndexOutOfBoundsException, LimitedValueOffRangeException{
-        try {
-            plank.getCards().cardAdded(card);
-        } catch (IndexOutOfBoundsException | LimitedValueOffRangeException e) {
-            System.out.println("No room for more cards of type "+card.getCardType());
-            return false;
-        }
-        return true;
-    }
-    */
     public void tryToTakeCard(Card card) throws IndexOutOfBoundsException, LimitedValueOffRangeException{
         plank.getCards().cardAdded(card);
     }
@@ -216,6 +154,13 @@ public class Player {
         plank.getSetOfResources().resourcesSpent(resources);
     }
 
+    public void setExtraAction(ExtraAction extraAction) {
+        this.extraAction = extraAction;
+    }
+
+    public ExtraAction getExtraAction() {
+        return extraAction;
+    }
 
     public Board getBoard() {
         return board;

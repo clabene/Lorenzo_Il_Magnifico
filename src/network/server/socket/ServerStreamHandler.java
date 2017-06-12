@@ -31,6 +31,8 @@ public class ServerStreamHandler {
         responseMap.put("JOIN_GAME_REQUEST", player::tryToJoinGame);
         responseMap.put("CREATE_NEW_ROOM_REQUEST", this::tryToCreateNewRoom);
         responseMap.put("FAMILY_MEMBER_SELECTION_REQUEST", this::familyMemberSelectionRespond);
+        responseMap.put("ACTION_SPACE_SELECTION_REQUEST", this::familyMemberSelectionRespond);
+        responseMap.put("USE_SLAVES_REQUEST", this::useSlaveRespond);
 
     }
 
@@ -61,6 +63,25 @@ public class ServerStreamHandler {
             System.out.println("Could not handle FAMILY_MEMBER_SELECTION_REQUEST");
         }
     }
+
+    public void acitionSpaceSelectionRespond(){
+        try {
+            String actionSpaceId = (String) input.readObject();
+            player.selectActionSpace(actionSpaceId);
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Could not handle ACTION_SPACE_SELECTION_REQUEST");
+        }
+    }
+
+    public void useSlaveRespond() {
+        try {
+            int quantity = (Integer) input.readObject();
+            player.useSlaves(quantity);
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Could not handle USE_SLAVES_REQUEST");
+        }
+    }
+
 
     public void respond(String s) {
         ResponseInnerInterface handler = responseMap.get(s);

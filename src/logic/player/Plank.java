@@ -11,14 +11,14 @@ import java.util.ArrayList;
  * Created by IBM on 15/05/2017.
  */
 public class Plank {
+    private SetOfCards cards;
+
+    private SetOfResources resources;
+    private SetOfResources separateResources;
+    private boolean toUseSeparateResources = false;
 
     private ArrayList<CouncilFavour> councilFavours = new ArrayList<>();
 
-    private SetOfCards cards;
-    private SetOfResources resources;
-
-    private SetOfResources separateResources;
-    private boolean toUseSeparateResources = false;
 
 
     public Plank(Resource ... resources){

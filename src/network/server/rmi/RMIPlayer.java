@@ -45,11 +45,6 @@ public class RMIPlayer extends RemotePlayer {
     @Override
     public boolean dealWithVatican(int minFaithPoints, ) {
         return rmiclientInterface.dealWithVatican();
-
-
-
-
-
     }
 
     @Override

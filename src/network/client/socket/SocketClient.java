@@ -1,14 +1,18 @@
 package network.client.socket;
 
 import logic.board.Board;
+import logic.interfaces.Gainable;
 import logic.player.FamilyMember;
 import logic.player.Player;
+import logic.resources.CouncilFavour;
+import logic.utility.StaticVariables;
 import network.ResponseCode;
 import network.client.AbstractClient;
 
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Created by IBM on 06/06/2017.
@@ -82,7 +86,7 @@ public class SocketClient extends AbstractClient {
             output.writeObject("JOIN_GAME_REQUEST");
             output.flush();
         } catch (IOException e){
-            System.out.println("Could not send join game in request");
+            System.out.println("Could not send join game request");
         }
         notifyRequestHandleOutcome();
     }
@@ -94,7 +98,7 @@ public class SocketClient extends AbstractClient {
             output.writeObject(numberOfPlayers); //check if boxing is necessary
             output.flush();
         } catch (IOException e){
-            System.out.println("Could not send join game in request");
+            System.out.println("Could not send create new room request");
         }
         notifyRequestHandleOutcome();
     }
@@ -106,7 +110,7 @@ public class SocketClient extends AbstractClient {
             output.writeObject(familyMember);
             output.flush();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Could not send family member request");
         }
         notifyRequestHandleOutcome();
     }
@@ -118,12 +122,26 @@ public class SocketClient extends AbstractClient {
 
     @Override
     public void useSlaves(int quantity) {
-
+        try {
+            output.writeObject("USE_SLAVES_REQUEST");
+            output.writeObject(quantity);
+            output.flush();
+        } catch (IOException e) {
+            System.out.println("Could not send family member request");
+        }
+        notifyRequestHandleOutcome();
     }
 
     @Override
     public void selectActionSpace(String actionSpaceId) {
-
+        try {
+            output.writeObject("ACTION_SPACE_SELECTION_REQUEST");
+            output.writeObject(actionSpaceId);
+            output.flush();
+        } catch (IOException e) {
+            System.out.println("Could not send family member request");
+        }
+        notifyRequestHandleOutcome();
     }
 
     @Override
@@ -132,15 +150,35 @@ public class SocketClient extends AbstractClient {
     }
 
     @Override
-    public void selectCouncilFavour() {
-        ArrayList<Integer> favoursIndexes = new ArrayList<>();
-        //todo ask client what council favours they want. Store correspondent indexes in the favoursIndexes
+    public void selectCouncilFavour(int numberOfFavours) {
+        Gainable[] favours = selectFavours(numberOfFavours);
+
         try {
-            output.writeObject(favoursIndexes);
+            output.writeObject(favours);
         } catch (IOException e){
             System.out.println("Could not send council favours indexes");
         }
         notifyRequestHandleOutcome();
+    }
+
+    private Gainable[] selectFavours(int numberOfFavours){
+        CouncilFavour councilFavour = new CouncilFavour(numberOfFavours);
+        Scanner scanner = new Scanner(System.in);
+        Gainable[] toReturn = new Gainable[numberOfFavours];
+
+        System.out.println("Which favour do you want?");
+        do {
+            System.out.println(councilFavour);
+            try {
+                toReturn[toReturn.length] = StaticVariables.COUNCIL_FAVOURS[scanner.nextInt()];
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Not valid input given");
+                numberOfFavours++;
+            }
+            numberOfFavours--;
+        } while (numberOfFavours >= 0);
+
+        return toReturn;
     }
 
     @Override
@@ -162,8 +200,6 @@ public class SocketClient extends AbstractClient {
             this.input = input;
             this.socketClient = socketClient;
         }
-
-        //todo might wanna make an HashMap with the ':: thing' here too
 
         @Override
         public void run(){

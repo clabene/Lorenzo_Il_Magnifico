@@ -88,7 +88,7 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
     }
 
     @Override
-    public void selectCouncilFavour() {
+    public void selectCouncilFavour(int numberOfFavours) {
 
     }
 

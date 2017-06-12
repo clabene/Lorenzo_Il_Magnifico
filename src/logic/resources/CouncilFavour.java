@@ -23,6 +23,11 @@ public class CouncilFavour implements Gainable {
         this.numberOfFavours = numberOfFavours;
     }
 
+    public int getNumberOfFavours() {
+        return numberOfFavours;
+    }
+
+
     @Override
     public void gainedByPlayer(Player player){
         player.getPlank().getCouncilFavours().add(this);

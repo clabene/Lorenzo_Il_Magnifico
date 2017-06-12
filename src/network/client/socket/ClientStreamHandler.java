@@ -20,7 +20,7 @@ public class ClientStreamHandler {
     private ObjectInputStream input;
     private SocketClient client;
 
-    private HashMap<String, ServerStreamHandler.ResponseInnerInterface> responseMap = new HashMap<>();
+    private HashMap<String, ResponseInnerInterface> responseMap = new HashMap<>();
 
     public ClientStreamHandler(ObjectInputStream input, SocketClient client){
         this.input = input;
@@ -30,20 +30,29 @@ public class ClientStreamHandler {
 
     private void fillMap(){
         //todo use constants (make an Enum maybe) instead of String
-        responseMap.put("UPDATE_VIEW", client::selectCouncilFavour);
+        responseMap.put("UPDATE_VIEW", this::selectCouncilFavour);
         responseMap.put("SELECT_COUNCIL_FAVOUR", this::updateView);
 
     }
 
     public void respond(String s) {
-        ServerStreamHandler.ResponseInnerInterface handler = responseMap.get(s);
+        ResponseInnerInterface handler = responseMap.get(s);
         if (handler != null) {
             handler.operate();
         }
         else System.out.println("error");
     }
 
-    public void updateView(){
+    private void selectCouncilFavour(){
+        try{
+            Integer numberOfFavours = (Integer) input.readObject();
+            client.selectCouncilFavour(numberOfFavours);
+        } catch (IOException | ClassNotFoundException e){
+            System.out.println("Could not receive council favour request");
+        }
+    }
+
+    private void updateView(){
         try {
             Board board = (Board) input.readObject();
             ArrayList<Player> players = (ArrayList<Player>) input.readObject();

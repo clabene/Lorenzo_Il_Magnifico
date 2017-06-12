@@ -30,7 +30,6 @@ public class Game {
     private ActionPhase actionPhase = new ActionPhase();
     private FamilyMember selectedFamilyMember;
     private ActionSpace selectedActionSpace;
-    private Stack<Card> deck = new Stack<>();
 
 
 /*
@@ -99,6 +98,18 @@ public class Game {
         return ResponseCode.NOT_OK;
     }
 
+    public ResponseCode playingExtraAction(Player player, int familyMemberValue, ActionSpace actionSpace){
+
+        actionPhase.activateBonuses(player, actionSpace);
+
+        Boolean b = actionPhase.putFamilyMemberOnActionSpace(player,
+                new FamilyMember(null, familyMemberValue, player.getId()),
+                actionSpace);
+
+        if(b) return ResponseCode.OK;
+        return ResponseCode.NOT_OK;
+    }
+
     public boolean checkingIfPlayable(Player player){
         return actionPhase.checkPhasePlayable(player);
     }
@@ -114,29 +125,6 @@ public class Game {
     public ArrayList<Player> gettingNextTurnOrder(ArrayList<Player> players, Board board){
         return turn.getNextTurnOrder(players, board);
     }
-/*
-    public void checkingExcomunication(Player player, int minFaithPoints, ExcommunicationTassel tassel){
-        if(player.getFaithPoints().getTrackPosition().getValue() < minFaithPoints){
-            System.out.println("You faith points are not enough, so you receive an excommunication from the Church");
-            tassel.activate(player);
-        }
-        else{
-            player.excommunicationDecision();
-        }
-    }
-*/
-    public void setDeck(){
-        CardSetupHandler cartSetupHandler = new CardSetupHandler();
-        this.deck = cartSetupHandler.readFromFile();
-    }
-
-    /*
-    public void selectCouncilFavour (Player player){
-        CouncilFavour councilFavour  = new CouncilFavour();
-        councilFavour.gainedByPlayer(player);
-
-    }
-    */
 
     public ResponseCode useSlaves(Player player, int quantity){
         if(selectedFamilyMember == null) return ResponseCode.NOT_OK;
@@ -147,12 +135,10 @@ public class Game {
     }
 
     public boolean hasEnoughFaithPoints(Player player, int minFaithPoints){
-        if (player.getFaithPoints().getTrackPosition().getValue() < minFaithPoints)
-            return false;
-        return true;
+        return player.getFaithPoints().getTrackPosition().getValue() >= minFaithPoints;
     }
 
-    public void takeExcomunication(Player player, ExcommunicationTassel tassel, boolean choice){
+    public void takeExcommunication(Player player, ExcommunicationTassel tassel, boolean choice){
         if(choice == false){
             player.gain(player.getFaithPoints().calculateVictoryPointsFromPosition());
             player.lose(player.getFaithPoints());

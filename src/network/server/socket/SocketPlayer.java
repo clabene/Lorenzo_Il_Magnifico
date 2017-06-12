@@ -1,7 +1,9 @@
 package network.server.socket;
 
+import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
 import logic.gameStructure.GameRoom;
+import logic.interfaces.Gainable;
 import logic.player.FamilyMember;
 import logic.player.Player;
 import network.ResponseCode;
@@ -107,28 +109,44 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
     }
 
     @Override
-    public void selectCouncilFavour() {
+    public void selectCouncilFavour(int numberOfFavours) {
         try {
             output.writeObject("SELECT_COUNCIL_FAVOUR");
+            output.writeObject(numberOfFavours);
             output.flush();
         } catch (IOException e){
             System.out.println("Could not ask for council favours");
         }
         try {
-            ArrayList<Integer> favoursIndexes = (ArrayList<Integer>) input.readObject();
-            for()
-
-            gain(); //todo get Gainable[] from favoursIndexes and give it as a parameter in gain();
+            Gainable[] favours = (Gainable[]) input.readObject();
+            gain(favours);
+            notifyRequestHandleOutcome(ResponseCode.OK);
 
         } catch (IOException | ClassNotFoundException e){
-            System.out.println("Could not ask for council favours");
+            System.out.println("Could not receive council favour");
+            notifyRequestHandleOutcome(ResponseCode.NOT_OK);
         }
     }
 
 
     @Override
-    public void selectActionSpaceForExtraAction(){
-
+    public ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces) {
+        try {
+            output.writeObject("SELECT_ACTION_SPACE_FOR_EXTRA_ACTION");
+            output.writeObject(actionSpaces);
+            output.flush();
+        } catch (IOException e){
+            System.out.println("Could not receive action space for extra action");
+        }
+        try {
+            ActionSpace toReturn = (ActionSpace) input.readObject();
+            notifyRequestHandleOutcome(ResponseCode.OK);
+            return toReturn;
+        } catch (IOException | ClassNotFoundException e){
+            System.out.println("Could not ask for council favours");
+            notifyRequestHandleOutcome(ResponseCode.NOT_OK);
+        }
+        return null; //todo exception
     }
 
     @Override

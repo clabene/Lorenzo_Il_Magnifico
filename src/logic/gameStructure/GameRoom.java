@@ -1,11 +1,14 @@
 package logic.gameStructure;
 
+import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
 import logic.cards.Card;
 import logic.exceptions.LimitedValueOffRangeException;
 import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.player.FamilyMember;
 import logic.player.Player;
+import logic.resources.CouncilFavour;
+import logic.utility.CardSetupHandler;
 import logic.utility.LimitedInteger;
 import network.ResponseCode;
 import network.server.RemotePlayer;
@@ -22,7 +25,7 @@ public class GameRoom {
 
     private Game game = new Game();
     private Board board = new Board();
-    private Stack<Card> deck = new Stack();
+    private Stack<Card> deck;
 
     private HashMap<String, RemotePlayer> players; //key: playerId
     private int TURN_NUMBER;
@@ -39,8 +42,14 @@ public class GameRoom {
         } catch (LimitedValueOffRangeException e){
             System.out.println("Could not initialize numberOfPlayers");
         }
+        initializeDeck();
 
         //todo board changes based on the number of players in the game
+    }
+
+    private void initializeDeck(){
+        CardSetupHandler cartSetupHandler = new CardSetupHandler();
+        this.deck = cartSetupHandler.readFromFile();
     }
 
     public void addPlayerToRoom(RemotePlayer remotePlayer) throws LimitedValueOffRangeException{
@@ -55,7 +64,7 @@ public class GameRoom {
         return board;
     }
 
-    public boolean checkIfPlayerHasAvaialbeAction(Player player){
+    public boolean checkIfPlayerHasAvailableAction(Player player){
         return game.checkingIfPlayable(player);
     }
 
@@ -72,9 +81,7 @@ public class GameRoom {
 
     public void selectActionSpace(String actionSpaceId, String playerId) {
         ResponseCode responseCode = game.selectionActionSpace(actionSpaceId, players.get(playerId), getBoard());
-
         players.get(playerId).notifyRequestHandleOutcome(responseCode);
-
 
         if(canPlaceFamilyMember()) puttingFamilyMemberOnActionSpace(playerId);
     }
@@ -91,19 +98,30 @@ public class GameRoom {
 
         ResponseCode responseCode = game.puttingFamilyMemberOnActionSpace(player);
         useCouncilFavours(player);
+        useExtraAction(player);
+
+        //players.get(playerId).notifyRequestHandleOutcome(responseCode);
 
         if(responseCode == ResponseCode.OK) updatePlayersView();
-
-        players.get(playerId).notifyRequestHandleOutcome(responseCode);
 
     }
 
     private void useCouncilFavours(RemotePlayer remotePlayer) {
         Iterator iterator = remotePlayer.getPlank().getCouncilFavours().iterator();
         while(iterator.hasNext()) {
-            remotePlayer.selectCouncilFavour();
+            remotePlayer.selectCouncilFavour(((CouncilFavour) iterator.next()).getNumberOfFavours() );
             iterator.remove();
         }
+    }
+    private void useExtraAction(RemotePlayer remotePlayer){
+        if(remotePlayer.getExtraAction() == null) return;
+
+        ActionSpace actionSpace = remotePlayer.selectActionSpaceForExtraAction(remotePlayer.getExtraAction().getActionSpaces());
+        ResponseCode responseCode = game.playingExtraAction(remotePlayer, remotePlayer.getExtraAction().getFamilyMemberValue(), actionSpace);
+
+        remotePlayer.setExtraAction(null);
+
+        remotePlayer.notifyRequestHandleOutcome(responseCode);
     }
 
     private void updatePlayersView() {
@@ -118,12 +136,12 @@ public class GameRoom {
 
     public void dealWithVatican(String playerId, int minFaithPoints, ExcommunicationTassel tassel){
         if(!game.hasEnoughFaithPoints(players.get(playerId), minFaithPoints)){
-            game.takeExcomunication(players.get(playerId), tassel, true);
+            game.takeExcommunication(players.get(playerId), tassel, true);
             players.get(playerId).notifyRequestHandleOutcome();
         }
         else
             boolean choice = players.get(playerId).dealWithVatican();// devo scegliere cosa fare
-            game.takeExcomunication(players.get(playerId), tassel, choice);
+            game.takeExcommunication(players.get(playerId), tassel, choice);
 
     }
 
@@ -131,7 +149,7 @@ public class GameRoom {
         int i = 0;
 
         for(Player tmp: players.values()){
-            if(checkIfPlayerHasAvaialbeAction(tmp) || tmp.getFamilyMembersAvailable().size() ==  0)
+            if(checkIfPlayerHasAvailableAction(tmp) || tmp.getFamilyMembersAvailable().size() ==  0)
                 i++;
         }
 
@@ -139,12 +157,12 @@ public class GameRoom {
             if(TURN_NUMBER == 2){
                 PERIOD_NUMBER++;
                 Period Period = new Period();
-                Turn turn = new Turn;
+                Turn turn = new Turn();
                 TURN_NUMBER = 1;
             }
             else{
                 TURN_NUMBER++;
-                Turn turn = new Turn;
+                Turn turn = new Turn();
             }
         }
     }
