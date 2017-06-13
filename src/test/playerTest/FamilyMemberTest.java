@@ -3,6 +3,7 @@ package test.playerTest;
 import logic.board.Color;
 import logic.player.FamilyMember;
 import logic.player.Player;
+import logic.resources.Wood;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class FamilyMemberTest {
     @Test
     void getPlayerId() {
-        Player player = new Player("Claudio");
+        Player player = new Player(new Wood());
         FamilyMember familyMember = new FamilyMember(Color.BLACK, 3, player.getId(), false);
         assertEquals("Claudio", familyMember.getPlayerId() );
 

@@ -76,7 +76,7 @@ public class CardCost implements Losable {
         }
     }
 
-
+/*
     public static void main(String[] a){
         Player player = new Player("", new Wood(10));
         player.gain(new MilitaryPointsTrack(10));
@@ -93,7 +93,7 @@ public class CardCost implements Losable {
         System.out.println(player.getMilitaryPoints());
         System.out.println(player.getPlank().getSetOfResources());
     }
-
+*/
 
 
     public Losable getSelectedCost() {

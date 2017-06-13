@@ -17,12 +17,13 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Created by Pinos on 04/06/2017.
  */
+
 class CouncilActionSpaceTest {
     @Test
     void action() {
         CouncilActionSpace councilActionSpace = new CouncilActionSpace();
-        Player player = new Player("Claudio");
-        Player player1 = new Player("Pinò");
+        Player player = new Player();
+        Player player1 = new Player();
         ArrayList<String> names = new ArrayList<>();
         names.add("Claudio");
         councilActionSpace.action(player);
@@ -37,8 +38,8 @@ class CouncilActionSpaceTest {
     @Test
     void getFamilyMemberArrayList() {
         CouncilActionSpace councilActionSpace = new CouncilActionSpace();
-        Player player = new Player("Claudio");
-        Player player1 = new Player("Pinò");
+        Player player = new Player();
+        Player player1 = new Player();
         ArrayList<String> names = new ArrayList<>();
         assertEquals( names,councilActionSpace.getFamilyMemberArrayList() );
         names.add("Claudio");

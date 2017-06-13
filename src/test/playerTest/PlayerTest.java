@@ -104,7 +104,7 @@ class PlayerTest {
 
     @Test
     void getId() {
-        Player player = new Player("Claudio");
+        Player player = new Player(new Wood());
         assertEquals("Claudio", player.getId());
     }
 

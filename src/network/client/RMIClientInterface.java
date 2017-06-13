@@ -1,5 +1,6 @@
 package network.client;
 
+import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
 import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.interfaces.Gainable;
@@ -8,6 +9,7 @@ import network.ResponseCode;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -19,6 +21,7 @@ public interface RMIClientInterface extends Remote {
     boolean dealWithVatican(ExcommunicationTassel tassel)throws RemoteException;
     void updateView(Board board, Collection<Player> players);
     Gainable[] selectCouncilFavour(int numberOfFavours);
+    ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces);
 
 
 }

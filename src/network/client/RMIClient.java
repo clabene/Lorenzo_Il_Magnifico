@@ -1,5 +1,6 @@
 package network.client;
 
+import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
 import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.interfaces.Gainable;
@@ -16,6 +17,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
 
@@ -77,10 +79,7 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
         rmiServerInterface.selectFamilyMember(familyMember,  getId());
     }
 
-    @Override
-    public void selectBoardArea() {
 
-    }
 
     @Override
     public void selectActionSpace(String actionSpaceId) {
@@ -121,13 +120,32 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
         return toReturn;
     }
 
-    @Override
-    public void selectActionSpaceForExtraAction() {
+    //@Override
+    public ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces) {
+        ActionSpace actionSpace = selectActionSpace(actionSpaces);
+        return actionSpace;
 
     }
 
+    private ActionSpace selectActionSpace(ArrayList<ActionSpace> actionSpaces){
+        System.out.println("What action space do you want to use?");
+        int i = 0;
+        for(ActionSpace tmp : actionSpaces) {
+            i++;
+            System.out.println(i + ") " +tmp);
+        }
+        Scanner scanner = new Scanner(System.in);
+        i = scanner.nextInt();
+        try {
+            return actionSpaces.get(i - 1);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return actionSpaces.get(actionSpaces.size()); //todo have user to write another number
+        }
+    }
+
+
     @Override
-    public void useSlaves() {
+    public void useSlaves(int quantity) {
         rmiServerInterface.useSlaves();
     }
 

@@ -10,6 +10,7 @@ import logic.resources.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Stack;
 
 /**
@@ -23,6 +24,11 @@ public class Board {
         this.NUMBER_OF_PLAYERS = NUMBER_OF_PLAYERS;
         setHashMap(NUMBER_OF_PLAYERS);
     }
+
+    private int redDice;
+    private int whiteDice;
+    private int blackDice;
+
 
 
 
@@ -93,5 +99,30 @@ public class Board {
 
     public ExcommunicationTassel[] getTassels() {
         return tassels;
+    }
+
+    public void setDice(){
+        Random randomGenerator = new Random();
+        redDice = randomGenerator.nextInt(6)+1;
+        whiteDice = randomGenerator.nextInt(6)+1;
+        blackDice = randomGenerator.nextInt(6)+1;
+    }
+
+    public int getBlackDice() {
+        return blackDice;
+    }
+
+    public int getRedDice() {
+        return redDice;
+    }
+
+    public int getWhiteDice() {
+        return whiteDice;
+    }
+
+    public static void main(String[] args) {
+        Board board = new Board();
+        board.setDice();
+        System.out.println(board.getBlackDice()+","+ board.getRedDice()+ ","+ board.getWhiteDice());
     }
 }
