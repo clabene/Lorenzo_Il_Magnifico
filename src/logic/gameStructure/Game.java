@@ -118,13 +118,14 @@ public class Game {
     public void takingBackFamilyMembers(Player player, Board board){
         turn.takeBackFamilyMembers(player, board);
     }
-
+/*  da cancellare //todo
     public void puttingCardsOnBoard(Stack<Card> cards, Board board){
         turn.putCardsOnBoard(cards, board);
     }
-
-    public ArrayList<Player> gettingNextTurnOrder(ArrayList<Player> players, Board board){
-        return turn.getNextTurnOrder(players, board);
+*/
+    public void gettingNextTurnOrder(ArrayList<String> players, Board board){
+        turn.getNextTurnOrder(players, board);
+        return;
     }
 
     public ResponseCode useSlaves(Player player, int quantity){
@@ -155,6 +156,7 @@ public class Game {
             period = new Period();
             turn = new Turn();
             turnNumber = 1;
+
         }
         else{
             turnNumber++;
@@ -165,5 +167,13 @@ public class Game {
 
     public int getCurrentPeriodNumber() {
         return periodNumber;
+    }
+
+    public void throwDice(Board board){
+        board.setDice();
+    }
+
+    public Turn getTurn() {
+        return turn;
     }
 }

@@ -57,16 +57,11 @@ public class Turn {
     and return the turn order as an arrayList of players
     */
 
-    public ArrayList<Player> getNextTurnOrder(ArrayList<Player> players, Board board){
+    public void getNextTurnOrder(ArrayList<String> players, Board board){
 
-        ArrayList<Player> newTurn  = new ArrayList<>();
-        ArrayList<String> ids = board.getTurnOrder();
-        for(String id : ids)
-            for(Player player: players)
-                if (player.getId().equals(id))
-                    newTurn.add(player);
+        players = board.getTurnOrder();
 
-        return newTurn;
+        return ;
     }
 
     /*
@@ -90,6 +85,8 @@ public class Turn {
     the deck is setted such that is enough a double cycle to put cards on board
      */
 
+
+/* da cancellare (check)
     public void putCardsOnBoard(Stack<Card> cards, Board board){
         int i = 1;
         for(ActionSpace tmp : board.getHashMap().values()){
@@ -98,6 +95,6 @@ public class Turn {
             if(i == 16)break;
         }
     }
-
+*/
 
 }
