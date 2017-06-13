@@ -4,6 +4,7 @@ package logic.board;
 import logic.actionSpaces.*;
 import logic.cards.Card;
 import logic.exceptions.ActionSpaceCoveredException;
+import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.pointsTracks.MilitaryPointsTrack;
 import logic.resources.*;
 
@@ -21,8 +22,9 @@ public class Board {
     }
 
 
-    //todo exception
 
+
+    private ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
 
     private HashMap<String, ActionSpace> actionSpaceHashMap = new HashMap<>();
 
@@ -84,6 +86,9 @@ public class Board {
             i++;
             if(i == 16)  break;
         }
+    }
 
+    public ExcommunicationTassel[] getTassels() {
+        return tassels;
     }
 }

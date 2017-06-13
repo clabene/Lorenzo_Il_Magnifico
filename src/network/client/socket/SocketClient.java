@@ -141,8 +141,28 @@ public class SocketClient extends AbstractClient {
     }
 
     //@Override
-    public void dealWithVatican() {
+    public void dealWithVatican(int periodNumber) {
+        boolean notSupporting = takeVaticanDecision(periodNumber);
 
+        try {
+            output.writeObject(notSupporting);
+            output.flush();
+        } catch (IOException e){
+            System.out.println("Could not send council favours indexes");
+        }
+        notifyRequestHandleOutcome();
+    }
+
+    private boolean takeVaticanDecision(int periodNumber){
+        System.out.println("Do you want to support the Vatican?");
+        System.out.println(getClientController().getView().getBoard().getTassels()[periodNumber]);
+        System.out.println("0) Yes, 1) No");
+        Scanner scanner = new Scanner(System.in);
+        do {
+            int notSupporting = scanner.nextInt();
+            if (notSupporting == 1) return true;
+            if (notSupporting == 0) return false;
+        } while(true);
     }
 
     //@Override
@@ -151,6 +171,7 @@ public class SocketClient extends AbstractClient {
 
         try {
             output.writeObject(favours);
+            output.flush();
         } catch (IOException e){
             System.out.println("Could not send council favours indexes");
         }
@@ -182,6 +203,7 @@ public class SocketClient extends AbstractClient {
         ActionSpace actionSpace = selectActionSpace(actionSpaces);
         try {
             output.writeObject(actionSpace);
+            output.flush();
         } catch (IOException e){
             System.out.println("Could not send action space for extra action");
         }

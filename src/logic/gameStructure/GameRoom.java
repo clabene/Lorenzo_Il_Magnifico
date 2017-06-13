@@ -26,7 +26,13 @@ import java.util.Stack;
 public class GameRoom {
 
     private Game game = new Game();
+
     private Board board = new Board();
+
+    //private ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
+
+    private WinnerElector winnerElector = new WinnerElector();
+
     private Stack<Card> deck;
 
     private HashMap<String, RemotePlayer> players; //key: playerId
@@ -118,15 +124,15 @@ public class GameRoom {
     }
     private void useExtraAction(RemotePlayer remotePlayer){
         if(remotePlayer.getExtraAction() == null) return;
+        remotePlayer.selectActionSpaceForExtraAction(remotePlayer.getExtraAction().getActionSpaces());
+    }
 
-        ActionSpace actionSpace = remotePlayer.selectActionSpaceForExtraAction(remotePlayer.getExtraAction().getActionSpaces());
+    public void doExtraAction(RemotePlayer remotePlayer, ActionSpace actionSpace){
         ResponseCode responseCode = game.playingExtraAction(remotePlayer, remotePlayer.getExtraAction().getFamilyMemberValue(), actionSpace);
 
         if(responseCode == ResponseCode.NOT_OK) restoreArea(actionSpace);
 
         remotePlayer.setExtraAction(null);
-
-        remotePlayer.notifyRequestHandleOutcome(responseCode);
     }
     private void restoreArea(ActionSpace actionSpace) {
         Card card = ( (TowerActionSpace) actionSpace).getCard();
@@ -148,18 +154,19 @@ public class GameRoom {
     public void dealWithVatican(String playerId, int minFaithPoints, ExcommunicationTassel tassel){
         if(!game.hasEnoughFaithPoints(players.get(playerId), minFaithPoints)){
             game.takeExcommunication(players.get(playerId), tassel, true);
-            players.get(playerId).notifyRequestHandleOutcome(ResponseCode.OK);
         }
         else {
-            players.get(playerId).dealWithVatican(tassel);
+            players.get(playerId).dealWithVatican(game.getCurrentPeriodNumber());
+            players.get(playerId).notifyRequestHandleOutcome(ResponseCode.OK);
         }
     }
 
-    public void takeExcommunication(Player player, ExcommunicationTassel tassel, boolean choice){
-        game.takeExcommunication(player, tassel, choice);
+    public void takeExcommunication(Player player, boolean notSupporting){
+        game.takeExcommunication(player, board.getTassels()[game.getCurrentPeriodNumber()], notSupporting);
     }
 
-    public void changeTurn(){
+
+    private void changeTurn(){
 
         boolean toChangeTurn = true;
 

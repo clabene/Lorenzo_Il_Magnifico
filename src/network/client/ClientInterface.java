@@ -15,4 +15,6 @@ public interface ClientInterface {
 
     void updateView(Board board, Collection<Player> players);
 
+    ClientView getView();
+
 }

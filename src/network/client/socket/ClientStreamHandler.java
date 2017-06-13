@@ -31,6 +31,7 @@ public class ClientStreamHandler {
         responseMap.put("UPDATE_VIEW", this::selectCouncilFavour);
         responseMap.put("SELECT_COUNCIL_FAVOUR", this::updateView);
         responseMap.put("SELECT_ACTION_SPACE_FOR_EXTRA_ACTION", this::selectActionSpace);
+        responseMap.put("SELECT_ACTION_SPACE_FOR_EXTRA_ACTION", this::dealWithVatican);
     }
 
     public void respond(String s) {
@@ -39,6 +40,15 @@ public class ClientStreamHandler {
             handler.operate();
         }
         else System.out.println("error");
+    }
+
+    public void dealWithVatican(){
+        try{
+            Integer periodNumber = (Integer) input.readObject();
+            client.dealWithVatican(periodNumber);
+        } catch (IOException | ClassNotFoundException e){
+            System.out.println("Could not receive period number");
+        }
     }
 
     private void selectCouncilFavour(){

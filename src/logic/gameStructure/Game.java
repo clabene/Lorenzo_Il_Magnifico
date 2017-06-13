@@ -8,7 +8,6 @@ import logic.exceptions.FamilyMemberSelectionException;
 import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.player.FamilyMember;
 import logic.player.Player;
-import logic.utility.CardSetupHandler;
 import network.ResponseCode;
 
 
@@ -22,8 +21,7 @@ import java.util.Stack;
 public class Game {
     //private ArrayList<Player> players = new ArrayList<>();
 
-    private ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
-    private WinnerElector winnerElector = new WinnerElector();
+
 
     private Period period = new Period();
     private Turn turn = new Turn();
@@ -32,8 +30,8 @@ public class Game {
     private ActionSpace selectedActionSpace;
 
 
-    private int TURN_NUMBER;
-    private int PERIOD_NUMBER;
+    private int turnNumber;
+    private int periodNumber;
 
 /*
     public void startGame(){
@@ -141,31 +139,31 @@ public class Game {
         return player.getFaithPoints().getTrackPosition().getValue() >= minFaithPoints;
     }
 
-    public void takeExcommunication(Player player, ExcommunicationTassel tassel, boolean choice){
-        if(choice == false){
+    public void takeExcommunication(Player player, ExcommunicationTassel tassel, boolean notSupporting){
+        if(!notSupporting){
             player.gain(player.getFaithPoints().calculateVictoryPointsFromPosition());
             player.lose(player.getFaithPoints());
             return;
         }
         tassel.activate(player);
-        return;
     }
 
     public void changeTurn(){
 
-        if(TURN_NUMBER == 2){
-            PERIOD_NUMBER++;
+        if(turnNumber == 2){
+            periodNumber++;
             period = new Period();
             turn = new Turn();
-            TURN_NUMBER = 1;
+            turnNumber = 1;
         }
         else{
-            TURN_NUMBER++;
+            turnNumber++;
             turn = new Turn();
 
         }
     }
 
-
-
+    public int getCurrentPeriodNumber() {
+        return periodNumber;
+    }
 }

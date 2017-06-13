@@ -52,6 +52,11 @@ public class Client implements ClientInterface {
     }
 
     @Override
+    public ClientView getView(){
+        return clientView;
+    }
+
+    @Override
     public void updateView(Board board, Collection<Player> players) {
         clientView.setBoard(board);
         clientView.setPlayers((ArrayList<Player>) players);

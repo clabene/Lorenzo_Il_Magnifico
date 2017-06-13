@@ -104,8 +104,23 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
     }
 
     @Override
-    public void dealWithVatican() {
+    public void dealWithVatican(int periodNumber) {
+        try {
+            output.writeObject("DEAL_WITH_VATICAN");
+            output.writeObject(periodNumber);
+            output.flush();
+        } catch (IOException e){
+            System.out.println("Could not ask for council favours");
+        }
+        try {
+            boolean notSupporting = (Boolean) input.readObject();
+            getGameRoom().takeExcommunication(this, notSupporting);
+            notifyRequestHandleOutcome(ResponseCode.OK);
 
+        } catch (IOException | ClassNotFoundException e){
+            System.out.println("Could not receive council favour");
+            notifyRequestHandleOutcome(ResponseCode.NOT_OK);
+        }
     }
 
     @Override
@@ -130,7 +145,7 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
 
 
     @Override
-    public ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces) {
+    public void selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces) {
         try {
             output.writeObject("SELECT_ACTION_SPACE_FOR_EXTRA_ACTION");
             output.writeObject(actionSpaces);
@@ -139,14 +154,14 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
             System.out.println("Could not ask for action space for extra action");
         }
         try {
-            ActionSpace toReturn = (ActionSpace) input.readObject();
+            ActionSpace actionSpace = (ActionSpace) input.readObject();
+            getGameRoom().doExtraAction(this, actionSpace);
             notifyRequestHandleOutcome(ResponseCode.OK);
-            return toReturn;
+
         } catch (IOException | ClassNotFoundException e){
             System.out.println("Could not receive action space for extra action");
             notifyRequestHandleOutcome(ResponseCode.NOT_OK);
         }
-        return null; //todo exception
     }
 
     @Override
