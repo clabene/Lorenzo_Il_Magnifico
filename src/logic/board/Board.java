@@ -29,10 +29,6 @@ public class Board {
     private int whiteDice;
     private int blackDice;
 
-
-
-
-
     private ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
 
     private HashMap<String, ActionSpace> actionSpaceHashMap = new HashMap<>();
@@ -121,7 +117,7 @@ public class Board {
     }
 
     public static void main(String[] args) {
-        Board board = new Board();
+        Board board = new Board(3);
         board.setDice();
         System.out.println(board.getBlackDice()+","+ board.getRedDice()+ ","+ board.getWhiteDice());
     }
