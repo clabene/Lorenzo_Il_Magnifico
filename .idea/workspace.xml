@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/board/Board.java" afterPath="$PROJECT_DIR$/src/logic/board/Board.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/RMIClient.java" afterPath="$PROJECT_DIR$/src/network/client/RMIClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/RMIClientInterface.java" afterPath="$PROJECT_DIR$/src/network/client/RMIClientInterface.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java" afterPath="$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,7 +37,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Board.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/logic/board/Board.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="464">
@@ -52,6 +54,26 @@
                 <element signature="e#4516#4517#0" expanded="true" />
                 <element signature="e#4548#4549#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RMIPlayer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="73" column="9" lean-forward="false" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RMIClient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/network/client/RMIClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -74,20 +96,6 @@
               <folding>
                 <element signature="e#5271#5272#0" expanded="true" />
                 <element signature="e#5306#5307#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SocketPlayer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2244">
-              <caret line="162" column="60" lean-forward="true" selection-start-line="162" selection-start-column="60" selection-end-line="162" selection-end-column="60" />
-              <folding>
-                <element signature="method#tryToLogInClient#0;class#SocketPlayer#0" expanded="false" />
-                <element signature="method#tryToJoinNewRoom#0;class#SocketPlayer#0" expanded="false" />
-                <element signature="method#selectFamilyMember#0;class#SocketPlayer#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -161,14 +169,12 @@
         <option value="$PROJECT_DIR$/src/network/ResponseCode.java" />
         <option value="$PROJECT_DIR$/src/logic/exceptions/FamilyMemberSelectionException.java" />
         <option value="$PROJECT_DIR$/src/logic/exceptions/ActionSpaceCoveredException.java" />
-        <option value="$PROJECT_DIR$/src/network/client/RMIClientInterface.java" />
         <option value="$PROJECT_DIR$/src/network/server/rmi/RMIServer.java" />
         <option value="$PROJECT_DIR$/src/network/server/ServerInterface.java" />
         <option value="$PROJECT_DIR$/src/network/server/Server.java" />
         <option value="$PROJECT_DIR$/src/network/client/ClientView.java" />
         <option value="$PROJECT_DIR$/src/network/client/socket/ClientSideStreamHandler.java" />
         <option value="$PROJECT_DIR$/src/logic/gameStructure/Period.java" />
-        <option value="$PROJECT_DIR$/src/network/client/RMIClient.java" />
         <option value="$PROJECT_DIR$/src/logic/resources/CouncilFavour.java" />
         <option value="$PROJECT_DIR$/src/network/server/socket/ServerStreamHandler.java" />
         <option value="$PROJECT_DIR$/src/logic/player/Plank.java" />
@@ -180,7 +186,6 @@
         <option value="$PROJECT_DIR$/src/logic/pointsTracks/PointsTrack.java" />
         <option value="$PROJECT_DIR$/src/logic/gameStructure/ActionPhase.java" />
         <option value="$PROJECT_DIR$/src/logic/gameStructure/Game.java" />
-        <option value="$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java" />
         <option value="$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java" />
         <option value="$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java" />
         <option value="$PROJECT_DIR$/src/network/server/RemotePlayer.java" />
@@ -189,6 +194,9 @@
         <option value="$PROJECT_DIR$/src/network/client/socket/SocketClient.java" />
         <option value="$PROJECT_DIR$/src/network/client/socket/ClientStreamHandler.java" />
         <option value="$PROJECT_DIR$/src/logic/board/Board.java" />
+        <option value="$PROJECT_DIR$/src/network/client/RMIClientInterface.java" />
+        <option value="$PROJECT_DIR$/src/network/client/RMIClient.java" />
+        <option value="$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java" />
       </list>
     </option>
   </component>
@@ -1039,13 +1047,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495533735855</updated>
     </task>
-    <task id="LOCAL-00033" summary="New bonuses added &amp; new comments added to ActionPhase">
-      <created>1496161090076</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1496161090076</updated>
-    </task>
     <task id="LOCAL-00034" summary="New bonuses added &amp; new comments added to ActionPhase">
       <created>1496162804316</created>
       <option name="number" value="00034" />
@@ -1382,7 +1383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1497347612801</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="network updated">
+      <created>1497347836696</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1497347836696</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1412,7 +1420,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28290468" sideWeight="0.49462366" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28290468" sideWeight="0.49462366" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1693,14 +1701,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/network/client/RMIClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="90" column="55" lean-forward="false" selection-start-line="90" selection-start-column="55" selection-end-line="90" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/network/server/AbstractServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1802,26 +1802,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/network/client/RMIClientInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="18" column="12" lean-forward="false" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/player/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3128">
           <caret line="231" column="31" lean-forward="true" selection-start-line="231" selection-start-column="31" selection-end-line="231" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="52" column="60" lean-forward="false" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="60" />
           <folding />
         </state>
       </provider>
@@ -1847,8 +1831,8 @@
         <state relative-caret-position="289">
           <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
           <folding>
-            <element signature="e#380#381#0" expanded="true" />
-            <element signature="e#408#409#0" expanded="true" />
+            <element signature="e#380#381#0" expanded="false" />
+            <element signature="e#408#409#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1869,7 +1853,7 @@
         <state relative-caret-position="90">
           <caret line="47" column="47" lean-forward="false" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1893,18 +1877,6 @@
             <element signature="method#takeVaticanDecision#0;class#SocketClient#0" expanded="false" />
             <element signature="method#selectFavours#0;class#SocketClient#0" expanded="false" />
             <element signature="method#selectActionSpace#1;class#SocketClient#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2244">
-          <caret line="162" column="60" lean-forward="true" selection-start-line="162" selection-start-column="60" selection-end-line="162" selection-end-column="60" />
-          <folding>
-            <element signature="method#tryToLogInClient#0;class#SocketPlayer#0" expanded="false" />
-            <element signature="method#tryToJoinNewRoom#0;class#SocketPlayer#0" expanded="false" />
-            <element signature="method#selectFamilyMember#0;class#SocketPlayer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1937,6 +1909,42 @@
             <element signature="e#4516#4517#0" expanded="true" />
             <element signature="e#4548#4549#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="158" column="12" lean-forward="true" selection-start-line="158" selection-start-column="12" selection-end-line="158" selection-end-column="56" />
+          <folding>
+            <element signature="method#tryToLogInClient#0;class#SocketPlayer#0" expanded="false" />
+            <element signature="method#tryToJoinNewRoom#0;class#SocketPlayer#0" expanded="false" />
+            <element signature="method#selectFamilyMember#0;class#SocketPlayer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/client/RMIClientInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="23" column="16" lean-forward="false" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/client/RMIClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="73" column="9" lean-forward="false" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>

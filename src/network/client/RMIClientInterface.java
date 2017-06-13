@@ -18,7 +18,7 @@ import java.util.Collection;
 public interface RMIClientInterface extends Remote {
     void sendMessage2(String string) throws RemoteException;
     void notifyRequestHandleOutcome(ResponseCode requestHandleOutcome )throws RemoteException;
-    boolean dealWithVatican(ExcommunicationTassel tassel)throws RemoteException;
+    boolean dealWithVatican(int periodNumber)throws RemoteException;
     void updateView(Board board, Collection<Player> players);
     Gainable[] selectCouncilFavour(int numberOfFavours);
     ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces);

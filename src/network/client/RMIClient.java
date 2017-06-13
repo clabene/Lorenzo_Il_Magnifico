@@ -86,9 +86,10 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
         rmiServerInterface.selectActionSpace(actionSpaceId, getId());
     }
 
-
-    public boolean dealWithVatican(ExcommunicationTassel tassel) {
-        System.out.println("What do you want to do? true: accept excomunication; false: reject excomunication");
+    @Override
+    public boolean dealWithVatican(int periodNumber) {
+        System.out.println("What do you want to do? true: accept excommunication; false: reject excommunication");
+        System.out.println("This is the excommunication penalty: " + getClientController().getView().getBoard().getTassels()[periodNumber-1]);
         Scanner scanner = new Scanner(System.in);
         return Boolean.parseBoolean(scanner.next());
 
@@ -123,6 +124,7 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
     //@Override
     public ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces) {
         ActionSpace actionSpace = selectActionSpace(actionSpaces);
+
         return actionSpace;
 
     }

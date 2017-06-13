@@ -52,14 +52,14 @@ public class RMIPlayer extends RemotePlayer {
 
     }
     @Override
-    public void dealWithVatican(ExcommunicationTassel tassel) {
+    public void dealWithVatican(int periodNumber) {
         boolean choice = false;
         try {
-            choice = rmiclientInterface.dealWithVatican(tassel);
+            choice = rmiclientInterface.dealWithVatican(periodNumber);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        getGameRoom().takeExcommunication(this, tassel, choice);
+        getGameRoom().takeExcommunication(this, choice);
     }
 
     @Override
@@ -68,8 +68,10 @@ public class RMIPlayer extends RemotePlayer {
     }
 
     @Override
-    public ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces) {
-         return rmiclientInterface.selectActionSpaceForExtraAction(actionSpaces);
+    public void selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces) {
+         ActionSpace actionSpace = rmiclientInterface.selectActionSpaceForExtraAction(actionSpaces);
+         getGameRoom().doExtraAction(this, actionSpace);
+         notifyRequestHandleOutcome(ResponseCode.OK);
     }
 
     @Override
