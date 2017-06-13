@@ -139,10 +139,13 @@ public class GameRoom {
             game.takeExcommunication(players.get(playerId), tassel, true);
             players.get(playerId).notifyRequestHandleOutcome();
         }
-        else
-            boolean choice = players.get(playerId).dealWithVatican();// devo scegliere cosa fare
-            game.takeExcommunication(players.get(playerId), tassel, choice);
+        else {
+            players.get(playerId).dealWithVatican();
+        }
+    }
 
+    public void takeExcomunication(Player player, ExcommunicationTassel tassel, boolean choice){
+        game.takeExcommunication(player, tassel, choice);
     }
 
     public void changeTurn(){

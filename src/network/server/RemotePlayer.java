@@ -2,6 +2,7 @@ package network.server;
 
 import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
+import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.gameStructure.GameRoom;
 import logic.player.FamilyMember;
 import logic.player.Player;
@@ -39,16 +40,18 @@ public abstract class RemotePlayer extends Player{
     /*
     * Client decides if they want to support the Vatican or not.
     * */
-    public abstract void dealWithVatican();
+    public abstract void dealWithVatican(ExcommunicationTassel tassel);
 
     /*
     * Server sends request to client to decide which bonus they will get form corresponding player's council favours.
     * */
     public abstract void selectCouncilFavour(int numberOfFavours);
 
+
+
     /*
-    * Client sends request to use slaves to increment selected family member value
-    * */
+        * Client sends request to use slaves to increment selected family member value
+        * */
     public abstract void useSlaves(int quantity);
 
     /*

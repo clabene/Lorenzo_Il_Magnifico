@@ -149,7 +149,7 @@ public class SocketClient extends AbstractClient {
 
     }
 
-    @Override
+
     public void selectCouncilFavour(int numberOfFavours) {
         Gainable[] favours = selectFavours(numberOfFavours);
 

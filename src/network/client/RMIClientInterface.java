@@ -1,6 +1,8 @@
 package network.client;
 
 import logic.board.Board;
+import logic.excommunicationTessels.ExcommunicationTassel;
+import logic.interfaces.Gainable;
 import logic.player.Player;
 import network.ResponseCode;
 
@@ -14,8 +16,9 @@ import java.util.Collection;
 public interface RMIClientInterface extends Remote {
     void sendMessage2(String string) throws RemoteException;
     void notifyRequestHandleOutcome(ResponseCode requestHandleOutcome )throws RemoteException;
-    void dealWithVatican(boolean choice)throws RemoteException;
+    boolean dealWithVatican(ExcommunicationTassel tassel)throws RemoteException;
     void updateView(Board board, Collection<Player> players);
+    Gainable[] selectCouncilFavour(int numberOfFavours);
 
 
 }

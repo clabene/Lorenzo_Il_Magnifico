@@ -1,8 +1,9 @@
 package network.server.rmi;
 
-import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
+import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.gameStructure.GameRoom;
+import logic.interfaces.Gainable;
 import logic.player.FamilyMember;
 import logic.player.Player;
 import network.ResponseCode;
@@ -43,15 +44,25 @@ public class RMIPlayer extends RemotePlayer {
     }
 
     @Override
-    public boolean dealWithVatican(int minFaithPoints, ) {
-        return rmiclientInterface.dealWithVatican();
-    }
+    public void selectCouncilFavour(int numberOfFavours) {
+        Gainable[] favours =  rmiclientInterface.selectCouncilFavour(numberOfFavours);
+        gain(favours);
 
+    }
     @Override
-    public void selectCouncilFavour() {
+    public void dealWithVatican(ExcommunicationTassel tassel) {
 
+        boolean choice = false;
+        try {
+            choice = rmiclientInterface.dealWithVatican(tassel);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        getGameRoom().takeExcomunication(this, tassel, choice);
 
     }
+
+
 
     @Override
     public void useSlaves(int quantity) {

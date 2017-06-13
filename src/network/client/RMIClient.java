@@ -1,17 +1,23 @@
 package network.client;
 
 import logic.board.Board;
+import logic.excommunicationTessels.ExcommunicationTassel;
+import logic.interfaces.Gainable;
 import logic.player.FamilyMember;
 import logic.player.Player;
+import logic.resources.CouncilFavour;
+import logic.utility.StaticVariables;
 import network.ResponseCode;
 import network.server.rmi.RMIServerInterface;
 
+import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Collection;
+import java.util.Scanner;
 
 /**
  * Created by IBM on 06/06/2017.
@@ -81,15 +87,38 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
         rmiServerInterface.selectActionSpace(actionSpaceId, getId());
     }
 
-    @Override
-    public boolean dealWithVatican() {
 
+    public boolean dealWithVatican(ExcommunicationTassel tassel) {
+        System.out.println("What do you want to do? true: accept excomunication; false: reject excomunication");
+        Scanner scanner = new Scanner(System.in);
+        return Boolean.parseBoolean(scanner.next());
 
     }
 
-    @Override
-    public void selectCouncilFavour(int numberOfFavours) {
 
+    public Gainable[] selectCouncilFavour(int numberOfFavours) {
+        Gainable[] favours = selectFavours(numberOfFavours);
+        return favours;
+    }
+
+    private Gainable[] selectFavours(int numberOfFavours){
+        CouncilFavour councilFavour = new CouncilFavour(numberOfFavours);
+        Scanner scanner = new Scanner(System.in);
+        Gainable[] toReturn = new Gainable[numberOfFavours];
+
+        System.out.println("Which favour do you want?");
+        do {
+            System.out.println(councilFavour);
+            try {
+                toReturn[toReturn.length] = StaticVariables.COUNCIL_FAVOURS[scanner.nextInt()];
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Not valid input given");
+                numberOfFavours++;
+            }
+            numberOfFavours--;
+        } while (numberOfFavours >= 0);
+
+        return toReturn;
     }
 
     @Override
@@ -99,12 +128,8 @@ public class RMIClient extends AbstractClient implements RMIClientInterface{
 
     @Override
     public void useSlaves() {
-
+        rmiServerInterface.useSlaves();
     }
-
-
-
-
 
     @Override
     public void leaveGame() {
