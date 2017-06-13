@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/board/Board.java" afterPath="$PROJECT_DIR$/src/logic/board/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/cards/CardCost.java" afterPath="$PROJECT_DIR$/src/logic/cards/CardCost.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/RMIClient.java" afterPath="$PROJECT_DIR$/src/network/client/RMIClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/RMIClientInterface.java" afterPath="$PROJECT_DIR$/src/network/client/RMIClientInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java" afterPath="$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/actionSpacesTest/CouncilActionSpaceTest.java" afterPath="$PROJECT_DIR$/src/test/actionSpacesTest/CouncilActionSpaceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/playerTest/FamilyMemberTest.java" afterPath="$PROJECT_DIR$/src/test/playerTest/FamilyMemberTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/playerTest/PlayerTest.java" afterPath="$PROJECT_DIR$/src/test/playerTest/PlayerTest.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -59,7 +51,7 @@
       <file leaf-file-name="Board.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/logic/board/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1572">
+            <state relative-caret-position="264">
               <caret line="42" column="30" lean-forward="false" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
               <folding>
                 <element signature="e#448#449#0" expanded="true" />
@@ -1100,13 +1092,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495533735855</updated>
     </task>
-    <task id="LOCAL-00028" summary="ActionPhase updated">
-      <created>1496094575552</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1496094575552</updated>
-    </task>
     <task id="LOCAL-00029" summary="ActionPhase updated">
       <created>1496094677421</created>
       <option name="number" value="00029" />
@@ -1443,7 +1428,14 @@
       <option name="project" value="LOCAL" />
       <updated>1497340742387</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="update rmi">
+      <created>1497347124444</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1497347124444</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -2147,7 +2139,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/board/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1572">
+        <state relative-caret-position="264">
           <caret line="42" column="30" lean-forward="false" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
           <folding>
             <element signature="e#448#449#0" expanded="true" />
