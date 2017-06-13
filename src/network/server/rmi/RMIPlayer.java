@@ -1,5 +1,6 @@
 package network.server.rmi;
 
+import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
 import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.gameStructure.GameRoom;
@@ -12,6 +13,7 @@ import network.server.RemotePlayer;
 import network.server.ServerInterface;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -51,7 +53,6 @@ public class RMIPlayer extends RemotePlayer {
     }
     @Override
     public void dealWithVatican(ExcommunicationTassel tassel) {
-
         boolean choice = false;
         try {
             choice = rmiclientInterface.dealWithVatican(tassel);
@@ -59,10 +60,7 @@ public class RMIPlayer extends RemotePlayer {
             e.printStackTrace();
         }
         getGameRoom().takeExcommunication(this, tassel, choice);
-
     }
-
-
 
     @Override
     public void useSlaves(int quantity) {
@@ -70,8 +68,8 @@ public class RMIPlayer extends RemotePlayer {
     }
 
     @Override
-    public void selectActionSpaceForExtraAction() {
-
+    public ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces) {
+         return rmiclientInterface.selectActionSpaceForExtraAction(actionSpaces);
     }
 
     @Override
