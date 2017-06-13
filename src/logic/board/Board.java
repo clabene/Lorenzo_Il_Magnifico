@@ -17,8 +17,11 @@ import java.util.Stack;
  */
 public class Board {
 
-    public Board(){
-        setHashMap();
+    private final int NUMBER_OF_PLAYERS; //use LimitedInteger
+
+    public Board(int NUMBER_OF_PLAYERS){
+        this.NUMBER_OF_PLAYERS = NUMBER_OF_PLAYERS;
+        setHashMap(NUMBER_OF_PLAYERS);
     }
 
 
@@ -34,7 +37,7 @@ public class Board {
      *
      */
 
-    private void setHashMap(){
+    private void setHashMap(int numberOfPlayers){
 
         actionSpaceHashMap.put("TL1", new TowerActionSpace(1) );
         actionSpaceHashMap.put("TL2", new TowerActionSpace(3));
@@ -54,13 +57,13 @@ public class Board {
         actionSpaceHashMap.put("TV4", new TowerActionSpace(7, new Money(2)));
         actionSpaceHashMap.put("C", new CouncilActionSpace());
         actionSpaceHashMap.put("AP1", new ActivationActionSpace(1, ActivationActionSpaceType.PRODUCTION));
-        actionSpaceHashMap.put("AP2", new ActivationActionSpace(Integer.MAX_VALUE, ActivationActionSpaceType.PRODUCTION ));
+        if(numberOfPlayers > 2) actionSpaceHashMap.put("AP2", new ActivationActionSpace(Integer.MAX_VALUE, ActivationActionSpaceType.PRODUCTION ));
         actionSpaceHashMap.put("AH1", new ActivationActionSpace(1, ActivationActionSpaceType.HARVEST));
-        actionSpaceHashMap.put("AH2", new ActivationActionSpace(Integer.MAX_VALUE, ActivationActionSpaceType.HARVEST ));
+        if(numberOfPlayers > 2) actionSpaceHashMap.put("AH2", new ActivationActionSpace(Integer.MAX_VALUE, ActivationActionSpaceType.HARVEST ));
         actionSpaceHashMap.put("M1", new MarketActionSpace(new Money(5)));
         actionSpaceHashMap.put("M2", new  MarketActionSpace(new Slave(5)));
-        actionSpaceHashMap.put("M3", new MarketActionSpace(new Money(2), new MilitaryPointsTrack(3)));
-        actionSpaceHashMap.put("M4", new MarketActionSpace(new CouncilFavour(2)));
+        if(numberOfPlayers > 3) actionSpaceHashMap.put("M3", new MarketActionSpace(new Money(2), new MilitaryPointsTrack(3)));
+        if(numberOfPlayers > 3) actionSpaceHashMap.put("M4", new MarketActionSpace(new CouncilFavour(2)));
     }
 
     public ActionSpace tryToSelectActionSpace(String key) throws ActionSpaceCoveredException{

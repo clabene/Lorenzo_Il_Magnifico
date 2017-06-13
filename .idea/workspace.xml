@@ -4,14 +4,6 @@
     <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/board/Board.java" afterPath="$PROJECT_DIR$/src/logic/board/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/gameStructure/Game.java" afterPath="$PROJECT_DIR$/src/logic/gameStructure/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java" afterPath="$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/Client.java" afterPath="$PROJECT_DIR$/src/network/client/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/ClientInterface.java" afterPath="$PROJECT_DIR$/src/network/client/ClientInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/socket/ClientStreamHandler.java" afterPath="$PROJECT_DIR$/src/network/client/socket/ClientStreamHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/socket/SocketClient.java" afterPath="$PROJECT_DIR$/src/network/client/socket/SocketClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/server/RemotePlayer.java" afterPath="$PROJECT_DIR$/src/network/server/RemotePlayer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java" afterPath="$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,13 +24,23 @@
       <file leaf-file-name="GameRoom.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="126" column="102" lean-forward="false" selection-start-line="126" selection-start-column="102" selection-end-line="126" selection-end-column="102" />
+            <state relative-caret-position="187">
+              <caret line="29" column="13" lean-forward="true" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
               <folding>
                 <element signature="e#2122#2123#0" expanded="true" />
                 <element signature="e#2176#2177#0" expanded="true" />
                 <element signature="method#changeTurn#0;class#GameRoom#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Board.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/logic/board/Board.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-374">
+              <caret line="19" column="61" lean-forward="false" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="61" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -66,7 +68,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SocketPlayer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SocketPlayer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2244">
@@ -167,7 +169,6 @@
         <option value="$PROJECT_DIR$/src/logic/pointsTracks/PointsTrack.java" />
         <option value="$PROJECT_DIR$/src/logic/gameStructure/ActionPhase.java" />
         <option value="$PROJECT_DIR$/src/logic/gameStructure/Game.java" />
-        <option value="$PROJECT_DIR$/src/logic/board/Board.java" />
         <option value="$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java" />
         <option value="$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java" />
         <option value="$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java" />
@@ -176,6 +177,7 @@
         <option value="$PROJECT_DIR$/src/network/client/Client.java" />
         <option value="$PROJECT_DIR$/src/network/client/socket/SocketClient.java" />
         <option value="$PROJECT_DIR$/src/network/client/socket/ClientStreamHandler.java" />
+        <option value="$PROJECT_DIR$/src/logic/board/Board.java" />
       </list>
     </option>
   </component>
@@ -1026,13 +1028,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495533735855</updated>
     </task>
-    <task id="LOCAL-00029" summary="ActionPhase updated">
-      <created>1496094677421</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1496094677421</updated>
-    </task>
     <task id="LOCAL-00030" summary="Bonuses structure added">
       <created>1496138195749</created>
       <option name="number" value="00030" />
@@ -1369,7 +1364,14 @@
       <option name="project" value="LOCAL" />
       <updated>1497342522107</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="network updated">
+      <created>1497345317627</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1497345317627</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1797,17 +1799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/board/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="34" selection-end-column="7" />
-          <folding>
-            <element signature="e#3728#3729#0" expanded="true" />
-            <element signature="e#3758#3759#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/player/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3128">
@@ -1821,18 +1812,6 @@
         <state relative-caret-position="170">
           <caret line="52" column="60" lean-forward="false" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="60" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="126" column="102" lean-forward="false" selection-start-line="126" selection-start-column="102" selection-end-line="126" selection-end-column="102" />
-          <folding>
-            <element signature="e#2122#2123#0" expanded="true" />
-            <element signature="e#2176#2177#0" expanded="true" />
-            <element signature="method#changeTurn#0;class#GameRoom#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1916,6 +1895,26 @@
             <element signature="method#tryToJoinNewRoom#0;class#SocketPlayer#0" expanded="false" />
             <element signature="method#selectFamilyMember#0;class#SocketPlayer#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="29" column="13" lean-forward="true" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+          <folding>
+            <element signature="e#2122#2123#0" expanded="true" />
+            <element signature="e#2176#2177#0" expanded="true" />
+            <element signature="method#changeTurn#0;class#GameRoom#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logic/board/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-374">
+          <caret line="19" column="61" lean-forward="false" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="61" />
+          <folding />
         </state>
       </provider>
     </entry>
