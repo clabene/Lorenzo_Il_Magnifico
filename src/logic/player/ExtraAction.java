@@ -1,7 +1,6 @@
 package logic.player;
 
 import logic.actionSpaces.ActionSpace;
-import logic.cards.CardType;
 
 import java.util.ArrayList;
 
@@ -12,7 +11,11 @@ public class ExtraAction {
 
     private ArrayList<ActionSpace> actionSpaces = new ArrayList<>();
     private int familyMemberValue;
-    private CardType cardType;
+
+    public ExtraAction(ArrayList<ActionSpace> actionSpaces, int familyMemberValue) {
+        this.actionSpaces = actionSpaces;
+        this.familyMemberValue = familyMemberValue;
+    }
 
     public int getFamilyMemberValue() {
         return familyMemberValue;

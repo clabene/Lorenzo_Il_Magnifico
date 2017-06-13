@@ -97,6 +97,7 @@ public class ActionPhase {
             familyMember.setInActionSpace(true);
             player.gain(actionSpace.getBonus().toArray(new Gainable[actionSpace.getBonus().size()]));
             if(!actionSpace.action(player)) {
+                //restore previous situation
                 player.lose(actionSpace.getBonus().toArray(new Losable[actionSpace.getBonus().size()]));
                 actionSpace.familyMemberRemoved(familyMember);
                 familyMember.setInActionSpace(false);
@@ -112,7 +113,9 @@ public class ActionPhase {
     public boolean checkPhasePlayable(Player player) {
         if (player.getFamilyMembersAvailable().size() == 1 &&
                 player.getFamilyMembersAvailable().contains(new FamilyMember(null, 0, player.getId())) &&
-                player.getPlank().getSetOfResources().getQuantityOfSlaves() == 0) {
+                player.getPlank().getSetOfResources().getQuantityOfSlaves() == 0
+                ||
+                player.getFamilyMembersAvailable().size() == 0) {
 
             System.out.println("Sei spacciato");
             return false;

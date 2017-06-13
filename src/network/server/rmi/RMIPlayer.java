@@ -58,7 +58,7 @@ public class RMIPlayer extends RemotePlayer {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        getGameRoom().takeExcomunication(this, tassel, choice);
+        getGameRoom().takeExcommunication(this, tassel, choice);
 
     }
 

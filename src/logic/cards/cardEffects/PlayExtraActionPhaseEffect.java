@@ -2,13 +2,9 @@ package logic.cards.cardEffects;
 
 import logic.actionSpaces.ActionSpace;
 import logic.actionSpaces.ActivationActionSpace;
-import logic.actionSpaces.CouncilActionSpace;
 import logic.actionSpaces.TowerActionSpace;
-import logic.cards.Card;
 import logic.cards.CardType;
-import logic.gameStructure.ActionPhase;
-import logic.gameStructure.Game;
-import logic.interfaces.Gainable;
+import logic.player.ExtraAction;
 import logic.player.FamilyMember;
 import logic.player.Player;
 
@@ -23,25 +19,25 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
     //this class is not very well implemented
 
     private ArrayList<ActionSpace> actionSpaces = new ArrayList<>();
-    private FamilyMember familyMember;
+    private int valueOfFamilyMember;
     private CardType cardType;
 
     public PlayExtraActionPhaseEffect(int valueOfFamilyMember, ActivationActionSpace activationActionSpace){
-        this.familyMember = new FamilyMember(null, valueOfFamilyMember);
+        this.valueOfFamilyMember = valueOfFamilyMember;
         this.actionSpaces.add(activationActionSpace);
     }
-    public PlayExtraActionPhaseEffect(int valueOfFamilyMember, CardType cardType){
-        this.familyMember = new FamilyMember(null, valueOfFamilyMember);
-        this.cardType = cardType; //null -> all of them (towers)
+    public PlayExtraActionPhaseEffect(int valueOfFamilyMember, CardType cardType){ //action spaces -> one of the towers
+        this.valueOfFamilyMember = valueOfFamilyMember;
+        this.cardType = cardType;
     }
-    public PlayExtraActionPhaseEffect(int valueOfFamilyMember){ //action spaces -> all of tower area
-        this.familyMember = new FamilyMember(null, valueOfFamilyMember);
+    public PlayExtraActionPhaseEffect(int valueOfFamilyMember){ //action spaces -> all of the towers
+        this.valueOfFamilyMember = valueOfFamilyMember;
     }
 
     /*
     * Tower action spaces with a card of the given type are added to actionSpaces
     * */
-    private void addActionSpaces(Player player){
+    private void addTowerActionSpaces(Player player){
         for(ActionSpace tmp : player.getBoard().getHashMap().values()){
             if((tmp instanceof TowerActionSpace)) continue;
             TowerActionSpace tmp1 = (TowerActionSpace) tmp;
@@ -56,7 +52,7 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
     //todo add check considering bonus
     private boolean isPhasePlayable(Player player) {
         for(ActionSpace tmp : actionSpaces)
-            if (player.getPlank().getSetOfResources().getQuantityOfSlaves() + familyMember.getValue() >= tmp.getMinValueToPlaceFamiliar())
+            if (player.getPlank().getSetOfResources().getQuantityOfSlaves() + valueOfFamilyMember >= tmp.getMinValueToPlaceFamiliar())
                 return true;
 
         System.out.println("You cannot make your extra move");
@@ -65,9 +61,13 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
 
     @Override
     public void activate(Player player) {
-        if(cardType != null && actionSpaces.isEmpty()) addActionSpaces(player);
+        if(cardType != null && actionSpaces.isEmpty()) addTowerActionSpaces(player);
 
-        ActionPhase actionPhase = new ActionPhase();
+        ExtraAction extraAction = new ExtraAction(actionSpaces, valueOfFamilyMember);
+
+        player.setExtraAction(extraAction);
+
+        /*ActionPhase actionPhase = new ActionPhase();
 
         while(true) {
             if(isPhasePlayable(player)) break;
@@ -92,7 +92,7 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
 
         // family member gets removed from game
         this.familyMember = null;
-
+        */
     }
 
 }

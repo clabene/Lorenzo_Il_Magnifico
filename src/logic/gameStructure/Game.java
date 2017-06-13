@@ -32,6 +32,9 @@ public class Game {
     private ActionSpace selectedActionSpace;
 
 
+    private int TURN_NUMBER;
+    private int PERIOD_NUMBER;
+
 /*
     public void startGame(){
 
@@ -146,6 +149,21 @@ public class Game {
         }
         tassel.activate(player);
         return;
+    }
+
+    public void changeTurn(){
+
+        if(TURN_NUMBER == 2){
+            PERIOD_NUMBER++;
+            period = new Period();
+            turn = new Turn();
+            TURN_NUMBER = 1;
+        }
+        else{
+            TURN_NUMBER++;
+            turn = new Turn();
+
+        }
     }
 
 

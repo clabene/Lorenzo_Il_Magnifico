@@ -1,5 +1,6 @@
 package network.client.socket;
 
+import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
 import logic.interfaces.Gainable;
 import logic.player.FamilyMember;
@@ -116,11 +117,6 @@ public class SocketClient extends AbstractClient {
     }
 
     @Override
-    public void selectBoardArea() {
-
-    }
-
-    @Override
     public void useSlaves(int quantity) {
         try {
             output.writeObject("USE_SLAVES_REQUEST");
@@ -144,12 +140,12 @@ public class SocketClient extends AbstractClient {
         notifyRequestHandleOutcome();
     }
 
-    @Override
+    //@Override
     public void dealWithVatican() {
 
     }
 
-
+    //@Override
     public void selectCouncilFavour(int numberOfFavours) {
         Gainable[] favours = selectFavours(numberOfFavours);
 
@@ -172,18 +168,40 @@ public class SocketClient extends AbstractClient {
             try {
                 toReturn[toReturn.length] = StaticVariables.COUNCIL_FAVOURS[scanner.nextInt()];
             } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Not valid input given");
+                System.out.println("No valid input given");
                 numberOfFavours++;
             }
-            numberOfFavours--;
+            numberOfFavours--; //todo check if i get here when exception is caught
         } while (numberOfFavours >= 0);
 
         return toReturn;
     }
 
-    @Override
-    public void selectActionSpaceForExtraAction() {
+    //@Override
+    public void selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces) {
+        ActionSpace actionSpace = selectActionSpace(actionSpaces);
+        try {
+            output.writeObject(actionSpace);
+        } catch (IOException e){
+            System.out.println("Could not send action space for extra action");
+        }
+        notifyRequestHandleOutcome();
+    }
 
+    private ActionSpace selectActionSpace(ArrayList<ActionSpace> actionSpaces){
+        System.out.println("What action space do you want to use?");
+        int i = 0;
+        for(ActionSpace tmp : actionSpaces) {
+            i++;
+            System.out.println(i + ") " +tmp);
+        }
+        Scanner scanner = new Scanner(System.in);
+        i = scanner.nextInt();
+        try {
+            return actionSpaces.get(i - 1);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return actionSpaces.get(actionSpaces.size()); //todo have user to write another number
+        }
     }
 
     @Override

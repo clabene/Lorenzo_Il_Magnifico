@@ -1,13 +1,11 @@
 package network.client.socket;
 
+import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
 import logic.player.Player;
-import network.server.socket.ServerStreamHandler;
-import network.server.socket.SocketPlayer;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -32,7 +30,7 @@ public class ClientStreamHandler {
         //todo use constants (make an Enum maybe) instead of String
         responseMap.put("UPDATE_VIEW", this::selectCouncilFavour);
         responseMap.put("SELECT_COUNCIL_FAVOUR", this::updateView);
-
+        responseMap.put("SELECT_ACTION_SPACE_FOR_EXTRA_ACTION", this::selectActionSpace);
     }
 
     public void respond(String s) {
@@ -59,6 +57,15 @@ public class ClientStreamHandler {
             client.getClientController().updateView(board, players);
         } catch (IOException | ClassNotFoundException e){
             System.out.println("Could not update view");
+        }
+    }
+
+    private void selectActionSpace(){
+        try {
+            ArrayList<ActionSpace> actionSpaces = (ArrayList<ActionSpace>) input.readObject();
+            client.selectActionSpaceForExtraAction(actionSpaces);
+        } catch (IOException | ClassNotFoundException e){
+            System.out.println("Could not receive action space for extra action request");
         }
     }
 

@@ -1,10 +1,12 @@
 package logic.gameStructure;
 
 import logic.actionSpaces.ActionSpace;
+import logic.actionSpaces.TowerActionSpace;
 import logic.board.Board;
 import logic.cards.Card;
 import logic.exceptions.LimitedValueOffRangeException;
 import logic.excommunicationTessels.ExcommunicationTassel;
+import logic.interfaces.Gainable;
 import logic.player.FamilyMember;
 import logic.player.Player;
 import logic.resources.CouncilFavour;
@@ -28,8 +30,7 @@ public class GameRoom {
     private Stack<Card> deck;
 
     private HashMap<String, RemotePlayer> players; //key: playerId
-    private int TURN_NUMBER;
-    private int PERIOD_NUMBER;
+
 
     private final int NUMBER_OF_PLAYERS;
 
@@ -104,6 +105,8 @@ public class GameRoom {
 
         if(responseCode == ResponseCode.OK) updatePlayersView();
 
+        changeTurn();
+
     }
 
     private void useCouncilFavours(RemotePlayer remotePlayer) {
@@ -119,10 +122,18 @@ public class GameRoom {
         ActionSpace actionSpace = remotePlayer.selectActionSpaceForExtraAction(remotePlayer.getExtraAction().getActionSpaces());
         ResponseCode responseCode = game.playingExtraAction(remotePlayer, remotePlayer.getExtraAction().getFamilyMemberValue(), actionSpace);
 
+        if(responseCode == ResponseCode.NOT_OK) restoreArea(actionSpace);
+
         remotePlayer.setExtraAction(null);
 
         remotePlayer.notifyRequestHandleOutcome(responseCode);
     }
+    private void restoreArea(ActionSpace actionSpace) {
+        Card card = ( (TowerActionSpace) actionSpace).getCard();
+        actionSpace = new TowerActionSpace(actionSpace.getMinValueToPlaceFamiliar(), actionSpace.getBonus().toArray(new Gainable[actionSpace.getBonus().size()]));
+        ((TowerActionSpace)actionSpace).setCard(card);
+    }
+
 
     private void updatePlayersView() {
         for(RemotePlayer tmp : players.values())
@@ -137,37 +148,27 @@ public class GameRoom {
     public void dealWithVatican(String playerId, int minFaithPoints, ExcommunicationTassel tassel){
         if(!game.hasEnoughFaithPoints(players.get(playerId), minFaithPoints)){
             game.takeExcommunication(players.get(playerId), tassel, true);
-            players.get(playerId).notifyRequestHandleOutcome();
+            players.get(playerId).notifyRequestHandleOutcome(ResponseCode.OK);
         }
         else {
-            players.get(playerId).dealWithVatican();
+            players.get(playerId).dealWithVatican(tassel);
         }
     }
 
-    public void takeExcomunication(Player player, ExcommunicationTassel tassel, boolean choice){
+    public void takeExcommunication(Player player, ExcommunicationTassel tassel, boolean choice){
         game.takeExcommunication(player, tassel, choice);
     }
 
     public void changeTurn(){
-        int i = 0;
 
-        for(Player tmp: players.values()){
-            if(checkIfPlayerHasAvailableAction(tmp) || tmp.getFamilyMembersAvailable().size() ==  0)
-                i++;
-        }
+        boolean toChangeTurn = true;
 
-        if (i == players.size()) {
-            if(TURN_NUMBER == 2){
-                PERIOD_NUMBER++;
-                Period Period = new Period();
-                Turn turn = new Turn();
-                TURN_NUMBER = 1;
-            }
-            else{
-                TURN_NUMBER++;
-                Turn turn = new Turn();
-            }
-        }
+        for(Player tmp: players.values())
+            if( !checkIfPlayerHasAvailableAction(tmp) )
+                toChangeTurn = false;
+
+        if(toChangeTurn) game.changeTurn();
+
     }
 
     public void setCardsOnBoard(){

@@ -58,6 +58,7 @@ public abstract class RemotePlayer extends Player{
     * Client has to pick one of the action spaces sent as parameters
     * This method is triggered by the server side (see PlayExtraActionPhaseEffect in package cardEffects)
     * */
+    //todo sending action spaces id's may be a better solution
     public abstract ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces);
 
     /*

@@ -1,14 +1,20 @@
 package network.client;
 
+import logic.actionSpaces.ActionSpace;
 import logic.player.FamilyMember;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.UUID;
 
 /**
  * Created by IBM on 06/06/2017.
  */
 public abstract class AbstractClient {
+
+    /*
+    * Here client sends requests
+    * */
 
     private ClientInterface clientController;
 
@@ -58,10 +64,7 @@ public abstract class AbstractClient {
     * */
     public abstract void selectFamilyMember(FamilyMember familyMember);
 
-    /*
-    * Client selects an area from the board
-    * */
-    public abstract void selectBoardArea();
+
 
     /*
     * Client sends request to use slaves to increment selected family member value
@@ -77,7 +80,7 @@ public abstract class AbstractClient {
     * Client decides if they want to support the Vatican or not.
     * This method is triggered by the server side.
     * */
-    public abstract void dealWithVatican();
+    //public abstract void dealWithVatican();
 
     /*
     * Client decides what bonus they will get form a council favour.
@@ -90,7 +93,7 @@ public abstract class AbstractClient {
     * Client has to pick one of those
     * This method is triggered by the server side (see PlayExtraActionPhaseEffect in package cards.cardEffects)
     * */
-    public abstract void selectActionSpaceForExtraAction();
+    //public abstract void selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces);
 
     /*
     * Client leaves the game

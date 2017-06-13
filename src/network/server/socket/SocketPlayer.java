@@ -136,14 +136,14 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
             output.writeObject(actionSpaces);
             output.flush();
         } catch (IOException e){
-            System.out.println("Could not receive action space for extra action");
+            System.out.println("Could not ask for action space for extra action");
         }
         try {
             ActionSpace toReturn = (ActionSpace) input.readObject();
             notifyRequestHandleOutcome(ResponseCode.OK);
             return toReturn;
         } catch (IOException | ClassNotFoundException e){
-            System.out.println("Could not ask for council favours");
+            System.out.println("Could not receive action space for extra action");
             notifyRequestHandleOutcome(ResponseCode.NOT_OK);
         }
         return null; //todo exception
