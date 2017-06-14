@@ -2,7 +2,6 @@ package network.client;
 
 import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
-import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.interfaces.Gainable;
 import logic.player.FamilyMember;
 import logic.player.Player;
@@ -11,7 +10,6 @@ import logic.utility.StaticVariables;
 import network.ResponseCode;
 import network.server.rmi.RMIServerInterface;
 
-import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -24,7 +22,7 @@ import java.util.Scanner;
 /**
  * Created by IBM on 06/06/2017.
  */
-public class RMIClient extends AbstractClient implements RMIClientInterface{
+public class RMIClient extends AbstractNetworkClient implements RMIClientInterface{
     private String ipAddress;
     private int port;
     private RMIServerInterface rmiServerInterface;

@@ -102,11 +102,11 @@ public class Main {
         System.out.println(planks.get(planks.size()-1));
         */
 
-        Board b = new Board();
+        Board b = new Board(7);
 
         Player cla = new Player(new Slave(2), new Money(5));
 
-        cla.setBoard(b);
+        cla.setId("q");
 
         cla.getFamilyMembers()[0].incrementFamilyMemberValue(100);
         try {

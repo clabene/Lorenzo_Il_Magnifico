@@ -18,11 +18,11 @@ import java.util.Stack;
  */
 public class Board {
 
-    private final int NUMBER_OF_PLAYERS; //use LimitedInteger
+    private final int MAX_NUMBER_OF_PLAYERS; //use LimitedInteger
 
-    public Board(int NUMBER_OF_PLAYERS){
-        this.NUMBER_OF_PLAYERS = NUMBER_OF_PLAYERS;
-        setHashMap(NUMBER_OF_PLAYERS);
+    public Board(int MAX_NUMBER_OF_PLAYERS){
+        this.MAX_NUMBER_OF_PLAYERS = MAX_NUMBER_OF_PLAYERS;
+        setHashMap(MAX_NUMBER_OF_PLAYERS);
     }
 
     private int redDice;
@@ -43,8 +43,8 @@ public class Board {
 
         actionSpaceHashMap.put("TL1", new TowerActionSpace(1) );
         actionSpaceHashMap.put("TL2", new TowerActionSpace(3));
-        actionSpaceHashMap.put("TL3", new TowerActionSpace (5, new Wood(1)));
-        actionSpaceHashMap.put("TL4", new TowerActionSpace (7, new Wood(2)));
+        actionSpaceHashMap.put("TL3", new TowerActionSpace(5, new Wood(1)));
+        actionSpaceHashMap.put("TL4", new TowerActionSpace(7, new Wood(2)));
         actionSpaceHashMap.put("TP1", new TowerActionSpace(1));
         actionSpaceHashMap.put("TP2", new TowerActionSpace(3));
         actionSpaceHashMap.put("TP3", new TowerActionSpace(5, new Stone(1)));

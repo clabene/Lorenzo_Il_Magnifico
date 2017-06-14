@@ -119,7 +119,7 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
 
         } catch (IOException | ClassNotFoundException e){
             System.out.println("Could not receive council favour");
-            notifyRequestHandleOutcome(ResponseCode.NOT_OK);
+            notifyRequestHandleOutcome(ResponseCode.GENERIC_ERROR);
         }
     }
 
@@ -139,7 +139,7 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
 
         } catch (IOException | ClassNotFoundException e){
             System.out.println("Could not receive council favour");
-            notifyRequestHandleOutcome(ResponseCode.NOT_OK);
+            notifyRequestHandleOutcome(ResponseCode.GENERIC_ERROR);
         }
     }
 
@@ -160,7 +160,7 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
 
         } catch (IOException | ClassNotFoundException e){
             System.out.println("Could not receive action space for extra action");
-            notifyRequestHandleOutcome(ResponseCode.NOT_OK);
+            notifyRequestHandleOutcome(ResponseCode.GENERIC_ERROR);
         }
     }
 

@@ -1,5 +1,9 @@
 package network.client;
 
+import com.sun.corba.se.spi.orbutil.fsm.FSM;
+import logic.actionSpaces.ActionSpace;
+import logic.player.FamilyMember;
+import userInterface.AbstractUserInterfaceClient;
 import logic.board.Board;
 import logic.player.Player;
 import network.ResponseCode;
@@ -7,7 +11,6 @@ import network.client.socket.SocketClient;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -18,10 +21,15 @@ public class Client implements ClientInterface {
     private final int RMI_PORT = 6789;
     private final int SOCKET_PORT = 9876;
 
-    private AbstractClient myClient;
+    private AbstractNetworkClient networkClient;
+    private AbstractUserInterfaceClient uiClient;
 
     private ClientView clientView = new ClientView();
 
+    private Client(){
+        selectNetworkType();
+        selectUserInterfaceType();
+    }
 
     private int selectNetworkType(){
         System.out.println("What network is preferred?");
@@ -30,25 +38,68 @@ public class Client implements ClientInterface {
         Scanner in = new Scanner(System.in);
         return in.nextInt();
     }
-
-    public void setNetworkType(){
-        if(selectNetworkType() == 1) myClient = new RMIClient(RMI_PORT);
-        else  myClient = new SocketClient(SOCKET_PORT);
+    private void setNetworkType(){
+        if(selectNetworkType() == 1) networkClient = new RMIClient(RMI_PORT);
+        else  networkClient = new SocketClient(SOCKET_PORT);
+    }
+    private int selectUserInterfaceType(){
+        System.out.println("What ui is preferred?");
+        System.out.println("1 : CLI");
+        System.out.println("other : GUI");
+        Scanner in = new Scanner(System.in);
+        return in.nextInt();
+    }
+    private void setUserInterface(){
+        if(selectUserInterfaceType() == 1) ;//uiClient = new CliClient(this);
+        else ;//uiClient = new GuiClient(this);
     }
 
-    public AbstractClient getMyClient() {
-        return myClient;
+    /*
+    private AbstractNetworkClient getNetworkClient() {
+        return networkClient;
+    }
+
+    public AbstractUserInterfaceClient getUiClient() {
+        return uiClient;
+    }
+    */
+
+    @Override
+    public void logIn() {
+        networkClient.tryToLogIn();
     }
 
     @Override
-    public void showOutcome(ResponseCode outcomeCode) {
-        System.out.println(outcomeCode.getMessage());
+    public void createNewRoom(int numberOfPlayers) {
+        networkClient.tryToCreateRoom(numberOfPlayers);
     }
 
-    public static void main(String[] args){
-        Client client = new Client();
-        client.setNetworkType();
-        client.getMyClient().connect();
+    @Override
+    public void joinGame() {
+        networkClient.tryToJoinGame();
+    }
+
+    @Override
+    public void selectFamilyMember(FamilyMember familyMember) {
+        networkClient.selectFamilyMember(familyMember);
+    }
+
+    @Override
+    public void selectActionSpace(String actionSpaceId) {
+        networkClient.selectActionSpace(actionSpaceId);
+    }
+
+    @Override
+    public void useSlaves(int quantity) {
+        networkClient.useSlaves(quantity);
+    }
+
+
+
+    @Override
+    public void showOutcome(ResponseCode outcomeCode) {
+        uiClient.updateUi(outcomeCode);
+        //System.out.println(outcomeCode.getMessage());
     }
 
     @Override
@@ -60,5 +111,13 @@ public class Client implements ClientInterface {
     public void updateView(Board board, Collection<Player> players) {
         clientView.setBoard(board);
         clientView.setPlayers((ArrayList<Player>) players);
+        uiClient.updateView();
     }
+
+
+    public static void main(String[] args){
+        Client client = new Client();
+        client.networkClient.connect();
+    }
+
 }

@@ -31,7 +31,7 @@ public class ServerStreamHandler {
         responseMap.put("JOIN_GAME_REQUEST", player::tryToJoinGame);
         responseMap.put("CREATE_NEW_ROOM_REQUEST", this::tryToCreateNewRoom);
         responseMap.put("FAMILY_MEMBER_SELECTION_REQUEST", this::familyMemberSelectionRespond);
-        responseMap.put("ACTION_SPACE_SELECTION_REQUEST", this::familyMemberSelectionRespond);
+        responseMap.put("ACTION_SPACE_SELECTION_REQUEST", this::acitionSpaceSelectionRespond);
         responseMap.put("USE_SLAVES_REQUEST", this::useSlaveRespond);
 
     }

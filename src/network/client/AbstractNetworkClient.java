@@ -1,7 +1,11 @@
 package network.client;
 
+import javafx.print.PageLayout;
 import logic.actionSpaces.ActionSpace;
+import logic.board.Board;
 import logic.player.FamilyMember;
+import logic.player.Plank;
+import logic.player.Player;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -10,7 +14,7 @@ import java.util.UUID;
 /**
  * Created by IBM on 06/06/2017.
  */
-public abstract class AbstractClient {
+public abstract class AbstractNetworkClient {
 
     /*
     * Here client sends requests
@@ -52,7 +56,7 @@ public abstract class AbstractClient {
     /*
     * Client sends request to join a room
     * */
-    public abstract void tryToJoinGame() throws RemoteException;
+    public abstract void tryToJoinGame();
 
     /*
     * Client sends request to start a game in a new room. Can specify the number of player that can join the game.
@@ -63,8 +67,6 @@ public abstract class AbstractClient {
     * Client selects a family member from theirs
     * */
     public abstract void selectFamilyMember(FamilyMember familyMember);
-
-
 
     /*
     * Client sends request to use slaves to increment selected family member value

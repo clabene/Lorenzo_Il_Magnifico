@@ -12,7 +12,7 @@ public class ClientView {
 
     private ArrayList<Player> players = new ArrayList<>();
 
-    private Board board = new Board();
+    private Board board;
 
     public ArrayList<Player> getPlayers() {
         return players;

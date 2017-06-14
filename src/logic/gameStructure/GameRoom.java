@@ -27,7 +27,7 @@ public class GameRoom {
 
     private Game game = new Game();
 
-    private Board board = new Board();
+    private Board board;
 
     //private ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
 
@@ -38,20 +38,19 @@ public class GameRoom {
     private HashMap<String, RemotePlayer> players; //key: playerId
 
 
-    private final int NUMBER_OF_PLAYERS;
+    //private final int NUMBER_OF_PLAYERS;
 
     private LimitedInteger numberOfPlayers;
 
     public GameRoom(int NUMBER_OF_PLAYERS) {
-        this.NUMBER_OF_PLAYERS = NUMBER_OF_PLAYERS;
+        //this.NUMBER_OF_PLAYERS = NUMBER_OF_PLAYERS;
+        board = new Board(NUMBER_OF_PLAYERS);
         try {
             numberOfPlayers = new LimitedInteger(NUMBER_OF_PLAYERS, 1, 1);
         } catch (LimitedValueOffRangeException e){
             System.out.println("Could not initialize numberOfPlayers");
         }
         initializeDeck();
-
-        //todo board changes based on the number of players in the game
     }
 
     private void initializeDeck(){
@@ -71,7 +70,7 @@ public class GameRoom {
         return board;
     }
 
-    public boolean checkIfPlayerHasAvailableAction(Player player){
+    private boolean checkIfPlayerHasAvailableAction(Player player){
         return game.checkingIfPlayable(player);
     }
 
@@ -130,7 +129,7 @@ public class GameRoom {
     public void doExtraAction(RemotePlayer remotePlayer, ActionSpace actionSpace){
         ResponseCode responseCode = game.playingExtraAction(remotePlayer, remotePlayer.getExtraAction().getFamilyMemberValue(), actionSpace);
 
-        if(responseCode == ResponseCode.NOT_OK) restoreArea(actionSpace);
+        if(responseCode == ResponseCode.GENERIC_ERROR) restoreArea(actionSpace);
 
         remotePlayer.setExtraAction(null);
     }

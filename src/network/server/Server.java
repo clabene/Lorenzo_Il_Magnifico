@@ -6,7 +6,6 @@ import network.ResponseCode;
 import network.server.rmi.RMIServer;
 import network.server.socket.SocketServer;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -57,7 +56,7 @@ public class Server implements ServerInterface {
             gameRooms.get(gameRooms.size()-1).addPlayerToRoom(getPlayer(playerId));
         } catch (LimitedValueOffRangeException e){
             System.out.println("Room not available");
-            getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.NOT_OK);
+            getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.GENERIC_ERROR);
         }
         getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.OK);
     }
@@ -69,7 +68,7 @@ public class Server implements ServerInterface {
             gameRoom.addPlayerToRoom(getPlayer(playerId));
         } catch (LimitedValueOffRangeException e){
             System.out.println("Could not add the player to the room");
-            getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.NOT_OK);
+            getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.GENERIC_ERROR);
             return;
         }
         gameRooms.add(gameRoom);

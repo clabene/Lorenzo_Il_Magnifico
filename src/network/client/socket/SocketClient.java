@@ -1,14 +1,12 @@
 package network.client.socket;
 
 import logic.actionSpaces.ActionSpace;
-import logic.board.Board;
 import logic.interfaces.Gainable;
 import logic.player.FamilyMember;
-import logic.player.Player;
 import logic.resources.CouncilFavour;
 import logic.utility.StaticVariables;
 import network.ResponseCode;
-import network.client.AbstractClient;
+import network.client.AbstractNetworkClient;
 
 import java.io.*;
 import java.net.Socket;
@@ -18,7 +16,7 @@ import java.util.Scanner;
 /**
  * Created by IBM on 06/06/2017.
  */
-public class SocketClient extends AbstractClient {
+public class SocketClient extends AbstractNetworkClient {
 
     private String ipAddress;
     private int port;
@@ -230,6 +228,7 @@ public class SocketClient extends AbstractClient {
     public void leaveGame() {
 
     }
+
 
     public class SocketClientListener extends Thread {
 

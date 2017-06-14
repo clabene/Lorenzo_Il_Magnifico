@@ -70,7 +70,7 @@ public class Game {
         try{
             this.selectedFamilyMember = player.tryToSelectFamilyMember(familyMember);
         } catch (FamilyMemberSelectionException e){
-            return ResponseCode.NOT_OK;
+            return ResponseCode.GENERIC_ERROR;
         }
         return ResponseCode.OK;
         //if(selectedFamilyMember == null) return false;
@@ -82,7 +82,7 @@ public class Game {
         try{
             this.selectedActionSpace = board.tryToSelectActionSpace(actionSpaceId);
         } catch (ActionSpaceCoveredException e){
-            return ResponseCode.NOT_OK;
+            return ResponseCode.GENERIC_ERROR;
         }
         return ResponseCode.OK;
         //if(selectedActionSpace == null) return false;
@@ -96,7 +96,7 @@ public class Game {
         selectedFamilyMember = null;
         selectedActionSpace = null;
         if(b) return ResponseCode.OK;
-        return ResponseCode.NOT_OK;
+        return ResponseCode.GENERIC_ERROR;
     }
 
     public ResponseCode playingExtraAction(Player player, int familyMemberValue, ActionSpace actionSpace){
@@ -108,7 +108,7 @@ public class Game {
                 actionSpace);
 
         if(b) return ResponseCode.OK;
-        return ResponseCode.NOT_OK;
+        return ResponseCode.GENERIC_ERROR;
     }
 
     public boolean checkingIfPlayable(Player player){
@@ -128,11 +128,11 @@ public class Game {
     }
 
     public ResponseCode useSlaves(Player player, int quantity){
-        if(selectedFamilyMember == null) return ResponseCode.NOT_OK;
+        if(selectedFamilyMember == null) return ResponseCode.GENERIC_ERROR;
 
         if(actionPhase.incrementFamilyMemberValueRequest(player, selectedFamilyMember, quantity))
             return ResponseCode.OK;
-        return ResponseCode.NOT_OK;
+        return ResponseCode.GENERIC_ERROR;
     }
 
     public boolean hasEnoughFaithPoints(Player player, int minFaithPoints){
