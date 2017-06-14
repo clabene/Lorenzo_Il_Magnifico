@@ -29,13 +29,22 @@ public class GameRoom {
 
     private Board board;
 
-    //private ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
+    private ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
 
     private WinnerElector winnerElector = new WinnerElector();
 
     private Stack<Card> deck;
 
     private HashMap<String, RemotePlayer> players; //key: playerId
+
+    private String currentPlayer ;
+
+    private int turnNumber = 1;
+    private int periodNumber = 1;
+
+    ArrayList<String> turnOrder = new ArrayList<>();
+
+
 
 
     //private final int NUMBER_OF_PLAYERS;
@@ -110,7 +119,12 @@ public class GameRoom {
 
         if(responseCode == ResponseCode.OK) updatePlayersView();
 
+        if(turnNumber == 2)
+            dealWithVatican(currentPlayer, periodNumber + 2, tassels[periodNumber-1]);
+        changeCurrentPlayer();
         changeTurn();
+
+        //----------------------
 
     }
 
@@ -146,8 +160,9 @@ public class GameRoom {
     }
 
     //todo use this to handle turn switching
-    private ArrayList<Player> getNextTurnOrder() {
-        return game.gettingNextTurnOrder( (ArrayList) players.values(), board);
+    private void getNextTurnOrder() {
+        game.gettingNextTurnOrder(turnOrder, board);
+        return;
     }
 
     public void dealWithVatican(String playerId, int minFaithPoints, ExcommunicationTassel tassel){
@@ -169,17 +184,51 @@ public class GameRoom {
 
         boolean toChangeTurn = true;
 
+
         for(Player tmp: players.values())
             if( !checkIfPlayerHasAvailableAction(tmp) )
                 toChangeTurn = false;
 
-        if(toChangeTurn) game.changeTurn();
+
+        if(toChangeTurn){
+            if(turnNumber == 2){
+                periodNumber++;
+                turnNumber = 0;
+            }
+            game.changeTurn();
+            turnNumber++;
+            for(Player tmp: players.values())
+                game.takingBackFamilyMembers(tmp, board);
+            getNextTurnOrder();
+            setCardsOnBoard();
+            game.throwDice(board);
+        }
 
     }
+
+    public void changeCurrentPlayer(){
+        for(int i = 0; i < turnOrder.size()-1; i++){
+            if(currentPlayer.equals(turnOrder.get(i))){
+                currentPlayer = turnOrder.get(i+1);
+                return;
+            }
+        }
+        currentPlayer = turnOrder.get(0);
+        return;
+    }
+
 
     public void setCardsOnBoard(){
         board.setCardsOnBoard(deck);
     }
+
+
+
+
+
+
+
+
 
 
 
