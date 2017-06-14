@@ -72,7 +72,7 @@ public class Game {
         } catch (FamilyMemberSelectionException e){
             return ResponseCode.GENERIC_ERROR;
         }
-        return ResponseCode.OK;
+        return ResponseCode.FAMILY_MEMBER_SELECTED;
         //if(selectedFamilyMember == null) return false;
         //if(selectedActionSpace != null) puttingFamilyMemberOnActionSpace(player);
         //return true;
@@ -84,7 +84,7 @@ public class Game {
         } catch (ActionSpaceCoveredException e){
             return ResponseCode.GENERIC_ERROR;
         }
-        return ResponseCode.OK;
+        return ResponseCode.ACTION_SPACE_SELECTED;
         //if(selectedActionSpace == null) return false;
         //if(selectedFamilyMember != null) puttingFamilyMemberOnActionSpace(player);
         //return true;
@@ -132,7 +132,7 @@ public class Game {
         if(selectedFamilyMember == null) return ResponseCode.GENERIC_ERROR;
 
         if(actionPhase.incrementFamilyMemberValueRequest(player, selectedFamilyMember, quantity))
-            return ResponseCode.OK;
+            return ResponseCode.SLAVES_USED;
         return ResponseCode.GENERIC_ERROR;
     }
 

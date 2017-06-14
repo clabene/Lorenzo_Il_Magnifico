@@ -56,4 +56,6 @@ public class CliClient extends AbstractUserInterfaceClient {
     public void updateUi(ResponseCode rc) {
         super.updateUi(rc);
     }
+
+
 }

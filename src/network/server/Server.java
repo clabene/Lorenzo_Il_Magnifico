@@ -58,7 +58,7 @@ public class Server implements ServerInterface {
             System.out.println("Room not available");
             getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.GENERIC_ERROR);
         }
-        getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.OK);
+        getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.LOGGED_IN);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class Server implements ServerInterface {
             return;
         }
         gameRooms.add(gameRoom);
-        getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.OK);
+        getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.ROOM_CREATED);
     }
 
     @Override

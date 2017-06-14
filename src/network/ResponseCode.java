@@ -4,7 +4,7 @@ package network;
  * Created by IBM on 11/06/2017.
  */
 public enum ResponseCode {
-    OK(),
+    OK,
     LOGGED_IN,
     GAME_JOINED,
     ROOM_CREATED,
