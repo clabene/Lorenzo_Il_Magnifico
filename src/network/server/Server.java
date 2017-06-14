@@ -17,6 +17,8 @@ public class Server implements ServerInterface {
     private RMIServer rmiServer = new RMIServer(this);
     private SocketServer socketServer = new SocketServer(this);
 
+    private final Object MUTEX = new Object();
+
     private final int RMI_PORT = 6789;
     private final int SOCKET_PORT = 9876;
 
@@ -41,7 +43,9 @@ public class Server implements ServerInterface {
 
     @Override
     public void tryToLogIn(String clientId, RemotePlayer player) {
-        playersList.put(clientId, player);
+        synchronized (MUTEX) {
+            playersList.put(clientId, player);
+        }
     }
 
 
@@ -52,27 +56,31 @@ public class Server implements ServerInterface {
 
     @Override
     public void tryToJoinGame(String playerId) {
-        try{
-            gameRooms.get(gameRooms.size()-1).addPlayerToRoom(getPlayer(playerId));
-        } catch (LimitedValueOffRangeException e){
-            System.out.println("Room not available");
-            getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.GENERIC_ERROR);
+        synchronized (MUTEX) {
+            try {
+                gameRooms.get(gameRooms.size() - 1).addPlayerToRoom(getPlayer(playerId));
+            } catch (LimitedValueOffRangeException e) {
+                System.out.println("Room not available");
+                getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.GENERIC_ERROR);
+            }
+            getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.LOGGED_IN);
         }
-        getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.LOGGED_IN);
     }
 
     @Override
     public void tryToCreateRoom(String playerId, int NUMBER_OF_PLAYERS ) {
-        GameRoom gameRoom = new GameRoom(NUMBER_OF_PLAYERS);
-        try {
-            gameRoom.addPlayerToRoom(getPlayer(playerId));
-        } catch (LimitedValueOffRangeException e){
-            System.out.println("Could not add the player to the room");
-            getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.GENERIC_ERROR);
-            return;
+        synchronized (MUTEX) {
+            GameRoom gameRoom = new GameRoom(NUMBER_OF_PLAYERS);
+            try {
+                gameRoom.addPlayerToRoom(getPlayer(playerId));
+            } catch (LimitedValueOffRangeException e) {
+                System.out.println("Could not add the player to the room");
+                getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.GENERIC_ERROR);
+                return;
+            }
+            gameRooms.add(gameRoom);
+            getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.ROOM_CREATED);
         }
-        gameRooms.add(gameRoom);
-        getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.ROOM_CREATED);
     }
 
     @Override

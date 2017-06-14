@@ -1,10 +1,8 @@
 package userInterface;
 
-import logic.actionSpaces.ActionSpace;
 import logic.player.FamilyMember;
 import network.ResponseCode;
 import network.client.ClientInterface;
-
 
 import java.util.HashMap;
 
@@ -45,7 +43,7 @@ public abstract class AbstractUserInterfaceClient {
     protected abstract void successfullyUsedSlaves();
     protected abstract void handleError();
 
-    protected abstract void updateView();
+    public abstract void updateView();
 
 
     protected void logIn(){

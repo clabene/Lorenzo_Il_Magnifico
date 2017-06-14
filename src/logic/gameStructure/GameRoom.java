@@ -73,6 +73,9 @@ public class GameRoom {
         remotePlayer.setGameRoom(this);
         remotePlayer.setBoard(board);
         players.put(remotePlayer.getId(), remotePlayer);
+
+        updatePlayersView();
+
     }
 
     public Board getBoard() {
@@ -162,7 +165,6 @@ public class GameRoom {
     //todo use this to handle turn switching
     private void getNextTurnOrder() {
         game.gettingNextTurnOrder(turnOrder, board);
-        return;
     }
 
     public void dealWithVatican(String playerId, int minFaithPoints, ExcommunicationTassel tassel){

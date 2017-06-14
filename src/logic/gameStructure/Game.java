@@ -125,7 +125,6 @@ public class Game {
 */
     public void gettingNextTurnOrder(ArrayList<String> players, Board board){
         turn.getNextTurnOrder(players, board);
-        return;
     }
 
     public ResponseCode useSlaves(Player player, int quantity){

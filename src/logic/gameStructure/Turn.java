@@ -58,10 +58,7 @@ public class Turn {
     */
 
     public void getNextTurnOrder(ArrayList<String> players, Board board){
-
         players = board.getTurnOrder();
-
-        return ;
     }
 
     /*
