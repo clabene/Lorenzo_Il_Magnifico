@@ -79,4 +79,8 @@ public abstract class Card {
         return name+" ("+cardType.toString()+" card, "+period.toString()+" period)";
     }
 
+    public String getName(){
+        return name;
+    }
+
 }

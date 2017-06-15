@@ -55,6 +55,7 @@ public class Player {
 
     public Player(Resource ... resources /*initialResources*/){
         this.plank = new Plank(resources /*initialResources*/);
+
     }
 
     //this has to be called as first method after constructor

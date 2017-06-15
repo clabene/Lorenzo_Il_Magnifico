@@ -12,6 +12,8 @@ import java.util.Collection;
  */
 public interface ClientInterface {
 
+
+
     String getId();
 
     void showOutcome(ResponseCode outcomeCode);

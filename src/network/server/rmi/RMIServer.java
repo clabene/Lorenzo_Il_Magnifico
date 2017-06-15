@@ -39,6 +39,7 @@ public class RMIServer extends AbstractServer implements RMIServerInterface {
             }
 
             reg.rebind("RMIServerInterface", this);
+            System.out.println("ooooooooooooooooooooooo");
             UnicastRemoteObject.exportObject(this, port);
             System.out.println("ooooooooooooooooooooooo");
 
@@ -60,13 +61,12 @@ public class RMIServer extends AbstractServer implements RMIServerInterface {
 
     @Override
     public void selectFamilyMember(FamilyMember familyMember, String playerId) {
+        System.out.println(playerId);
+        System.out.println(familyMember);
          getServerController().getPlayer(playerId).selectFamilyMember(familyMember);
     }
 
-    @Override
-    public void selectBoardArea() {
 
-    }
 
 
     @Override

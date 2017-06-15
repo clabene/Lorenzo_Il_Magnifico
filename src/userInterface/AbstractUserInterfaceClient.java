@@ -19,11 +19,11 @@ public abstract class AbstractUserInterfaceClient {
         this.clientController = clientController;
         fillMap();
     }
-/*
+
     public ClientInterface getClientController() {
         return clientController;
     }
-*/
+
     public String getId(){
         return clientController.getId();
     }

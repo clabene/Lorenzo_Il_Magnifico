@@ -46,6 +46,7 @@ public class Server implements ServerInterface {
         synchronized (MUTEX) {
             playersList.put(clientId, player);
         }
+        getPlayer(clientId).notifyRequestHandleOutcome(ResponseCode.LOGGED_IN);
     }
 
 
@@ -59,16 +60,18 @@ public class Server implements ServerInterface {
         synchronized (MUTEX) {
             try {
                 gameRooms.get(gameRooms.size() - 1).addPlayerToRoom(getPlayer(playerId));
-            } catch (LimitedValueOffRangeException e) {
+            } catch (LimitedValueOffRangeException | ArrayIndexOutOfBoundsException e) {
                 System.out.println("Room not available");
                 getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.GENERIC_ERROR);
             }
-            getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.LOGGED_IN);
+            getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.GAME_JOINED);
         }
     }
 
     @Override
     public void tryToCreateRoom(String playerId, int NUMBER_OF_PLAYERS ) {
+        System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww" + playersList.values());
+
         synchronized (MUTEX) {
             GameRoom gameRoom = new GameRoom(NUMBER_OF_PLAYERS);
             try {

@@ -7,6 +7,7 @@ import logic.resources.CouncilFavour;
 import logic.utility.StaticVariables;
 import network.ResponseCode;
 import network.client.AbstractNetworkClient;
+import network.client.ClientInterface;
 
 import java.io.*;
 import java.net.Socket;
@@ -27,7 +28,8 @@ public class SocketClient extends AbstractNetworkClient {
 
     private ClientStreamHandler streamHandler;
 
-    public SocketClient(int port){
+    public SocketClient(ClientInterface clientController,int port){
+        super(clientController);
         this.ipAddress = "127.0.0.1";
         this.port = port;
 

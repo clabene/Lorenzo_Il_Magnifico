@@ -52,7 +52,13 @@ public abstract class ActionSpace {
         if(familyMembers.size() < MAX_NUMBER_OF_FAMILIARS) covered = false;
     }
     public FamilyMember getLastFamilyMemberAdded() {
-        return familyMembers.get(familyMembers.size()-1);
+        if(familyMembers.size() != 0)
+            return familyMembers.get(familyMembers.size()-1);
+        return null;
+    }
+
+    public ArrayList<FamilyMember> getFamilyMembers(){
+        return familyMembers;
     }
 
     /*
@@ -115,5 +121,9 @@ public abstract class ActionSpace {
     //returns true if familiar was correctly added
     public abstract boolean action(Player player);
 
-
+    @Override
+    public String toString() {
+        return "\u001B[31m"+actionSpaceType +"\u001B[0m"+
+                "\n" +"\u001B[34m"+ bonus.toString() +"\u001B[0m" + "\n" + "------------------"+familyMembers.toString() +"------------------";
+    }
 }

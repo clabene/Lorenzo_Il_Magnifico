@@ -55,12 +55,14 @@ public class FamilyMember {
     }
 
     public String toString(){
-        return this.color + " Family Member " + " value: " +this.value;
+        return "\u001B[33m" + "  " +this.getPlayerId()+ "  " + this.color + " Family Member " + " value: " +this.value+ "\u001B[0m";
     }
 
     public void incrementFamilyMemberValue(int value){
         this.value += value;
     }
+
+
 
 
 }

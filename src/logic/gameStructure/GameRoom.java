@@ -53,7 +53,9 @@ public class GameRoom {
 
     public GameRoom(int NUMBER_OF_PLAYERS) {
         //this.NUMBER_OF_PLAYERS = NUMBER_OF_PLAYERS;
+        initializeDeck();
         board = new Board(NUMBER_OF_PLAYERS);
+        board.setCardsOnBoard(deck);
         try {
             numberOfPlayers = new LimitedInteger(NUMBER_OF_PLAYERS, 1, 1);
         } catch (LimitedValueOffRangeException e){
@@ -64,7 +66,8 @@ public class GameRoom {
 
     private void initializeDeck(){
         CardSetupHandler cartSetupHandler = new CardSetupHandler();
-        this.deck = cartSetupHandler.readFromFile();
+        //this.deck = cartSetupHandler.readFromFile();
+        this.deck = cartSetupHandler.prova();
     }
 
     public void addPlayerToRoom(RemotePlayer remotePlayer) throws LimitedValueOffRangeException{

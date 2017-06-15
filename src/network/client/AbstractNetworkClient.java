@@ -22,13 +22,13 @@ public abstract class AbstractNetworkClient {
 
     private ClientInterface clientController;
 
+    public AbstractNetworkClient(ClientInterface clientController){
+        this.clientController = clientController;
+    }
     //private String id = UUID.randomUUID().toString();
     //private String name; //set this in Client class
 
-    public void setClientController(ClientInterface clientController, String name) {
-        this.clientController = clientController;
-        //this.name = name;
-    }
+
 /*
     public String getName() {
         return name;

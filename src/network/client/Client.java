@@ -8,6 +8,8 @@ import logic.board.Board;
 import logic.player.Player;
 import network.ResponseCode;
 import network.client.socket.SocketClient;
+import userInterface.CliClient;
+import userInterface.GuiClient;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,7 +26,7 @@ public class Client implements ClientInterface {
     private final int RMI_PORT = 6789;
     private final int SOCKET_PORT = 9876;
 
-    private AbstractNetworkClient networkClient;
+    private AbstractNetworkClient networkClient ;
     private AbstractUserInterfaceClient uiClient;
 
     private ClientView clientView = new ClientView();
@@ -34,9 +36,10 @@ public class Client implements ClientInterface {
         return id;
     }
 
-    private Client(){
-        selectNetworkType();
-        selectUserInterfaceType();
+    public Client(){
+        setNetworkType();
+        this.networkClient.connect();
+        setUserInterface();
     }
 
     private int selectNetworkType(){
@@ -47,8 +50,8 @@ public class Client implements ClientInterface {
         return in.nextInt();
     }
     private void setNetworkType(){
-        if(selectNetworkType() == 1) networkClient = new RMIClient(RMI_PORT);
-        else  networkClient = new SocketClient(SOCKET_PORT);
+        if(selectNetworkType() == 1) networkClient = new RMIClient(this,RMI_PORT);
+        else  networkClient = new SocketClient(this,SOCKET_PORT);
     }
     private int selectUserInterfaceType(){
         System.out.println("What ui is preferred?");
@@ -58,8 +61,8 @@ public class Client implements ClientInterface {
         return in.nextInt();
     }
     private void setUserInterface(){
-        if(selectUserInterfaceType() == 1) ;//uiClient = new CliClient(this);
-        else ;//uiClient = new GuiClient(this);
+        if(selectUserInterfaceType() == 1) uiClient = new CliClient(this);
+        else uiClient = new GuiClient(this);
     }
 
     /*
@@ -89,6 +92,9 @@ public class Client implements ClientInterface {
 
     @Override
     public void selectFamilyMember(FamilyMember familyMember) {
+
+        System.out.println(familyMember);
+
         networkClient.selectFamilyMember(familyMember);
     }
 
@@ -124,8 +130,11 @@ public class Client implements ClientInterface {
 
 
     public static void main(String[] args){
+        System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwww");
         Client client = new Client();
-        client.networkClient.connect();
+        System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwww");
+        //client.networkClient.connect();
+        System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwww");
     }
 
 }

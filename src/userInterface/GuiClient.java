@@ -21,6 +21,8 @@ public class GuiClient extends AbstractUserInterfaceClient {
     @Override
     public void successfullyLoggedIn() {
 
+
+
     }
 
     @Override

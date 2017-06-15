@@ -29,7 +29,8 @@ public class RMIClient extends AbstractNetworkClient implements RMIClientInterfa
 
 
 
-    public RMIClient(int port){
+    public RMIClient(ClientInterface clientController, int port){
+        super(clientController);
         this.ipAddress = "127.0.0.1";
         this.port = port;
     }
@@ -42,6 +43,7 @@ public class RMIClient extends AbstractNetworkClient implements RMIClientInterfa
             rmiServerInterface = (RMIServerInterface) registry.lookup("RMIServerInterface");
             UnicastRemoteObject.exportObject(this, 0);
             rmiServerInterface.sendMessage("cane", this);
+            System.out.println("sacco di breccia");
         }
         catch (RemoteException e) {}
 
@@ -54,12 +56,17 @@ public class RMIClient extends AbstractNetworkClient implements RMIClientInterfa
 
     @Override
     public void tryToLogIn() {
-        rmiServerInterface.tryToLogIn(getId());
+        try {
+            rmiServerInterface.tryToLogIn(getId());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void tryToJoinGame() {
         try {
+            System.out.println("qui...." + getId());
             rmiServerInterface.tryToJoinGame(getId());
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -68,20 +75,34 @@ public class RMIClient extends AbstractNetworkClient implements RMIClientInterfa
 
     @Override
     public void tryToCreateRoom(int numberOfPlayers) {
-        rmiServerInterface.tryToCreateRoom(getId(), numberOfPlayers);
+        try {
+            rmiServerInterface.tryToCreateRoom(getId(), numberOfPlayers);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
 
     @Override
     public void selectFamilyMember(FamilyMember familyMember) {
-        rmiServerInterface.selectFamilyMember(familyMember,  getId());
+        try {
+            System.out.println(familyMember);
+            System.out.println(getId());
+            rmiServerInterface.selectFamilyMember(familyMember,  getId());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
 
 
     @Override
     public void selectActionSpace(String actionSpaceId) {
-        rmiServerInterface.selectActionSpace(actionSpaceId, getId());
+        try {
+            rmiServerInterface.selectActionSpace(actionSpaceId, getId());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -146,7 +167,11 @@ public class RMIClient extends AbstractNetworkClient implements RMIClientInterfa
 
     @Override
     public void useSlaves(int quantity) {
-        rmiServerInterface.useSlaves();
+        try {
+            rmiServerInterface.useSlaves();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -1,7 +1,20 @@
 package userInterface;
 
+import logic.actionSpaces.ActionSpace;
+import logic.board.Board;
+import logic.board.Color;
+import logic.exceptions.FamilyMemberSelectionException;
+import logic.player.FamilyMember;
+import logic.player.Player;
+import logic.resources.Wood;
 import network.ResponseCode;
+import network.client.Client;
 import network.client.ClientInterface;
+import network.client.ClientView;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Scanner;
 
 /**
  * Created by IBM on 14/06/2017.
@@ -10,15 +23,21 @@ public class CliClient extends AbstractUserInterfaceClient {
 
     public CliClient(ClientInterface clientController) {
         super(clientController);
+        start();
     }
+
 
     @Override
     public void successfullyLoggedIn() {
+        System.out.println("ciccicicic");
+        return;
+
 
     }
 
     @Override
     public void successfullyJoinedGame() {
+
 
     }
 
@@ -50,12 +69,100 @@ public class CliClient extends AbstractUserInterfaceClient {
     @Override
     public void updateView() {
 
+
+
     }
 
     @Override
     public void updateUi(ResponseCode rc) {
         super.updateUi(rc);
     }
+
+    public void loginMenu(){
+        logIn();
+
+        System.out.println("What do you whant to do?\n 1)Join Game \n 2) Create new room \n");
+        Scanner scanner = new Scanner(System.in);
+        switch (scanner.nextInt()){
+            case 1:
+                joinGame();
+            case 2:
+                System.out.println("How many players?");
+                createNewRoom(scanner.nextInt());
+
+        }
+
+
+
+    }
+
+    public void actionMenu(){
+        System.out.println("What do you want to do?\n 1)Select Family Member \n 2)Select Action Space\n 3)Use slaves\n ");
+        Scanner scanner = new Scanner(System.in);
+
+        switch (scanner.nextInt()){
+            case 1: familyMemberMenu();
+                break;
+                    //actionSpaceMenu();
+            case 2: actionSpaceMenu();
+                    familyMemberMenu();
+            case 3: slavesMenu();
+
+        }
+
+    }
+
+
+    public void familyMemberMenu(){
+        System.out.println("Which family member do you want to select?");
+        getClientController().getView().printFamilyMembersAvailable(getId());
+
+        //getClientController().selectFamilyMember(getClientController().getView().printFamilyMembersAvailable(getId()));
+
+    }
+
+    public void actionSpaceMenu(){
+        System.out.println("Which action space do you want to select?");
+        getClientController().selectActionSpace(getClientController().getView().printActionSpaces());
+
+    }
+
+    public void vaticanMenu(){
+        System.out.println();
+    }
+
+    public void slavesMenu(){
+        System.out.println("How many slaves do you want to use?");
+        getClientController().useSlaves(getClientController().getView().printSlaves(getId()));
+    }
+
+
+
+    public void start(){
+        Scanner scanner  = new Scanner(System.in);
+        loginMenu();
+
+        while(true){
+            actionMenu();
+        }
+
+
+    }
+
+    public static void main(String[] args) {
+        Client client = new Client();
+        CliClient cliClient = new CliClient(client);
+
+        cliClient.start();
+
+    }
+
+
+
+
+
+
+
 
 
 }
