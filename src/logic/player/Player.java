@@ -18,6 +18,7 @@ import logic.cards.Card;
 import logic.interfaces.Gainable;
 import logic.resources.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -25,7 +26,7 @@ import java.util.Scanner;
 /**
  * Created by IBM on 14/05/2017.
  */
-public class Player {
+public class Player implements Serializable{
 
     private String id;
 

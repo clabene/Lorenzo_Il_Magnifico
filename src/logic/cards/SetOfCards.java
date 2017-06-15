@@ -6,10 +6,12 @@ import logic.player.Player;
 import logic.utility.LimitedInteger;
 import logic.utility.StaticVariables;
 
+import java.io.Serializable;
+
 /**
  * Created by IBM on 14/05/2017.
  */
-public class SetOfCards {
+public class SetOfCards implements Serializable{
 
     private final int LAND_CARD_INDEX = 0;
     private final int BUILDING_CARD_INDEX = 1;

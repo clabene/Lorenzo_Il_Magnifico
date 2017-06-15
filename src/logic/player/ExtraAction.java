@@ -2,12 +2,13 @@ package logic.player;
 
 import logic.actionSpaces.ActionSpace;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by IBM on 12/06/2017.
  */
-public class ExtraAction {
+public class ExtraAction implements Serializable{
 
     private ArrayList<ActionSpace> actionSpaces = new ArrayList<>();
     private int familyMemberValue;

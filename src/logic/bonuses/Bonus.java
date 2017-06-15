@@ -2,10 +2,12 @@ package logic.bonuses;
 
 import logic.actionSpaces.ActionSpace;
 
+import java.io.Serializable;
+
 /**
  * Created by IBM on 30/05/2017.
  */
-public interface Bonus {
+public interface Bonus extends Serializable{
 
     /*
     * this interface tags those classes that represent a bonus effect. This are given by person cards

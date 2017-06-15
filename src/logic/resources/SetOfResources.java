@@ -5,10 +5,12 @@ import logic.interfaces.Gainable;
 import logic.interfaces.Losable;
 import logic.player.Player;
 
+import java.io.Serializable;
+
 /**
  * Created by IBM on 09/05/2017.
  */
-public class SetOfResources implements Gainable, Losable{
+public class SetOfResources implements Gainable, Losable, Serializable{
     private Resource[] resources = new Resource[4];
     private final int WOOD_INDEX = 0;
     private final int STONE_INDEX = 1;

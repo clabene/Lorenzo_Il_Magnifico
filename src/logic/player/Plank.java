@@ -5,12 +5,13 @@ import logic.resources.CouncilFavour;
 import logic.resources.Resource;
 import logic.resources.SetOfResources;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by IBM on 15/05/2017.
  */
-public class Plank {
+public class Plank implements Serializable{
     private SetOfCards cards;
 
     private SetOfResources resources;

@@ -15,6 +15,7 @@ import logic.pointsTracks.MilitaryPointsTrack;
 import logic.resources.*;
 import logic.utility.CardSetupHandler;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -23,7 +24,7 @@ import java.util.Stack;
 /**
  * Created by IBM on 09/05/2017.
  */
-public class Board {
+public class Board implements Serializable{
 
     private final int MAX_NUMBER_OF_PLAYERS; //use LimitedInteger
 
@@ -36,9 +37,9 @@ public class Board {
     private int whiteDice;
     private int blackDice;
 
-    private ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
+    private transient ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
 
-    private HashMap<String, ActionSpace> actionSpaceHashMap = new HashMap<>();
+    private transient HashMap<String, ActionSpace> actionSpaceHashMap = new HashMap<>();
 
     /**
      * first letter: T = tower ; C = council; A = activation; M = market.

@@ -56,7 +56,7 @@ public class CliClient extends AbstractUserInterfaceClient {
 
     @Override
     public void handleError() {
-
+        System.out.println("problem occurred");
     }
 
     @Override
@@ -77,10 +77,11 @@ public class CliClient extends AbstractUserInterfaceClient {
         switch (scanner.nextInt()){
             case 1:
                 joinGame();
+                break;
             case 2:
                 System.out.println("How many players?");
                 createNewRoom(scanner.nextInt());
-
+                break;
         }
 
 
@@ -93,11 +94,13 @@ public class CliClient extends AbstractUserInterfaceClient {
 
         switch (scanner.nextInt()){
             case 1: familyMemberMenu();
-                break;
                     //actionSpaceMenu();
+                    break;
             case 2: actionSpaceMenu();
-                    familyMemberMenu();
+                    //familyMemberMenu();
+                    break;
             case 3: slavesMenu();
+                    break;
 
         }
 

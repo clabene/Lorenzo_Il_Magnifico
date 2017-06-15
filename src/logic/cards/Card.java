@@ -3,10 +3,12 @@ package logic.cards;
 import logic.cards.cardEffects.CardEffect;
 import logic.gameStructure.PeriodNumber;
 
+import java.io.Serializable;
+
 /**
  * Created by IBM on 09/05/2017.
  */
-public abstract class Card {
+public abstract class Card implements Serializable{
 
     /*
     * This is the most general card. All cards are described by a subset this class' attributes, but no card has all of them defined.

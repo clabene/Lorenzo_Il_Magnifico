@@ -93,9 +93,6 @@ public class Client implements ClientInterface {
 
     @Override
     public void selectFamilyMember(FamilyMember familyMember) {
-
-        System.out.println(familyMember);
-
         networkClient.selectFamilyMember(familyMember);
     }
 
@@ -113,10 +110,7 @@ public class Client implements ClientInterface {
 
     @Override
     public void showOutcome(ResponseCode outcomeCode) {
-        System.out.println("1 "+uiClient);
-        System.out.println("2 "+outcomeCode);
         uiClient.updateUi(outcomeCode);
-        //System.out.println(outcomeCode.getMessage());
     }
 
     @Override
@@ -133,11 +127,7 @@ public class Client implements ClientInterface {
 
 
     public static void main(String[] args){
-        System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwww");
         Client client = new Client();
-        System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwww");
-        //client.networkClient.connect();
-        System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwww");
     }
 
 }

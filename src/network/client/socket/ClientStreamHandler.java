@@ -30,8 +30,8 @@ public class ClientStreamHandler {
     private void fillMap(){
         //todo use constants (make an Enum maybe) instead of String
         responseMap.put("RESPONSE_CODE", this::notifyResponseCode);
-        responseMap.put("UPDATE_VIEW", this::selectCouncilFavour);
-        responseMap.put("SELECT_COUNCIL_FAVOUR", this::updateView);
+        responseMap.put("UPDATE_VIEW", this::updateView);
+        responseMap.put("SELECT_COUNCIL_FAVOUR", this::selectCouncilFavour);
         responseMap.put("SELECT_ACTION_SPACE_FOR_EXTRA_ACTION", this::selectActionSpace);
         responseMap.put("DEAL_WITH_VATICAN", this::dealWithVatican);
     }

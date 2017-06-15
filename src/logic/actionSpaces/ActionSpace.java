@@ -4,12 +4,13 @@ import logic.interfaces.Gainable;
 import logic.player.FamilyMember;
 import logic.player.Player;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by IBM on 18/05/2017.
  **/
-public abstract class ActionSpace {
+public abstract class ActionSpace implements Serializable{
 
     private ArrayList<Gainable> bonus = new ArrayList<>();
 

@@ -5,10 +5,12 @@ import logic.interfaces.Gainable;
 import logic.player.VictoryPoint;
 import logic.utility.LimitedInteger;
 
+import java.io.Serializable;
+
 /**
  * Created by IBM on 16/05/2017.
  */
-public abstract class PointsTrack implements Gainable{
+public abstract class PointsTrack implements Gainable, Serializable{
 
     /*
     * This class should be used to deploy points-tracks, like FaithPoints or MilitaryPoints. This class is to be written

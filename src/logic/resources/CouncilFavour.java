@@ -4,12 +4,13 @@ import logic.interfaces.Gainable;
 import logic.player.Player;
 import logic.utility.StaticVariables;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
  * Created by IBM on 24/05/2017.
  */
-public class CouncilFavour implements Gainable {
+public class CouncilFavour implements Gainable, Serializable {
 
     private int numberOfFavours = 1;
 

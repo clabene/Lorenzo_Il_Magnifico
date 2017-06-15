@@ -3,10 +3,12 @@ package logic.player;
 import logic.interfaces.Losable;
 import logic.interfaces.Gainable;
 
+import java.io.Serializable;
+
 /**
  * Created by IBM on 23/05/2017.
  */
-public class VictoryPoint implements Gainable, Losable {
+public class VictoryPoint implements Gainable, Losable, Serializable {
 
     private int victoryPoints = 1;
 

@@ -2,10 +2,12 @@ package logic.utility;
 
 import logic.exceptions.LimitedValueOffRangeException;
 
+import java.io.Serializable;
+
 /**
  * Created by IBM on 16/05/2017.
  */
-public class LimitedInteger {
+public class LimitedInteger implements Serializable {
 
     private final int MAX_VALUE;
     private final int MIN_VALUE;

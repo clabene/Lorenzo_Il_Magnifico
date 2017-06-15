@@ -5,10 +5,12 @@ import logic.interfaces.Losable;
 import logic.interfaces.Gainable;
 import logic.player.Player;
 
+import java.io.Serializable;
+
 /**
  * Created by IBM on 09/05/2017.
  */
-public abstract class Resource implements Losable, Gainable {
+public abstract class Resource implements Losable, Gainable, Serializable {
 
     private int quantity;
 

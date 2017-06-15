@@ -9,12 +9,13 @@ import logic.pointsTracks.MilitaryPointsTrack;
 import logic.resources.SetOfResources;
 import logic.resources.Wood;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
  * Created by IBM on 13/05/2017.
  */
-public class CardCost implements Losable {
+public class CardCost implements Losable, Serializable {
 
     private SetOfResources resourcesCost;
 

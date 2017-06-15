@@ -3,10 +3,12 @@ package logic.player;
 
 import logic.board.Color;
 
+import java.io.Serializable;
+
 /**
  * Created by IBM on 18/05/2017.
  */
-public class FamilyMember {
+public class FamilyMember implements Serializable {
 
     private Color color; //null iff neutral
     private int value;

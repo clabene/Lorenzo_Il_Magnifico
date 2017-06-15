@@ -39,11 +39,7 @@ public class RMIServer extends AbstractServer implements RMIServerInterface {
             }
 
             reg.rebind("RMIServerInterface", this);
-            System.out.println("ooooooooooooooooooooooo");
             UnicastRemoteObject.exportObject(this, port);
-            System.out.println("ooooooooooooooooooooooo");
-
-
 
         }catch (RemoteException e){
             e.printStackTrace();
@@ -51,6 +47,7 @@ public class RMIServer extends AbstractServer implements RMIServerInterface {
 
 
     }
+
 
     @Override
     public void sendMessage(String string, RMIClientInterface c) throws RemoteException {
