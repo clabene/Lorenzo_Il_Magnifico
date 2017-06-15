@@ -40,6 +40,7 @@ public class Client implements ClientInterface {
         setNetworkType();
         this.networkClient.connect();
         setUserInterface();
+        uiClient.go();
     }
 
     private int selectNetworkType(){
@@ -112,6 +113,8 @@ public class Client implements ClientInterface {
 
     @Override
     public void showOutcome(ResponseCode outcomeCode) {
+        System.out.println("1 "+uiClient);
+        System.out.println("2 "+outcomeCode);
         uiClient.updateUi(outcomeCode);
         //System.out.println(outcomeCode.getMessage());
     }

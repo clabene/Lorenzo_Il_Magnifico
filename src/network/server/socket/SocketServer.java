@@ -35,7 +35,7 @@ public class SocketServer extends AbstractServer {
             while (true) {
                 try {
                     Socket socket = serverSocket.accept();
-                    System.out.println("tanto non va");
+                    System.out.println("connected");
                     SocketPlayer socketPlayer = new SocketPlayer(getServerController(), socket);
                     new Thread(socketPlayer).start();
                 } catch (IOException e) {

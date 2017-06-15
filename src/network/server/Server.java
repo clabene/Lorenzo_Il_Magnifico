@@ -70,8 +70,6 @@ public class Server implements ServerInterface {
 
     @Override
     public void tryToCreateRoom(String playerId, int NUMBER_OF_PLAYERS ) {
-        System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww" + playersList.values());
-
         synchronized (MUTEX) {
             GameRoom gameRoom = new GameRoom(NUMBER_OF_PLAYERS);
             try {

@@ -33,7 +33,6 @@ public class SocketClient extends AbstractNetworkClient {
         this.ipAddress = "127.0.0.1";
         this.port = port;
 
-        streamHandler = new ClientStreamHandler(input, this);
     }
 
     @Override
@@ -44,6 +43,7 @@ public class SocketClient extends AbstractNetworkClient {
             System.out.println("Could not connect ot the server");
         }
         initializeStreams();
+        streamHandler = new ClientStreamHandler(input, this);
 
         new SocketClientListener(input, this).start();
     }
@@ -60,13 +60,16 @@ public class SocketClient extends AbstractNetworkClient {
     }
 
 
-    private void notifyRequestHandleOutcome(){
+    public void notifyRequestHandleOutcome(ResponseCode requestHandleOutcome){ //bring this to streamHandler
+        getClientController().showOutcome(requestHandleOutcome);
+        /*
         try {
             ResponseCode requestHandleOutcome = (ResponseCode) input.readObject();
             getClientController().showOutcome(requestHandleOutcome);
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Problems in notifying request output");
         }
+        */
     }
 
     @Override
@@ -78,7 +81,7 @@ public class SocketClient extends AbstractNetworkClient {
         } catch (IOException e){
             System.out.println("Could not send log in request");
         }
-        notifyRequestHandleOutcome();
+        //notifyRequestHandleOutcome();
     }
 
     @Override
@@ -89,7 +92,7 @@ public class SocketClient extends AbstractNetworkClient {
         } catch (IOException e){
             System.out.println("Could not send join game request");
         }
-        notifyRequestHandleOutcome();
+        //notifyRequestHandleOutcome();
     }
 
     @Override
@@ -101,7 +104,7 @@ public class SocketClient extends AbstractNetworkClient {
         } catch (IOException e){
             System.out.println("Could not send create new room request");
         }
-        notifyRequestHandleOutcome();
+        //notifyRequestHandleOutcome();
     }
 
     @Override
@@ -113,7 +116,7 @@ public class SocketClient extends AbstractNetworkClient {
         } catch (IOException e) {
             System.out.println("Could not send family member request");
         }
-        notifyRequestHandleOutcome();
+        //notifyRequestHandleOutcome();
     }
 
     @Override
@@ -125,7 +128,7 @@ public class SocketClient extends AbstractNetworkClient {
         } catch (IOException e) {
             System.out.println("Could not send family member request");
         }
-        notifyRequestHandleOutcome();
+        //notifyRequestHandleOutcome();
     }
 
     @Override
@@ -137,7 +140,7 @@ public class SocketClient extends AbstractNetworkClient {
         } catch (IOException e) {
             System.out.println("Could not send family member request");
         }
-        notifyRequestHandleOutcome();
+        //notifyRequestHandleOutcome();
     }
 
     //@Override
@@ -150,7 +153,7 @@ public class SocketClient extends AbstractNetworkClient {
         } catch (IOException e){
             System.out.println("Could not send council favours indexes");
         }
-        notifyRequestHandleOutcome();
+        //notifyRequestHandleOutcome();
     }
 
     private boolean takeVaticanDecision(int periodNumber){
@@ -175,7 +178,7 @@ public class SocketClient extends AbstractNetworkClient {
         } catch (IOException e){
             System.out.println("Could not send council favours indexes");
         }
-        notifyRequestHandleOutcome();
+        //notifyRequestHandleOutcome();
     }
 
     private Gainable[] selectFavours(int numberOfFavours){
@@ -207,7 +210,7 @@ public class SocketClient extends AbstractNetworkClient {
         } catch (IOException e){
             System.out.println("Could not send action space for extra action");
         }
-        notifyRequestHandleOutcome();
+        //notifyRequestHandleOutcome();
     }
 
     private ActionSpace selectActionSpace(ArrayList<ActionSpace> actionSpaces){

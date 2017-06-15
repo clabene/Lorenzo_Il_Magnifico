@@ -35,7 +35,7 @@ public class GameRoom {
 
     private Stack<Card> deck;
 
-    private HashMap<String, RemotePlayer> players; //key: playerId
+    private HashMap<String, RemotePlayer> players = new HashMap<>(); //key: playerId
 
     private String currentPlayer ;
 

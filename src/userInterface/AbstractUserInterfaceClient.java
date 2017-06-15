@@ -49,6 +49,7 @@ public abstract class AbstractUserInterfaceClient {
 
     public abstract void updateView();
 
+    public abstract void go();
 
     protected void logIn(){
         clientController.logIn();

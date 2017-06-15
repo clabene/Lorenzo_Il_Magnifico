@@ -3,6 +3,7 @@ package network.client.socket;
 import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
 import logic.player.Player;
+import network.ResponseCode;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -28,13 +29,21 @@ public class ClientStreamHandler {
 
     private void fillMap(){
         //todo use constants (make an Enum maybe) instead of String
+        responseMap.put("RESPONSE_CODE", this::notifyResponseCode);
         responseMap.put("UPDATE_VIEW", this::selectCouncilFavour);
         responseMap.put("SELECT_COUNCIL_FAVOUR", this::updateView);
         responseMap.put("SELECT_ACTION_SPACE_FOR_EXTRA_ACTION", this::selectActionSpace);
         responseMap.put("DEAL_WITH_VATICAN", this::dealWithVatican);
     }
 
-
+    private void notifyResponseCode(){
+        try{
+            ResponseCode responseCode = (ResponseCode) input.readObject();
+            client.notifyRequestHandleOutcome(responseCode);
+        } catch (IOException | ClassNotFoundException e){
+            System.out.println("Could not receive response code");
+        }
+    }
 
     public void dealWithVatican(){
         try{

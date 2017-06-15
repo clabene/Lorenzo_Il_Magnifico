@@ -10,10 +10,7 @@ import logic.resources.Wood;
 import network.ResponseCode;
 import network.client.Client;
 import network.client.ClientInterface;
-import network.client.ClientView;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Scanner;
 
 /**
@@ -23,16 +20,12 @@ public class CliClient extends AbstractUserInterfaceClient {
 
     public CliClient(ClientInterface clientController) {
         super(clientController);
-        start();
     }
 
 
     @Override
     public void successfullyLoggedIn() {
-        System.out.println("ciccicicic");
-        return;
-
-
+        System.out.println("log in successful");
     }
 
     @Override
@@ -79,9 +72,7 @@ public class CliClient extends AbstractUserInterfaceClient {
     }
 
     public void loginMenu(){
-        logIn();
-
-        System.out.println("What do you whant to do?\n 1)Join Game \n 2) Create new room \n");
+        System.out.println("What do you want to do?\n 1)Join Game \n 2) Create new room \n");
         Scanner scanner = new Scanner(System.in);
         switch (scanner.nextInt()){
             case 1:
@@ -138,8 +129,9 @@ public class CliClient extends AbstractUserInterfaceClient {
 
 
 
-    public void start(){
+    public void go(){
         Scanner scanner  = new Scanner(System.in);
+        logIn();
         loginMenu();
 
         while(true){
@@ -148,20 +140,6 @@ public class CliClient extends AbstractUserInterfaceClient {
 
 
     }
-
-    public static void main(String[] args) {
-        Client client = new Client();
-        CliClient cliClient = new CliClient(client);
-
-        cliClient.start();
-
-    }
-
-
-
-
-
-
 
 
 

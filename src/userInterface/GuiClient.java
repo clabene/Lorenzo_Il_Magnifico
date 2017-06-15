@@ -61,6 +61,11 @@ public class GuiClient extends AbstractUserInterfaceClient {
     }
 
     @Override
+    public void go() {
+
+    }
+
+    @Override
     public void updateUi(ResponseCode rc) {
         super.updateUi(rc);
     }

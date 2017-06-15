@@ -47,7 +47,7 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
                 streamHandler.respond(requestCode);
             }
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Could not have ServerStreamHandler started");
+            System.out.println("Could not have ServerStreamHandler call respond");
         } finally {
             closeStream(input);
             closeStream(output);
@@ -167,6 +167,8 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
     @Override
     public void notifyRequestHandleOutcome(ResponseCode responseCode) {
         try {
+            //first write string
+            output.writeObject("RESPONSE_CODE");
             output.writeObject(responseCode);
             output.flush();
         } catch (IOException e) {
