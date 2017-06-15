@@ -12,11 +12,14 @@ import network.client.socket.SocketClient;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
+import java.util.UUID;
 
 /**
  * Created by IBM on 06/06/2017.
  */
 public class Client implements ClientInterface {
+
+    private String id = UUID.randomUUID().toString();
 
     private final int RMI_PORT = 6789;
     private final int SOCKET_PORT = 9876;
@@ -25,6 +28,11 @@ public class Client implements ClientInterface {
     private AbstractUserInterfaceClient uiClient;
 
     private ClientView clientView = new ClientView();
+
+    @Override
+    public String getId() {
+        return id;
+    }
 
     private Client(){
         selectNetworkType();

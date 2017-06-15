@@ -12,11 +12,12 @@ public class GuiClient extends AbstractUserInterfaceClient {
         super(clientController);
     }
 
+    /*
     @Override
     public ClientInterface getClientController() {
         return super.getClientController();
     }
-
+    */
     @Override
     public void successfullyLoggedIn() {
 

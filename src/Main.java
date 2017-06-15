@@ -4,6 +4,7 @@ import logic.actionSpaces.ActivationActionSpace;
 import logic.actionSpaces.ActivationActionSpaceType;
 import logic.actionSpaces.TowerActionSpace;
 import logic.board.Board;
+import logic.board.Color;
 import logic.cards.LandCard;
 import logic.cards.cardEffects.ExchangeGainablesEffect;
 import logic.cards.cardEffects.ReceiveGainablesEffect;
@@ -11,6 +12,7 @@ import logic.gameStructure.ActionPhase;
 import logic.gameStructure.Game;
 import logic.gameStructure.PeriodNumber;
 import logic.interfaces.Losable;
+import logic.player.FamilyMember;
 import logic.player.Plank;
 import logic.player.Player;
 import logic.pointsTracks.MilitaryPointsTrack;
@@ -101,7 +103,7 @@ public class Main {
         planks.add(new Plank());
         System.out.println(planks.get(planks.size()-1));
         */
-
+        /*
         Board b = new Board(7);
 
         Player cla = new Player(new Slave(2), new Money(5));
@@ -127,6 +129,24 @@ public class Main {
         a.putFamilyMemberOnActionSpace(cla, cla.getFamilyMembers()[0], activationActionSpace);
 
         System.out.println(cla.getPlank().getSetOfResources());
+        */
+
+        TowerActionSpace t1 = new TowerActionSpace(3, new Wood(2));
+        TowerActionSpace t2 = new TowerActionSpace(1);
+        t1.familyMemberAdded(new FamilyMember(Color.BLACK, 2, "ww"));
+        t2.familyMemberAdded(new FamilyMember(Color.WHITE, 3, "ee"));
+
+        String s = "";
+
+        s += t1+"\t";
+        s += t1+"\n";
+        s += t1.getLastFamilyMemberAdded() + "\t\t\t";
+        s += t2.getLastFamilyMemberAdded();
+
+        System.out.println(s);
+
+
+
 
     }
 

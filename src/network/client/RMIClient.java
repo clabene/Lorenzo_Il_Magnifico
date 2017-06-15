@@ -58,7 +58,7 @@ public class RMIClient extends AbstractNetworkClient implements RMIClientInterfa
     }
 
     @Override
-    public void tryToJoinGame() throws RemoteException {
+    public void tryToJoinGame() {
         try {
             rmiServerInterface.tryToJoinGame(getId());
         } catch (RemoteException e) {

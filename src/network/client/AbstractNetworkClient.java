@@ -22,7 +22,7 @@ public abstract class AbstractNetworkClient {
 
     private ClientInterface clientController;
 
-    private String id = UUID.randomUUID().toString();
+    //private String id = UUID.randomUUID().toString();
     //private String name; //set this in Client class
 
     public void setClientController(ClientInterface clientController, String name) {
@@ -34,8 +34,9 @@ public abstract class AbstractNetworkClient {
         return name;
     }
 */
+
     public String getId(){
-        return id;
+        return getClientController().getId();
     }
 
     public ClientInterface getClientController() {

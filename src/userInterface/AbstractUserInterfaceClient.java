@@ -19,9 +19,13 @@ public abstract class AbstractUserInterfaceClient {
         this.clientController = clientController;
         fillMap();
     }
-
+/*
     public ClientInterface getClientController() {
         return clientController;
+    }
+*/
+    public String getId(){
+        return clientController.getId();
     }
 
     private void fillMap(){
@@ -47,22 +51,22 @@ public abstract class AbstractUserInterfaceClient {
 
 
     protected void logIn(){
-        getClientController().logIn();
+        clientController.logIn();
     }
     protected void createNewRoom(int numberOfPlayers){
-        getClientController().createNewRoom(numberOfPlayers);
+        clientController.createNewRoom(numberOfPlayers);
     }
     protected void joinGame(){
-        getClientController().joinGame();
+        clientController.joinGame();
     }
     protected void selectFamilyMember(FamilyMember familyMember){
-        getClientController().selectFamilyMember(familyMember);
+        clientController.selectFamilyMember(familyMember);
     }
     protected void selectActionSpace(String actionSpaceId){
-        getClientController().selectActionSpace(actionSpaceId);
+        clientController.selectActionSpace(actionSpaceId);
     }
     protected void useSlaves(int quantity){
-        getClientController().useSlaves(quantity);
+        clientController.useSlaves(quantity);
     }
 
 
