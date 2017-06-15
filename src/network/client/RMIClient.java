@@ -8,6 +8,7 @@ import logic.player.Player;
 import logic.resources.CouncilFavour;
 import logic.utility.StaticVariables;
 import network.ResponseCode;
+import network.server.RemotePlayer;
 import network.server.rmi.RMIServerInterface;
 
 import java.rmi.NotBoundException;

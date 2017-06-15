@@ -9,6 +9,7 @@ import logic.player.FamilyMember;
 import logic.player.Player;
 import network.ResponseCode;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -17,9 +18,9 @@ import java.util.Collections;
 /**
  * Created by Pinos on 06/06/2017.
  */
-public abstract class RemotePlayer extends Player{
+public abstract class RemotePlayer extends Player {
 
-    private GameRoom gameRoom;
+    private transient GameRoom gameRoom;
 
     public GameRoom getGameRoom() {
         return gameRoom;

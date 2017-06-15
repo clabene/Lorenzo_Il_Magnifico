@@ -1,11 +1,13 @@
 package network.client;
 
+import javafx.print.PageLayout;
 import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
 import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.interfaces.Gainable;
 import logic.player.Player;
 import network.ResponseCode;
+import network.server.RemotePlayer;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

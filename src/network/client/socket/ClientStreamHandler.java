@@ -4,10 +4,12 @@ import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
 import logic.player.Player;
 import network.ResponseCode;
+import network.server.RemotePlayer;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 /**
@@ -66,10 +68,11 @@ public class ClientStreamHandler {
     private void updateView(){
         try {
             Board board = (Board) input.readObject();
-            ArrayList<Player> players = (ArrayList<Player>) input.readObject();
+            Collection<Player> players = (Collection< Player>) input.readObject();
             client.getClientController().updateView(board, players);
         } catch (IOException | ClassNotFoundException e){
             System.out.println("Could not update view");
+            e.printStackTrace();
         }
     }
 

@@ -4,6 +4,7 @@ import logic.board.Board;
 import logic.player.FamilyMember;
 import logic.player.Player;
 import network.ResponseCode;
+import network.server.RemotePlayer;
 
 import java.util.Collection;
 

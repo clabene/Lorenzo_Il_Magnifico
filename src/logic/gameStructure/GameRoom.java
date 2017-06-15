@@ -15,10 +15,7 @@ import logic.utility.LimitedInteger;
 import network.ResponseCode;
 import network.server.RemotePlayer;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by IBM on 06/06/2017.
@@ -161,8 +158,9 @@ public class GameRoom {
 
 
     private void updatePlayersView() {
-        for(RemotePlayer tmp : players.values())
+        for(RemotePlayer tmp : players.values()){
             tmp.updateView(board, players.values());
+        }
     }
 
     //todo use this to handle turn switching

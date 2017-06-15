@@ -1,5 +1,6 @@
 package network.client;
 
+import com.sun.org.apache.regexp.internal.RE;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import logic.actionSpaces.ActionSpace;
 import logic.actionSpaces.TowerActionSpace;
@@ -7,8 +8,10 @@ import logic.board.Board;
 import logic.exceptions.FamilyMemberSelectionException;
 import logic.player.FamilyMember;
 import logic.player.Player;
+import network.server.RemotePlayer;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Scanner;
 
 /**
@@ -16,12 +19,12 @@ import java.util.Scanner;
  */
 public class ClientView {
 
-    private ArrayList<Player> players = new ArrayList<>();
+    private Collection<Player> players = new ArrayList<>();
 
 
     private Board board;
 
-    public ArrayList<Player> getPlayers() {
+    public Collection<Player> getPlayers() {
         return players;
     }
 
@@ -29,7 +32,7 @@ public class ClientView {
         return board;
     }
 
-    public void setPlayers(ArrayList<Player> players) {
+    public void setPlayers(Collection<Player> players) {
         this.players = players;
     }
 

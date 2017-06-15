@@ -9,6 +9,7 @@ import logic.player.Player;
 import network.ResponseCode;
 import network.server.RemotePlayer;
 import network.server.ServerInterface;
+import network.server.rmi.RMIPlayer;
 
 import java.io.*;
 import java.net.Socket;
@@ -21,12 +22,12 @@ import java.util.Collections;
  */
 public class SocketPlayer extends RemotePlayer implements Runnable {
 
-    private ServerInterface serverController;
+    private transient ServerInterface serverController;
 
-    private ObjectInputStream input;
-    private ObjectOutputStream output;
+    private transient ObjectInputStream input;
+    private transient ObjectOutputStream output;
 
-    private ServerStreamHandler streamHandler;
+    private transient ServerStreamHandler streamHandler;
 
     public SocketPlayer(ServerInterface serverController, Socket clientSocket) {
         this.serverController = serverController;
@@ -182,8 +183,12 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
         try {
             output.writeObject("UPDATE_VIEW");
             output.writeObject(board);
-            output.writeObject(players);
-            //output.writeObject(players);
+
+            Collection<Player> players1 = new ArrayList<>();
+            players1.addAll(players);
+
+            output.writeObject(players1);
+
             output.flush();
         } catch (IOException e){
             System.out.println("Could not update view");
