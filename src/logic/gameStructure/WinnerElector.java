@@ -4,12 +4,13 @@ import logic.cards.VentureCard;
 import logic.player.Player;
 import logic.player.VictoryPoint;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by IBM on 06/06/2017.
  */
-public class WinnerElector {
+public class WinnerElector implements Serializable{
 
     private ArrayList<Player> players = new ArrayList<>();
 

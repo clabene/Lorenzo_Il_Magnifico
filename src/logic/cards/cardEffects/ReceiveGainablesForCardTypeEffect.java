@@ -35,7 +35,13 @@ public class ReceiveGainablesForCardTypeEffect extends ReceiveGainablesEffect {
             if(tmp != null)
                 super.activate(player);
     }
-/*
+
+    @Override
+    public String toString() {
+        return "gain for cards: "+ cardType;
+    }
+
+    /*
     public static void main(String[] a){
         Player p = new Player();
         //p.getPlank().getCards().cardAdded(new LandCard("po", PeriodNumber.SECOND, 0, null, null));

@@ -1,9 +1,11 @@
 package network.server;
 
+import java.io.Serializable;
+
 /**
  * Created by Pinos on 06/06/2017.
  */
-public abstract class AbstractServer {
+public abstract class AbstractServer implements Serializable{
 
     private ServerInterface serverController;
 

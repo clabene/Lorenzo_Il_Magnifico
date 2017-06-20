@@ -1,5 +1,6 @@
-package network.client;
+package network.client.rmi;
 
+import com.google.gson.Gson;
 import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
 import logic.interfaces.Gainable;
@@ -8,9 +9,12 @@ import logic.player.Player;
 import logic.resources.CouncilFavour;
 import logic.utility.StaticVariables;
 import network.ResponseCode;
-import network.server.RemotePlayer;
+import network.client.AbstractNetworkClient;
+import network.client.ClientInterface;
+import network.client.rmi.RMIClientInterface;
 import network.server.rmi.RMIServerInterface;
 
+import java.io.Serializable;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -20,31 +24,39 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
 
+
 /**
  * Created by IBM on 06/06/2017.
  */
-public class RMIClient extends AbstractNetworkClient implements RMIClientInterface{
-    private String ipAddress;
-    private int port;
-    private RMIServerInterface rmiServerInterface;
+public class RMIClient extends AbstractNetworkClient implements RMIClientInterface,Serializable{
+    private transient String ipAddress;
+    private transient int port;
+    private transient RMIServerInterface rmiServerInterface;
+    private  transient ClientInterface clientController;
 
 
 
     public RMIClient(ClientInterface clientController, int port){
-        super(clientController);
         this.ipAddress = "127.0.0.1";
         this.port = port;
+        this.clientController = clientController;
     }
 
-//    @Override
+    @Override
+    public ClientInterface getClientController() {
+        return clientController;
+    }
+
+    //    @Override
     public void connect() {
         //connect to RMIServer
         try{
             Registry registry = LocateRegistry.getRegistry(ipAddress, port);
             rmiServerInterface = (RMIServerInterface) registry.lookup("RMIServerInterface");
             UnicastRemoteObject.exportObject(this, 0);
-            rmiServerInterface.sendMessage("cane", this);
-            System.out.println("sacco di breccia");
+
+            //rmiServerInterface.sendMessage(, this);
+            //rmiServerInterface.sendMessage("cane", this);
         }
         catch (RemoteException e) {}
 
@@ -52,13 +64,13 @@ public class RMIClient extends AbstractNetworkClient implements RMIClientInterfa
     }
 
     public String getId(){
-        return super.getId();
+        return clientController.getId();
     }
 
     @Override
     public void tryToLogIn() {
         try {
-            rmiServerInterface.tryToLogIn(getId());
+            rmiServerInterface.tryToLogIn(getId(),this);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -67,7 +79,6 @@ public class RMIClient extends AbstractNetworkClient implements RMIClientInterfa
     @Override
     public void tryToJoinGame() {
         try {
-            System.out.println("qui...." + getId());
             rmiServerInterface.tryToJoinGame(getId());
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -186,13 +197,13 @@ public class RMIClient extends AbstractNetworkClient implements RMIClientInterfa
     }
 
     @Override
-    public void notifyRequestHandleOutcome(ResponseCode requestHandleOutcome ) throws RemoteException{
-        getClientController().showOutcome(requestHandleOutcome);
+    public void notifyRequestHandleOutcome(ResponseCode requestHandleOutcome ) {
+        clientController.showOutcome(requestHandleOutcome);
     }
 
     @Override
-    public void updateView(Board board, Collection<Player> players) {
-        getClientController().updateView(board, players);
+    public void updateView(Board board, Collection< Player> players) {
+        clientController.updateView(board, players);
     }
 
 

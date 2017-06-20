@@ -1,21 +1,21 @@
 package network.server.rmi;
 
 import logic.player.FamilyMember;
-import network.client.RMIClientInterface;
+import network.client.rmi.RMIClientInterface;
 import network.server.AbstractServer;
-import network.server.RemotePlayer;
 import network.server.ServerInterface;
 
+import java.io.Serializable;
+import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.HashMap;
 
 /**
  * Created by Pinos on 06/06/2017.
  */
-public class RMIServer extends AbstractServer implements RMIServerInterface {
+public class RMIServer extends AbstractServer implements  RMIServerInterface,Serializable {
 
     public RMIServer(ServerInterface serverController){
         super(serverController);
@@ -37,11 +37,13 @@ public class RMIServer extends AbstractServer implements RMIServerInterface {
                 System.out.println("Using existing registry");
                 reg = LocateRegistry.getRegistry();
             }
-
-            reg.rebind("RMIServerInterface", this);
+            //TODO: edo ha modificato... rebind
+            reg.bind("RMIServerInterface", this);
             UnicastRemoteObject.exportObject(this, port);
 
         }catch (RemoteException e){
+            e.printStackTrace();
+        } catch (AlreadyBoundException e) {
             e.printStackTrace();
         }
 
@@ -92,15 +94,26 @@ public class RMIServer extends AbstractServer implements RMIServerInterface {
     }
 
     @Override
-    public void tryToLogIn(String playerid) {
-        getServerController().tryToLogIn(playerid, new RMIPlayer());
+    public void tryToLogIn(String id, RMIClientInterface rmiClientInterface) throws RemoteException {
+
+        RMIPlayer player = new RMIPlayer(rmiClientInterface,id);
+
+        getServerController().tryToLogIn(id, player);
+
+
+
     }
+/*
+    @Override
+    public void tryToLogIn(String playerid) {
+        System.out.println("qui "+ playerid);
+
+        getServerController().tryToLogIn(playerid, new RMIPlayer( ));
+    }*/
 
     @Override
     public void tryToJoinGame(String playerid) {
         getServerController().tryToJoinGame(playerid);
-
-
     }
 
     @Override

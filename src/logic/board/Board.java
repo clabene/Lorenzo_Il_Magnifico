@@ -30,16 +30,16 @@ public class Board implements Serializable{
 
     public Board(int MAX_NUMBER_OF_PLAYERS){
         this.MAX_NUMBER_OF_PLAYERS = MAX_NUMBER_OF_PLAYERS;
-        setHashMap(MAX_NUMBER_OF_PLAYERS);
+        this.setHashMap(MAX_NUMBER_OF_PLAYERS);
     }
 
-    private int redDice;
-    private int whiteDice;
-    private int blackDice;
+    private   int redDice;
+    private   int whiteDice;
+    private   int blackDice;
 
-    private transient ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
+    private   ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
 
-    private transient HashMap<String, ActionSpace> actionSpaceHashMap = new HashMap<>();
+    private   HashMap<String, ActionSpace> actionSpaceHashMap = new HashMap<>();
 
     /**
      * first letter: T = tower ; C = council; A = activation; M = market.
@@ -80,6 +80,10 @@ public class Board implements Serializable{
         ActionSpace actionSpace = actionSpaceHashMap.get(key);
         if(actionSpace.getCovered()) throw new ActionSpaceCoveredException();
         return actionSpace;
+    }
+
+    public int getMAX_NUMBER_OF_PLAYERS(){
+        return MAX_NUMBER_OF_PLAYERS;
     }
 
     public ArrayList<String> getTurnOrder(){
@@ -146,7 +150,7 @@ public class Board implements Serializable{
     public int getWhiteDice() {
         return whiteDice;
     }
-
+/*
     public static void main(String[] args) {
 
             Board board = new Board(4);
@@ -373,5 +377,5 @@ public class Board implements Serializable{
 
 
 
-    }
+    }*/
 }

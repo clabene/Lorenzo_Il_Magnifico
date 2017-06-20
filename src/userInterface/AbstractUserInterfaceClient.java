@@ -2,17 +2,19 @@ package userInterface;
 
 import logic.player.FamilyMember;
 import network.ResponseCode;
+import network.client.AbstractNetworkClient;
 import network.client.ClientInterface;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  * Created by IBM on 14/06/2017.
  */
-public abstract class AbstractUserInterfaceClient {
+public abstract class AbstractUserInterfaceClient implements Serializable{
 
-    private ClientInterface clientController;
-    private HashMap<ResponseCode, uiInnerInterface> map = new HashMap<>();
+    private transient ClientInterface clientController;
+    private transient HashMap<ResponseCode, uiInnerInterface> map = new HashMap<>();
 
 
     public AbstractUserInterfaceClient(ClientInterface clientController){
@@ -36,6 +38,10 @@ public abstract class AbstractUserInterfaceClient {
         map.put(ResponseCode.ACTION_SPACE_SELECTED, this::successfullySelectedActionSpace);
         map.put(ResponseCode.SLAVES_USED, this::successfullyUsedSlaves);
         map.put(ResponseCode.GENERIC_ERROR, this::handleError);
+
+        //------------------------pinò
+        map.put((ResponseCode.NOT_ENOUGH_PLAYERS),this::notEnoughPlayersError);
+        map.put((ResponseCode.WAIT_YOUR_TURN),this::waitTurnError);
     }
 
 
@@ -46,6 +52,8 @@ public abstract class AbstractUserInterfaceClient {
     protected abstract void successfullySelectedActionSpace();
     protected abstract void successfullyUsedSlaves();
     protected abstract void handleError();
+    protected abstract void notEnoughPlayersError();
+    protected abstract void waitTurnError();
 
     public abstract void updateView();
 

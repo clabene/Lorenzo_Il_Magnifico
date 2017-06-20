@@ -10,16 +10,21 @@ import logic.resources.Wood;
 import network.ResponseCode;
 import network.client.Client;
 import network.client.ClientInterface;
+import network.client.ClientView;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Scanner;
 
 /**
  * Created by IBM on 14/06/2017.
  */
-public class CliClient extends AbstractUserInterfaceClient {
+public class CliClient extends AbstractUserInterfaceClient implements Serializable{
 
     public CliClient(ClientInterface clientController) {
         super(clientController);
+
     }
 
 
@@ -30,27 +35,32 @@ public class CliClient extends AbstractUserInterfaceClient {
 
     @Override
     public void successfullyJoinedGame() {
+        System.out.println("Join game successful");
 
 
     }
 
     @Override
     public void successfullyCreatedRoom() {
+        System.out.println("Create room successful");
 
     }
 
     @Override
     public void successfullySelectedFamilyMember() {
+        System.out.println("Selected Family Member successful");
 
     }
 
     @Override
     public void successfullySelectedActionSpace() {
+        System.out.println("Selected Family Member successful");
 
     }
 
     @Override
     public void successfullyUsedSlaves() {
+        System.out.println("Used slaves successful");
 
     }
 
@@ -60,8 +70,18 @@ public class CliClient extends AbstractUserInterfaceClient {
     }
 
     @Override
-    public void updateView() {
+    protected void notEnoughPlayersError() {
+        System.out.println("There are not enough players to start the game!");
+    }
 
+    @Override
+    protected void waitTurnError() {
+        System.out.println("This is not your turn!");
+
+    }
+
+    @Override
+    public void updateView() {
 
 
     }
@@ -94,14 +114,14 @@ public class CliClient extends AbstractUserInterfaceClient {
 
         switch (scanner.nextInt()){
             case 1: familyMemberMenu();
+                break;
                     //actionSpaceMenu();
-                    break;
+
             case 2: actionSpaceMenu();
                     //familyMemberMenu();
                     break;
             case 3: slavesMenu();
                     break;
-
         }
 
     }
@@ -109,15 +129,16 @@ public class CliClient extends AbstractUserInterfaceClient {
 
     public void familyMemberMenu(){
         System.out.println("Which family member do you want to select?");
-        getClientController().getView().printFamilyMembersAvailable(getId());
+        //getClientController().getView().printFamilyMembersAvailable(getId());
 
-        //getClientController().selectFamilyMember(getClientController().getView().printFamilyMembersAvailable(getId()));
+        getClientController().selectFamilyMember(getClientController().getView().printFamilyMembersAvailable(getId()));
 
     }
 
     public void actionSpaceMenu(){
         System.out.println("Which action space do you want to select?");
         getClientController().selectActionSpace(getClientController().getView().printActionSpaces());
+
 
     }
 
@@ -136,6 +157,7 @@ public class CliClient extends AbstractUserInterfaceClient {
         Scanner scanner  = new Scanner(System.in);
         logIn();
         loginMenu();
+
 
         while(true){
             actionMenu();

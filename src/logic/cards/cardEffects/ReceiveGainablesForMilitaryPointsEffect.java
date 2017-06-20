@@ -20,7 +20,12 @@ public class ReceiveGainablesForMilitaryPointsEffect extends ReceiveGainablesEff
             super.activate(player);
     }
 
-/*
+    @Override
+    public String toString() {
+        return " gain for MP";
+    }
+
+    /*
     public static void main(String[] args){
         Player p = new Player();
         p.gain(new MilitaryPointsTrack(11));

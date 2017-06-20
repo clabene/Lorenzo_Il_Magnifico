@@ -6,14 +6,13 @@ import logic.player.Player;
 import network.ResponseCode;
 import network.server.RemotePlayer;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
  * Created by IBM on 06/06/2017.
  */
-public interface ClientInterface {
-
-
+public interface ClientInterface extends Serializable {
 
     String getId();
 

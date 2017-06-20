@@ -25,8 +25,8 @@ public abstract class Card implements Serializable{
     private CardType cardType;
     private PeriodNumber period;
     private CardCost cardCost;
-    private CardEffect immediateEffect;
-    private CardEffect permanentEffect;
+    private  CardEffect immediateEffect;
+    private  CardEffect permanentEffect;
 
     private Integer activationValue;
     //did not use LimitedInteger here because this value is not necessarily the one of a dice. For example, some action spaces

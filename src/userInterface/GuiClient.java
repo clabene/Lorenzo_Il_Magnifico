@@ -21,8 +21,6 @@ public class GuiClient extends AbstractUserInterfaceClient {
     @Override
     public void successfullyLoggedIn() {
 
-
-
     }
 
     @Override
@@ -52,6 +50,16 @@ public class GuiClient extends AbstractUserInterfaceClient {
 
     @Override
     public void handleError() {
+
+    }
+
+    @Override
+    protected void notEnoughPlayersError() {
+
+    }
+
+    @Override
+    protected void waitTurnError() {
 
     }
 

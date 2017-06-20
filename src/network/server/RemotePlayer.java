@@ -18,7 +18,7 @@ import java.util.Collections;
 /**
  * Created by Pinos on 06/06/2017.
  */
-public abstract class RemotePlayer extends Player {
+public abstract class RemotePlayer extends Player implements Serializable {
 
     private transient GameRoom gameRoom;
 

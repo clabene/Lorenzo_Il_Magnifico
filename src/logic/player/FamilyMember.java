@@ -57,11 +57,15 @@ public class FamilyMember implements Serializable {
     }
 
     public String toString(){
-        return "\u001B[33m" + "  " +this.getPlayerId()+ "  " + this.color + " Family Member " + " value: " +this.value+ "\u001B[0m";
+        return this.color + " Family Member " + " value: " +this.value;
     }
 
     public void incrementFamilyMemberValue(int value){
         this.value += value;
+    }
+
+    public void setValue(int value){
+        this.value = value;
     }
 
 

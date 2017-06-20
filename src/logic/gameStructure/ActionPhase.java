@@ -12,12 +12,13 @@ import logic.player.Player;
 import logic.resources.SetOfResources;
 import logic.resources.Slave;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
  * Created by Pinos on 25/05/2017.
  */
-public class ActionPhase {
+public class ActionPhase implements Serializable{
 
     //private Player player;
     //private Board board;

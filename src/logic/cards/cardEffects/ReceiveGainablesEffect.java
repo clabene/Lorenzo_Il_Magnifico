@@ -24,7 +24,12 @@ public class ReceiveGainablesEffect implements CardEffect {
         player.gain(gainables.toArray(new Gainable[gainables.size()]));
     }
 
-/*
+    @Override
+    public String toString() {
+        return "receive gainables";
+    }
+
+    /*
     public static void main(String[] a){
         Player p = new Player("");
         ReceiveGainablesEffect r = new ReceiveGainablesEffect(new FaithPointsTrack(2), new Wood(3));

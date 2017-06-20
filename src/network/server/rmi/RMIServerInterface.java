@@ -1,16 +1,16 @@
 package network.server.rmi;
 
 import logic.player.FamilyMember;
-import network.client.RMIClientInterface;
-import network.server.RemotePlayer;
+import network.client.rmi.RMIClientInterface;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 /**
  * Created by Pinos on 06/06/2017.
  */
-public interface RMIServerInterface  extends Remote{
+public interface RMIServerInterface  extends Remote, Serializable{
 
     void sendMessage(String string, RMIClientInterface c) throws RemoteException;
 
@@ -36,7 +36,7 @@ public interface RMIServerInterface  extends Remote{
     * */
     void useSlaves()throws RemoteException;
 
-    void tryToLogIn(String id)throws RemoteException;
+    void tryToLogIn(String id, RMIClientInterface rmiClientInterface)throws RemoteException;
 
     /*
     * Client sends request to join a room

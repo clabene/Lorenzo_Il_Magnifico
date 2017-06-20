@@ -5,10 +5,12 @@ import logic.interfaces.Losable;
 import logic.player.Player;
 import logic.utility.StaticVariables;
 
+import java.io.Serializable;
+
 /**
  * Created by IBM on 20/05/2017.
  */
-public class FaithPointsTrack extends PointsTrack implements Losable {
+public class FaithPointsTrack extends PointsTrack implements Losable,Serializable {
 
     public FaithPointsTrack(int trackPosition){
         super(trackPosition);
@@ -43,7 +45,7 @@ public class FaithPointsTrack extends PointsTrack implements Losable {
 
     @Override
     public String toString(){
-        return "Faith points: " + getTrackPosition().getValue();
+        return "FP: " + getTrackPosition().getValue();
     }
 
 

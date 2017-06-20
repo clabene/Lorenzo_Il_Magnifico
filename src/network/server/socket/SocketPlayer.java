@@ -112,7 +112,7 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
             output.writeObject(periodNumber);
             output.flush();
         } catch (IOException e){
-            System.out.println("Could not ask for vatican decision");
+            System.out.println("Could not ask for council favours");
         }
         try {
             boolean notSupporting = (Boolean) input.readObject();
@@ -120,7 +120,7 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
             notifyRequestHandleOutcome(ResponseCode.OK);
 
         } catch (IOException | ClassNotFoundException e){
-            System.out.println("Could not receive vatican decision");
+            System.out.println("Could not receive council favour");
             notifyRequestHandleOutcome(ResponseCode.GENERIC_ERROR);
         }
     }
@@ -181,6 +181,7 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
     @Override
     public <P extends Player> void updateView(Board board, Collection<P> players) {
         try {
+
             output.writeObject("UPDATE_VIEW");
             output.writeObject(board);
 

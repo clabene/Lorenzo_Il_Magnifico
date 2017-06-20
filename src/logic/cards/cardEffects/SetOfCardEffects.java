@@ -21,4 +21,9 @@ public class SetOfCardEffects implements CardEffect {
         for(CardEffect tmp : cardEffects)
             tmp.activate(player);
     }
+
+    @Override
+    public String toString() {
+        return "setofeffects";
+    }
 }

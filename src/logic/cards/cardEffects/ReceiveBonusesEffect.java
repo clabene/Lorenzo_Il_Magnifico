@@ -22,4 +22,8 @@ public class ReceiveBonusesEffect implements CardEffect {
         player.getBonuses().addAll(bonuses);
     }
 
+    @Override
+    public String toString() {
+        return "receive bonus";
+    }
 }

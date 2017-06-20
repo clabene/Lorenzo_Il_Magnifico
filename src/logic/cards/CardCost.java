@@ -120,5 +120,9 @@ public class CardCost implements Losable, Serializable {
         System.out.println("2 " + militaryPointsCost);
     }
 
+    @Override
+    public String toString() {
 
+        return "R: "+ getResourcesCost().toString();
+    }
 }

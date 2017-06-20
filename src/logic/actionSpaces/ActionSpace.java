@@ -12,9 +12,9 @@ import java.util.ArrayList;
  **/
 public abstract class ActionSpace implements Serializable{
 
-    private ArrayList<Gainable> bonus = new ArrayList<>();
+    private  ArrayList<Gainable> bonus = new ArrayList<>();
 
-    private ActionSpaceType actionSpaceType;
+    private  ActionSpaceType actionSpaceType;
 
     private boolean covered = false;
 
@@ -22,7 +22,7 @@ public abstract class ActionSpace implements Serializable{
     private final int MAX_NUMBER_OF_FAMILIARS; //= (int) Double.POSITIVE_INFINITY; if no limit
     //private LimitedInteger numberOfFamiliars;
 
-    private ArrayList<FamilyMember> familyMembers = new ArrayList<>();
+    private  ArrayList<FamilyMember> familyMembers = new ArrayList<>();
 
     public ActionSpace( int MAX_NUMBER_OF_FAMILIARS, ActionSpaceType actionSpaceType, int minValueToPlaceFamiliar, Gainable ... bonuses){
         this.MAX_NUMBER_OF_FAMILIARS = MAX_NUMBER_OF_FAMILIARS;

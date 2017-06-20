@@ -1,10 +1,7 @@
 package network.client;
 
-import com.sun.corba.se.spi.orbutil.fsm.FSM;
-import com.sun.org.apache.regexp.internal.RE;
-import logic.actionSpaces.ActionSpace;
 import logic.player.FamilyMember;
-import network.server.RemotePlayer;
+import network.client.rmi.RMIClient;
 import userInterface.AbstractUserInterfaceClient;
 import logic.board.Board;
 import logic.player.Player;
@@ -13,8 +10,6 @@ import network.client.socket.SocketClient;
 import userInterface.CliClient;
 import userInterface.GuiClient;
 
-import javax.print.attribute.standard.PrinterLocation;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
 import java.util.UUID;
@@ -24,7 +19,7 @@ import java.util.UUID;
  */
 public class Client implements ClientInterface {
 
-    private String id = UUID.randomUUID().toString();
+    private transient String id = UUID.randomUUID().toString();
 
     private final int RMI_PORT = 6789;
     private final int SOCKET_PORT = 9876;

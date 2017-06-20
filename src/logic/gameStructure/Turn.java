@@ -9,13 +9,14 @@ import logic.player.FamilyMember;
 import logic.player.Player;
 
 import javax.print.attribute.standard.PrinterLocation;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Stack;
 
 /**
  * Created by Pinos on 25/05/2017.
  */
-public class Turn {
+public class Turn implements Serializable{
     //private ArrayList<Player> players;
     //private Board board;
 

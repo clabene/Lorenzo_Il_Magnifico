@@ -60,6 +60,11 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
     }
 
     @Override
+    public String toString() {
+        return " extra action";
+    }
+
+    @Override
     public void activate(Player player) {
         if(cardType != null && actionSpaces.isEmpty()) addTowerActionSpaces(player);
 

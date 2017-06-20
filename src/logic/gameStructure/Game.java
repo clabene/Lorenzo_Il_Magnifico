@@ -11,6 +11,7 @@ import logic.player.Player;
 import network.ResponseCode;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -18,7 +19,7 @@ import java.util.Stack;
 /**
  * Created by Pinos on 25/05/2017.
  */
-public class Game {
+public class Game implements Serializable{
     //private ArrayList<Player> players = new ArrayList<>();
 
 
@@ -102,7 +103,6 @@ public class Game {
     public ResponseCode playingExtraAction(Player player, int familyMemberValue, ActionSpace actionSpace){
 
         actionPhase.activateBonuses(player, actionSpace);
-
         Boolean b = actionPhase.putFamilyMemberOnActionSpace(player,
                 new FamilyMember(null, familyMemberValue, player.getId()),
                 actionSpace);
@@ -171,6 +171,8 @@ public class Game {
     public void throwDice(Board board){
         board.setDice();
     }
+
+
 
     public Turn getTurn() {
         return turn;

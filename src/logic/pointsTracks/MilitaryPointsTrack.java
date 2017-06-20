@@ -45,7 +45,7 @@ public class MilitaryPointsTrack extends PointsTrack implements Losable {
 
     @Override
     public String toString(){
-        return "Military points: " + getTrackPosition().getValue();
+        return "MP: " + getTrackPosition().getValue();
     }
 
 

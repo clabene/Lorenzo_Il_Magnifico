@@ -7,6 +7,7 @@ import logic.player.FamilyMember;
 import logic.player.Plank;
 import logic.player.Player;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -14,17 +15,23 @@ import java.util.UUID;
 /**
  * Created by IBM on 06/06/2017.
  */
-public abstract class AbstractNetworkClient {
+public abstract class AbstractNetworkClient implements Serializable{
 
     /*
     * Here client sends requests
     * */
 
-    private ClientInterface clientController;
-
+    //private  transient ClientInterface clientController;
+/*
     public AbstractNetworkClient(ClientInterface clientController){
         this.clientController = clientController;
     }
+*/
+    public AbstractNetworkClient(){
+
+    }
+
+
     //private String id = UUID.randomUUID().toString();
     //private String name; //set this in Client class
 
@@ -34,6 +41,10 @@ public abstract class AbstractNetworkClient {
         return name;
     }
 */
+/*
+    public void setClientController(ClientInterface clientController) {
+        this.clientController = clientController;
+    }
 
     public String getId(){
         return getClientController().getId();
@@ -42,7 +53,7 @@ public abstract class AbstractNetworkClient {
     public ClientInterface getClientController() {
         return this.clientController;
     }
-
+*/
     /*
     * Connects to the right server according to the preferred network type
     * */

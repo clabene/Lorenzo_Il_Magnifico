@@ -5,10 +5,7 @@ import com.google.gson.Gson;
 import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.player.Player;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
@@ -17,7 +14,7 @@ import java.util.Stack;
 /**
  * Created by Pinos on 25/05/2017.
  */
-public class Period {
+public class Period implements Serializable{
 
     //private ArrayList<Player> players;
     private Stack<Card> cards;

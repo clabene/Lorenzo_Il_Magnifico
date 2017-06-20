@@ -23,13 +23,14 @@ public class SocketClient extends AbstractNetworkClient {
     private int port;
     private Socket socket;
 
+
     private ObjectOutputStream output;
     private ObjectInputStream input;
 
     private ClientStreamHandler streamHandler;
 
     public SocketClient(ClientInterface clientController,int port){
-        super(clientController);
+        //super(clientController);
         this.ipAddress = "127.0.0.1";
         this.port = port;
 
@@ -61,7 +62,7 @@ public class SocketClient extends AbstractNetworkClient {
 
 
     public void notifyRequestHandleOutcome(ResponseCode requestHandleOutcome){ //bring this to streamHandler
-        getClientController().showOutcome(requestHandleOutcome);
+        //getClientController().showOutcome(requestHandleOutcome);
         /*
         try {
             ResponseCode requestHandleOutcome = (ResponseCode) input.readObject();
@@ -76,7 +77,7 @@ public class SocketClient extends AbstractNetworkClient {
     public void tryToLogIn() {
         try{
             output.writeObject("LOG_IN_REQUEST");
-            output.writeObject(getId());
+           // output.writeObject(getId());
             output.flush();
         } catch (IOException e){
             System.out.println("Could not send log in request");
@@ -158,7 +159,7 @@ public class SocketClient extends AbstractNetworkClient {
 
     private boolean takeVaticanDecision(int periodNumber){
         System.out.println("Do you want to support the Vatican?");
-        System.out.println(getClientController().getView().getBoard().getTassels()[periodNumber]);
+       // System.out.println(getClientController().getView().getBoard().getTassels()[periodNumber]);
         System.out.println("0) Yes, 1) No");
         Scanner scanner = new Scanner(System.in);
         do {
