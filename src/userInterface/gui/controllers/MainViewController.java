@@ -37,14 +37,11 @@ public class MainViewController extends Controller {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        new Trigger(this).start();
+
         placeBoard();
         placeOpponentsAccordion();
 
-        actionSpaceSelected.bindBidirectional(board.actionSpaceSelectedProperty());
-        familyMemberSelected.bindBidirectional(((MyPlayerView) getPlayerFromId(getGuiClient().getId())).familyMemberSelectedProperty());
-
-
-        new Trigger(this).start();
     }
 
 
@@ -59,6 +56,9 @@ public class MainViewController extends Controller {
         //myPlayer.layoutYProperty().bind(board.getYPosition().add(board.getHeightProperty()).multiply(1.17));
         myPlayer.setBackground(new Background(new BackgroundFill(Color.TAN, new CornerRadii(40), null)));
 
+        familyMemberSelected.bindBidirectional( myPlayer.getFamilyMemberSelectedProperty());
+        slaveUsageSelected.bindBidirectional( myPlayer.getSlaveUsageSelectedProperty());
+
         pane.getChildren().add(myPlayer);
     }
 
@@ -70,6 +70,9 @@ public class MainViewController extends Controller {
     private void placeBoard(){
         board.bindXPosition(pane.widthProperty().divide(30));
         board.bindYPosition(pane.heightProperty().divide(20));
+
+        actionSpaceSelected.bindBidirectional(board.actionSpaceSelectedProperty());
+
         pane.getChildren().addAll(board.getComponents());
     }
 
@@ -134,16 +137,26 @@ public class MainViewController extends Controller {
         @Override
         public void run() {
             while(true){
+
+                try {
+                    sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
                 if(mainViewController.actionSpaceSelected.get()) {
                     getGuiClient().selectActionSpace(board.getSelectedId());
+                    System.out.println("getGuiClient().selectActionSpace(board.getSelectedId())");
                     mainViewController.actionSpaceSelected.set(false);
                 }
                 if(mainViewController.familyMemberSelected.get()){
                     getGuiClient().selectFamilyMember(((MyPlayerView)getPlayerFromId(getGuiClient().getId())).getSelectedFamilyMember());
+                    System.out.println("getGuiClient().selectFamilyMember(((MyPlayerView)getPlayerFromId(getGuiClient().getId())).getSelectedFamilyMember());");
                     mainViewController.familyMemberSelected.set(false);
                 }
                 if(mainViewController.slaveUsageSelected.get()){
-                    //todo getGuiClient().useSlaves( get quantity form my player ... );
+                    getGuiClient().useSlaves(1);
+                    System.out.println("getGuiClient().useSlaves(((MyPlayerView) getPlayerFromId(getGuiClient().getId())).getSlavesUsageQuantity());");
                     mainViewController.slaveUsageSelected.set(false);
                 }
             }

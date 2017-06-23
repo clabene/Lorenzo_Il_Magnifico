@@ -379,6 +379,10 @@ public class PlayerView extends Pane {
         updateQuantity(FAITH_INDEX, quantity);
     }
 
+    private void updateQuantity(int INDEX, String quantity){
+        images[INDEX].setText("quantity: "+quantity);
+    }
+
     public void updateFamilyMemberValue(Color color, String value) {
         if(color == null){
             familyMembers[NEUTRAL_INDEX].setValue(value);
@@ -397,19 +401,9 @@ public class PlayerView extends Pane {
         }
     }
 
-    private void updateQuantity(int INDEX, String quantity){
-        images[INDEX].setText("quantity: "+quantity);
+    public LabeledImageView getSlaveImageView(){
+        return images[SLAVE_INDEX];
     }
-
-
-
-
-
-
-
-
-
-
 
     public enum ConfigurationMode{
         OPPONENT, MY_PLAYER;

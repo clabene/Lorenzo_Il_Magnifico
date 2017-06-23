@@ -21,12 +21,24 @@ public class MyPlayerView extends TabPane implements PlayerTag {
 
     private Tab[] tabs = new Tab[7];
 
+    private BooleanProperty familyMemberSelected = new SimpleBooleanProperty(false);
+    private FamilyMember selectedFamilyMember;
+
+    public BooleanProperty getFamilyMemberSelectedProperty() {
+        return familyMemberSelected;
+    }
+    public FamilyMember getSelectedFamilyMember() {
+        return selectedFamilyMember;
+    }
+
+
     public MyPlayerView(String playerId, String playerName){
         me = new PlayerView(PlayerColor.RED, PlayerView.ConfigurationMode.MY_PLAYER); //todo client should be able to pick a color
         id = playerId;
         name = playerName;
         initializeTabs();
         setFamilyMemberSelectable();
+        setSlavesSelectable();
         getTabs().addAll(tabs);
     }
 
@@ -37,7 +49,6 @@ public class MyPlayerView extends TabPane implements PlayerTag {
     public String getPlayerId() {
         return id;
     }
-
     private void initializeTabs(){
         initializeResourcesTab();
         initializePointsTab();
@@ -89,6 +100,8 @@ public class MyPlayerView extends TabPane implements PlayerTag {
         tabs[5] = new Tab("Ventures", p);
         tabs[5].setClosable(false);
     }
+
+
     private void initializeFamilyMembersTab(){
         Pane p = new Pane(me.getFamilyMembers().toArray(new Node[me.getFamilyMembers().size()]));
         me.getFamilyMembersXPosition().bind(widthProperty().divide(11));
@@ -96,8 +109,6 @@ public class MyPlayerView extends TabPane implements PlayerTag {
         tabs[6] = new Tab("Family Members", p);
         tabs[6].setClosable(false);
     }
-
-
     public void addLandCard(String name){
         me.addLandCard(name);
     }
@@ -107,10 +118,10 @@ public class MyPlayerView extends TabPane implements PlayerTag {
     public void addBuildingCard(String name){
         me.addBuildingCard(name);
     }
+
     public void addVentureCard(String name){
         me.addVentureCard(name);
     }
-
     public void updateWoodQuantity(String quantity){
         me.updateWoodQuantity(quantity);
     }
@@ -129,35 +140,38 @@ public class MyPlayerView extends TabPane implements PlayerTag {
     public void updateMilitaryPointsQuantity(String quantity){
         me.updateMilitaryPointsQuantity( quantity);
     }
+
     public void updateFaithPointsQuantity(String quantity){
         me.updateFaithPointsQuantity( quantity);
     }
+
 
     public void updateFamilyMemberValue(Color color, String value) {
         me.updateFamilyMemberValue(color, value);
     }
 
-
-    private BooleanProperty familyMemberSelected = new SimpleBooleanProperty(false);
-    private FamilyMember selectedFamilyMember;
-
     private void setFamilyMemberSelectable(){
         for(Node tmp : me.getFamilyMembers()){
-            tmp.setOnMouseClicked(e -> familyMemberSelected.set(true));
-            FamilyMemberImageView a  = (FamilyMemberImageView) tmp;
-            selectedFamilyMember = new FamilyMember(a.getDiceColor(), a.getValue(), id );
+            if(!(tmp instanceof FamilyMemberImageView)) continue;
+            tmp.setOnMouseClicked(e -> {
+                familyMemberSelected.set(true);
+                FamilyMemberImageView f  = (FamilyMemberImageView) tmp;
+                selectedFamilyMember = new FamilyMember(f.getDiceColor(), f.getValue(), id );
+                });
         }
     }
-    public BooleanProperty familyMemberSelectedProperty() {
-        return familyMemberSelected;
+
+    private BooleanProperty slaveUsageSelected = new SimpleBooleanProperty(false);
+
+    private void setSlavesSelectable(){
+        me.getSlaveImageView().setOnMouseClicked( e -> {
+            System.out.println(slaveUsageSelected.get());
+            slaveUsageSelected.set(true);
+            System.out.println(slaveUsageSelected.get());
+        } );
     }
 
-    public FamilyMember getSelectedFamilyMember() {
-        return selectedFamilyMember;
+    public BooleanProperty getSlaveUsageSelectedProperty() {
+        return slaveUsageSelected;
     }
-
-    private void setSlavesSelectables(){
-
-    }
-
 }

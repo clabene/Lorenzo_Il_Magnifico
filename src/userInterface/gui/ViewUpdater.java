@@ -6,6 +6,8 @@ import logic.player.FamilyMember;
 import logic.player.Plank;
 import logic.player.Player;
 import network.client.ClientView;
+import userInterface.PlayerColor;
+import userInterface.gui.controllers.MainViewController;
 
 import java.util.HashMap;
 
@@ -16,10 +18,11 @@ public class ViewUpdater {
 
     private ClientView oldClientView;
     private ClientView newClientView;
-
-    public ViewUpdater(){
+    private MainViewController controller;
+    public ViewUpdater(MainViewController mainViewController){
         oldClientView = new ClientView();
         oldClientView.setBoard(new Board(0));
+        controller = mainViewController;
     }
 
     public void updateView(ClientView newClientView){
@@ -77,8 +80,12 @@ public class ViewUpdater {
     private void updatePlayers(){
         for(Player tmp : newClientView.getPlayers()){
             Player oldPlayer = getOldPlayerFromId(tmp.getId());
-            if(oldPlayer == null) ;//todo add new opponent then call updateSinglePlayer with that and tmp as parameters
-            else updateSinglePlayer(oldPlayer, tmp);
+            if(oldPlayer == null) {
+                //add new opponent then call updateSinglePlayer with that and tmp as parameters
+                controller.addOpponent(PlayerColor.RED, tmp.getId(), "name");
+                oldPlayer = getOldPlayerFromId(tmp.getId());
+            }
+            updateSinglePlayer(oldPlayer, tmp);
         }
     }
     private Player getOldPlayerFromId(String id){
@@ -99,22 +106,22 @@ public class ViewUpdater {
 
         for(int i = 0; i < 6; i++){
             if( newPlank.getCards().getLandCards()[i] == null ) break; //no more land cards to check
-            if( oldPlank.getCards().getLandCards()[i] == null) ;//todo add card
+            if( oldPlank.getCards().getLandCards()[i] == null) controller.addLandCard(playerId, "name");//add card
         }
 
         for(int i = 0; i < 6; i++){
             if( newPlank.getCards().getPersonCards()[i] == null ) break; //no more person cards to check
-            if( oldPlank.getCards().getPersonCards()[i] == null) ;//todo add card
+            if( oldPlank.getCards().getPersonCards()[i] == null) controller.addPersonCard(playerId, "name");//add card
         }
 
         for(int i = 0; i < 6; i++){
             if( newPlank.getCards().getBuildingCards()[i] == null ) break; //no more building cards to check
-            if( oldPlank.getCards().getBuildingCards()[i] == null) ;//todo add card
+            if( oldPlank.getCards().getBuildingCards()[i] == null) controller.addBuildingCard(playerId, "name");//todo add card
         }
 
         for(int i = 0; i < 6; i++){
             if( newPlank.getCards().getVentureCards()[i] == null ) break; //no more ventures cards to check
-            if( oldPlank.getCards().getVentureCards()[i] == null) ;//todo add card
+            if( oldPlank.getCards().getVentureCards()[i] == null) controller.addVentureCard(playerId, "name");//add card
         }
     }
     private void updatePoints(Player oldPlayer, Player newPlayer){
