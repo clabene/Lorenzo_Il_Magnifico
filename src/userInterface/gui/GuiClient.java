@@ -1,15 +1,11 @@
 package userInterface.gui;
 
 import javafx.application.Platform;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import logic.player.Player;
 import network.ResponseCode;
 import network.client.ClientInterface;
 import userInterface.AbstractUserInterfaceClient;
 import userInterface.gui.controllers.Controller;
-import userInterface.gui.controllers.LobbyDaCancellareController;
-import userInterface.gui.controllers.LogInDaCancellareController;
 import userInterface.gui.controllers.MainViewController;
 
 /**
@@ -85,6 +81,21 @@ public class GuiClient extends AbstractUserInterfaceClient {
 
     @Override
     protected void waitTurnError() {
+
+    }
+
+    @Override
+    protected void successfullyOperationFinished() {
+
+    }
+
+    @Override
+    protected void successfullyExcommunicationTaken() {
+
+    }
+
+    @Override
+    protected void successfullyGameStarted() {
 
     }
 

@@ -196,4 +196,9 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void leaveGame() {
+
+    }
 }

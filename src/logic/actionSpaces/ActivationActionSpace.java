@@ -40,8 +40,6 @@ public class ActivationActionSpace extends ActionSpace {
         */
     }
 
-
-    }
 /*
     private void removeNotValidCard(Card card) {
         if(card.getActivationValue() != null && card.getActivationValue() > getLastFamilyMemberAdded().getValue())
@@ -87,6 +85,7 @@ public class ActivationActionSpace extends ActionSpace {
         if( card == null)
             return;
         card.getPermanentEffect().activate(player);
+    }
 
     public boolean action(Player player){
         player.getPlank().setToUseSeparateResources(true);

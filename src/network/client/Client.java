@@ -9,7 +9,7 @@ import logic.board.Board;
 import logic.player.Player;
 import network.ResponseCode;
 import network.client.socket.SocketClient;
-import userInterface.CliClient;
+import userInterface.cli.CliClient;
 import userInterface.gui.GuiClient;
 
 import java.util.Collection;

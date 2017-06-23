@@ -3,7 +3,6 @@ package userInterface.gui.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
-import userInterface.gui.controllers.Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;

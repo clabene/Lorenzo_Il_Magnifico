@@ -90,7 +90,7 @@ public class ExchangeGainablesEffect implements CardEffect{ //todo make this dec
     public void activate(Player player){
   /*      do{
             printMenu();
-        } while(!doSelectedAction(selectedFromMenu(), player));*/
+        } while(!doSelectedAction(selectedFromMenu(), player));
         doSelectedAction(1,player);
     }
     */
