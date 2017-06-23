@@ -1,5 +1,6 @@
 package logic.gameStructure;
 
+import logic.cards.Card;
 import logic.cards.VentureCard;
 import logic.player.Player;
 import logic.player.VictoryPoint;
@@ -25,8 +26,10 @@ public class WinnerElector implements Serializable{
             tmp.gain(tmp.getLandCardsPoints().calculateVictoryPointsFromPosition(tmp.getLandCardsPoints().getTrackPosition().getValue()));
             tmp.gain(tmp.getPersonCardsPoints().calculateVictoryPointsFromPosition(tmp.getPersonCardsPoints().getTrackPosition().getValue()));
             tmp.gain(new VictoryPoint(tmp.getPlank().getSetOfResources().getQuantityOfResources()/5));
-            for(VentureCard tmp1: (VentureCard[]) tmp.getPlank().getCards().getVentureCards()){
-                tmp1.getPermanentEffect().activate(tmp);
+            for(Card tmp1:  tmp.getPlank().getCards().getVentureCards()){
+
+                if(tmp1 != null && tmp1.getPermanentEffect() != null)
+                        tmp1.getPermanentEffect().activate(tmp);
             }
         }
         getVictoryPointsFromMilitaryPosition();

@@ -114,23 +114,25 @@ public class CliClient extends AbstractUserInterfaceClient implements Serializab
         }
     }
 
-    public void actionMenu(){
+    public boolean actionMenu(){
         System.out.println("What do you want to do?\n 1)Select Family Member \n 2)Select Action Space\n 3)Use slaves\n 4) Leave the game \n ");
         Scanner scanner = new Scanner(System.in);
 
         switch (scanner.nextInt()){
             case 1: familyMemberMenu();
-                break;
+                return false;
             //actionSpaceMenu();
 
             case 2: actionSpaceMenu();
                 //familyMemberMenu();
-                break;
+                return false;
             case 3: slavesMenu();
-                break;
+                return false;
 
             case 4: leaveGame();
-                return;
+                return true;
+
+            default: return false;
         }
 
     }
@@ -169,7 +171,8 @@ public class CliClient extends AbstractUserInterfaceClient implements Serializab
 
 
         while(true){
-            actionMenu();
+            if(actionMenu())
+                break;
         }
 
 

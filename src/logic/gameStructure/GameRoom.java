@@ -360,7 +360,7 @@ public class GameRoom implements Serializable{
         }
 
         winnerElector.setPlayers(playersWinner);
-        players.get(winnerElector.getWinner()).setWinner(true);
+        players.get(winnerElector.getWinner().getId()).setWinner(true);
         players.get(id).setPlayerLeft(true);
 
         updatePlayersView();

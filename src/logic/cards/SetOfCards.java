@@ -100,7 +100,9 @@ public class SetOfCards implements Serializable{
         return cards[PERSON_CARD_INDEX];
     }
     public Card[] getVentureCards() {
-        return cards[VENTURE_CARD_INDEX];
+
+            return cards[VENTURE_CARD_INDEX];
+
     }
 
     public static void main(String args[]) throws LimitedValueOffRangeException {

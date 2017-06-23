@@ -383,7 +383,7 @@ public class ClientView implements Serializable{
         for(Player tmp1: players){
             if(((RemotePlayer) tmp1).getPlayerLeft() || ((RemotePlayer) tmp1).getIsWinner()){
                 gameFinished = true;
-                return;
+                break;
             }
         }
 
@@ -407,13 +407,13 @@ public class ClientView implements Serializable{
             }
 
             if(((RemotePlayer)tmp).getIsWinner()){
-                System.out.print("    WINNER!!!!!!!!!!!!!!!!");
+                System.out.print(blue+"    IS THE WINNER!!!!!!!!!!!!!!!!"+end);
 
-                return;
+
             }
 
-            if(((RemotePlayer) tmp).getCurrentPlayer())
-                System.out.println(blue+"   should move!");
+            if(((RemotePlayer) tmp).getCurrentPlayer() && !gameFinished )
+                System.out.print(blue+"   should move!");
 
 
             System.out.println(end+"\n");
@@ -431,10 +431,11 @@ public class ClientView implements Serializable{
             System.out.println(cyan+j+j+j+j+end);
             i++;
 
-            if(gameFinished)
-                System.out.println(red+" Tha game is finished!!!!"+ end);
+
 
         }
+        if(gameFinished)
+            System.out.println(red+" Tha game is finished!!!!"+ end);
 
         //----------------------------------fine torri----------------------------------
         /*
