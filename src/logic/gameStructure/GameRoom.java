@@ -170,12 +170,14 @@ public class GameRoom implements Serializable{
 
         //players.get(playerId).notifyRequestHandleOutcome(responseCode);
 
-        if(responseCode == ResponseCode.OK) updatePlayersView();
-
-
-
-        changeCurrentPlayer();
-        changeTurn();
+        if(responseCode == ResponseCode.OK) {
+            player.notifyRequestHandleOutcome(responseCode);
+            updatePlayersView();
+            changeCurrentPlayer();
+            changeTurn();
+        }
+        else
+            player.notifyRequestHandleOutcome(responseCode);
 
 
     }

@@ -2,34 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/userInterface/AbstractUserInterfaceClient.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/userInterface/CliClient.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/userInterface/GuiClient.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/userInterface/fxml/login.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/userInterface/fxml/partita_esempio.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/userInterface/fxml/startGame.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/userInterface/gui/Controller.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/actionSpaces/ActivationActionSpace.java" afterPath="$PROJECT_DIR$/src/logic/actionSpaces/ActivationActionSpace.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/actionSpaces/TowerActionSpace.java" afterPath="$PROJECT_DIR$/src/logic/actionSpaces/TowerActionSpace.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/board/Board.java" afterPath="$PROJECT_DIR$/src/logic/board/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/cards/CardCost.java" afterPath="$PROJECT_DIR$/src/logic/cards/CardCost.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/cards/cardEffects/CardEffect.java" afterPath="$PROJECT_DIR$/src/logic/cards/cardEffects/CardEffect.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/cards/cardEffects/ExchangeGainablesEffect.java" afterPath="$PROJECT_DIR$/src/logic/cards/cardEffects/ExchangeGainablesEffect.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/cards/cardEffects/PlayExtraActionPhaseEffect.java" afterPath="$PROJECT_DIR$/src/logic/cards/cardEffects/PlayExtraActionPhaseEffect.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/gameStructure/ActionPhase.java" afterPath="$PROJECT_DIR$/src/logic/gameStructure/ActionPhase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/gameStructure/Game.java" afterPath="$PROJECT_DIR$/src/logic/gameStructure/Game.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java" afterPath="$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/gameStructure/Turn.java" afterPath="$PROJECT_DIR$/src/logic/gameStructure/Turn.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/player/FamilyMember.java" afterPath="$PROJECT_DIR$/src/logic/player/FamilyMember.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/player/Player.java" afterPath="$PROJECT_DIR$/src/logic/player/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/resources/CouncilFavour.java" afterPath="$PROJECT_DIR$/src/logic/resources/CouncilFavour.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/utility/CardSetupHandler.java" afterPath="$PROJECT_DIR$/src/logic/utility/CardSetupHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/ResponseCode.java" afterPath="$PROJECT_DIR$/src/network/ResponseCode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/Client.java" afterPath="$PROJECT_DIR$/src/network/client/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/ClientInterface.java" afterPath="$PROJECT_DIR$/src/network/client/ClientInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/ClientView.java" afterPath="$PROJECT_DIR$/src/network/client/ClientView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/rmi/RMIClient.java" afterPath="$PROJECT_DIR$/src/network/client/rmi/RMIClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/server/RemotePlayer.java" afterPath="$PROJECT_DIR$/src/network/server/RemotePlayer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java" afterPath="$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/server/rmi/RMIServer.java" afterPath="$PROJECT_DIR$/src/network/server/rmi/RMIServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/server/rmi/RMIServerInterface.java" afterPath="$PROJECT_DIR$/src/network/server/rmi/RMIServerInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/AbstractUserInterfaceClient.java" afterPath="$PROJECT_DIR$/src/userInterface/AbstractUserInterfaceClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/CliClient.java" afterPath="$PROJECT_DIR$/src/userInterface/CliClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/GuiClient.java" afterPath="$PROJECT_DIR$/src/userInterface/GuiClient.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -52,32 +33,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="GameRoom.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameRoom.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1266">
-              <caret line="381" column="0" lean-forward="true" selection-start-line="381" selection-start-column="0" selection-end-line="381" selection-end-column="0" />
+            <state relative-caret-position="1003">
+              <caret line="181" column="0" lean-forward="false" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
               <folding>
                 <element signature="e#3066#3067#0" expanded="true" />
                 <element signature="e#3120#3121#0" expanded="true" />
-                <element signature="e#7297#7298#0" expanded="true" />
-                <element signature="e#7368#7369#0" expanded="true" />
+                <element signature="e#7461#7462#0" expanded="true" />
+                <element signature="e#7532#7533#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CliClient.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/userInterface/CliClient.java">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/logic/gameStructure/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2046">
-              <caret line="87" column="29" lean-forward="true" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
+            <state relative-caret-position="391">
+              <caret line="93" column="29" lean-forward="true" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
               <folding>
-                <element signature="e#4446#4447#0" expanded="true" />
-                <element signature="e#4495#4496#0" expanded="true" />
-                <marker date="1498223023285" expanded="false" signature="2340:2351" ph=" { " />
-                <marker date="1498223023285" expanded="false" signature="2395:2401" ph=" }" />
+                <marker date="1498212797416" expanded="true" signature="4979:4986" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActionPhase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/logic/gameStructure/ActionPhase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="292">
+              <caret line="86" column="19" lean-forward="false" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -117,16 +105,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RMIServerInterface.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/network/server/rmi/RMIServerInterface.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1208">
-              <caret line="53" column="9" lean-forward="false" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RMIPlayer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -141,7 +119,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientView.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ClientView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/network/client/ClientView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1341">
@@ -162,16 +140,6 @@
                 <element signature="e#3287#3288#0" expanded="true" />
                 <element signature="e#3331#3332#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RMIServer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/network/server/rmi/RMIServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1030">
-              <caret line="118" column="56" lean-forward="false" selection-start-line="118" selection-start-column="56" selection-end-line="118" selection-end-column="56" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -259,11 +227,11 @@
         <option value="$PROJECT_DIR$/src/network/server/rmi/RMIServer.java" />
         <option value="$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java" />
         <option value="$PROJECT_DIR$/src/network/server/RemotePlayer.java" />
-        <option value="$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java" />
         <option value="$PROJECT_DIR$/src/network/client/ClientInterface.java" />
         <option value="$PROJECT_DIR$/src/userInterface/CliClient.java" />
         <option value="$PROJECT_DIR$/src/network/client/Client.java" />
         <option value="$PROJECT_DIR$/src/network/client/ClientView.java" />
+        <option value="$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java" />
       </list>
     </option>
   </component>
@@ -327,46 +295,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lorenzo_Il_Magnifico" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lorenzo_Il_Magnifico" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="userInterface" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lorenzo_Il_Magnifico" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lorenzo_Il_Magnifico" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="userInterface" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gui" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -985,13 +913,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495533735855</updated>
     </task>
-    <task id="LOCAL-00034" summary="update exchomunication base things">
-      <created>1496264389384</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1496264389384</updated>
-    </task>
     <task id="LOCAL-00035" summary="update exchomunication base things">
       <created>1496264469418</created>
       <option name="number" value="00035" />
@@ -1328,7 +1249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1497965163217</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="cli update">
+      <created>1498223980225</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1498223980227</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1374,7 +1302,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-13" y="-13" width="2762" height="1770" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.116325185" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1391,7 +1318,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21480502" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24320242" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24320242" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1532,6 +1459,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
           <caret line="42" column="26" lean-forward="false" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+          <folding>
+            <element signature="e#1479#1480#0" expanded="false" />
+            <element signature="e#1515#1516#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1568,6 +1499,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1002">
           <caret line="93" column="35" lean-forward="false" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1756,14 +1688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/gameStructure/ActionPhase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="118" column="25" lean-forward="true" selection-start-line="118" selection-start-column="25" selection-end-line="118" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/actionSpaces/CouncilActionSpace.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="726">
@@ -1827,18 +1751,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/gameStructure/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="154" column="0" lean-forward="false" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
-          <folding>
-            <element signature="e#4181#4182#0" expanded="true" />
-            <element signature="e#4238#4239#0" expanded="true" />
-            <marker date="1498212797416" expanded="true" signature="4979:4986" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/network/client/rmi/RMIClientInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -1898,19 +1810,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1266">
-          <caret line="381" column="0" lean-forward="true" selection-start-line="381" selection-start-column="0" selection-end-line="381" selection-end-column="0" />
-          <folding>
-            <element signature="e#3066#3067#0" expanded="true" />
-            <element signature="e#3120#3121#0" expanded="true" />
-            <element signature="e#7297#7298#0" expanded="true" />
-            <element signature="e#7368#7369#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/network/client/ClientInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="957">
@@ -1940,24 +1839,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/userInterface/CliClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2046">
-          <caret line="87" column="29" lean-forward="true" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
-          <folding>
-            <element signature="e#4446#4447#0" expanded="true" />
-            <element signature="e#4495#4496#0" expanded="true" />
-            <marker date="1498223023285" expanded="false" signature="2340:2351" ph=" { " />
-            <marker date="1498223023285" expanded="false" signature="2395:2401" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/network/client/ClientView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1341">
           <caret line="434" column="65" lean-forward="false" selection-start-line="434" selection-start-column="65" selection-end-line="434" selection-end-column="65" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logic/gameStructure/ActionPhase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="86" column="19" lean-forward="false" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/CliClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1056">
+          <caret line="87" column="29" lean-forward="true" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logic/gameStructure/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="93" column="29" lean-forward="true" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
+          <folding>
+            <marker date="1498212797416" expanded="true" signature="4979:4986" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="181" column="0" lean-forward="false" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+          <folding>
+            <element signature="e#3066#3067#0" expanded="true" />
+            <element signature="e#3120#3121#0" expanded="true" />
+            <element signature="e#7461#7462#0" expanded="true" />
+            <element signature="e#7532#7533#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
