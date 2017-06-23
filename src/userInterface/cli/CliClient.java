@@ -1,5 +1,9 @@
 package userInterface.cli;
 
+import logic.actionSpaces.ActionSpace;
+import logic.interfaces.Gainable;
+import logic.resources.CouncilFavour;
+import logic.utility.StaticVariables;
 import network.ResponseCode;
 import network.client.Client;
 import network.client.ClientInterface;
@@ -7,6 +11,7 @@ import network.client.ClientView;
 import userInterface.AbstractUserInterfaceClient;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -178,6 +183,87 @@ public class CliClient extends AbstractUserInterfaceClient implements Serializab
         }
 
 
+    }
+
+
+    //----------------------------nuove cose
+
+    @Override
+    public boolean dealWithVatican(int periodNumber) {
+        return vaticanMenu(periodNumber);
+    }
+
+    public Gainable[] selectCouncilFavour(int numberOfFavours){
+        return councilFavourMenu(numberOfFavours);
+    }
+
+    public ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces){
+        return extraActionMenu(actionSpaces);
+    }
+
+    public boolean vaticanMenu(int periodNumber){
+        System.out.println("What do you want to do? true: accept excommunication; false: reject excommunication");
+        System.out.println("This is the excommunication penalty: " + getClientController().getView().getBoard().getTassels()[periodNumber-1]);
+
+        Scanner scanner = new Scanner(System.in);
+        return Boolean.parseBoolean(scanner.next());
+
+    }
+
+    public Gainable[] councilFavourMenu(int numberOfFavours){
+        Gainable[] favours = selectFavours(numberOfFavours);
+        return favours;
+    }
+
+
+
+    private Gainable[] selectFavours(int numberOfFavours){
+        CouncilFavour councilFavour = new CouncilFavour(numberOfFavours);
+        Scanner scanner = new Scanner(System.in);
+        Gainable[] toReturn = new Gainable[numberOfFavours];
+
+        System.out.println("Which favour do you want?");
+        do {
+            int i = 0;
+            System.out.println(councilFavour);
+            try {
+                toReturn[i] = StaticVariables.COUNCIL_FAVOURS[scanner.nextInt()-1];
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Not valid input given");
+                continue;
+            }
+            numberOfFavours--;
+            i++;
+        } while (numberOfFavours > 0);
+
+        return toReturn;
+    }
+
+    public ActionSpace extraActionMenu(ArrayList<ActionSpace> actionSpaces){
+        ActionSpace actionSpace = selectActionSpace(actionSpaces);
+        return actionSpace;
+
+    }
+
+
+    private ActionSpace selectActionSpace(ArrayList<ActionSpace> actionSpaces){
+        System.out.println("What action space do you want to use?");
+        int i = 0;
+        for(ActionSpace tmp : actionSpaces) {
+            i++;
+            System.out.println(i + ") " +tmp);
+        }
+        Scanner scanner = new Scanner(System.in);
+        i = scanner.nextInt();
+        try {
+            System.out.println(actionSpaces.get(i - 1));
+            return actionSpaces.get(i - 1);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            //return actionSpaces.get(actionSpaces.size()); //todo have user to write another number
+            //todo prova
+            return selectActionSpace(actionSpaces);
+
+        }
     }
 
 

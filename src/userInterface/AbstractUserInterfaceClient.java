@@ -1,5 +1,7 @@
 package userInterface;
 
+import logic.actionSpaces.ActionSpace;
+import logic.interfaces.Gainable;
 import logic.player.FamilyMember;
 import network.ResponseCode;
 import network.client.AbstractNetworkClient;
@@ -7,6 +9,7 @@ import network.client.ClientInterface;
 import network.client.ClientView;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -84,6 +87,12 @@ public abstract class AbstractUserInterfaceClient implements Serializable{
     public void useSlaves(int quantity){
         clientController.useSlaves(quantity);
     }
+
+    //---------nuovo
+
+    public abstract boolean dealWithVatican(int periodNumber);
+    public abstract Gainable[] selectCouncilFavour(int numberOfFavours);
+    public abstract ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces);
 
 
 

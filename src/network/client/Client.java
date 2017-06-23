@@ -2,6 +2,8 @@ package network.client;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import logic.actionSpaces.ActionSpace;
+import logic.interfaces.Gainable;
 import logic.player.FamilyMember;
 import network.client.rmi.RMIClient;
 import userInterface.AbstractUserInterfaceClient;
@@ -141,6 +143,18 @@ public class Client extends Application implements ClientInterface {
         clientView.setPlayers(players);
         uiClient.updateView();
 
+    }
+
+    public boolean dealWithVatican(int periodNumber) {
+        return uiClient.dealWithVatican(periodNumber);
+    }
+
+    public Gainable[] selectCouncilFavour(int numberOfFavours){
+        return uiClient.selectCouncilFavour(numberOfFavours);
+    }
+
+    public ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces){
+        return uiClient.selectActionSpaceForExtraAction(actionSpaces);
     }
 
     public static void main(String[] args){

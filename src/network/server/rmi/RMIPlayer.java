@@ -103,7 +103,7 @@ public class RMIPlayer extends RemotePlayer {
     @Override
     public <P extends Player> void updateView(Board board, Collection<P> players) {
         try {
-            Collection<Player> players1 = new ArrayList<>();
+            ArrayList<Player> players1 = new ArrayList<>();
             players1.addAll(players);
 
             rmiclientInterface.updateView(board,  players1);

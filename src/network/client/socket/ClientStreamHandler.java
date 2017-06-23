@@ -68,7 +68,7 @@ public class ClientStreamHandler {
     private void updateView(){
         try {
             Board board = (Board) input.readObject();
-            Collection<Player> players = (Collection< Player>) input.readObject();
+            Collection<Player> players = (ArrayList< Player>) input.readObject();
             client.updateView(board, players);
         } catch (IOException | ClassNotFoundException e){
             System.out.println("Could not update view");

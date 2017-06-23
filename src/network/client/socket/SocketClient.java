@@ -166,6 +166,8 @@ public class SocketClient extends AbstractNetworkClient {
         } catch (IOException e){
             System.out.println("Could not send council favours indexes");
         }
+
+
         //notifyRequestHandleOutcome();
     }
 
@@ -262,11 +264,15 @@ public class SocketClient extends AbstractNetworkClient {
         public void run(){
             try {
                 while (true) {
+
                     String serverRequestCode = (String) input.readObject();
+                    System.out.println(serverRequestCode);
                     streamHandler.respond(serverRequestCode);
                 }
             } catch (IOException | ClassNotFoundException e) {
                 System.out.println("Could not have ServerStreamHandler started");
+
+                e.printStackTrace();
             }
         }
 

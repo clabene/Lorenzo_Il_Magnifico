@@ -1,12 +1,15 @@
 package network.client;
 
+import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
+import logic.interfaces.Gainable;
 import logic.player.FamilyMember;
 import logic.player.Player;
 import network.ResponseCode;
 import network.server.RemotePlayer;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -36,6 +39,11 @@ public interface ClientInterface extends Serializable {
 
     void leaveGame();
 
+    public boolean dealWithVatican(int periodNumber);
+
+    public Gainable[] selectCouncilFavour(int numberOfFavours);
+
+    public ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces);
 
 
 

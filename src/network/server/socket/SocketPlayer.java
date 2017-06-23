@@ -45,12 +45,15 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
     public void run(){
         try {
             while (true) {
+
                 String requestCode = input.readObject().toString();
                 System.out.println("-----------------------" + requestCode);
                 streamHandler.respond(requestCode);
             }
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Could not have ServerStreamHandler call respond");
+
+            e.printStackTrace();
         } finally {
             closeStream(input);
             closeStream(output);
@@ -182,6 +185,7 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
     @Override
     public <P extends Player> void updateView(Board board, Collection<P> players) {
         try {
+            output.reset();
             output.writeObject("UPDATE_VIEW");
             output.writeObject(board);
 

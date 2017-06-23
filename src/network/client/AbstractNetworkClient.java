@@ -90,11 +90,13 @@ public abstract class AbstractNetworkClient implements Serializable{
     * */
     public abstract void selectActionSpace(String actionSpaceId);
 
+
     /*
     * Client decides if they want to support the Vatican or not.
     * This method is triggered by the server side.
     * */
     //public abstract void dealWithVatican();
+
 
     /*
     * Client decides what bonus they will get form a council favour.

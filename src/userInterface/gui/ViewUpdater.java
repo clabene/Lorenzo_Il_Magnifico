@@ -98,7 +98,7 @@ public class ViewUpdater {
             Player oldPlayer = getOldPlayerFromId(tmp.getId());
 
 
-            if(oldPlayer == null) Platform.runLater( () -> controller.addPlayer(PlayerColor.RED, tmp.getId(), "name"));
+            if(oldPlayer == null) Platform.runLater( () -> controller.addOpponent(PlayerColor.RED, tmp.getId(), "name"));
             else updateSinglePlayer(oldPlayer, tmp);
         }
     }

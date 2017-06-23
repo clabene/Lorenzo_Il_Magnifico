@@ -119,18 +119,23 @@ public class RMIClient extends AbstractNetworkClient implements RMIClientInterfa
 
     @Override
     public boolean dealWithVatican(int periodNumber) {
+        return getClientController().dealWithVatican(periodNumber);
+
+        /*
         System.out.println("What do you want to do? true: accept excommunication; false: reject excommunication");
         System.out.println("This is the excommunication penalty: " + getClientController().getView().getBoard().getTassels()[periodNumber-1]);
 
         Scanner scanner = new Scanner(System.in);
-        return Boolean.parseBoolean(scanner.next());
+        return Boolean.parseBoolean(scanner.next());*/
 
     }
 
 
     public Gainable[] selectCouncilFavour(int numberOfFavours) {
+        return getClientController().selectCouncilFavour(numberOfFavours);
+        /*
         Gainable[] favours = selectFavours(numberOfFavours);
-        return favours;
+        return favours;*/
     }
 
     private Gainable[] selectFavours(int numberOfFavours){
@@ -157,8 +162,10 @@ public class RMIClient extends AbstractNetworkClient implements RMIClientInterfa
 
     //@Override
     public ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces) {
+        return getClientController().selectActionSpaceForExtraAction(actionSpaces);
+        /*
         ActionSpace actionSpace = selectActionSpace(actionSpaces);
-        return actionSpace;
+        return actionSpace;*/
 
     }
 

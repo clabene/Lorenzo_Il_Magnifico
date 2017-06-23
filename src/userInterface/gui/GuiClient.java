@@ -3,7 +3,9 @@ package userInterface.gui;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
+import logic.interfaces.Gainable;
 import logic.player.Player;
 import network.ResponseCode;
 import network.client.ClientInterface;
@@ -108,6 +110,21 @@ public class GuiClient extends AbstractUserInterfaceClient {
     @Override
     public void go() {
         loader.buildLogInStage();
+    }
+
+    @Override
+    public boolean dealWithVatican(int periodNumber) {
+        return false;
+    }
+
+    @Override
+    public Gainable[] selectCouncilFavour(int numberOfFavours) {
+        return new Gainable[0];
+    }
+
+    @Override
+    public ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces) {
+        return null;
     }
 
     @Override
