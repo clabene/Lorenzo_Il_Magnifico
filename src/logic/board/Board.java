@@ -31,6 +31,7 @@ public class Board implements Serializable{
     public Board(int MAX_NUMBER_OF_PLAYERS){
         this.MAX_NUMBER_OF_PLAYERS = MAX_NUMBER_OF_PLAYERS;
         this.setHashMap(MAX_NUMBER_OF_PLAYERS);
+        inizializeExcommunicationTassels();
     }
 
     private   int redDice;
@@ -127,6 +128,13 @@ public class Board implements Serializable{
             if(i == 16)  break;
         }*/
     }
+
+    private void inizializeExcommunicationTassels(){
+        CardSetupHandler cartSetupHandler = new CardSetupHandler();
+        this.tassels = cartSetupHandler.tesselExcomunication();
+
+    }
+
 
     public ExcommunicationTassel[] getTassels() {
         return tassels;

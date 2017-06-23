@@ -58,6 +58,9 @@ public class Player implements Serializable{
         this.plank = new Plank(resources /*initialResources*/);
 
     }
+    public Player(){
+        this(new Money(1000), new Wood(1000), new Stone(1000), new Slave(1000));
+    }
 
     //this has to be called as first method after constructor
     public void setId(String id) {
@@ -112,7 +115,8 @@ public class Player implements Serializable{
         boolean toReturn = true;
         for (Losable tmp : losables)
             try {
-                if(tmp == null) return true;
+                System.out.println("--------------------------------losables"+ losables);
+                if(tmp == null) continue;
                 tmp.lostByPlayer(this);
             } catch (NegativeResourceQuantityException | NegativePointsException e) {
                 toReturn = false;
@@ -138,9 +142,23 @@ public class Player implements Serializable{
 
     public FamilyMember tryToSelectFamilyMember(FamilyMember familyMember) throws FamilyMemberSelectionException{
         if(!familyMember.getPlayerId().equals(id)) throw new FamilyMemberSelectionException();
-        for(FamilyMember tmp : familyMembers)
-            if(tmp.getColor().equals(familyMember.getColor()) && !tmp.getInActionSpace())
+        System.out.println(familyMember+"----------------------------------------fm");
+        for(int i = 0; i < familyMembers.length; i++){
+            System.out.println(familyMembers[i]+"----------------------------------------fms");
+            if (familyMembers[i].getColor() == null && familyMember.getColor() == null && !familyMembers[i].getInActionSpace())
+                return familyMembers[i];
+            if (familyMembers[i].getColor().equals(familyMember.getColor()) && !familyMembers[i].getInActionSpace())
+                return familyMembers[i];
+
+        }
+/*
+        for(FamilyMember tmp : familyMembers) {
+            System.out.println(tmp+"----------------------------------------tmp");
+            if (tmp.getColor() == null && familyMember.getColor() == null && !tmp.getInActionSpace())
                 return tmp;
+            if (tmp.getColor().equals(familyMember.getColor()) && !tmp.getInActionSpace())
+                return tmp;
+        }*/
         throw new FamilyMemberSelectionException();
     }
 
@@ -245,6 +263,19 @@ public class Player implements Serializable{
         }else{
             excommunicationDecision();
         }
+    }
+
+    public void setBlackFM(int value){
+        this.familyMembers[0].setValue(value);
+
+    }
+    public void setRedFM(int value){
+        this.familyMembers[1].setValue(value);
+
+    }
+    public void setWhiteFM(int value){
+        this.familyMembers[2].setValue(value);
+
     }
 
     //todo method to take the excommunication

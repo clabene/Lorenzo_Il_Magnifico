@@ -22,6 +22,7 @@ public class TowerActionSpace extends ActionSpace {
     public TowerActionSpace(int minValueToPlaceFamiliar, Gainable ... gainables){
         super(1, ActionSpaceType.TOWER, minValueToPlaceFamiliar, gainables);
         this.card = null;
+
     }
 
     private ArrayList<TowerActionSpace> getTower(Board board){
@@ -36,10 +37,12 @@ public class TowerActionSpace extends ActionSpace {
 
     private boolean towerAlreadyHasColoredOfSameType(Player player){
         for(TowerActionSpace tmp : getTower(player.getBoard())) {
-                if(this.getLastFamilyMemberAdded().getPlayerId().equals(tmp.getLastFamilyMemberAdded().getPlayerId()) //tmp1 of same player as current family member
-                        && tmp.getLastFamilyMemberAdded() != this.getLastFamilyMemberAdded() //tmp1 is not current family member
-                        && tmp.getLastFamilyMemberAdded().getColor() != null) { //tmp1 is not neutral
-                    System.out.println("You already put a not-neutral family member in the tower");
+
+                if(tmp.getLastFamilyMemberAdded()!= null &&
+                        this.getLastFamilyMemberAdded().getPlayerId().equals(tmp.getLastFamilyMemberAdded().getPlayerId()) //tmp1 of same player as current family member
+                        && tmp.getLastFamilyMemberAdded().getColor() != null  //tmp1 is not neutral
+                        && tmp.getLastFamilyMemberAdded().getColor() != this.getLastFamilyMemberAdded().getColor() ){ //tmp1 is not current family member
+                    System.out.println("You already put a not-neutral family member in the tower---------------------------");
                     return true;
                 }
         }
@@ -47,8 +50,12 @@ public class TowerActionSpace extends ActionSpace {
     }
 
     private boolean towerAlreadyHasNeutralOfSameType(Player player){
+
         for(TowerActionSpace tmp : getTower(player.getBoard())) {
-            if (this.getLastFamilyMemberAdded().getPlayerId().equals(tmp.getLastFamilyMemberAdded().getPlayerId()) //tmp1 of same player as current family member
+
+
+            if (tmp.getLastFamilyMemberAdded()!= null &&
+                    this.getLastFamilyMemberAdded().getPlayerId().equals(tmp.getLastFamilyMemberAdded().getPlayerId()) //tmp1 of same player as current family member
                     && tmp.getLastFamilyMemberAdded() != this.getLastFamilyMemberAdded() //tmp1 is not current family member
                     && tmp.getLastFamilyMemberAdded().getColor() == null) { //tmp1 is neutral
                 System.out.println("You already put a not-neutral family member in the tower");

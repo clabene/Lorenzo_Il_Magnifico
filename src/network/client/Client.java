@@ -19,7 +19,7 @@ import java.util.UUID;
  */
 public class Client implements ClientInterface {
 
-    private transient String id = UUID.randomUUID().toString();
+    private  String id = UUID.randomUUID().toString();
 
     private final int RMI_PORT = 6789;
     private final int SOCKET_PORT = 9876;
@@ -104,6 +104,10 @@ public class Client implements ClientInterface {
         networkClient.useSlaves(quantity);
     }
 
+    @Override
+    public void leaveGame() {
+        networkClient.leaveGame();
+    }
 
 
     @Override

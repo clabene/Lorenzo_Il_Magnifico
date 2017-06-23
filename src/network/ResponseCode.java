@@ -35,7 +35,9 @@ public enum ResponseCode implements Serializable{
     SLAVES_NOT_AVAILABLE(),
 
     GAME_STARTED(),
-    NOT_ENOUGH_PLAYERS();
+    NOT_ENOUGH_PLAYERS(),
+
+    EXCOMMUNICATION_TAKEN();
 
 
     ResponseCode(){}

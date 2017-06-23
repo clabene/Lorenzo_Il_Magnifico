@@ -121,6 +121,7 @@ public class RMIClient extends AbstractNetworkClient implements RMIClientInterfa
     public boolean dealWithVatican(int periodNumber) {
         System.out.println("What do you want to do? true: accept excommunication; false: reject excommunication");
         System.out.println("This is the excommunication penalty: " + getClientController().getView().getBoard().getTassels()[periodNumber-1]);
+
         Scanner scanner = new Scanner(System.in);
         return Boolean.parseBoolean(scanner.next());
 
@@ -139,15 +140,17 @@ public class RMIClient extends AbstractNetworkClient implements RMIClientInterfa
 
         System.out.println("Which favour do you want?");
         do {
+            int i = 0;
             System.out.println(councilFavour);
             try {
-                toReturn[toReturn.length] = StaticVariables.COUNCIL_FAVOURS[scanner.nextInt()];
+                toReturn[i] = StaticVariables.COUNCIL_FAVOURS[scanner.nextInt()-1];
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Not valid input given");
-                numberOfFavours++;
+                continue;
             }
             numberOfFavours--;
-        } while (numberOfFavours >= 0);
+            i++;
+        } while (numberOfFavours > 0);
 
         return toReturn;
     }
@@ -155,7 +158,6 @@ public class RMIClient extends AbstractNetworkClient implements RMIClientInterfa
     //@Override
     public ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces) {
         ActionSpace actionSpace = selectActionSpace(actionSpaces);
-
         return actionSpace;
 
     }
@@ -170,9 +172,13 @@ public class RMIClient extends AbstractNetworkClient implements RMIClientInterfa
         Scanner scanner = new Scanner(System.in);
         i = scanner.nextInt();
         try {
+            System.out.println(actionSpaces.get(i - 1));
             return actionSpaces.get(i - 1);
         } catch (ArrayIndexOutOfBoundsException e) {
-            return actionSpaces.get(actionSpaces.size()); //todo have user to write another number
+            //return actionSpaces.get(actionSpaces.size()); //todo have user to write another number
+            //todo prova
+            return selectActionSpace(actionSpaces);
+
         }
     }
 
@@ -180,7 +186,7 @@ public class RMIClient extends AbstractNetworkClient implements RMIClientInterfa
     @Override
     public void useSlaves(int quantity) {
         try {
-            rmiServerInterface.useSlaves();
+            rmiServerInterface.useSlaves(quantity, getId());
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -188,6 +194,11 @@ public class RMIClient extends AbstractNetworkClient implements RMIClientInterfa
 
     @Override
     public void leaveGame() {
+        try {
+            rmiServerInterface.leaveGame(getId());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
     }
 

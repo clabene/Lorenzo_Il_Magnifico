@@ -123,6 +123,6 @@ public class CardCost implements Losable, Serializable {
     @Override
     public String toString() {
 
-        return "R: "+ getResourcesCost().toString();
+        return "R: "+ getResourcesCost();
     }
 }

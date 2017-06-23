@@ -1,10 +1,12 @@
 package network.client;
 
 import com.sun.org.apache.regexp.internal.RE;
+import com.sun.org.apache.xpath.internal.SourceTree;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import logic.actionSpaces.ActionSpace;
 import logic.actionSpaces.TowerActionSpace;
 import logic.board.Board;
+import logic.cards.LandCard;
 import logic.exceptions.FamilyMemberSelectionException;
 import logic.player.FamilyMember;
 import logic.player.Player;
@@ -56,8 +58,8 @@ public class ClientView implements Serializable{
         return null;
     }
 
-    public String printActionSpaces(){
-        printBoard();
+    public String printActionSpaces(String id){
+        printBoard(id);
         System.out.println("Insert the KEY of the Action space that you want to select");
         Scanner scanner = new Scanner(System.in);
         String key = scanner.next();
@@ -67,7 +69,7 @@ public class ClientView implements Serializable{
     public int printSlaves(String id){
         for(Player tmp: players){
             if(tmp.getId().equals(id)){
-                System.out.println("You have only "+ tmp.getPlank().getSetOfResources().getQuantityOfSlaves()+"slaves");
+                System.out.println("You have only "+ tmp.getPlank().getSetOfResources().getQuantityOfSlaves()+" slaves");
                 Scanner scanner = new Scanner(System.in);
                 return scanner.nextInt();
             }
@@ -77,8 +79,23 @@ public class ClientView implements Serializable{
 
     //todo funzione che printa la mia situazione
 
+    public void cardCheck(){
+        String red = "\u001B[31m";
+        String end = "\u001B[0m";
+        String s = "                                                                                                               ";
+        for(String tmp: board.getHashMap().keySet()){
+            if(!tmp.startsWith("T"))
+                continue;
+            if(((TowerActionSpace)board.getHashMap().get(tmp)).getCard() == null){
 
-    private void printBoard(){
+                ((TowerActionSpace)board.getHashMap().get(tmp)).setCard(new LandCard("______NO_CARD_________",null,0,null, null));
+
+            }
+        }
+    }
+
+
+    public void printBoard(String id){
         String s = "                                                                                                               ";
         String purple = "\u001B[35m";
         String yellow = "\u001B[33m";
@@ -90,6 +107,7 @@ public class ClientView implements Serializable{
         int k = 25;
         int g = 20;
         String a = cyan+"* ";
+        cardCheck();
 
 
         String h = "--------------------------------------------------";
@@ -229,12 +247,12 @@ public class ClientView implements Serializable{
         if(board.getMAX_NUMBER_OF_PLAYERS() >3)
             System.out.print(red+("M3)Space_3"+s).substring(0,g)+a);
         else
-            System.out.println((s+s).substring(0,g)+a);
+            System.out.print((s+s).substring(0,g)+a);
 
         if(board.getMAX_NUMBER_OF_PLAYERS() >2)
             System.out.print(end+("AP2)PRODUCTION_2"+s).substring(0,g)+a);
         else
-            System.out.println((s+s).substring(0,g)+a);
+            System.out.print((s+s).substring(0,g)+a);
         System.out.print("\n");
 
         System.out.print(a+green+(((TowerActionSpace)board.getHashMap().get("TL2")).getCard().getCardCost()+s+s).substring(0,k)+a+
@@ -245,11 +263,11 @@ public class ClientView implements Serializable{
         if(board.getMAX_NUMBER_OF_PLAYERS() >3)
             System.out.print(red+(board.getHashMap().get("M3").getBonus()+s).substring(0,g)+a);
         else
-            System.out.println((s+s).substring(0,g)+a);
+            System.out.print((s+s).substring(0,g)+a);
         if(board.getMAX_NUMBER_OF_PLAYERS() >2)
             System.out.print(end+(board.getHashMap().get("AP2").getMinValueToPlaceFamiliar()+s).substring(0,g)+a);
         else
-            System.out.println((s+s).substring(0,g)+a);
+            System.out.print((s+s).substring(0,g)+a);
 
         System.out.print("\n");
         System.out.print(a+green+("Act val: "+((TowerActionSpace)board.getHashMap().get("TL2")).getCard().getActivationValue()+s+s).substring(0,k)+a+
@@ -260,11 +278,11 @@ public class ClientView implements Serializable{
         if(board.getMAX_NUMBER_OF_PLAYERS() >3)
             System.out.print(red+(board.getHashMap().get("M3").getLastFamilyMemberAdded()+s).substring(0,g)+a);
         else
-            System.out.println((s+s).substring(0,g)+a);
+            System.out.print((s+s).substring(0,g)+a);
         if(board.getMAX_NUMBER_OF_PLAYERS() >2)
             System.out.print(end+(board.getHashMap().get("AP2").getFamilyMembers()+s).substring(0,g)+a);
         else
-            System.out.println((s+s).substring(0,g)+a);
+            System.out.print((s+s).substring(0,g)+a);
         System.out.print("\n");
         System.out.print(a+green+(((TowerActionSpace)board.getHashMap().get("TL2")).getCard().getImmediateEffect()+s).substring(0,k)+a+
                 blue+(((TowerActionSpace)board.getHashMap().get("TP2")).getCard().getImmediateEffect()+s).substring(0,k)+a+
@@ -274,7 +292,7 @@ public class ClientView implements Serializable{
         if(board.getMAX_NUMBER_OF_PLAYERS() >3)
             System.out.print(red+(board.getHashMap().get("M3").getMinValueToPlaceFamiliar()+s).substring(0,g)+a);
         else
-            System.out.println((s+s).substring(0,g)+a);
+            System.out.print((s+s).substring(0,g)+a);
         System.out.print("\n");
         System.out.println(a+green+(((TowerActionSpace)board.getHashMap().get("TL2")).getCard().getPermanentEffect()+s).substring(0,k)+a+
                 blue+(((TowerActionSpace)board.getHashMap().get("TP2")).getCard().getPermanentEffect()+s).substring(0,k)+a+
@@ -293,16 +311,16 @@ public class ClientView implements Serializable{
         System.out.print(a+green+("TL1)"+((TowerActionSpace)board.getHashMap().get("TL1")).getCard().getName()+s+s).substring(0,k)+a+
                 blue+("TP1)"+((TowerActionSpace)board.getHashMap().get("TP1")).getCard().getName()+s+s).substring(0,k)+a+
                 yellow+("TB1)"+((TowerActionSpace)board.getHashMap().get("TB1")).getCard().getName()+s+s).substring(0,k)+a+
-                purple+("TL1)"+((TowerActionSpace)board.getHashMap().get("TV1")).getCard().getName()+s).substring(0,k)+a+a
+                purple+("TV1)"+((TowerActionSpace)board.getHashMap().get("TV1")).getCard().getName()+s).substring(0,k)+a+a
         );
         if(board.getMAX_NUMBER_OF_PLAYERS() >3)
             System.out.print(red+("M4)Space_4"+s).substring(0,g)+a);
         else
-            System.out.println((s+s).substring(0,g)+a);
+            System.out.print((s+s).substring(0,g)+a);
         if(board.getMAX_NUMBER_OF_PLAYERS() >2)
             System.out.print(end+("AH2)HARVEST_2"+s).substring(0,g)+a);
         else
-            System.out.println((s+s).substring(0,g)+a);
+            System.out.print((s+s).substring(0,g)+a);
         System.out.print("\n");
         System.out.print(a+green+(((TowerActionSpace)board.getHashMap().get("TL1")).getCard().getCardCost()+s+s).substring(0,k)+a+
                 blue+(((TowerActionSpace)board.getHashMap().get("TP1")).getCard().getCardCost()+s+s).substring(0,k)+a+
@@ -312,11 +330,11 @@ public class ClientView implements Serializable{
         if(board.getMAX_NUMBER_OF_PLAYERS() >3)
             System.out.print(red+(board.getHashMap().get("M4").getBonus()+s).substring(0,g)+a);
         else
-            System.out.println((s+s).substring(0,g)+a);
+            System.out.print((s+s).substring(0,g)+a);
         if(board.getMAX_NUMBER_OF_PLAYERS() >2)
             System.out.print(end+(board.getHashMap().get("AH2").getMinValueToPlaceFamiliar()+s).substring(0,g)+a);
         else
-            System.out.println((s+s).substring(0,g)+a);
+            System.out.print((s+s).substring(0,g)+a);
         System.out.print("\n");
         System.out.print(a+green+("Act val: "+((TowerActionSpace)board.getHashMap().get("TL1")).getCard().getActivationValue()+s+s).substring(0,k)+a+
                 blue+("Act val: "+((TowerActionSpace)board.getHashMap().get("TP1")).getCard().getActivationValue()+s+s).substring(0,k)+a+
@@ -326,12 +344,12 @@ public class ClientView implements Serializable{
         if(board.getMAX_NUMBER_OF_PLAYERS() >3)
             System.out.print(red+(board.getHashMap().get("M4").getLastFamilyMemberAdded()+s).substring(0,g)+a);
         else
-            System.out.println((s+s).substring(0,g)+a);
+            System.out.print((s+s).substring(0,g)+a);
 
         if(board.getMAX_NUMBER_OF_PLAYERS() >2)
             System.out.print(end+(board.getHashMap().get("AH2").getFamilyMembers()+s).substring(0,g)+a);
         else
-            System.out.println((s+s).substring(0,g)+a);
+            System.out.print((s+s).substring(0,g)+a);
         System.out.print("\n");
         System.out.print(a+green+(((TowerActionSpace)board.getHashMap().get("TL1")).getCard().getImmediateEffect()+s).substring(0,k)+a+
                 blue+(((TowerActionSpace)board.getHashMap().get("TP1")).getCard().getImmediateEffect()+s).substring(0,k)+a+
@@ -341,7 +359,7 @@ public class ClientView implements Serializable{
         if(board.getMAX_NUMBER_OF_PLAYERS() >3)
             System.out.print(red+(board.getHashMap().get("M4").getMinValueToPlaceFamiliar()+s).substring(0,g)+a);
         else
-            System.out.println((s+s).substring(0,g)+a);
+            System.out.print((s+s).substring(0,g)+a);
         System.out.print("\n");
         System.out.println(a+green+(((TowerActionSpace)board.getHashMap().get("TL1")).getCard().getPermanentEffect()+s).substring(0,k)+a+
                 blue+(((TowerActionSpace)board.getHashMap().get("TP1")).getCard().getPermanentEffect()+s).substring(0,k)+a+
@@ -359,7 +377,67 @@ public class ClientView implements Serializable{
         System.out.println(cyan+j+j+j+j+end);
         System.out.println(cyan+j+j+j+j+end);
 
+        //-----------------------------players
+        boolean gameFinished = false;
+        int i = 1;
+        for(Player tmp1: players){
+            if(((RemotePlayer) tmp1).getPlayerLeft() || ((RemotePlayer) tmp1).getIsWinner()){
+                gameFinished = true;
+                return;
+            }
+        }
+
+        for(Player tmp: players){
+
+            if(tmp.getId().equals(id))
+                System.out.print(red+"Player_"+i+"(YOU)");
+            else
+                System.out.print(red+"Player_"+i);
+
+            System.out.print("   (");
+            for(boolean tmp1: ((RemotePlayer)tmp).getExcommunications()){
+                if(tmp1)
+                    System.out.print("*");
+            }
+
+            System.out.print(")");
+
+            if(((RemotePlayer)tmp).getPlayerLeft()){
+                System.out.print(yellow+"   left the game! "+end);
+            }
+
+            if(((RemotePlayer)tmp).getIsWinner()){
+                System.out.print("    WINNER!!!!!!!!!!!!!!!!");
+
+                return;
+            }
+
+            if(((RemotePlayer) tmp).getCurrentPlayer())
+                System.out.println(blue+"   should move!");
+
+
+            System.out.println(end+"\n");
+            System.out.print(("Money: "+tmp.getPlank().getSetOfResources().getResources()[0]+s).substring(0,k) );
+            System.out.print(("Stone: "+tmp.getPlank().getSetOfResources().getResources()[1]+s).substring(0,k) );
+            System.out.print(("Wood: "+tmp.getPlank().getSetOfResources().getResources()[2]+s).substring(0,k) );
+            System.out.print(("Slaves: "+tmp.getPlank().getSetOfResources().getResources()[3]+s).substring(0,k) );
+            System.out.print(("Council Favour: "+tmp.getPlank().getCouncilFavours().size()+s).substring(0,k) );
+            System.out.println();
+            System.out.print(("MP: "+tmp.getMilitaryPoints().getTrackPosition().getValue()+s).substring(0,k) );
+            System.out.print(("FP: "+tmp.getFaithPoints().getTrackPosition().getValue()+s).substring(0,k) );
+            System.out.print(("VP: "+tmp.getPoints().getQuantity()+s).substring(0,k)+"\n" );
+            System.out.println("Cards: "+tmp.getPlank().getCards());
+            System.out.println(tmp.getFamilyMembersAvailable() );
+            System.out.println(cyan+j+j+j+j+end);
+            i++;
+
+            if(gameFinished)
+                System.out.println(red+" Tha game is finished!!!!"+ end);
+
+        }
+
         //----------------------------------fine torri----------------------------------
+        /*
         //System.out.println(red+h+h+end);
         System.out.println("C)COUNCIL");
         System.out.println("Gain: Council Favour");
@@ -417,6 +495,7 @@ public class ClientView implements Serializable{
         System.out.println(board.getHashMap().get("AP1").getLastFamilyMemberAdded()+s+s+board.getHashMap().get("AH1").getLastFamilyMemberAdded());
 */
         //------------------------------------------fine 1 place
+        /*
         if(board.getMAX_NUMBER_OF_PLAYERS() >2) {
             System.out.println("AP2)PRODUCTION_2");
             System.out.println(board.getHashMap().get("AP2").getMinValueToPlaceFamiliar());
@@ -425,7 +504,7 @@ public class ClientView implements Serializable{
             System.out.println("AH2)HARVEST_2");
             System.out.println(board.getHashMap().get("AH2").getMinValueToPlaceFamiliar());
             System.out.println(board.getHashMap().get("AH2").getFamilyMembers());
-        }
+        }*/
 
 
     }

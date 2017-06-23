@@ -88,9 +88,10 @@ public class ExchangeGainablesEffect implements CardEffect{ //todo make this dec
 
     @Override
     public void activate(Player player){
-        do{
+  /*      do{
             printMenu();
-        } while(!doSelectedAction(selectedFromMenu(), player));
+        } while(!doSelectedAction(selectedFromMenu(), player));*/
+        doSelectedAction(1,player);
     }
 
     @Override

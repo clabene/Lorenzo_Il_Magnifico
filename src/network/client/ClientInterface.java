@@ -34,4 +34,6 @@ public interface ClientInterface extends Serializable {
 
     void useSlaves(int quantity);
 
+    void leaveGame();
+
 }

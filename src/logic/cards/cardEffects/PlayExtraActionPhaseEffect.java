@@ -39,7 +39,7 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
     * */
     private void addTowerActionSpaces(Player player){
         for(ActionSpace tmp : player.getBoard().getHashMap().values()){
-            if((tmp instanceof TowerActionSpace)) continue;
+            if(!(tmp instanceof TowerActionSpace)) continue;
             TowerActionSpace tmp1 = (TowerActionSpace) tmp;
             if(tmp1.getCard() != null && this.cardType == null) //cardType == null -> i take all tower action space
                 this.actionSpaces.add(tmp1);
@@ -66,7 +66,7 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
 
     @Override
     public void activate(Player player) {
-        if(cardType != null && actionSpaces.isEmpty()) addTowerActionSpaces(player);
+        if( actionSpaces.isEmpty()) addTowerActionSpaces(player);
 
         ExtraAction extraAction = new ExtraAction(actionSpaces, valueOfFamilyMember);
 

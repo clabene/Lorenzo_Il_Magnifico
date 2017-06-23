@@ -85,7 +85,9 @@ public class ActionPhase implements Serializable{
     }
 */
     public boolean putFamilyMemberOnActionSpace(Player player, FamilyMember familyMember, ActionSpace actionSpace) {
+
         if (familyMember.getValue() >= actionSpace.getMinValueToPlaceFamiliar() ) {
+
             /*
             familyMember.setInActionSpace(true); // Should not this go inside the if statement?
                                                  // Indeed, if a tower card is too expensive for the player, they will
@@ -97,13 +99,16 @@ public class ActionPhase implements Serializable{
             actionSpace.familyMemberAdded(familyMember);
             familyMember.setInActionSpace(true);
             player.gain(actionSpace.getBonus().toArray(new Gainable[actionSpace.getBonus().size()]));
+
             if(!actionSpace.action(player)) {
+
                 //restore previous situation
                 player.lose(actionSpace.getBonus().toArray(new Losable[actionSpace.getBonus().size()]));
                 actionSpace.familyMemberRemoved(familyMember);
                 familyMember.setInActionSpace(false);
                 return false;
             }
+
             return true;
         }else
             System.out.println("Your family member is not valuable enough for this action space\n");
@@ -127,8 +132,28 @@ public class ActionPhase implements Serializable{
 
 
     public boolean incrementFamilyMemberValueRequest(Player player, FamilyMember familyMember, int quantity) {
+
+
+
         if(player.lose(new Slave(quantity))) {
-            familyMember.incrementFamilyMemberValue(quantity);
+
+            if(familyMember.getColor() == null ){
+                for(FamilyMember tmp: player.getFamilyMembers()){
+                    if(tmp.getColor()== null){
+                        tmp.incrementFamilyMemberValue(quantity);
+                        return true;
+                    }
+                }
+
+            }
+            for(FamilyMember tmp: player.getFamilyMembers()){
+                if(tmp.getColor()!= null && tmp.getColor().equals(familyMember.getColor())){
+                    tmp.incrementFamilyMemberValue(quantity);
+                    return true;
+                }
+            }
+            //familyMember.incrementFamilyMemberValue(quantity);
+
             return true;
         }
         return false;

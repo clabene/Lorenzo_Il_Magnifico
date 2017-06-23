@@ -64,6 +64,27 @@ public class GuiClient extends AbstractUserInterfaceClient {
     }
 
     @Override
+    protected void successfullyOperationFinished() {
+
+    }
+
+    @Override
+    protected void successfullyExcommunicationTaken() {
+
+    }
+
+    @Override
+    protected void successfullyGameStarted() {
+
+    }
+
+    /*
+        @Override
+        protected void successfullyPutFamilyMember() {
+
+        }
+    */
+    @Override
     public void updateView() {
 
     }

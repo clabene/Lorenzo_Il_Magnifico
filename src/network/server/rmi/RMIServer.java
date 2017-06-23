@@ -60,8 +60,7 @@ public class RMIServer extends AbstractServer implements  RMIServerInterface,Ser
 
     @Override
     public void selectFamilyMember(FamilyMember familyMember, String playerId) {
-        System.out.println(playerId);
-        System.out.println(familyMember);
+
          getServerController().getPlayer(playerId).selectFamilyMember(familyMember);
     }
 
@@ -79,29 +78,23 @@ public class RMIServer extends AbstractServer implements  RMIServerInterface,Ser
 
 
 
-
     }
 
     @Override
     public void selectCouncilFavour() {
 
-
     }
 
     @Override
-    public void useSlaves() {
-
+    public void useSlaves(int quantity,String playerId) {
+        getServerController().getPlayer(playerId).useSlaves(quantity);
     }
 
     @Override
     public void tryToLogIn(String id, RMIClientInterface rmiClientInterface) throws RemoteException {
 
         RMIPlayer player = new RMIPlayer(rmiClientInterface,id);
-
         getServerController().tryToLogIn(id, player);
-
-
-
     }
 /*
     @Override
@@ -123,6 +116,7 @@ public class RMIServer extends AbstractServer implements  RMIServerInterface,Ser
 
     @Override
     public void leaveGame(String id) {
+        getServerController().getPlayer(id).leaveGame();
 
     }
 

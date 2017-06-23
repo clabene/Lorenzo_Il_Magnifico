@@ -9,5 +9,4 @@ import java.io.Serializable;
  */
 public interface CardEffect extends Serializable { //maybe this will be modified to become an abstract class
     void activate(Player player);
-
 }

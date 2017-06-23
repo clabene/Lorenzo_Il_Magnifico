@@ -21,14 +21,52 @@ import java.util.Collections;
 public abstract class RemotePlayer extends Player implements Serializable {
 
     private transient GameRoom gameRoom;
+    private boolean isWinner = false;
+    private boolean[] excommunications = new boolean[3];
+    private boolean isCurrentPlayer = false;
+    private boolean playerLeft = false;
+
+    public void setPlayerLeft(boolean playerLeft) {
+        this.playerLeft = playerLeft;
+    }
+
+    public boolean getPlayerLeft(){
+        return playerLeft;
+    }
+
+    public void setCurrentPlayer(boolean currentPlayer) {
+        isCurrentPlayer = currentPlayer;
+    }
+
+    public boolean getCurrentPlayer() {
+        return isCurrentPlayer;
+    }
+
+    public boolean[] getExcommunications() {
+        return excommunications;
+    }
+
+    public void setExcommunications(int i , boolean takeExcommunication) {
+        this.excommunications[i] = takeExcommunication;
+    }
+
+    public void setWinner(boolean winner) {
+        isWinner = winner;
+    }
+
+    public boolean getIsWinner() {
+        return isWinner;
+    }
 
     public GameRoom getGameRoom() {
         return gameRoom;
     }
 
+
     public void setGameRoom(GameRoom gameRoom) {
         this.gameRoom = gameRoom;
     }
+
 
     /*
     * Client selects a family member from theirs
@@ -72,6 +110,8 @@ public abstract class RemotePlayer extends Player implements Serializable {
     * Notify client of new board and new player's data after an action
     * */
     public abstract <P extends Player > void updateView(Board board, Collection<P> players);
+
+    public abstract void leaveGame();
 
 
 }
