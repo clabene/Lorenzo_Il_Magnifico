@@ -3,15 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/Client.java" afterPath="$PROJECT_DIR$/src/network/client/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/ClientInterface.java" afterPath="$PROJECT_DIR$/src/network/client/ClientInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/AbstractUserInterfaceClient.java" afterPath="$PROJECT_DIR$/src/userInterface/AbstractUserInterfaceClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/cli/CliClient.java" afterPath="$PROJECT_DIR$/src/userInterface/cli/CliClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/GuiClient.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/GuiClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/ViewUpdater.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/ViewUpdater.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/component/MyPlayerView.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/component/MyPlayerView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/component/PlayerTag.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/component/PlayerTag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/controllers/MainViewController.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/controllers/MainViewController.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -952,13 +943,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495533735855</updated>
     </task>
-    <task id="LOCAL-00051" summary="network started">
-      <created>1496569287970</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1496569287970</updated>
-    </task>
     <task id="LOCAL-00052" summary="network started">
       <created>1496739052978</created>
       <option name="number" value="00052" />
@@ -1295,7 +1279,14 @@
       <option name="project" value="LOCAL" />
       <updated>1498244485367</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="gui">
+      <created>1498249006771</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1498249006771</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TodoView">
