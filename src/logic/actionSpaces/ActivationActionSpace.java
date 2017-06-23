@@ -40,15 +40,25 @@ public class ActivationActionSpace extends ActionSpace {
         */
     }
 
-    private void removeNotValidCard(Card card) {
-        System.out.println(cards);
-        if(card.getActivationValue() > getLastFamilyMemberAdded().getValue())
-            cards.remove(card);
+
     }
+/*
+    private void removeNotValidCard(Card card) {
+        if(card.getActivationValue() != null && card.getActivationValue() > getLastFamilyMemberAdded().getValue())
+            cards.remove(card);
+    }*/
 
     private void validateCardEffects(){
-        for(Card tmp : cards)
-            removeNotValidCard(tmp);
+        ArrayList<Card> act_cards = new ArrayList<>();
+
+        for(Card tmp : cards){
+            if(tmp != null && !(tmp.getActivationValue() != null && tmp.getActivationValue() > getLastFamilyMemberAdded().getValue()))
+                act_cards.add(tmp);
+        }
+
+        cards = act_cards;
+                //removeNotValidCard(tmp);
+
 
     }
 
@@ -74,9 +84,9 @@ public class ActivationActionSpace extends ActionSpace {
     }
 
     private void activateCardEffect(Card card, Player player){
+        if( card == null)
+            return;
         card.getPermanentEffect().activate(player);
-        //cards.remove(card);
-    }
 
     public boolean action(Player player){
         player.getPlank().setToUseSeparateResources(true);
@@ -84,20 +94,18 @@ public class ActivationActionSpace extends ActionSpace {
         setCards(player);
         validateCardEffects();
 
-        Card selectedCard;
-
-        /*
-        do {
-            showCardEffects();
-            selectedCard = getSelectedCard();
-            activateCardEffect(selectedCard, player);
-        } while(selectedCard != null);
-        */
-
-        for(Card tmp : cards)
-            if(tmp != null)
-                activateCardEffect(tmp, player);
-
+            Card selectedCard;
+    /*
+            do {
+                showCardEffects();
+                selectedCard = getSelectedCard();
+                activateCardEffect(selectedCard, player);
+            } while(selectedCard != null);
+    */
+            for (Card tmp : cards) {
+                if (tmp != null)
+                    activateCardEffect(tmp, player);
+            }
 
         player.getPlank().dump();
         player.getPlank().setToUseSeparateResources(false);

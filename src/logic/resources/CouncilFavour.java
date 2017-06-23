@@ -36,7 +36,7 @@ public class CouncilFavour implements Gainable, Serializable {
 
     @Override
     public String toString(){
-        /*
+
         int i = 0;
         String toReturn = "";
         for(Gainable tmp : favours) {
@@ -44,8 +44,8 @@ public class CouncilFavour implements Gainable, Serializable {
             if(tmp != null)
                 toReturn += i + " " + tmp.toString() + "\n";
         }
-        return toReturn;*/
-        return "Council Favour";
+        return toReturn;
+
     }
 
 

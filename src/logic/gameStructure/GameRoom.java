@@ -1,5 +1,6 @@
 package logic.gameStructure;
 
+import javafx.print.PageLayout;
 import logic.actionSpaces.ActionSpace;
 import logic.actionSpaces.TowerActionSpace;
 import logic.board.Board;
@@ -28,7 +29,7 @@ public class GameRoom implements Serializable{
 
     private transient Board board;
 
-    private transient ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
+
 
     private transient WinnerElector winnerElector = new WinnerElector();
 
@@ -45,9 +46,6 @@ public class GameRoom implements Serializable{
 
     transient ArrayList<String> turnOrder = new ArrayList<>();
     private int i = 0;
-
-
-
 
     //private final int NUMBER_OF_PLAYERS;
 
@@ -67,29 +65,33 @@ public class GameRoom implements Serializable{
         //initializeDeck();
     }
 
+
+
     private void initializeDeck(){
         CardSetupHandler cartSetupHandler = new CardSetupHandler();
         //this.deck = cartSetupHandler.readFromFile();
-        this.deck = cartSetupHandler.prova();
+        //this.deck = cartSetupHandler.prova();
+        this.deck = cartSetupHandler.shuffleHandle();
     }
 
     public void addPlayerToRoom(RemotePlayer remotePlayer) throws LimitedValueOffRangeException{
         numberOfPlayers.increment();
 
-
         remotePlayer.setGameRoom(this);
         remotePlayer.setBoard(board);
         players.put(remotePlayer.getId(), remotePlayer);
 
-            if (numberOfPlayers.getValue() == board.getMAX_NUMBER_OF_PLAYERS()) {
-                setValueOfFamilyMembers();
-                initializeTurnOrder();
-                currentPlayer = turnOrder.get(0);
-                gameStarted = true;
+        if (numberOfPlayers.getValue() == board.getMAX_NUMBER_OF_PLAYERS()) {
+            setValueOfFamilyMembers();
+            inizializeTurnOrder();
+            currentPlayer = turnOrder.get(0);
+            gameStarted = true;
+            for(RemotePlayer tmp: players.values()){
+                if(tmp.getId().equals(currentPlayer))
+                    tmp.setCurrentPlayer(true);
+                tmp.notifyRequestHandleOutcome(ResponseCode.GAME_STARTED);
             }
-
-
-
+        }
         updatePlayersView();
 
     }
@@ -136,9 +138,11 @@ public class GameRoom implements Serializable{
         if(canPlaceFamilyMember()) puttingFamilyMemberOnActionSpace(playerId);
 
 
+
     }
 
     public void useSlaves(int quantity, String playerId) {
+
         if(currentPlayer == null){
             players.get(playerId).notifyRequestHandleOutcome(ResponseCode.NOT_ENOUGH_PLAYERS);
             return;
@@ -149,6 +153,7 @@ public class GameRoom implements Serializable{
             return;
         }
         ResponseCode responseCode = game.useSlaves(players.get(playerId),  quantity);
+        updatePlayersView();
         players.get(playerId).notifyRequestHandleOutcome(responseCode);
 
 
@@ -161,18 +166,17 @@ public class GameRoom implements Serializable{
         ResponseCode responseCode = game.puttingFamilyMemberOnActionSpace(player);
         useCouncilFavours(player);
         useExtraAction(player);
-        updatePlayersView();
+        //updatePlayersView();
 
         //players.get(playerId).notifyRequestHandleOutcome(responseCode);
 
         if(responseCode == ResponseCode.OK) updatePlayersView();
-/*//todo leva il commento dopo avere sistemato i turni ( gestire vaticano)
-        if(turnNumber == 2)
-            dealWithVatican(currentPlayer, periodNumber + 2, tassels[periodNumber-1]);*/
+
+
+
         changeCurrentPlayer();
         changeTurn();
 
-        //----------------------
 
     }
 
@@ -193,6 +197,10 @@ public class GameRoom implements Serializable{
 
         if(responseCode == ResponseCode.GENERIC_ERROR) restoreArea(actionSpace);
 
+        remotePlayer.notifyRequestHandleOutcome(responseCode);
+
+
+
         remotePlayer.setExtraAction(null);
     }
     private void restoreArea(ActionSpace actionSpace) {
@@ -203,23 +211,29 @@ public class GameRoom implements Serializable{
 
 
     private void updatePlayersView() {
+        ;
         for(RemotePlayer tmp : players.values()){
             tmp.updateView(board, players.values());
+
         }
+
 
     }
 
     //todo use this to handle turn switching
     private void getNextTurnOrder() {
-        game.gettingNextTurnOrder(turnOrder, board);
+        turnOrder = game.gettingNextTurnOrder(turnOrder, board);
     }
 
     public void dealWithVatican(String playerId, int minFaithPoints, ExcommunicationTassel tassel){
         if(!game.hasEnoughFaithPoints(players.get(playerId), minFaithPoints)){
             game.takeExcommunication(players.get(playerId), tassel, true);
+            players.get(playerId).notifyRequestHandleOutcome(ResponseCode.EXCOMMUNICATION_TAKEN);
+            players.get(playerId).setExcommunications(periodNumber-1, true);
         }
         else {
-            players.get(playerId).dealWithVatican(game.getCurrentPeriodNumber());
+            //players.get(playerId).dealWithVatican(game.getCurrentPeriodNumber());
+            players.get(playerId).dealWithVatican(periodNumber);
             players.get(playerId).notifyRequestHandleOutcome(ResponseCode.OK);
         }
     }
@@ -231,18 +245,45 @@ public class GameRoom implements Serializable{
 
     private void changeTurn(){
 
-        boolean toChangeTurn = true;
-        for(Player tmp: players.values())
-            if( !checkIfPlayerHasAvailableAction(tmp) )
-                toChangeTurn = false;
 
+        /*
+        for(Player tmp: players.values()){
+            if( !checkIfPlayerHasAvailableAction(tmp) /*|| tmp.getFamilyMembersAvailable().size() >0) return;*/
+                //toChangeTurn = false;*/
+        boolean toChangeTurn = true;
+        for(Player tmp: players.values()){
+            if(tmp.getFamilyMembersAvailable().size() >0)
+                return;
+        }
 
         if(toChangeTurn){
-            if(turnNumber == 2){
+            if(turnNumber == 1){//todo qui dovrebbe essere due perchè sono due i turni
+                for(Player tmp: players.values()){
+                    System.out.println("quiii----zac");
+                    dealWithVatican(tmp.getId(), periodNumber+2, board.getTassels()[periodNumber-1]);
+                    game.takingBackFamilyMembers(tmp, board);//todo ho aggiunto questo stasera perchè non potevo andare avanti
+                    getNextTurnOrder();
+                    setCardsOnBoard();
+                    setValueOfFamilyMembers();
+                    updatePlayersView();
+
+
+                }
+                if(periodNumber == 3){
+                    WinnerElector winnerElector = new WinnerElector();
+                    ArrayList<Player> playersWinner = new ArrayList<>();
+                    for(Player tmp: players.values()){
+                        playersWinner.add(tmp);
+                    }
+                    winnerElector.setPlayers(playersWinner);
+                    players.get(winnerElector.getWinner()).setWinner(true);
+                    updatePlayersView();
+
+                }
                 periodNumber++;
                 turnNumber = 0;
             }
-            game.changeTurn();
+            //game.changeTurn();//todo ho commentato questo il 23/06/17
             turnNumber++;
             for(Player tmp: players.values())
                 game.takingBackFamilyMembers(tmp, board);
@@ -254,13 +295,33 @@ public class GameRoom implements Serializable{
     }
 
     public void changeCurrentPlayer(){
-        for(int i = 0; i < turnOrder.size(); i++){
+        for(int i = 0; i < turnOrder.size()-1; i++){
             if(currentPlayer.equals(turnOrder.get(i))){
                 currentPlayer = turnOrder.get(i+1);
+                for(RemotePlayer tmp: players.values()) {
+                    if (tmp.getId().equals(currentPlayer))
+                        tmp.setCurrentPlayer(true);
+                    else
+                        tmp.setCurrentPlayer(false);
+                }
+                updatePlayersView();
                 return;
+
             }
         }
         currentPlayer = turnOrder.get(0);
+        if(!checkIfPlayerHasAvailableAction(players.get(currentPlayer))){
+            System.out.println("player can't play");// todo forse fare messaggio che va al client
+            changeCurrentPlayer();
+        }
+
+        for(RemotePlayer tmp: players.values()) {
+            if (tmp.getId().equals(currentPlayer))
+                tmp.setCurrentPlayer(true);
+            else
+                tmp.setCurrentPlayer(false);
+        }
+        updatePlayersView();
         return;
     }
 
@@ -269,7 +330,7 @@ public class GameRoom implements Serializable{
         board.setCardsOnBoard(deck);
     }
 
-    public void initializeTurnOrder(){
+    public void inizializeTurnOrder(){
         for (Player tmp: players.values()) {
             turnOrder.add(tmp.getId());
         }
@@ -280,17 +341,30 @@ public class GameRoom implements Serializable{
 
     public void setValueOfFamilyMembers(){
         game.throwDice(board);
-
         for(Player tmp: players.values()){
-            for(FamilyMember tmp1: tmp.getFamilyMembers()){
-                if(tmp1.getColor().equals(Color.BLACK))
-                    tmp1.setValue(getBoard().getBlackDice());
-                if(tmp1.getColor().equals(Color.WHITE))
-                    tmp1.setValue(getBoard().getWhiteDice());
-                if(tmp1.getColor().equals(Color.RED))
-                    tmp1.setValue(getBoard().getRedDice());
-            }
+            tmp.setBlackFM(getBoard().getBlackDice());
+            tmp.setWhiteFM(getBoard().getWhiteDice());
+            tmp.setRedFM(getBoard().getRedDice());
         }
+    }
+
+    public void leaveGame(String id){
+
+        WinnerElector winnerElector = new WinnerElector();
+        ArrayList<Player> playersWinner = new ArrayList<>();
+        for(Player tmp: players.values()) {
+            if (!tmp.getId().equals(id))
+                playersWinner.add(tmp);
+        }
+
+        winnerElector.setPlayers(playersWinner);
+        players.get(winnerElector.getWinner()).setWinner(true);
+        players.get(id).setPlayerLeft(true);
+
+        updatePlayersView();
+
+
+
     }
 
 

@@ -38,10 +38,14 @@ public abstract class AbstractUserInterfaceClient implements Serializable{
         map.put(ResponseCode.ACTION_SPACE_SELECTED, this::successfullySelectedActionSpace);
         map.put(ResponseCode.SLAVES_USED, this::successfullyUsedSlaves);
         map.put(ResponseCode.GENERIC_ERROR, this::handleError);
+        map.put(ResponseCode.OK, this::successfullyOperationFinished);
+        map.put(ResponseCode.GAME_STARTED, this::successfullyGameStarted);
+
 
         //------------------------pinò
         map.put((ResponseCode.NOT_ENOUGH_PLAYERS),this::notEnoughPlayersError);
         map.put((ResponseCode.WAIT_YOUR_TURN),this::waitTurnError);
+        map.put(ResponseCode.EXCOMMUNICATION_TAKEN, this::successfullyExcommunicationTaken);
     }
 
 
@@ -54,7 +58,9 @@ public abstract class AbstractUserInterfaceClient implements Serializable{
     protected abstract void handleError();
     protected abstract void notEnoughPlayersError();
     protected abstract void waitTurnError();
-
+    protected abstract void successfullyOperationFinished();
+    protected abstract void successfullyExcommunicationTaken();
+    protected abstract void successfullyGameStarted();
     public abstract void updateView();
 
     public abstract void go();
@@ -77,6 +83,7 @@ public abstract class AbstractUserInterfaceClient implements Serializable{
     public void useSlaves(int quantity){
         clientController.useSlaves(quantity);
     }
+
 
 
 

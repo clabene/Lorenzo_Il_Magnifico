@@ -37,13 +37,11 @@ public class CliClient extends AbstractUserInterfaceClient implements Serializab
     public void successfullyJoinedGame() {
         System.out.println("Join game successful");
 
-
     }
 
     @Override
     public void successfullyCreatedRoom() {
         System.out.println("Create room successful");
-
     }
 
     @Override
@@ -54,13 +52,14 @@ public class CliClient extends AbstractUserInterfaceClient implements Serializab
 
     @Override
     public void successfullySelectedActionSpace() {
-        System.out.println("Selected Family Member successful");
+        System.out.println("Selected Action Space successful");
 
     }
 
     @Override
     public void successfullyUsedSlaves() {
         System.out.println("Used slaves successful");
+
 
     }
 
@@ -81,9 +80,29 @@ public class CliClient extends AbstractUserInterfaceClient implements Serializab
     }
 
     @Override
+    protected void successfullyOperationFinished() {
+        System.out.println("Operation finished correctly");
+    }
+
+    @Override
+    protected void successfullyExcommunicationTaken() {
+        System.out.println("You don't have enough Faith Points, so you took excommunication from Vatican");
+    }
+
+    @Override
+    protected void successfullyGameStarted() {
+        System.out.println("Game started!!!!!!!!");
+    }
+/*
+    @Override
+    protected void successfullyPutFamilyMember() {
+        System.out.println("Ok, put family member");
+    }
+*/
+
+    @Override
     public void updateView() {
-
-
+        getClientController().getView().printBoard(getId());
     }
 
     @Override
@@ -103,13 +122,10 @@ public class CliClient extends AbstractUserInterfaceClient implements Serializab
                 createNewRoom(scanner.nextInt());
                 break;
         }
-
-
-
     }
 
     public void actionMenu(){
-        System.out.println("What do you want to do?\n 1)Select Family Member \n 2)Select Action Space\n 3)Use slaves\n ");
+        System.out.println("What do you want to do?\n 1)Select Family Member \n 2)Select Action Space\n 3)Use slaves\n 4) Leave the game \n ");
         Scanner scanner = new Scanner(System.in);
 
         switch (scanner.nextInt()){
@@ -122,6 +138,9 @@ public class CliClient extends AbstractUserInterfaceClient implements Serializab
                     break;
             case 3: slavesMenu();
                     break;
+
+            case 4: leaveGame();
+                    return;
         }
 
     }
@@ -137,18 +156,18 @@ public class CliClient extends AbstractUserInterfaceClient implements Serializab
 
     public void actionSpaceMenu(){
         System.out.println("Which action space do you want to select?");
-        getClientController().selectActionSpace(getClientController().getView().printActionSpaces());
-
-
+        getClientController().selectActionSpace(getClientController().getView().printActionSpaces(getId()));
     }
 
-    public void vaticanMenu(){
-        System.out.println();
-    }
+
 
     public void slavesMenu(){
         System.out.println("How many slaves do you want to use?");
         getClientController().useSlaves(getClientController().getView().printSlaves(getId()));
+    }
+
+    public void leaveGame(){
+        getClientController().leaveGame();
     }
 
 

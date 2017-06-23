@@ -34,7 +34,7 @@ public interface RMIServerInterface  extends Remote, Serializable{
     /*
     * Client sends request to use slaves to increment selected family member value
     * */
-    void useSlaves()throws RemoteException;
+    void useSlaves(int quantity,String playerId)throws RemoteException;
 
     void tryToLogIn(String id, RMIClientInterface rmiClientInterface)throws RemoteException;
 

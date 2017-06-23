@@ -64,8 +64,8 @@ public class RMIPlayer extends RemotePlayer {
     public void dealWithVatican(int periodNumber) {
         boolean choice = false;
         try {
-
             choice = rmiclientInterface.dealWithVatican(periodNumber);
+            this.setExcommunications(periodNumber-1, choice);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -81,10 +81,11 @@ public class RMIPlayer extends RemotePlayer {
     public void selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces) {
         ActionSpace actionSpace = null;
         try {
-            actionSpace = rmiclientInterface.selectActionSpaceForExtraAction(actionSpaces);
+             actionSpace = rmiclientInterface.selectActionSpaceForExtraAction(actionSpaces);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+
         getGameRoom().doExtraAction(this, actionSpace);
         notifyRequestHandleOutcome(ResponseCode.OK);
     }
@@ -109,6 +110,11 @@ public class RMIPlayer extends RemotePlayer {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void leaveGame() {
+        getGameRoom().leaveGame(getId());
     }
 
 

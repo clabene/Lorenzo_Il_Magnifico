@@ -2,16 +2,12 @@ package logic.gameStructure;
 
 
 import logic.actionSpaces.ActionSpace;
-import logic.actionSpaces.TowerActionSpace;
 import logic.board.Board;
-import logic.cards.Card;
 import logic.player.FamilyMember;
 import logic.player.Player;
 
-import javax.print.attribute.standard.PrinterLocation;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Stack;
 
 /**
  * Created by Pinos on 25/05/2017.
@@ -58,8 +54,15 @@ public class Turn implements Serializable{
     and return the turn order as an arrayList of players
     */
 
-    public void getNextTurnOrder(ArrayList<String> players, Board board){
-        players = board.getTurnOrder();
+    public ArrayList<String> getNextTurnOrder(ArrayList<String> players, Board board){
+        ArrayList<String> newOrder  = new ArrayList<>();
+        newOrder = board.getTurnOrder();
+        for(String tmp: players){
+            if(!newOrder.contains(tmp)){
+                newOrder.add(tmp);
+            }
+        }
+        return newOrder;
     }
 
     /*

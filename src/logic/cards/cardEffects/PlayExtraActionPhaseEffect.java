@@ -66,7 +66,7 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
 
     @Override
     public void activate(Player player) {
-        if(actionSpaces.isEmpty()) addTowerActionSpaces(player); //see first constructor
+        if( actionSpaces.isEmpty()) addTowerActionSpaces(player);
 
         ExtraAction extraAction = new ExtraAction(actionSpaces, valueOfFamilyMember);
 

@@ -2,18 +2,17 @@ package logic.gameStructure;
 
 import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
-import logic.cards.Card;
 import logic.exceptions.ActionSpaceCoveredException;
 import logic.exceptions.FamilyMemberSelectionException;
 import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.player.FamilyMember;
 import logic.player.Player;
 import network.ResponseCode;
+import network.server.RemotePlayer;
 
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Stack;
 
 
 /**
@@ -70,6 +69,7 @@ public class Game implements Serializable{
     public ResponseCode selectionFamilyMember(FamilyMember familyMember, Player player){
         try{
             this.selectedFamilyMember = player.tryToSelectFamilyMember(familyMember);
+            System.out.println(selectedFamilyMember+"  ttttttttttttttttttttttttttttttttttttttttt");
         } catch (FamilyMemberSelectionException e){
             return ResponseCode.GENERIC_ERROR;
         }
@@ -96,6 +96,7 @@ public class Game implements Serializable{
         Boolean b = actionPhase.putFamilyMemberOnActionSpace(player, selectedFamilyMember, selectedActionSpace);
         selectedFamilyMember = null;
         selectedActionSpace = null;
+        System.out.println(b+"-----------------------------------------------------------b");
         if(b) return ResponseCode.OK;
         return ResponseCode.GENERIC_ERROR;
     }
@@ -103,9 +104,12 @@ public class Game implements Serializable{
     public ResponseCode playingExtraAction(Player player, int familyMemberValue, ActionSpace actionSpace){
 
         actionPhase.activateBonuses(player, actionSpace);
+
         Boolean b = actionPhase.putFamilyMemberOnActionSpace(player,
                 new FamilyMember(null, familyMemberValue, player.getId()),
                 actionSpace);
+        System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+
 
         if(b) return ResponseCode.OK;
         return ResponseCode.GENERIC_ERROR;
@@ -123,12 +127,15 @@ public class Game implements Serializable{
         turn.putCardsOnBoard(cards, board);
     }
 */
-    public void gettingNextTurnOrder(ArrayList<String> players, Board board){
-        turn.getNextTurnOrder(players, board);
+    public ArrayList<String> gettingNextTurnOrder(ArrayList<String> players, Board board){
+        return turn.getNextTurnOrder(players, board);
+
     }
 
     public ResponseCode useSlaves(Player player, int quantity){
         if(selectedFamilyMember == null) return ResponseCode.GENERIC_ERROR;
+        System.out.println(player+"-------------------------------------------------------aaaaaaaaaaaaaaaaaaa");
+
 
         if(actionPhase.incrementFamilyMemberValueRequest(player, selectedFamilyMember, quantity))
             return ResponseCode.SLAVES_USED;
@@ -145,22 +152,20 @@ public class Game implements Serializable{
             player.lose(player.getFaithPoints());
             return;
         }
+
         tassel.activate(player);
     }
 
     public void changeTurn(){
-
         if(turnNumber == 2){
             periodNumber++;
             period = new Period();
             turn = new Turn();
             turnNumber = 1;
-
         }
         else{
             turnNumber++;
             turn = new Turn();
-
         }
     }
 
