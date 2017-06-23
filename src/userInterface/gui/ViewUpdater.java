@@ -26,24 +26,27 @@ public class ViewUpdater {
     public void setController(MainViewController controller) {
         this.controller = controller;
     }
-
+/*
     public ViewUpdater(){
         oldClientView = new ClientView();
         oldClientView.setBoard(new Board(0));
         oldClientView.setPlayers(new ArrayList<>());
     }
-
-    public void updateView(ClientView newClientView){
+*/
+    public void updateView(ClientView newClientView, ClientView oldClientView){
         if(controller == null) return;
 
+        if(oldClientView == null) oldClientView = new ClientView( new ArrayList<>(), new Board(0));
+
+        this.oldClientView = oldClientView;
         this.newClientView = newClientView;
+
+        System.out.println(oldClientView);
+        System.out.println(newClientView);
 
         updateBoard();
         updatePlayers();
 
-        oldClientView = newClientView;
-
-        this.newClientView = null;
 
     }
 
@@ -94,10 +97,6 @@ public class ViewUpdater {
         for(Player tmp : newClientView.getPlayers()){
             Player oldPlayer = getOldPlayerFromId(tmp.getId());
 
-            System.out.println(newClientView);
-            System.out.println(oldClientView);
-            System.out.println("new player: " + tmp);
-            System.out.println("old player: " + oldPlayer);
 
             if(oldPlayer == null) Platform.runLater( () -> controller.addPlayer(PlayerColor.RED, tmp.getId(), "name"));
             else updateSinglePlayer(oldPlayer, tmp);

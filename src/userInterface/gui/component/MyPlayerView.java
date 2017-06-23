@@ -173,4 +173,6 @@ public class MyPlayerView extends TabPane implements PlayerTag {
     public BooleanProperty getSlaveUsageSelectedProperty() {
         return slaveUsageSelected;
     }
+
+
 }

@@ -12,6 +12,7 @@ import network.client.socket.SocketClient;
 import userInterface.cli.CliClient;
 import userInterface.gui.GuiClient;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
 import java.util.UUID;
@@ -29,7 +30,7 @@ public class Client extends Application implements ClientInterface {
     private AbstractNetworkClient networkClient ;
     private AbstractUserInterfaceClient uiClient;
 
-    //private ClientView clientView = new ClientView();
+    private volatile ClientView clientView = new ClientView();
 
     @Override
     public String getId() {
@@ -127,20 +128,20 @@ public class Client extends Application implements ClientInterface {
         uiClient.updateUi(outcomeCode);
     }
 
-    //todo delete this
+
     @Override
     public ClientView getView(){
-        return new ClientView();//clientView;
+        return clientView;
     }
+
 
     @Override
     public void updateView(Board board, Collection<Player> players) {
-        uiClient.updateView(new ClientView(players, board));
+        clientView.setBoard(board);
+        clientView.setPlayers(players);
+        uiClient.updateView();
 
-        //clientView.setBoard(board);
-        //clientView.setPlayers(players);
     }
-
 
     public static void main(String[] args){
         Client c = new Client();

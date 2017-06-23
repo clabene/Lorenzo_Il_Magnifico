@@ -3,12 +3,16 @@ package userInterface.gui;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import logic.board.Board;
+import logic.player.Player;
 import network.ResponseCode;
 import network.client.ClientInterface;
 import network.client.ClientView;
 import userInterface.AbstractUserInterfaceClient;
 import userInterface.gui.controllers.Controller;
 import userInterface.gui.controllers.MainViewController;
+
+import java.util.ArrayList;
 
 
 /**
@@ -41,20 +45,14 @@ public class GuiClient extends AbstractUserInterfaceClient {
 
     @Override
     public void successfullyJoinedGame() {
-        Platform.runLater( () ->{
-            loader.buildMainGameStage();
-            viewUpdater.setController((MainViewController) controller);
-        });
-        //Platform.runLater( () -> ((MainViewController) controller).placeMyPlayer() );
+        Platform.runLater( () -> loader.buildMainGameStage());
+        Platform.runLater( () -> ((MainViewController) controller).placeMyPlayer() );
     }
 
     @Override
     public void successfullyCreatedRoom() {
-        Platform.runLater( () -> {
-            loader.buildMainGameStage();
-            viewUpdater.setController((MainViewController) controller);
-        } );
-        //Platform.runLater( () -> ((MainViewController) controller).placeMyPlayer() );
+        Platform.runLater( () -> loader.buildMainGameStage());
+        Platform.runLater( () -> ((MainViewController) controller).placeMyPlayer() );
     }
 
     @Override
@@ -102,10 +100,9 @@ public class GuiClient extends AbstractUserInterfaceClient {
 
     }
 
-
     @Override
-    public void updateView(ClientView clientView) {
-        viewUpdater.updateView(clientView);
+    public void updateView() {
+
     }
 
     @Override

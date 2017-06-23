@@ -41,9 +41,15 @@ public class MainViewController extends Controller {
 
         placeBoard();
         placeOpponentsAccordion();
-
     }
 
+
+    public PlayerTag getPlayerFromId(String id){
+        for(PlayerTag tmp : players)
+            if(tmp.getPlayerId().equals(id))
+                return tmp;
+        return null;
+    }
 
     /*
     * to be called right after initialize(...)
@@ -53,7 +59,6 @@ public class MainViewController extends Controller {
         players.add(myPlayer);
         myPlayer.layoutXProperty().bind(board.getXPosition().add(board.getWidthProperty().divide(2)));
         myPlayer.layoutYProperty().bind(pane.heightProperty().multiply(0.7));
-        //myPlayer.layoutYProperty().bind(board.getYPosition().add(board.getHeightProperty()).multiply(1.17));
         myPlayer.setBackground(new Background(new BackgroundFill(Color.TAN, new CornerRadii(40), null)));
 
         familyMemberSelected.bindBidirectional( myPlayer.getFamilyMemberSelectedProperty());
@@ -63,7 +68,6 @@ public class MainViewController extends Controller {
     }
 
     private void placeOpponentsAccordion(){
-        //opponentsAccordion.layoutXProperty().bind(board.getXPosition().add(board.getWidthProperty().multiply(1.17)));
         opponentsAccordion.layoutXProperty().bind(pane.widthProperty().multiply(0.7));
         opponentsAccordion.layoutYProperty().bind(board.getYPosition().add(20));
     }
@@ -76,17 +80,12 @@ public class MainViewController extends Controller {
         pane.getChildren().addAll(board.getComponents());
     }
 
-    public PlayerTag getPlayerFromId(String id){
-        for(PlayerTag tmp : players)
-            if(tmp.getPlayerId().equals(id))
-                return tmp;
-        return null;
-    }
-
+    /*
     public void addPlayer(PlayerColor playerColor, String playerId, String name){
         if(playerId.equals(getGuiClient().getId())) placeMyPlayer();
         else addOpponent( playerColor,  playerId,  name);
     }
+    */
     public void addOpponent(PlayerColor playerColor, String playerId, String name) {
         OpponentView opponent = new OpponentView(playerColor, playerId, name);
         players.add(opponent);
@@ -133,6 +132,7 @@ public class MainViewController extends Controller {
         getPlayerFromId(playerId).updateFaithPointsQuantity( quantity);
     }
     public void updateFamilyMemberValue(String playerId, logic.board.Color color, String value){
+        System.out.println("ssssssssssssssssssssssssssssssssssssssssssss " + playerId + getPlayerFromId(playerId));
         getPlayerFromId(playerId).updateFamilyMemberValue(color, value);
     }
 

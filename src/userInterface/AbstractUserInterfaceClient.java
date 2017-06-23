@@ -62,7 +62,7 @@ public abstract class AbstractUserInterfaceClient implements Serializable{
     protected abstract void successfullyOperationFinished();
     protected abstract void successfullyExcommunicationTaken();
     protected abstract void successfullyGameStarted();
-    public abstract void updateView(ClientView clientView);
+    public abstract void updateView();
 
     public abstract void go();
 

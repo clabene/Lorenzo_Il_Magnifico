@@ -36,4 +36,7 @@ public interface ClientInterface extends Serializable {
 
     void leaveGame();
 
+
+
+
 }

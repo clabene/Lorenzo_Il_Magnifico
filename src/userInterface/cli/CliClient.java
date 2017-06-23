@@ -93,8 +93,8 @@ public class CliClient extends AbstractUserInterfaceClient implements Serializab
 */
 
     @Override
-    public void updateView(ClientView clientView) {
-        clientView.printBoard(getId());
+    public void updateView() {
+        getClientController().getView().printBoard(getId());
     }
 
     @Override
