@@ -30,6 +30,16 @@ public class ClientView implements Serializable{
         return players;
     }
 
+    public ClientView(){
+
+    }
+
+
+    public ClientView(Collection<Player> players, Board board) {
+        this.players = players;
+        this.board = board;
+    }
+
     public Board getBoard() {
         return board;
     }

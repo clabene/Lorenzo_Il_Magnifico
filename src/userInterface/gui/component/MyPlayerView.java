@@ -140,7 +140,6 @@ public class MyPlayerView extends TabPane implements PlayerTag {
     public void updateMilitaryPointsQuantity(String quantity){
         me.updateMilitaryPointsQuantity( quantity);
     }
-
     public void updateFaithPointsQuantity(String quantity){
         me.updateFaithPointsQuantity( quantity);
     }

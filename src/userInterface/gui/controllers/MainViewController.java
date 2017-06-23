@@ -83,7 +83,10 @@ public class MainViewController extends Controller {
         return null;
     }
 
-
+    public void addPlayer(PlayerColor playerColor, String playerId, String name){
+        if(playerId.equals(getGuiClient().getId())) placeMyPlayer();
+        else addOpponent( playerColor,  playerId,  name);
+    }
     public void addOpponent(PlayerColor playerColor, String playerId, String name) {
         OpponentView opponent = new OpponentView(playerColor, playerId, name);
         players.add(opponent);
@@ -102,24 +105,31 @@ public class MainViewController extends Controller {
         getPlayerFromId(playerId).addVentureCard(name);
     }
     public void updateWoodQuantity(String playerId, String quantity){
+        System.out.println("ssssssssssssssssssssssssssssssssssssssssssss " + playerId + getPlayerFromId(playerId));
         getPlayerFromId(playerId).updateWoodQuantity(quantity);
     }
     public void updateStoneQuantity(String playerId, String quantity){
+        System.out.println("ssssssssssssssssssssssssssssssssssssssssssss " + playerId + getPlayerFromId(playerId));
         getPlayerFromId(playerId).updateStoneQuantity( quantity);
     }
     public void updateSlaveQuantity(String playerId, String quantity){
+        System.out.println("ssssssssssssssssssssssssssssssssssssssssssss " + playerId + getPlayerFromId(playerId));
         getPlayerFromId(playerId).updateSlaveQuantity( quantity);
     }
     public void updateMoneyQuantity(String playerId, String quantity){
+        System.out.println("ssssssssssssssssssssssssssssssssssssssssssss " + playerId + getPlayerFromId(playerId));
         getPlayerFromId(playerId).updateMoneyQuantity( quantity);
     }
     public void updateVictoryPointsQuantity(String playerId, String quantity){
+        System.out.println("ssssssssssssssssssssssssssssssssssssssssssss " + playerId + getPlayerFromId(playerId));
         getPlayerFromId(playerId).updateVictoryPointsQuantity(quantity);
     }
     public void updateMilitaryPointsQuantity(String playerId, String quantity){
+        System.out.println("ssssssssssssssssssssssssssssssssssssssssssss " + playerId + getPlayerFromId(playerId));
         getPlayerFromId(playerId).updateMilitaryPointsQuantity( quantity);
     }
-    public void updateFaithPointsQuantity(String playerId, String quantity){
+    public void updateFaithPointsQuantity(String playerId, String quantity) {
+        System.out.println("ssssssssssssssssssssssssssssssssssssssssssss " + playerId + getPlayerFromId(playerId));
         getPlayerFromId(playerId).updateFaithPointsQuantity( quantity);
     }
     public void updateFamilyMemberValue(String playerId, logic.board.Color color, String value){
@@ -146,17 +156,14 @@ public class MainViewController extends Controller {
 
                 if(mainViewController.actionSpaceSelected.get()) {
                     getGuiClient().selectActionSpace(board.getSelectedId());
-                    System.out.println("getGuiClient().selectActionSpace(board.getSelectedId())");
                     mainViewController.actionSpaceSelected.set(false);
                 }
                 if(mainViewController.familyMemberSelected.get()){
                     getGuiClient().selectFamilyMember(((MyPlayerView)getPlayerFromId(getGuiClient().getId())).getSelectedFamilyMember());
-                    System.out.println("getGuiClient().selectFamilyMember(((MyPlayerView)getPlayerFromId(getGuiClient().getId())).getSelectedFamilyMember());");
                     mainViewController.familyMemberSelected.set(false);
                 }
                 if(mainViewController.slaveUsageSelected.get()){
                     getGuiClient().useSlaves(1);
-                    System.out.println("getGuiClient().useSlaves(((MyPlayerView) getPlayerFromId(getGuiClient().getId())).getSlavesUsageQuantity());");
                     mainViewController.slaveUsageSelected.set(false);
                 }
             }

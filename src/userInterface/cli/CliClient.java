@@ -1,7 +1,9 @@
 package userInterface.cli;
 
 import network.ResponseCode;
+import network.client.Client;
 import network.client.ClientInterface;
+import network.client.ClientView;
 import userInterface.AbstractUserInterfaceClient;
 
 import java.io.Serializable;
@@ -91,8 +93,8 @@ public class CliClient extends AbstractUserInterfaceClient implements Serializab
 */
 
     @Override
-    public void updateView() {
-        getClientController().getView().printBoard(getId());
+    public void updateView(ClientView clientView) {
+        clientView.printBoard(getId());
     }
 
     @Override

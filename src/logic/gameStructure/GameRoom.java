@@ -213,10 +213,8 @@ public class GameRoom implements Serializable{
 
 
     private void updatePlayersView() {
-        ;
         for(RemotePlayer tmp : players.values()){
             tmp.updateView(board, players.values());
-
         }
 
 

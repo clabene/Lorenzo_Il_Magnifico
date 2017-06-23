@@ -1,16 +1,15 @@
 package userInterface.gui;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import network.ResponseCode;
 import network.client.ClientInterface;
+import network.client.ClientView;
 import userInterface.AbstractUserInterfaceClient;
 import userInterface.gui.controllers.Controller;
 import userInterface.gui.controllers.MainViewController;
 
-import javax.swing.text.html.ImageView;
 
 /**
  * Created by IBM on 14/06/2017.
@@ -30,12 +29,6 @@ public class GuiClient extends AbstractUserInterfaceClient {
         loader = new Loader(this, stage);
     }
 
-    /*
-    @Override
-    public ClientInterface getClientController() {
-        return super.getClientController();
-    }
-    */
 
     public void setController(Controller controller) {
         this.controller = controller;
@@ -48,14 +41,20 @@ public class GuiClient extends AbstractUserInterfaceClient {
 
     @Override
     public void successfullyJoinedGame() {
-        Platform.runLater( () -> loader.buildMainGameStage() );
-        Platform.runLater( () -> ((MainViewController) controller).placeMyPlayer() );
+        Platform.runLater( () ->{
+            loader.buildMainGameStage();
+            viewUpdater.setController((MainViewController) controller);
+        });
+        //Platform.runLater( () -> ((MainViewController) controller).placeMyPlayer() );
     }
 
     @Override
     public void successfullyCreatedRoom() {
-        Platform.runLater( () -> loader.buildMainGameStage() );
-        Platform.runLater( () -> ((MainViewController) controller).placeMyPlayer() );
+        Platform.runLater( () -> {
+            loader.buildMainGameStage();
+            viewUpdater.setController((MainViewController) controller);
+        } );
+        //Platform.runLater( () -> ((MainViewController) controller).placeMyPlayer() );
     }
 
     @Override
@@ -103,9 +102,10 @@ public class GuiClient extends AbstractUserInterfaceClient {
 
     }
 
+
     @Override
-    public void updateView() {
-        //viewUpdater.updateView(getClientController().getView());
+    public void updateView(ClientView clientView) {
+        viewUpdater.updateView(clientView);
     }
 
     @Override

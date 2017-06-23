@@ -29,7 +29,7 @@ public class Client extends Application implements ClientInterface {
     private AbstractNetworkClient networkClient ;
     private AbstractUserInterfaceClient uiClient;
 
-    private ClientView clientView = new ClientView();
+    //private ClientView clientView = new ClientView();
 
     @Override
     public String getId() {
@@ -127,16 +127,18 @@ public class Client extends Application implements ClientInterface {
         uiClient.updateUi(outcomeCode);
     }
 
+    //todo delete this
     @Override
     public ClientView getView(){
-        return clientView;
+        return new ClientView();//clientView;
     }
 
     @Override
     public void updateView(Board board, Collection<Player> players) {
-        clientView.setBoard(board);
-        clientView.setPlayers(players);
-        uiClient.updateView();
+        uiClient.updateView(new ClientView(players, board));
+
+        //clientView.setBoard(board);
+        //clientView.setPlayers(players);
     }
 
 

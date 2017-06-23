@@ -4,6 +4,7 @@ import logic.player.FamilyMember;
 import network.ResponseCode;
 import network.client.AbstractNetworkClient;
 import network.client.ClientInterface;
+import network.client.ClientView;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -61,7 +62,7 @@ public abstract class AbstractUserInterfaceClient implements Serializable{
     protected abstract void successfullyOperationFinished();
     protected abstract void successfullyExcommunicationTaken();
     protected abstract void successfullyGameStarted();
-    public abstract void updateView();
+    public abstract void updateView(ClientView clientView);
 
     public abstract void go();
 

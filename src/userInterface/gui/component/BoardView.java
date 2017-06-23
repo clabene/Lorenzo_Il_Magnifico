@@ -194,7 +194,7 @@ public class BoardView {
     private void setActionSpacesSelectable(){
         for(ActionSpaceImageView tmp : actionSpaces.values())
             tmp.setOnMouseClicked( e -> {
-                selectedId = tmp.getId();
+                selectedId = tmp.getActionSpaceId();
                 actionSpaceSelected.set(true);
             });
     }

@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import userInterface.gui.component.PopUp;
 import userInterface.gui.controllers.Controller;
+import userInterface.gui.controllers.MainViewController;
 
 
 /**
@@ -31,14 +32,12 @@ public class Loader {
             Parent root = fxmlLoader.load();
             Controller controller = fxmlLoader.getController();
             controller.setGuiClient(guiClient);
-            System.out.println(controller.getGuiClient());
-            //controller.setLoader(this);
             guiClient.setController(controller);
             window.setScene(new Scene(root, width, height));
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        window.setOnCloseRequest( e -> Runtime.getRuntime().exit(0) );
         window.show();
     }
 
