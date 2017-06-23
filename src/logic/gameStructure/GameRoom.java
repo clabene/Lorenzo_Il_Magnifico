@@ -83,7 +83,7 @@ public class GameRoom implements Serializable{
 
             if (numberOfPlayers.getValue() == board.getMAX_NUMBER_OF_PLAYERS()) {
                 setValueOfFamilyMembers();
-                inizializeTurnOrder();
+                initializeTurnOrder();
                 currentPlayer = turnOrder.get(0);
                 gameStarted = true;
             }
@@ -269,7 +269,7 @@ public class GameRoom implements Serializable{
         board.setCardsOnBoard(deck);
     }
 
-    public void inizializeTurnOrder(){
+    public void initializeTurnOrder(){
         for (Player tmp: players.values()) {
             turnOrder.add(tmp.getId());
         }

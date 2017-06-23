@@ -32,11 +32,12 @@ public class ActivationActionSpace extends ActionSpace {
             Collections.addAll(cards, player.getPlank().getCards().getBuildingCards());
         else if(activationType == ActivationActionSpaceType.HARVEST)
             Collections.addAll(cards, player.getPlank().getCards().getLandCards());
-
+        /*
         Iterator iterator = cards.iterator();
         while(iterator.hasNext())
             if(iterator.next() == null)
                 iterator.remove();
+        */
     }
 
     private void removeNotValidCard(Card card) {
@@ -74,7 +75,7 @@ public class ActivationActionSpace extends ActionSpace {
 
     private void activateCardEffect(Card card, Player player){
         card.getPermanentEffect().activate(player);
-        cards.remove(card);
+        //cards.remove(card);
     }
 
     public boolean action(Player player){
@@ -85,11 +86,18 @@ public class ActivationActionSpace extends ActionSpace {
 
         Card selectedCard;
 
+        /*
         do {
             showCardEffects();
             selectedCard = getSelectedCard();
             activateCardEffect(selectedCard, player);
         } while(selectedCard != null);
+        */
+
+        for(Card tmp : cards)
+            if(tmp != null)
+                activateCardEffect(tmp, player);
+
 
         player.getPlank().dump();
         player.getPlank().setToUseSeparateResources(false);

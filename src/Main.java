@@ -1,31 +1,25 @@
-import javafx.print.PageLayout;
-import logic.actionSpaces.ActionSpace;
-import logic.actionSpaces.ActivationActionSpace;
-import logic.actionSpaces.ActivationActionSpaceType;
-import logic.actionSpaces.TowerActionSpace;
-import logic.board.Board;
-import logic.board.Color;
-import logic.cards.LandCard;
-import logic.cards.cardEffects.ExchangeGainablesEffect;
-import logic.cards.cardEffects.ReceiveGainablesEffect;
-import logic.gameStructure.ActionPhase;
-import logic.gameStructure.Game;
-import logic.gameStructure.PeriodNumber;
-import logic.interfaces.Losable;
-import logic.player.FamilyMember;
-import logic.player.Plank;
-import logic.player.Player;
-import logic.pointsTracks.MilitaryPointsTrack;
-import logic.resources.Money;
-import logic.resources.Slave;
-import logic.resources.Wood;
-
-import java.util.ArrayList;
+import com.sun.javafx.binding.SelectBinding;
+import javafx.application.Application;
+import javafx.beans.binding.DoubleBinding;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Accordion;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
+import userInterface.PlayerColor;
+import userInterface.gui.component.*;
 
 /**
  * Created by IBM on 09/05/2017.
  */
-public class Main {
+public class Main extends Application {
 
 
     public static void main(String args[]){
@@ -130,7 +124,7 @@ public class Main {
 
         System.out.println(cla.getPlank().getSetOfResources());
         */
-
+        /*
         TowerActionSpace t1 = new TowerActionSpace(3, new Wood(2));
         TowerActionSpace t2 = new TowerActionSpace(1);
         t1.familyMemberAdded(new FamilyMember(Color.BLACK, 2, "ww"));
@@ -144,10 +138,132 @@ public class Main {
         s += t2.getLastFamilyMemberAdded();
 
         System.out.println(s);
+        */
 
+        launch();
+
+    }
+
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        /*
+        LabeledImageView l = new LabeledImageView("Ciaone", "userInterface/cancellami.jpg");
+        l.setLayoutX(20);
+        l.setLayoutY(20);
+        l.setFitHeight(150);
+        l.setFitWidth(100);
+        Pane pane = new Pane();
+        pane.getChildren().addAll(l.getComponents());
+        primaryStage.setScene(new Scene(pane, 300, 300));
+        primaryStage.show();
+        */
+        /*
+        ActionSpaceImageView a = new ActionSpaceImageView("userInterface/gui/images/cancellami.jpg");
+        a.setFitHeight(150);
+        a.setFitWidth(500);
+        a.addFamilyMemberImage();
+        a.addFamilyMemberImage();
+        Pane pane = new Pane();
+        a.xProperty().bind(pane.widthProperty().divide(4));
+        pane.getChildren().addAll(a.getComponents());
+        pane.getChildren().add(a.addFamilyMemberImage());
+        primaryStage.setScene(new Scene(pane, 700, 400));
+        primaryStage.show();
+        */
+        /*
+        TowerActionSpaceImageView t = new TowerActionSpaceImageView("T","userInterface/gui/images/cancellami.jpg", "ciaone");
+        t.setFitWidth(80);
+        t.setFitHeight(80);
+        t.setX(300);
+        t.setY(300);
+        Pane pane = new Pane();
+        t.xProperty().bind(pane.widthProperty().divide(4));
+        t.yProperty().bind(pane.heightProperty().divide(3));
+        pane.getChildren().addAll(t.getComponents());
+        primaryStage.setScene(new Scene(pane, 700, 700));
+        primaryStage.show();
+        */
+        /*
+        TowerActionSpaceImageView t1 = new TowerActionSpaceImageView("T1","userInterface/gui/images/cancellami.jpg", "ciaone");
+        TowerActionSpaceImageView t2 = new TowerActionSpaceImageView("T2","userInterface/gui/images/cancellami.jpg", "ciaone");
+        TowerView tv = new TowerView(300, 100, t1, t2);
+        Pane pane = new Pane();
+        pane.getChildren().addAll(tv.getComponents());
+        primaryStage.setScene(new Scene(pane, 700, 700));
+        primaryStage.show();
+        */
+        /*
+        BoardView b = new BoardView();
+        Pane pane = new Pane();
+        b.getXPosition().bind(pane.widthProperty().divide(10).add(TowerActionSpaceImageView.getLeftOffset()));
+        b.getYPosition().bind(pane.heightProperty().divide(30));
+        //b.getYPosition().set(b.getSuperiorOffset()+10);
+        pane.getChildren().addAll(b.getComponents());
+        primaryStage.setScene(new Scene(pane, 1200, 900));
+        primaryStage.show();
+        */
+        /*
+        PlayerView p = new PlayerView(PlayerView.ConfigurationMode.OPPONENT);
+        p.layoutXProperty().set(0);
+        TitledPane g = new TitledPane("jhonny", "wwqww", p);
+        g.setText("pippo");
+        g.setPrefHeight(600);
+        g.setPrefWidth(400);
+        Accordion a = new Accordion(g);
+        a.setLayoutX(100);
+        a.setLayoutY(20);
+
+        Pane mainPain = new Pane(a);
+
+        primaryStage.setScene(new Scene(mainPain, 900, 900));
+        primaryStage.show();
+        */
+        /*
+        PlayerView p = new PlayerView("a", "qqwqq", PlayerView.ConfigurationMode.MY_PLAYER);
+
+        TabPane tabPane;
+
+        Tab tab = new Tab("Resources", new Group( p.getResourceImages() ) );
+        Tab tab1 = new Tab("Land Cards", new Group(p.getLandCardsName()));
+
+        tabPane = new TabPane(tab, tab1);
+        tabPane.setLayoutX(100);
+        tabPane.setLayoutY(20);
+
+        primaryStage.setScene(new Scene(new Pane(tabPane), 900, 800));
+        primaryStage.show();
+        */
+
+
+
+
+
+        Pane pane = new Pane();
+
+
+        BoardView b = new BoardView();
+        b.bindXPosition(pane.widthProperty().divide(30));
+        b.bindYPosition(pane.heightProperty().divide(20));
+        pane.getChildren().addAll(b.getComponents());
+
+        OpponentView o = new OpponentView(PlayerColor.RED, "id", "name");
+        OpponentView o2 = new OpponentView(PlayerColor.RED, "id2", "name2");
+        Accordion a = new Accordion(o, o2);
+        a.layoutXProperty().bind(b.getXPosition().add(b.getWidthProperty()).add(b.getXPosition()));
+        a.layoutYProperty().bind(b.getYPosition().add(20));
+        pane.getChildren().add(a);
+
+        MyPlayerView mp = new MyPlayerView("id", "name");
+        mp.layoutXProperty().bind(b.getXPosition().add(b.getWidthProperty().divide(2.2)));
+        mp.layoutYProperty().bind(b.getYPosition().add(b.getHeightProperty()).add(20));
+        mp.setBackground(new Background(new BackgroundFill(Color.TAN, new CornerRadii(100), null)));
+        pane.getChildren().add(mp);
+
+        primaryStage.setScene(new Scene(pane, 1200, 900));
+        primaryStage.show();
 
 
 
     }
-
 }

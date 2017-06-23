@@ -151,7 +151,7 @@ public class CardSetupHandler {
         //territorio terzo periodo-----------------------------------------------------
         landCards.add(new LandCard("Città Mercantile", PeriodNumber.THIRD, 1, new ReceiveGainablesEffect(new Money(), new Slave()), new ReceiveGainablesEffect(new Money(3))));
         landCards.add(new LandCard("Castello", PeriodNumber.THIRD, 4, new ReceiveGainablesEffect(new Money(2), new VictoryPoint(2)), new ReceiveGainablesEffect(new MilitaryPointsTrack(3), new Slave())));
-        landCards.add(new LandCard("Santuario", PeriodNumber.THIRD, 1, new ReceiveGainablesEffect(new FaithPointsTrack()), new ReceiveGainablesEffect(new FaithPointsTrack(), new Money())));
+        landCards.add(new LandCard("Santuario", PeriodNumber.THIRD, 1, new ReceiveGainablesEffect(new FaithPointsTrack(1)), new ReceiveGainablesEffect(new FaithPointsTrack(1), new Money())));
         landCards.add(new LandCard("Provincia", PeriodNumber.THIRD, 6, new ReceiveGainablesEffect(new CouncilFavour(1), new Stone()), new ReceiveGainablesEffect(new Stone(), new VictoryPoint(4))));
         landCards.add(new LandCard("Colonia", PeriodNumber.THIRD, 5, new ReceiveGainablesEffect(new MilitaryPointsTrack(2)), new ReceiveGainablesEffect(new Wood(), new VictoryPoint(4))));
         landCards.add(new LandCard("Città Fortificata", PeriodNumber.THIRD, 2, new ReceiveGainablesEffect(new Slave(), new MilitaryPointsTrack(2)), new ReceiveGainablesEffect(new Slave(2), new MilitaryPointsTrack(1))));

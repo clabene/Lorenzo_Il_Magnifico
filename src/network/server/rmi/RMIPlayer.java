@@ -86,7 +86,7 @@ public class RMIPlayer extends RemotePlayer {
             e.printStackTrace();
         }
         getGameRoom().doExtraAction(this, actionSpace);
-         notifyRequestHandleOutcome(ResponseCode.OK);
+        notifyRequestHandleOutcome(ResponseCode.OK);
     }
 
     @Override

@@ -1,8 +1,10 @@
 package network.client.socket;
 
 import logic.actionSpaces.ActionSpace;
+import logic.board.Board;
 import logic.interfaces.Gainable;
 import logic.player.FamilyMember;
+import logic.player.Player;
 import logic.resources.CouncilFavour;
 import logic.utility.StaticVariables;
 import network.ResponseCode;
@@ -12,6 +14,7 @@ import network.client.ClientInterface;
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Scanner;
 
 /**
@@ -29,11 +32,17 @@ public class SocketClient extends AbstractNetworkClient {
 
     private ClientStreamHandler streamHandler;
 
+    private ClientInterface clientInterface;
+
     public SocketClient(ClientInterface clientController,int port){
-        //super(clientController);
+        this.clientInterface = clientController;
         this.ipAddress = "127.0.0.1";
         this.port = port;
 
+    }
+
+    public ClientInterface getClientInterface() {
+        return clientInterface;
     }
 
     @Override
@@ -60,9 +69,12 @@ public class SocketClient extends AbstractNetworkClient {
 
     }
 
+    public void updateView(Board board, Collection<Player> players){
+        clientInterface.updateView(board, players);
+    }
 
-    public void notifyRequestHandleOutcome(ResponseCode requestHandleOutcome){ //bring this to streamHandler
-        //getClientController().showOutcome(requestHandleOutcome);
+    public void notifyRequestHandleOutcome(ResponseCode requestHandleOutcome){
+        clientInterface.showOutcome(requestHandleOutcome);
         /*
         try {
             ResponseCode requestHandleOutcome = (ResponseCode) input.readObject();
@@ -77,7 +89,7 @@ public class SocketClient extends AbstractNetworkClient {
     public void tryToLogIn() {
         try{
             output.writeObject("LOG_IN_REQUEST");
-           // output.writeObject(getId());
+            output.writeObject(clientInterface.getId());
             output.flush();
         } catch (IOException e){
             System.out.println("Could not send log in request");

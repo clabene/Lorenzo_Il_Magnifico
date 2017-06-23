@@ -57,7 +57,7 @@ public abstract class AbstractNetworkClient implements Serializable{
     /*
     * Connects to the right server according to the preferred network type
     * */
-    public abstract void connect() ;
+    public abstract void connect();
 
     /*
     * Client sends request to be logged in with a specific name and id

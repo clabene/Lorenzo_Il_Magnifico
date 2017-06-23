@@ -59,22 +59,22 @@ public abstract class AbstractUserInterfaceClient implements Serializable{
 
     public abstract void go();
 
-    protected void logIn(){
+    public void logIn(){
         clientController.logIn();
     }
-    protected void createNewRoom(int numberOfPlayers){
+    public void createNewRoom(int numberOfPlayers){
         clientController.createNewRoom(numberOfPlayers);
     }
-    protected void joinGame(){
+    public void joinGame(){
         clientController.joinGame();
     }
-    protected void selectFamilyMember(FamilyMember familyMember){
+    public void selectFamilyMember(FamilyMember familyMember){
         clientController.selectFamilyMember(familyMember);
     }
-    protected void selectActionSpace(String actionSpaceId){
+    public void selectActionSpace(String actionSpaceId){
         clientController.selectActionSpace(actionSpaceId);
     }
-    protected void useSlaves(int quantity){
+    public void useSlaves(int quantity){
         clientController.useSlaves(quantity);
     }
 

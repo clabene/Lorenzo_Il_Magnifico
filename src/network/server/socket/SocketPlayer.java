@@ -45,7 +45,8 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
     public void run(){
         try {
             while (true) {
-                String requestCode = (String) input.readObject();
+                String requestCode = input.readObject().toString();
+                System.out.println("-----------------------" + requestCode);
                 streamHandler.respond(requestCode);
             }
         } catch (IOException | ClassNotFoundException e) {
@@ -181,7 +182,6 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
     @Override
     public <P extends Player> void updateView(Board board, Collection<P> players) {
         try {
-
             output.writeObject("UPDATE_VIEW");
             output.writeObject(board);
 

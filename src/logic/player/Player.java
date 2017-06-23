@@ -1,5 +1,6 @@
 package logic.player;
 
+import javafx.application.Platform;
 import logic.board.Board;
 import logic.board.Color;
 import logic.cards.LandCard;
@@ -54,9 +55,8 @@ public class Player implements Serializable{
 
     private final SetOfResources initialResources = new SetOfResources(); //todo
 
-    public Player(Resource ... resources /*initialResources*/){
-        this.plank = new Plank(resources /*initialResources*/);
-
+    public Player(Resource ... resources){
+        this.plank = new Plank(resources);
     }
 
     //this has to be called as first method after constructor

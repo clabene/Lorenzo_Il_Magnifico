@@ -2,6 +2,7 @@ package network.server;
 
 import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
+import logic.cards.Card;
 import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.gameStructure.GameRoom;
 import logic.gameStructure.PeriodNumber;
@@ -46,21 +47,20 @@ public abstract class RemotePlayer extends Player implements Serializable {
     public abstract void dealWithVatican(int periodNumber);
 
     /*
-    * Server sends request to client to decide which bonus they will get form corresponding player's council favours.
-    * */
-    public abstract void selectCouncilFavour(int numberOfFavours);
-
-    /*
     * Client sends request to use slaves to increment selected family member value
     * */
     public abstract void useSlaves(int quantity);
+
+    /*
+    * Server sends request to client to decide which bonus they will get form corresponding player's council favours.
+    * */
+    public abstract void selectCouncilFavour(int numberOfFavours);
 
     /*
     * Client has to pick one of the action spaces sent as parameters
     * After that, game room's player has to use that action space for the extra action
     * This method is triggered by the server side (see PlayExtraActionPhaseEffect in package cardEffects)
     * */
-    //todo sending action spaces id's may be a better solution
     public abstract void selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces);
 
     /*

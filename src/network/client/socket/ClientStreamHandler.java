@@ -69,7 +69,7 @@ public class ClientStreamHandler {
         try {
             Board board = (Board) input.readObject();
             Collection<Player> players = (Collection< Player>) input.readObject();
-            //client.getClientController().updateView(board, players);
+            client.updateView(board, players);
         } catch (IOException | ClassNotFoundException e){
             System.out.println("Could not update view");
             e.printStackTrace();

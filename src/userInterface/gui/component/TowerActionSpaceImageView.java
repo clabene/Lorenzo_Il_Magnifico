@@ -1,0 +1,69 @@
+package userInterface.gui.component;
+
+import javafx.beans.property.DoubleProperty;
+import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import userInterface.gui.Loader;
+
+import java.util.ArrayList;
+
+/**
+ * Created by IBM on 19/06/2017.
+ */
+public class TowerActionSpaceImageView extends ActionSpaceImageView {
+
+    private ImageView card = new ImageView();
+
+    public TowerActionSpaceImageView(String actionSpaceId, String imageUrl, String cardName){
+        super(actionSpaceId, imageUrl);
+        placeCard(cardName);
+    }
+
+    private void placeCard(String cardName) {
+        card.xProperty().bind(xProperty()
+                .subtract(card.fitWidthProperty()
+                        .add(fitWidthProperty()
+                                .divide(15)
+                        )
+                )
+        );
+        card.yProperty().bind(yProperty()
+                .subtract(card.fitHeightProperty()
+                        .divide(2)
+                )
+                .add(fitHeightProperty()
+                        .divide(2)
+                )
+        );
+
+        card.setFitWidth(75);
+        card.setFitHeight(100);
+
+
+        card.setImage(new Image("userInterface/gui/images/cards/"+cardName+".jpg")); //todo png
+
+        card.setOnMouseClicked( e -> Loader.buildPopUp("Selected card", cardName, card.getImage()));
+
+    }
+
+    public DoubleProperty getHeightProperty(){
+        return card.fitHeightProperty();
+    }
+
+    public static double getLeftOffset(){
+        return 75; //a card's width
+    }
+
+    public static double getSuperiorOffset(){
+        return 25; //this is how much the card goes over the top of the action space
+    }
+
+    @Override
+    public ArrayList<Node> getComponents() {
+        ArrayList<Node> toReturn = new ArrayList<>();
+        toReturn.addAll(super.getComponents());
+        toReturn.add(card);
+        return toReturn;
+    }
+}

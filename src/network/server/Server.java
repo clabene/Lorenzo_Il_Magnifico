@@ -31,7 +31,7 @@ public class Server implements ServerInterface, Serializable {
 
     }
 
-    public void startServer(){
+    private void startServer(){
         rmiServer.startServer(RMI_PORT);
         socketServer.startServer(SOCKET_PORT);
     }
@@ -65,11 +65,9 @@ public class Server implements ServerInterface, Serializable {
             try {
                 gameRooms.get(gameRooms.size() - 1).addPlayerToRoom(getPlayer(playerId));
                 getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.GAME_JOINED);
-
             } catch (LimitedValueOffRangeException | ArrayIndexOutOfBoundsException e) {
                 System.out.println("Room not available");
                 getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.GENERIC_ERROR);
-
             }
         }
     }
@@ -86,7 +84,6 @@ public class Server implements ServerInterface, Serializable {
                 System.out.println("Could not add the player to the room");
                 getPlayer(playerId).notifyRequestHandleOutcome(ResponseCode.GENERIC_ERROR);
             }
-
         }
     }
 

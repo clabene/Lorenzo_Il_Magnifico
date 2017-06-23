@@ -1,5 +1,7 @@
 package network.client;
 
+import javafx.application.Application;
+import javafx.stage.Stage;
 import logic.player.FamilyMember;
 import network.client.rmi.RMIClient;
 import userInterface.AbstractUserInterfaceClient;
@@ -8,7 +10,7 @@ import logic.player.Player;
 import network.ResponseCode;
 import network.client.socket.SocketClient;
 import userInterface.CliClient;
-import userInterface.GuiClient;
+import userInterface.gui.GuiClient;
 
 import java.util.Collection;
 import java.util.Scanner;
@@ -17,7 +19,7 @@ import java.util.UUID;
 /**
  * Created by IBM on 06/06/2017.
  */
-public class Client implements ClientInterface {
+public class Client extends Application implements ClientInterface {
 
     private transient String id = UUID.randomUUID().toString();
 
@@ -35,10 +37,11 @@ public class Client implements ClientInterface {
     }
 
     public Client(){
-        setNetworkType();
-        this.networkClient.connect();
-        setUserInterface();
-        uiClient.go();
+        //setNetworkType();
+        //networkClient.connect();
+
+        //setUserInterfaceAndStart();
+        ////uiClient.go();
     }
 
     private int selectNetworkType(){
@@ -59,9 +62,18 @@ public class Client implements ClientInterface {
         Scanner in = new Scanner(System.in);
         return in.nextInt();
     }
-    private void setUserInterface(){
-        if(selectUserInterfaceType() == 1) uiClient = new CliClient(this);
-        else uiClient = new GuiClient(this);
+    private void setUserInterfaceAndStart(){
+        if(selectUserInterfaceType() == 1){
+            uiClient = new CliClient(this);
+
+            setNetworkType();
+            networkClient.connect();
+
+            uiClient.go();
+        }
+        else{
+            launch(); //uiClient = new GuiClient(this);
+        }
     }
 
     /*
@@ -125,7 +137,19 @@ public class Client implements ClientInterface {
 
 
     public static void main(String[] args){
-        Client client = new Client();
+        Client c = new Client();
+        c.setUserInterfaceAndStart();
     }
 
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        uiClient = new GuiClient(this);
+
+        setNetworkType();
+        networkClient.connect();
+
+        ((GuiClient)uiClient).initializeLoader(primaryStage);
+
+        uiClient.go();
+    }
 }

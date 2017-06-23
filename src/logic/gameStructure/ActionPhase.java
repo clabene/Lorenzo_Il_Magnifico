@@ -24,12 +24,12 @@ public class ActionPhase implements Serializable{
     //private Board board;
 /*
     public ActionPhase(Player player, Board board){
-        this.player = player;
+        this.player = Player;
         this.board = board;
     }
 
     public void setPlayer(Player player) {
-        this.player = player;
+        this.player = Player;
     }
 
     public void setBoard(Board board) {

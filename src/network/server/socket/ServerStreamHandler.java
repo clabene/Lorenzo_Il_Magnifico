@@ -31,7 +31,7 @@ public class ServerStreamHandler {
         responseMap.put("JOIN_GAME_REQUEST", player::tryToJoinGame);
         responseMap.put("CREATE_NEW_ROOM_REQUEST", this::tryToCreateNewRoom);
         responseMap.put("FAMILY_MEMBER_SELECTION_REQUEST", this::familyMemberSelectionRespond);
-        responseMap.put("ACTION_SPACE_SELECTION_REQUEST", this::acitionSpaceSelectionRespond);
+        responseMap.put("ACTION_SPACE_SELECTION_REQUEST", this::actionSpaceSelectionRespond);
         responseMap.put("USE_SLAVES_REQUEST", this::useSlaveRespond);
 
     }
@@ -47,12 +47,11 @@ public class ServerStreamHandler {
 
     public void tryToCreateNewRoom(){
         try {
-            int NUMBER_OF_PLAYERS = (int) input.readObject(); //check if boxing needed
+            int NUMBER_OF_PLAYERS = (Integer) input.readObject(); //check if boxing needed
             player.tryToJoinNewRoom(NUMBER_OF_PLAYERS);
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Could not handle CREATE_NEW_ROOM_REQUEST");
         }
-
     }
 
     public void familyMemberSelectionRespond(){
@@ -64,7 +63,7 @@ public class ServerStreamHandler {
         }
     }
 
-    public void acitionSpaceSelectionRespond(){
+    public void actionSpaceSelectionRespond(){
         try {
             String actionSpaceId = (String) input.readObject();
             player.selectActionSpace(actionSpaceId);
