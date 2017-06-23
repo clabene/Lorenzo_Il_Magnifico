@@ -26,7 +26,7 @@ public interface RMIClientInterface extends Remote, Serializable {
     void updateView(Board board, Collection<Player> players) throws RemoteException;
     Gainable[] selectCouncilFavour(int numberOfFavours)throws RemoteException;
     ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces)throws  RemoteException;
-    public ClientInterface getClientController()throws RemoteException;
+    ClientInterface getClientController()throws RemoteException;
 
 
 }

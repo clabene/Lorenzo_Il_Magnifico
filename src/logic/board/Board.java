@@ -34,13 +34,13 @@ public class Board implements Serializable{
         inizializeExcommunicationTassels();
     }
 
-    private   int redDice;
-    private   int whiteDice;
-    private   int blackDice;
+    private int redDice;
+    private int whiteDice;
+    private int blackDice;
 
-    private   ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
+    private ExcommunicationTassel[] tassels = new ExcommunicationTassel[3];
 
-    private   HashMap<String, ActionSpace> actionSpaceHashMap = new HashMap<>();
+    private HashMap<String, ActionSpace> actionSpaceHashMap = new HashMap<>();
 
     /**
      * first letter: T = tower ; C = council; A = activation; M = market.

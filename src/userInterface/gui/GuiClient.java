@@ -25,7 +25,7 @@ public class GuiClient extends AbstractUserInterfaceClient {
     private Controller controller;
     private Loader loader;
     private ViewUpdater viewUpdater = new ViewUpdater();
-
+    private ViewBuilder viewBuilder = new ViewBuilder();
 
     public GuiClient(ClientInterface clientController) {
         super(clientController);
@@ -47,14 +47,20 @@ public class GuiClient extends AbstractUserInterfaceClient {
 
     @Override
     public void successfullyJoinedGame() {
-        Platform.runLater( () -> loader.buildMainGameStage());
-        Platform.runLater( () -> ((MainViewController) controller).placeMyPlayer() );
+        Platform.runLater( () ->{
+            loader.buildMainGameStage();
+            ((MainViewController) controller).placeMyPlayer();
+            viewBuilder.setController((MainViewController) controller);
+        });
     }
 
     @Override
     public void successfullyCreatedRoom() {
-        Platform.runLater( () -> loader.buildMainGameStage());
-        Platform.runLater( () -> ((MainViewController) controller).placeMyPlayer() );
+        Platform.runLater( () -> {
+            loader.buildMainGameStage();
+            ((MainViewController) controller).placeMyPlayer();
+            viewBuilder.setController((MainViewController) controller);
+        });
     }
 
     @Override
@@ -104,7 +110,8 @@ public class GuiClient extends AbstractUserInterfaceClient {
 
     @Override
     public void updateView() {
-
+        viewBuilder.setClientView(getClientController().getView());
+        viewBuilder.buildView();
     }
 
     @Override

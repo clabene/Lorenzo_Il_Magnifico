@@ -189,8 +189,10 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
             output.writeObject("UPDATE_VIEW");
             output.writeObject(board);
 
-            Collection<Player> players1 = new ArrayList<>();
+            ArrayList<Player> players1 = new ArrayList<>();
             players1.addAll(players);
+
+            System.out.println();
 
             output.writeObject(players1);
 

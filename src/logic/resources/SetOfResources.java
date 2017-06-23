@@ -48,6 +48,17 @@ public class SetOfResources implements Gainable, Losable, Serializable{
     public int getQuantityOfSlaves(){
         return resources[SLAVE_INDEX].getQuantity();
     }
+    public int getQuantityOfWood(){
+        return resources[WOOD_INDEX].getQuantity();
+    }
+    public int getQuantityOfStone(){
+        return resources[STONE_INDEX].getQuantity();
+    }
+    public int getQuantityOfMoney(){
+        return resources[MONEY_INDEX].getQuantity();
+    }
+
+
 
     private void oneResourceAdded(Resource resource){
         if(resource instanceof Wood) resources[WOOD_INDEX].resourceAdded(resource.getQuantity());

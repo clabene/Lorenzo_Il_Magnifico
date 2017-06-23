@@ -112,16 +112,44 @@ public class MyPlayerView extends TabPane implements PlayerTag {
     public void addLandCard(String name){
         me.addLandCard(name);
     }
+
+    @Override
+    public void setLandCard(int index, String name) {
+        if(name == null) me.getLandCardsName()[index].setText("");
+        else me.getLandCardsName()[index].setText(name);
+    }
+
     public void addPersonCard(String name){
         me.addPersonCard(name);
     }
+
+    @Override
+    public void setPersonCard(int index, String name) {
+        if(name == null) me.getPersonCardsName()[index].setText("");
+        else me.getPersonCardsName()[index].setText(name);
+    }
+
     public void addBuildingCard(String name){
         me.addBuildingCard(name);
+    }
+
+    @Override
+    public void setBuildingCard(int index, String name) {
+        if(name == null) me.getBuildingCardsName()[index].setText("");
+        else me.getBuildingCardsName()[index].setText(name);
     }
 
     public void addVentureCard(String name){
         me.addVentureCard(name);
     }
+
+    @Override
+    public void setVentureCard(int index, String name) {
+        if(name == null) me.getVentureCardsName()[index].setText("");
+        else me.getVentureCardsName()[index].setText(name);
+    }
+
+
     public void updateWoodQuantity(String quantity){
         me.updateWoodQuantity(quantity);
     }

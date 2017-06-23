@@ -11,9 +11,13 @@ public interface PlayerTag {
     String getPlayerName();
 
     void addLandCard(String name);
+    void setLandCard(int index, String name);
     void addPersonCard(String name);
+    void setPersonCard(int index, String name);
     void addBuildingCard(String name);
+    void setBuildingCard(int index, String name);
     void addVentureCard(String name);
+    void setVentureCard(int index, String name);
     void updateWoodQuantity(String quantity);
     void updateStoneQuantity(String quantity);
     void updateSlaveQuantity(String quantity);

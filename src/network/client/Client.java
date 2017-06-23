@@ -142,7 +142,6 @@ public class Client extends Application implements ClientInterface {
         clientView.setBoard(board);
         clientView.setPlayers(players);
         uiClient.updateView();
-
     }
 
     public boolean dealWithVatican(int periodNumber) {

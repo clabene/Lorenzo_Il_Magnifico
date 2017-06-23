@@ -25,15 +25,43 @@ public class OpponentView extends TitledPane implements PlayerTag {
     public void addLandCard(String name){
         player.addLandCard(name);
     }
+
+    @Override
+    public void setLandCard(int index, String name) {
+        if(name == null) player.getLandCardsName()[index].setText("");
+        else player.getLandCardsName()[index].setText(name);
+    }
+
     public void addPersonCard(String name){
         player.addPersonCard(name);
     }
+
+    @Override
+    public void setPersonCard(int index, String name) {
+        if(name == null) player.getPersonCardsName()[index].setText("");
+        else player.getPersonCardsName()[index].setText(name);
+    }
+
     public void addBuildingCard(String name){
         player.addBuildingCard(name);
     }
+
+    @Override
+    public void setBuildingCard(int index, String name) {
+        if(name == null) player.getBuildingCardsName()[index].setText("");
+        else player.getBuildingCardsName()[index].setText(name);
+    }
+
     public void addVentureCard(String name){
         player.addVentureCard(name);
     }
+
+    @Override
+    public void setVentureCard(int index, String name) {
+        if(name == null) player.getVentureCardsName()[index].setText("");
+        else player.getVentureCardsName()[index].setText(name);
+    }
+
 
     public void updateWoodQuantity(String quantity){
         player.updateWoodQuantity(quantity);
@@ -67,5 +95,7 @@ public class OpponentView extends TitledPane implements PlayerTag {
     public String getPlayerName(){
         return name;
     }
+
+
 
 }
