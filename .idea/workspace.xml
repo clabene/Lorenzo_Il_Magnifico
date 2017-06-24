@@ -2,17 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/ViewBuilder.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/minus.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/plus.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/controllers/SlavesUsageController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/fxml/SlavesPopUp.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/board/Board.java" afterPath="$PROJECT_DIR$/src/logic/board/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/resources/SetOfResources.java" afterPath="$PROJECT_DIR$/src/logic/resources/SetOfResources.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/Client.java" afterPath="$PROJECT_DIR$/src/network/client/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/client/rmi/RMIClientInterface.java" afterPath="$PROJECT_DIR$/src/network/client/rmi/RMIClientInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java" afterPath="$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/GuiClient.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/GuiClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/Loader.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/Loader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/ViewBuilder.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/ViewBuilder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/component/MyPlayerView.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/component/MyPlayerView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/component/OpponentView.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/component/OpponentView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/component/PlayerTag.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/component/PlayerTag.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/component/PopUp.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/component/PopUp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/controllers/MainViewController.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/controllers/MainViewController.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,42 +34,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainViewController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainViewController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/userInterface/gui/controllers/MainViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="150" column="21" lean-forward="false" selection-start-line="150" selection-start-column="21" selection-end-line="150" selection-end-column="21" />
+            <state relative-caret-position="17">
+              <caret line="163" column="51" lean-forward="false" selection-start-line="163" selection-start-column="51" selection-end-line="163" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#placeOpponentsAccordion#0;class#MainViewController#0" expanded="false" />
                 <element signature="method#placeBoard#0;class#MainViewController#0" expanded="false" />
-                <element signature="e#3267#3268#0" expanded="true" />
-                <element signature="e#3326#3327#0" expanded="true" />
-                <element signature="e#3387#3388#0" expanded="true" />
-                <element signature="e#3448#3449#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GuiClient.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/userInterface/gui/GuiClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="27" column="19" lean-forward="false" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
-              <folding>
-                <element signature="e#3483#3484#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlayerTag.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/PlayerTag.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -78,8 +51,8 @@
       <file leaf-file-name="MyPlayerView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/MyPlayerView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="148" column="59" lean-forward="false" selection-start-line="148" selection-start-column="59" selection-end-line="148" selection-end-column="59" />
+            <state relative-caret-position="430">
+              <caret line="198" column="0" lean-forward="false" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
               <folding>
                 <element signature="method#initializeTabs#0;class#MyPlayerView#0" expanded="false" />
                 <element signature="method#initializeResourcesTab#0;class#MyPlayerView#0" expanded="false" />
@@ -94,50 +67,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OpponentView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/OpponentView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="60" column="31" lean-forward="false" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientStreamHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/network/client/socket/ClientStreamHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="33" column="38" lean-forward="false" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewBuilder.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/userInterface/gui/ViewBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="70" column="70" lean-forward="false" selection-start-line="70" selection-start-column="70" selection-end-line="70" selection-end-column="71" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#734#735#0" expanded="true" />
-                <element signature="e#778#779#0" expanded="true" />
-                <element signature="e#834#835#0" expanded="true" />
-                <element signature="e#878#879#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Interface" />
         <option value="Enum" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -184,9 +121,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/network/client/AbstractNetworkClient.java" />
-        <option value="$PROJECT_DIR$/src/network/server/socket/ServerStreamHandler.java" />
-        <option value="$PROJECT_DIR$/src/logic/actionSpaces/TowerActionSpace.java" />
         <option value="$PROJECT_DIR$/src/userInterface/gui/component/MyView.java" />
         <option value="$PROJECT_DIR$/src/userInterface/gui/controllers/LobbyDaCancellareController.java" />
         <option value="$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java" />
@@ -195,7 +129,6 @@
         <option value="$PROJECT_DIR$/src/logic/cards/cardEffects/CardEffect.java" />
         <option value="$PROJECT_DIR$/src/logic/utility/CardSetupHandler.java" />
         <option value="$PROJECT_DIR$/src/logic/player/Player.java" />
-        <option value="$PROJECT_DIR$/src/userInterface/gui/component/PopUp.java" />
         <option value="$PROJECT_DIR$/src/userInterface/gui/controllers/LogInDaCancellareController.java" />
         <option value="$PROJECT_DIR$/src/logic/cards/cardEffects/PlayExtraActionPhaseEffect.java" />
         <option value="$PROJECT_DIR$/src/userInterface/gui/component/player.java" />
@@ -217,24 +150,28 @@
         <option value="$PROJECT_DIR$/src/userInterface/gui/component/PlayerView.java" />
         <option value="$PROJECT_DIR$/src/logic/gameStructure/GameRoom.java" />
         <option value="$PROJECT_DIR$/src/userInterface/gui/component/BoardView.java" />
-        <option value="$PROJECT_DIR$/src/userInterface/gui/Loader.java" />
         <option value="$PROJECT_DIR$/src/network/client/ClientView.java" />
         <option value="$PROJECT_DIR$/src/userInterface/cli/CliClient.java" />
         <option value="$PROJECT_DIR$/src/userInterface/AbstractUserInterfaceClient.java" />
         <option value="$PROJECT_DIR$/src/network/client/ClientInterface.java" />
-        <option value="$PROJECT_DIR$/src/userInterface/gui/controllers/MainViewController.java" />
         <option value="$PROJECT_DIR$/src/network/client/rmi/RMIClientInterface.java" />
         <option value="$PROJECT_DIR$/src/network/client/socket/ClientStreamHandler.java" />
         <option value="$PROJECT_DIR$/src/network/client/Client.java" />
         <option value="$PROJECT_DIR$/src/logic/board/Board.java" />
         <option value="$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java" />
         <option value="$PROJECT_DIR$/src/userInterface/gui/component/PlayerTag.java" />
-        <option value="$PROJECT_DIR$/src/userInterface/gui/component/MyPlayerView.java" />
         <option value="$PROJECT_DIR$/src/userInterface/gui/component/OpponentView.java" />
         <option value="$PROJECT_DIR$/src/logic/resources/SetOfResources.java" />
         <option value="$PROJECT_DIR$/src/userInterface/gui/GuiClient.java" />
         <option value="$PROJECT_DIR$/src/userInterface/gui/ViewUpdater.java" />
         <option value="$PROJECT_DIR$/src/userInterface/gui/ViewBuilder.java" />
+        <option value="$PROJECT_DIR$/src/userInterface/gui/Loader.java" />
+        <option value="$PROJECT_DIR$/src/userInterface/gui/fxml/SlavePopUp.fxml" />
+        <option value="$PROJECT_DIR$/src/userInterface/gui/fxml/SlavesPopUp.fxml" />
+        <option value="$PROJECT_DIR$/src/userInterface/gui/component/MyPlayerView.java" />
+        <option value="$PROJECT_DIR$/src/userInterface/gui/component/PopUp.java" />
+        <option value="$PROJECT_DIR$/src/userInterface/gui/controllers/MainViewController.java" />
+        <option value="$PROJECT_DIR$/src/userInterface/gui/controllers/SlavesUsageController.java" />
       </list>
     </option>
   </component>
@@ -262,7 +199,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
@@ -328,6 +264,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lorenzo_Il_Magnifico_Git" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lorenzo_Il_Magnifico_Git" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="userInterface" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fxml" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -653,6 +615,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -672,132 +635,10 @@
       <recent name="C:\Users\IBM\Desktop\Lorenzo_Il_Magnifico_Git\src\userInterface" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\IBM\Desktop\Lorenzo_Il_Magnifico_Git\src\userInterface\gui\images\cards" />
       <recent name="C:\Users\IBM\Desktop\Lorenzo_Il_Magnifico_Git\src\userInterface\gui\images" />
+      <recent name="C:\Users\IBM\Desktop\Lorenzo_Il_Magnifico_Git\src\userInterface\gui\images\cards" />
       <recent name="C:\Users\IBM\Desktop\Lorenzo_Il_Magnifico_Git\src\userInterface\gui" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/network/client/AbstractNetworkClient.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/network/client/Client.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/network/client/ClientInterface.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/network/client/rmi/RMIClient.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/network/client/socket/ClientStreamHandler.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/network/client/socket/SocketClient.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/network/server/rmi/RMIPlayer.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/network/server/socket/SocketPlayer.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/userInterface/AbstractUserInterfaceClient.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/userInterface/cli/CliClient.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/userInterface/gui/GuiClient.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/userInterface/gui/ViewUpdater.java</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -1166,13 +1007,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495533735855</updated>
     </task>
-    <task id="LOCAL-00053" summary="winner elector">
-      <created>1496740449988</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1496740449988</updated>
-    </task>
     <task id="LOCAL-00054" summary="winner elector">
       <created>1496740747537</created>
       <option name="number" value="00054" />
@@ -1509,7 +1343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1498249133309</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="gui">
+      <created>1498255080278</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1498255080278</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1528,19 +1369,18 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32565284" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7296467" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="0.5903427" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" x="0" y="23" width="1362" height="741" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.5903427" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" x="0" y="23" width="1366" height="745" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32258064" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22314675" sideWeight="0.49462366" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22617246" sideWeight="0.49462366" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1551,6 +1391,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="584" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -1657,41 +1498,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/TowerView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="49" column="37" lean-forward="false" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/TowerActionSpaceImageView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="62" column="44" lean-forward="true" selection-start-line="62" selection-start-column="44" selection-end-line="62" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/OneDrive/Documenti/UNO da demolire knockout/src/com/company/client/graphicsHandler/CloudImageLabel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="46" lean-forward="false" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/OneDrive/Documenti/UNO da demolire knockout/src/com/company/client/graphicsHandler/CloudMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="54" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/LabeledImageView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/board/Color.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1757,16 +1563,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="151">
           <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/PopUp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1779,13 +1575,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/userInterface/gui/fxml/mainView.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/OneDrive/Documenti/UNO da demolire knockout/src/com/company/client/Client.java">
@@ -1799,14 +1595,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="45" column="12" lean-forward="false" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/Loader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="34" column="48" lean-forward="false" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1838,36 +1626,6 @@
         <state relative-caret-position="-1760">
           <caret line="14" column="37" lean-forward="true" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/ActionSpaceImageView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="37" column="28" lean-forward="false" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/BoardView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="37" column="51" lean-forward="false" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
-          <folding>
-            <element signature="method#getActionSpacesFromInitials#0;class#BoardView#0" expanded="false" />
-            <element signature="method#placeTowerActionSpaces#0;class#BoardView#0" expanded="false" />
-            <element signature="method#placeCouncilActionSpace#0;class#BoardView#0" expanded="false" />
-            <element signature="method#placeActivationActionSpaces#0;class#BoardView#0" expanded="false" />
-            <element signature="method#placeMarketActionSpaces#0;class#BoardView#0" expanded="false" />
-            <element signature="method#getComponents#0;class#BoardView#0" expanded="false" />
-            <element signature="method#getXPosition#0;class#BoardView#0" expanded="false" />
-            <element signature="method#getYPosition#0;class#BoardView#0" expanded="false" />
-            <element signature="method#getWidthProperty#0;class#BoardView#0" expanded="false" />
-            <element signature="method#getHeightProperty#0;class#BoardView#0" expanded="false" />
-            <element signature="method#bindXPosition#0;class#BoardView#0" expanded="false" />
-            <element signature="method#bindYPosition#0;class#BoardView#0" expanded="false" />
-            <element signature="method#setActionSpacesSelectable#0;class#BoardView#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1931,7 +1689,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="38" column="12" lean-forward="false" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1961,44 +1718,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/controllers/MainViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="150" column="21" lean-forward="false" selection-start-line="150" selection-start-column="21" selection-end-line="150" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#placeOpponentsAccordion#0;class#MainViewController#0" expanded="false" />
-            <element signature="method#placeBoard#0;class#MainViewController#0" expanded="false" />
-            <element signature="e#3267#3268#0" expanded="true" />
-            <element signature="e#3326#3327#0" expanded="true" />
-            <element signature="e#3387#3388#0" expanded="true" />
-            <element signature="e#3448#3449#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/MyPlayerView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="148" column="59" lean-forward="false" selection-start-line="148" selection-start-column="59" selection-end-line="148" selection-end-column="59" />
-          <folding>
-            <element signature="method#initializeTabs#0;class#MyPlayerView#0" expanded="false" />
-            <element signature="method#initializeResourcesTab#0;class#MyPlayerView#0" expanded="false" />
-            <element signature="method#initializePointsTab#0;class#MyPlayerView#0" expanded="false" />
-            <element signature="method#initializeLandsTab#0;class#MyPlayerView#0" expanded="false" />
-            <element signature="method#initializePersonsTab#0;class#MyPlayerView#0" expanded="false" />
-            <element signature="method#initializeBuildingsTab#0;class#MyPlayerView#0" expanded="false" />
-            <element signature="method#initializeVenturesTab#0;class#MyPlayerView#0" expanded="false" />
-            <element signature="method#initializeFamilyMembersTab#0;class#MyPlayerView#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/resources/SetOfResources.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="50" column="33" lean-forward="false" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2006,14 +1729,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="303">
           <caret line="42" column="19" lean-forward="true" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/PlayerTag.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -2033,8 +1748,8 @@
         <state relative-caret-position="246">
           <caret line="51" column="23" lean-forward="true" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
           <folding>
-            <element signature="e#1777#1778#0" expanded="true" />
-            <element signature="e#1827#1828#0" expanded="true" />
+            <element signature="e#1777#1778#0" expanded="false" />
+            <element signature="e#1827#1828#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2080,11 +1795,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/OpponentView.java">
+    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/GuiClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="60" column="31" lean-forward="false" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
-          <folding />
+        <state relative-caret-position="234">
+          <caret line="27" column="19" lean-forward="false" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+          <folding>
+            <element signature="e#3483#3484#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2096,26 +1813,151 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/GuiClient.java">
+    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/OpponentView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="27" column="19" lean-forward="false" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
-          <folding>
-            <element signature="e#3483#3484#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="481">
+          <caret line="60" column="31" lean-forward="false" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/PlayerTag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/userInterface/gui/ViewBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="70" column="70" lean-forward="false" selection-start-line="70" selection-start-column="70" selection-end-line="70" selection-end-column="71" />
+        <state relative-caret-position="102">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#734#735#0" expanded="true" />
-            <element signature="e#778#779#0" expanded="true" />
-            <element signature="e#834#835#0" expanded="true" />
-            <element signature="e#878#879#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/TowerActionSpaceImageView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="62" column="44" lean-forward="true" selection-start-line="62" selection-start-column="44" selection-end-line="62" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/awt/TextField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="96" column="13" lean-forward="false" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/ActionSpaceImageView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-335">
+          <caret line="37" column="28" lean-forward="false" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="28" />
+          <folding>
+            <element signature="e#1007#1008#0" expanded="false" />
+            <element signature="e#1043#1044#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/BoardView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="37" column="51" lean-forward="false" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
+          <folding>
+            <element signature="method#getActionSpacesFromInitials#0;class#BoardView#0" expanded="false" />
+            <element signature="method#placeTowerActionSpaces#0;class#BoardView#0" expanded="false" />
+            <element signature="method#placeCouncilActionSpace#0;class#BoardView#0" expanded="false" />
+            <element signature="method#placeActivationActionSpaces#0;class#BoardView#0" expanded="false" />
+            <element signature="method#placeMarketActionSpaces#0;class#BoardView#0" expanded="false" />
+            <element signature="method#getComponents#0;class#BoardView#0" expanded="false" />
+            <element signature="method#getXPosition#0;class#BoardView#0" expanded="false" />
+            <element signature="method#getYPosition#0;class#BoardView#0" expanded="false" />
+            <element signature="method#getWidthProperty#0;class#BoardView#0" expanded="false" />
+            <element signature="method#getHeightProperty#0;class#BoardView#0" expanded="false" />
+            <element signature="method#bindXPosition#0;class#BoardView#0" expanded="false" />
+            <element signature="method#bindYPosition#0;class#BoardView#0" expanded="false" />
+            <element signature="method#setActionSpacesSelectable#0;class#BoardView#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/Loader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="63" column="14" lean-forward="false" selection-start-line="63" selection-start-column="12" selection-end-line="64" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/javafx-src.zip!/javafx/beans/binding/IntegerExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="215" column="26" lean-forward="false" selection-start-line="215" selection-start-column="26" selection-end-line="215" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/fxml/SlavesPopUp.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/PopUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="34" lean-forward="false" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/component/MyPlayerView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="198" column="0" lean-forward="false" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
+          <folding>
+            <element signature="method#initializeTabs#0;class#MyPlayerView#0" expanded="false" />
+            <element signature="method#initializeResourcesTab#0;class#MyPlayerView#0" expanded="false" />
+            <element signature="method#initializePointsTab#0;class#MyPlayerView#0" expanded="false" />
+            <element signature="method#initializeLandsTab#0;class#MyPlayerView#0" expanded="false" />
+            <element signature="method#initializePersonsTab#0;class#MyPlayerView#0" expanded="false" />
+            <element signature="method#initializeBuildingsTab#0;class#MyPlayerView#0" expanded="false" />
+            <element signature="method#initializeVenturesTab#0;class#MyPlayerView#0" expanded="false" />
+            <element signature="method#initializeFamilyMembersTab#0;class#MyPlayerView#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/controllers/SlavesUsageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="36" column="31" lean-forward="false" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/gui/controllers/MainViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="163" column="51" lean-forward="false" selection-start-line="163" selection-start-column="51" selection-end-line="163" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#placeOpponentsAccordion#0;class#MainViewController#0" expanded="false" />
+            <element signature="method#placeBoard#0;class#MainViewController#0" expanded="false" />
           </folding>
         </state>
       </provider>

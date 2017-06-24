@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.gui.controllers.SlavesUsageController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="239.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../OneDrive/Immagini/Cellulare/Whatsapp/Images/Sent/IMG-20151021-WA0003.jpg" />
+         </image></ImageView>
+      <ImageView fx:id="plus" fitHeight="100.0" fitWidth="139.0" layoutX="447.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/plus.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="minus" fitHeight="100.0" fitWidth="139.0" layoutX="41.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/minus.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="quantity" layoutX="286.0" layoutY="292.0" text="Label" />
+      <Label fx:id="label" layoutX="230.0" layoutY="67.0" prefHeight="17.0" prefWidth="139.0" text="How many slaves to use?" />
+      <Button fx:id="okButton" layoutX="521.0" layoutY="354.0" mnemonicParsing="false" text="OK" />
+   </children>
+</Pane>

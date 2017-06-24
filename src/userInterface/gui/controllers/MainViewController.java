@@ -1,15 +1,24 @@
 package userInterface.gui.controllers;
 
+import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import userInterface.PlayerColor;
 import userInterface.gui.component.*;
 
@@ -136,6 +145,30 @@ public class MainViewController extends Controller {
         getPlayerFromId(playerId).updateFamilyMemberValue(color, value);
     }
 
+//    private int slavesQuantity = -1;
+
+
+    public void buildSlavesPopUp(){
+        Stage alertBox = new Stage();
+        alertBox.setTitle("Slaves usage");
+        alertBox.initModality(Modality.APPLICATION_MODAL);
+        alertBox.setResizable(false);
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/SlavesPopUp.fxml"));
+            Parent root = fxmlLoader.load();
+            SlavesUsageController controller = fxmlLoader.getController();
+            controller.setStage(alertBox);
+            alertBox.setOnCloseRequest( e -> {
+                getGuiClient().useSlaves(controller.getQuantity());
+            });
+            alertBox.setScene(new Scene(root,400,275));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        alertBox.show();
+    }
+
+
 
     private class Trigger extends Thread{
         private MainViewController mainViewController;
@@ -163,7 +196,11 @@ public class MainViewController extends Controller {
                     mainViewController.familyMemberSelected.set(false);
                 }
                 if(mainViewController.slaveUsageSelected.get()){
-                    getGuiClient().useSlaves(1);
+                    Platform.runLater( () -> mainViewController.buildSlavesPopUp());
+                    //while(mainViewController.getSlavesQuantity() == -1);
+                    //System.out.println("sono qui <-----------------------------------------------------------");
+                    //getGuiClient().useSlaves(mainViewController.slavesQuantity);
+                    //mainViewController.slavesQuantity = -1;
                     mainViewController.slaveUsageSelected.set(false);
                 }
             }

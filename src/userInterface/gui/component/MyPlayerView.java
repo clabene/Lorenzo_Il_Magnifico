@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 import logic.board.Color;
 import logic.player.FamilyMember;
 import userInterface.PlayerColor;
+import userInterface.gui.Loader;
 
 /**
  * Created by IBM on 21/06/2017.
@@ -192,15 +193,12 @@ public class MyPlayerView extends TabPane implements PlayerTag {
 
     private void setSlavesSelectable(){
         me.getSlaveImageView().setOnMouseClicked( e -> {
-            System.out.println(slaveUsageSelected.get());
             slaveUsageSelected.set(true);
-            System.out.println(slaveUsageSelected.get());
-        } );
+        });
     }
 
     public BooleanProperty getSlaveUsageSelectedProperty() {
         return slaveUsageSelected;
     }
-
 
 }

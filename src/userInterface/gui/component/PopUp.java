@@ -21,6 +21,7 @@ public class PopUp extends Stage {
     private Button okButton = new Button("OK");
     private Pane pane = new Pane();
 
+
     public PopUp(String message, String imageUrl){
         initModality(Modality.APPLICATION_MODAL);
         setResizable(false);
@@ -42,10 +43,11 @@ public class PopUp extends Stage {
         setScene(new Scene(pane, 300, 300));
     }
 
+
     private void placeButton(){
-        okButton.setLayoutX(pane.getWidth()+270);
-        okButton.setLayoutY(pane.getHeight()+270);
-        okButton.setOnAction( e -> close());
+        okButton.setLayoutX(270);
+        okButton.setLayoutY(270);
+        okButton.setOnAction( e -> close() );
         pane.getChildren().add(okButton);
     }
     private void placeLabel(String message){
@@ -62,7 +64,7 @@ public class PopUp extends Stage {
         imageView.setImage(new Image(imageUrl));
         pane.getChildren().add(imageView);
     }
-    private void placeImageView(Image image){
+    private void placeImageView(Image image) {
         imageView.setLayoutY(30);
         imageView.setLayoutX(10);
         imageView.setFitHeight(250);
