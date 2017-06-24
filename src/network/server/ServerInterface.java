@@ -16,5 +16,5 @@ public interface ServerInterface extends Serializable{
 
     void tryToCreateRoom(String id, int NUMBER_OF_PLAYERS);
 
-    void leaveGame(String id);
+
 }

@@ -33,7 +33,12 @@ public class ServerStreamHandler {
         responseMap.put("FAMILY_MEMBER_SELECTION_REQUEST", this::familyMemberSelectionRespond);
         responseMap.put("ACTION_SPACE_SELECTION_REQUEST", this::actionSpaceSelectionRespond);
         responseMap.put("USE_SLAVES_REQUEST", this::useSlaveRespond);
+        responseMap.put("LEAVE_GAME_REQUEST",this::tryToLeaveGame);
 
+    }
+
+    public void tryToLeaveGame(){
+        player.leaveGame();
     }
 
     public void tryToLogInClient(){

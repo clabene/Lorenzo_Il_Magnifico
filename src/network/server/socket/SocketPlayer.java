@@ -205,6 +205,7 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
 
     @Override
     public void leaveGame() {
+        getGameRoom().leaveGame(getId());
 
     }
 }

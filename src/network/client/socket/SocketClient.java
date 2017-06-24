@@ -158,7 +158,8 @@ public class SocketClient extends AbstractNetworkClient {
 
     //@Override
     public void dealWithVatican(int periodNumber) {
-        boolean notSupporting = takeVaticanDecision(periodNumber);
+        //boolean notSupporting = takeVaticanDecision(periodNumber);
+        boolean notSupporting = getClientInterface().dealWithVatican(periodNumber);
 
         try {
             output.writeObject(notSupporting);
@@ -185,7 +186,9 @@ public class SocketClient extends AbstractNetworkClient {
 
     //@Override
     public void selectCouncilFavour(int numberOfFavours) {
-        Gainable[] favours = selectFavours(numberOfFavours);
+        //Gainable[] favours = selectFavours(numberOfFavours);
+        Gainable[] favours = getClientInterface().selectCouncilFavour(numberOfFavours);
+
 
         try {
             output.writeObject(favours);
@@ -218,7 +221,8 @@ public class SocketClient extends AbstractNetworkClient {
 
     //@Override
     public void selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces) {
-        ActionSpace actionSpace = selectActionSpace(actionSpaces);
+        //ActionSpace actionSpace = selectActionSpace(actionSpaces);
+        ActionSpace actionSpace = getClientInterface().selectActionSpaceForExtraAction(actionSpaces);
         try {
             output.writeObject(actionSpace);
             output.flush();
@@ -246,6 +250,13 @@ public class SocketClient extends AbstractNetworkClient {
 
     @Override
     public void leaveGame() {
+        try {
+            output.writeObject("LEAVE_GAME_REQUEST");
+            //output.writeObject(actionSpaceId);
+            output.flush();
+        } catch (IOException e) {
+            System.out.println("Could not send leave game request");
+        }
 
     }
 

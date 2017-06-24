@@ -87,8 +87,5 @@ public class Server implements ServerInterface, Serializable {
         }
     }
 
-    @Override
-    public void leaveGame(String id) {
 
-    }
 }
