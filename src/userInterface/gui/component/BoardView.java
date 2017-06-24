@@ -3,8 +3,10 @@ package userInterface.gui.component;
 import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.*;
 import javafx.scene.Node;
+import logic.actionSpaces.ActionSpace;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -33,25 +35,25 @@ public class BoardView {
     private void initializeActionSpaces(){
         //todo
 
-        actionSpaces.put("TL1", new TowerActionSpaceImageView("TL1", "userInterface/gui/images/cancellami.jpg", "cancellami2"));
-        actionSpaces.put("TL2", new TowerActionSpaceImageView("TL2", "userInterface/gui/images/cancellami.jpg", "cancellami2"));
-        actionSpaces.put("TL3", new TowerActionSpaceImageView("TL3", "userInterface/gui/images/cancellami.jpg", "cancellami2"));
-        actionSpaces.put("TL4", new TowerActionSpaceImageView("TL4", "userInterface/gui/images/cancellami.jpg", "cancellami2"));
+        actionSpaces.put("TL1", new TowerActionSpaceImageView("TL1", "userInterface/gui/images/actionSpace.png", "Araldo"));
+        actionSpaces.put("TL2", new TowerActionSpaceImageView("TL2", "userInterface/gui/images/actionSpace.png", "Araldo"));
+        actionSpaces.put("TL3", new TowerActionSpaceImageView("TL3", "userInterface/gui/images/actionSpace.png", "Araldo"));
+        actionSpaces.put("TL4", new TowerActionSpaceImageView("TL4", "userInterface/gui/images/actionSpace.png", "Araldo"));
 
-        actionSpaces.put("TP1", new TowerActionSpaceImageView("TP1", "userInterface/gui/images/cancellami.jpg", "cancellami2"));
-        actionSpaces.put("TP2", new TowerActionSpaceImageView("TP2", "userInterface/gui/images/cancellami.jpg", "cancellami2"));
-        actionSpaces.put("TP3", new TowerActionSpaceImageView("TP3", "userInterface/gui/images/cancellami.jpg", "cancellami2"));
-        actionSpaces.put("TP4", new TowerActionSpaceImageView("TP4", "userInterface/gui/images/cancellami.jpg", "cancellami2"));
+        actionSpaces.put("TP1", new TowerActionSpaceImageView("TP1", "userInterface/gui/images/actionSpace.png", "Araldo"));
+        actionSpaces.put("TP2", new TowerActionSpaceImageView("TP2", "userInterface/gui/images/actionSpace.png", "Araldo"));
+        actionSpaces.put("TP3", new TowerActionSpaceImageView("TP3", "userInterface/gui/images/actionSpace.png", "Araldo"));
+        actionSpaces.put("TP4", new TowerActionSpaceImageView("TP4", "userInterface/gui/images/actionSpace.png", "Araldo"));
 
-        actionSpaces.put("TB1", new TowerActionSpaceImageView("TB1", "userInterface/gui/images/cancellami.jpg", "cancellami2"));
-        actionSpaces.put("TB2", new TowerActionSpaceImageView("TB2", "userInterface/gui/images/cancellami.jpg", "cancellami2"));
-        actionSpaces.put("TB3", new TowerActionSpaceImageView("TB3", "userInterface/gui/images/cancellami.jpg", "cancellami2"));
-        actionSpaces.put("TB4", new TowerActionSpaceImageView("TB4", "userInterface/gui/images/cancellami.jpg", "cancellami2"));
+        actionSpaces.put("TB1", new TowerActionSpaceImageView("TB1", "userInterface/gui/images/actionSpace.png", "Araldo"));
+        actionSpaces.put("TB2", new TowerActionSpaceImageView("TB2", "userInterface/gui/images/actionSpace.png", "Araldo"));
+        actionSpaces.put("TB3", new TowerActionSpaceImageView("TB3", "userInterface/gui/images/actionSpace.png", "Araldo"));
+        actionSpaces.put("TB4", new TowerActionSpaceImageView("TB4", "userInterface/gui/images/actionSpace.png", "Araldo"));
 
-        actionSpaces.put("TV1", new TowerActionSpaceImageView("TV1", "userInterface/gui/images/cancellami.jpg", "cancellami2"));
-        actionSpaces.put("TV2", new TowerActionSpaceImageView("TV2", "userInterface/gui/images/cancellami.jpg", "cancellami2"));
-        actionSpaces.put("TV3", new TowerActionSpaceImageView("TV3", "userInterface/gui/images/cancellami.jpg", "cancellami2"));
-        actionSpaces.put("TV4", new TowerActionSpaceImageView("TV4", "userInterface/gui/images/cancellami.jpg", "cancellami2"));
+        actionSpaces.put("TV1", new TowerActionSpaceImageView("TV1", "userInterface/gui/images/actionSpace.png", "Araldo"));
+        actionSpaces.put("TV2", new TowerActionSpaceImageView("TV2", "userInterface/gui/images/actionSpace.png", "Araldo"));
+        actionSpaces.put("TV3", new TowerActionSpaceImageView("TV3", "userInterface/gui/images/actionSpace.png", "Araldo"));
+        actionSpaces.put("TV4", new TowerActionSpaceImageView("TV4", "userInterface/gui/images/actionSpace.png", "Araldo"));
 
         actionSpaces.put("C", new ActionSpaceImageView("C", "userInterface/gui/images/cancellami.jpg"));
 
@@ -190,6 +192,11 @@ public class BoardView {
         towers[0].getYPositionProperty().bind(toBindYTo.add(TowerActionSpaceImageView.getSuperiorOffset()));
     }
 
+    public ActionSpaceImageView getActionSpaceFromId(String actionSpaceId) {
+        return actionSpaces.get(actionSpaceId);
+    }
+
+
 
     private void setActionSpacesSelectable(){
         for(ActionSpaceImageView tmp : actionSpaces.values())
@@ -204,4 +211,10 @@ public class BoardView {
     public String getSelectedId() {
         return selectedId;
     }
+
+    public Collection<ActionSpaceImageView> getActionSpaces(){
+        return actionSpaces.values();
+    }
+
+
 }

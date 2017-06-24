@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import logic.board.Color;
+import logic.player.FamilyMember;
 import userInterface.PlayerColor;
 import userInterface.gui.Loader;
 
@@ -50,15 +51,17 @@ public class PlayerView extends Pane {
     private final int NEUTRAL_INDEX = 3;
 
 
-    public PlayerView(PlayerColor playerColor, ConfigurationMode mode){
+    public PlayerView(String playerId, ConfigurationMode mode){
         this.mode = mode;
         initializeImages();
         initializeLabels();
-        initializeFamilyMembers(playerColor);
+        initializeFamilyMembers(playerId);
         placeComponents();
 
-        getChildren().addAll(images);
-        getChildren().addAll(familyMembers);
+        for(LabeledImageView tmp : images)
+            getChildren().addAll(tmp.getComponents());
+        for(FamilyMemberImageView tmp : familyMembers)
+            getChildren().addAll(tmp.getComponents());
         getChildren().addAll(cardNames[LAND_INDEX]);
         getChildren().addAll(cardNames[PERSON_INDEX]);
         getChildren().addAll(cardNames[BUILDING_INDEX]);
@@ -84,36 +87,36 @@ public class PlayerView extends Pane {
     }
     private void initializeLabels(){
         for (int i = 0; i<6; i++) {
-            cardNames[LAND_INDEX][i] = new Label("llllllllllllllllllllllllllll");
-            String nameOfCard = cardNames[LAND_INDEX][i].getText();
+            int a = i;
+            cardNames[LAND_INDEX][i] = new Label("");
             cardNames[LAND_INDEX][i].setTextFill(Paint.valueOf("#009900"));
-            cardNames[LAND_INDEX][i].setOnMouseClicked( e -> Loader.buildPopUp("Land Card", nameOfCard, "userInterface/gui/images/cards/cancellami2.jpg"));
+            cardNames[LAND_INDEX][i].setOnMouseClicked( e -> Loader.buildPopUp("Land Card", cardNames[LAND_INDEX][a].getText(), "userInterface/gui/images/cards/"+ cardNames[LAND_INDEX][a].getText() +".png"));
 
         }
         for (int i = 0; i<6; i++) {
-            cardNames[PERSON_INDEX][i] = new Label("ppppppppppppppppppppp");
-            String nameOfCard = cardNames[PERSON_INDEX][i].getText();
+            int a = i;
+            cardNames[PERSON_INDEX][i] = new Label("");
             cardNames[PERSON_INDEX][i].setTextFill(Paint.valueOf("#0055cc"));
-            cardNames[PERSON_INDEX][i].setOnMouseClicked( e -> Loader.buildPopUp("Person Card", nameOfCard, "userInterface/gui/images/cards/cancellami2.jpg"));
+            cardNames[PERSON_INDEX][i].setOnMouseClicked( e -> Loader.buildPopUp("Person Card", cardNames[PERSON_INDEX][a].getText(), "userInterface/gui/images/cards/"+ cardNames[PERSON_INDEX][a].getText() +".png"));
         }
         for (int i = 0; i<6; i++) {
-            cardNames[BUILDING_INDEX][i] = new Label("bbbbbbbbbbbbbbbbbbbbbb");
-            String nameOfCard = cardNames[BUILDING_INDEX][i].getText();
+            int a = i;
+            cardNames[BUILDING_INDEX][i] = new Label("");
             cardNames[BUILDING_INDEX][i].setTextFill(Paint.valueOf("#999900"));
-            cardNames[BUILDING_INDEX][i].setOnMouseClicked( e -> Loader.buildPopUp("building Card", nameOfCard, "userInterface/gui/images/cards/cancellami2.jpg"));
+            cardNames[BUILDING_INDEX][i].setOnMouseClicked( e -> Loader.buildPopUp("building Card", cardNames[BUILDING_INDEX][a].getText(), "userInterface/gui/images/cards/"+ cardNames[BUILDING_INDEX][a].getText() +".png"));
         }
         for (int i = 0; i<6; i++) {
-            cardNames[VENTURE_INDEX][i] = new Label("vvvvvvvvvvvvvvvvvvvvvvvv");
-            String nameOfCard = cardNames[VENTURE_INDEX][i].getText();
+            int a = i;
+            cardNames[VENTURE_INDEX][i] = new Label("");
             cardNames[VENTURE_INDEX][i].setTextFill(Paint.valueOf("#880088"));
-            cardNames[VENTURE_INDEX][i].setOnMouseClicked( e -> Loader.buildPopUp("Venture Card", nameOfCard, "userInterface/gui/images/cards/cancellami2.jpg"));
+            cardNames[VENTURE_INDEX][i].setOnMouseClicked( e -> Loader.buildPopUp("Venture Card", cardNames[VENTURE_INDEX][a].getText(), "userInterface/gui/images/cards/"+ cardNames[VENTURE_INDEX][a].getText() +".png"));
         }
     }
-    private void initializeFamilyMembers(PlayerColor playerColor){
-        familyMembers[BLACK_INDEX] = new FamilyMemberImageView(playerColor, Color.BLACK, 0);
-        familyMembers[RED_INDEX] = new FamilyMemberImageView(playerColor, Color.RED, 0);
-        familyMembers[WHITE_INDEX] = new FamilyMemberImageView(playerColor, Color.WHITE, 0);
-        familyMembers[NEUTRAL_INDEX] = new FamilyMemberImageView(playerColor, null, 0);
+    private void initializeFamilyMembers(String playerId){
+        familyMembers[BLACK_INDEX] = new FamilyMemberImageView(playerId, Color.BLACK, 0);
+        familyMembers[RED_INDEX] = new FamilyMemberImageView(playerId, Color.RED, 0);
+        familyMembers[WHITE_INDEX] = new FamilyMemberImageView(playerId, Color.WHITE, 0);
+        familyMembers[NEUTRAL_INDEX] = new FamilyMemberImageView(playerId, null, 0);
 
         //todo delete
         for(int i = 0; i <= NEUTRAL_INDEX; i++){
@@ -288,7 +291,7 @@ public class PlayerView extends Pane {
 
         int dim;
         if(mode == ConfigurationMode.MY_PLAYER) dim = 70;
-        else dim = 25;
+        else dim = 30;
         for(int i = 0; i<=NEUTRAL_INDEX ;i++){
             familyMembers[i].setFitWidth(dim);
             familyMembers[i].setFitHeight(dim);
@@ -385,18 +388,39 @@ public class PlayerView extends Pane {
 
     public void updateFamilyMemberValue(Color color, String value) {
         if(color == null){
+            familyMembers[NEUTRAL_INDEX].toHide(false);
             familyMembers[NEUTRAL_INDEX].setValue(value);
             return;
         }
         switch (color) {
             case BLACK:
+                familyMembers[BLACK_INDEX].toHide(false);
                 familyMembers[BLACK_INDEX].setValue(value);
                 break;
             case RED:
+                familyMembers[RED_INDEX].toHide(false);
                 familyMembers[RED_INDEX].setValue(value);
                 break;
             case WHITE:
+                familyMembers[WHITE_INDEX].toHide(false);
                 familyMembers[WHITE_INDEX].setValue(value);
+                break;
+        }
+    }
+    public void hideFamilyMember(Color color) {
+        if(color == null){
+            familyMembers[NEUTRAL_INDEX].toHide(true);
+            return;
+        }
+        switch (color) {
+            case BLACK:
+                familyMembers[BLACK_INDEX].toHide(true);
+                break;
+            case RED:
+                familyMembers[RED_INDEX].toHide(true);
+                break;
+            case WHITE:
+                familyMembers[WHITE_INDEX].toHide(true);
                 break;
         }
     }

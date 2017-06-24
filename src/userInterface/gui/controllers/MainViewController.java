@@ -19,9 +19,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import logic.actionSpaces.ActionSpace;
 import userInterface.PlayerColor;
 import userInterface.gui.component.*;
 
+import javax.swing.text.html.ImageView;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -42,7 +44,13 @@ public class MainViewController extends Controller {
 
     private BooleanProperty actionSpaceSelected = new SimpleBooleanProperty(false);
     private BooleanProperty familyMemberSelected = new SimpleBooleanProperty(false);
-    private BooleanProperty slaveUsageSelected = new SimpleBooleanProperty(false);
+
+    public PlayerTag getPlayerFromId(String id){
+        for(PlayerTag tmp : players)
+            if(tmp.getPlayerId().equals(id))
+                return tmp;
+        return null;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -53,15 +61,8 @@ public class MainViewController extends Controller {
     }
 
 
-    public PlayerTag getPlayerFromId(String id){
-        for(PlayerTag tmp : players)
-            if(tmp.getPlayerId().equals(id))
-                return tmp;
-        return null;
-    }
-
     /*
-    * to be called right after initialize(...)
+    * to be called right after initialize
     * */
     public void placeMyPlayer(){
         MyPlayerView myPlayer = new MyPlayerView(getGuiClient().getId(), "name goes here");
@@ -76,6 +77,12 @@ public class MainViewController extends Controller {
         pane.getChildren().add(myPlayer);
     }
 
+    public ActionSpaceImageView getActionSpaceFromId(String id){
+        return board.getActionSpaceFromId(id);
+    }
+
+    private BooleanProperty slaveUsageSelected = new SimpleBooleanProperty(false);
+
     private void placeOpponentsAccordion(){
         opponentsAccordion.layoutXProperty().bind(pane.widthProperty().multiply(0.7));
         opponentsAccordion.layoutYProperty().bind(board.getYPosition().add(20));
@@ -89,17 +96,13 @@ public class MainViewController extends Controller {
         pane.getChildren().addAll(board.getComponents());
     }
 
-    /*
-    public void addPlayer(PlayerColor playerColor, String playerId, String name){
-        if(playerId.equals(getGuiClient().getId())) placeMyPlayer();
-        else addOpponent( playerColor,  playerId,  name);
-    }
-    */
-    public void addOpponent(PlayerColor playerColor, String playerId, String name) {
-        OpponentView opponent = new OpponentView(playerColor, playerId, name);
+    public void addOpponent(String playerId, String name) {
+        OpponentView opponent = new OpponentView(playerId, name);
         players.add(opponent);
         opponentsAccordion.getPanes().add(opponent);
     }
+
+/*
     public void addLandCard(String playerId, String name){
         getPlayerFromId(playerId).addLandCard(name);
     }
@@ -113,42 +116,38 @@ public class MainViewController extends Controller {
         getPlayerFromId(playerId).addVentureCard(name);
     }
     public void updateWoodQuantity(String playerId, String quantity){
-        System.out.println("ssssssssssssssssssssssssssssssssssssssssssss " + playerId + getPlayerFromId(playerId));
         getPlayerFromId(playerId).updateWoodQuantity(quantity);
     }
     public void updateStoneQuantity(String playerId, String quantity){
-        System.out.println("ssssssssssssssssssssssssssssssssssssssssssss " + playerId + getPlayerFromId(playerId));
         getPlayerFromId(playerId).updateStoneQuantity( quantity);
     }
     public void updateSlaveQuantity(String playerId, String quantity){
-        System.out.println("ssssssssssssssssssssssssssssssssssssssssssss " + playerId + getPlayerFromId(playerId));
         getPlayerFromId(playerId).updateSlaveQuantity( quantity);
     }
     public void updateMoneyQuantity(String playerId, String quantity){
-        System.out.println("ssssssssssssssssssssssssssssssssssssssssssss " + playerId + getPlayerFromId(playerId));
         getPlayerFromId(playerId).updateMoneyQuantity( quantity);
     }
     public void updateVictoryPointsQuantity(String playerId, String quantity){
-        System.out.println("ssssssssssssssssssssssssssssssssssssssssssss " + playerId + getPlayerFromId(playerId));
         getPlayerFromId(playerId).updateVictoryPointsQuantity(quantity);
     }
     public void updateMilitaryPointsQuantity(String playerId, String quantity){
-        System.out.println("ssssssssssssssssssssssssssssssssssssssssssss " + playerId + getPlayerFromId(playerId));
         getPlayerFromId(playerId).updateMilitaryPointsQuantity( quantity);
     }
     public void updateFaithPointsQuantity(String playerId, String quantity) {
-        System.out.println("ssssssssssssssssssssssssssssssssssssssssssss " + playerId + getPlayerFromId(playerId));
         getPlayerFromId(playerId).updateFaithPointsQuantity( quantity);
     }
     public void updateFamilyMemberValue(String playerId, logic.board.Color color, String value){
-        System.out.println("ssssssssssssssssssssssssssssssssssssssssssss " + playerId + getPlayerFromId(playerId));
         getPlayerFromId(playerId).updateFamilyMemberValue(color, value);
     }
 
-//    private int slavesQuantity = -1;
+    public void addFamilyMemberToActionSpace(String actionSpaceId, String playerId, logic.board.Color diceColor, Integer value){
+        FamilyMemberImageView f = getActionSpaceFromId(actionSpaceId).addFamilyMemberImage(playerId, diceColor, value);
+        pane.getChildren().add(f);
+    }
+*/
 
 
-    public void buildSlavesPopUp(){
+    private void buildSlavesPopUp() {
         Stage alertBox = new Stage();
         alertBox.setTitle("Slaves usage");
         alertBox.initModality(Modality.APPLICATION_MODAL);
@@ -158,14 +157,16 @@ public class MainViewController extends Controller {
             Parent root = fxmlLoader.load();
             SlavesUsageController controller = fxmlLoader.getController();
             controller.setStage(alertBox);
-            alertBox.setOnCloseRequest( e -> {
-                getGuiClient().useSlaves(controller.getQuantity());
-            });
+            alertBox.setOnCloseRequest( e -> getGuiClient().useSlaves(controller.getQuantity()) );
             alertBox.setScene(new Scene(root,400,275));
         } catch (Exception e) {
             e.printStackTrace();
         }
         alertBox.show();
+    }
+
+    public void dealWithVatican(){
+
     }
 
 

@@ -105,7 +105,7 @@ public class GuiClient extends AbstractUserInterfaceClient {
 
     @Override
     protected void successfullyGameStarted() {
-
+        updateView();
     }
 
     @Override

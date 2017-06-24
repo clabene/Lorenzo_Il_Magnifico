@@ -14,9 +14,11 @@ import java.util.ArrayList;
 public class TowerActionSpaceImageView extends ActionSpaceImageView {
 
     private ImageView card = new ImageView();
+    private String cardName;
 
     public TowerActionSpaceImageView(String actionSpaceId, String imageUrl, String cardName){
         super(actionSpaceId, imageUrl);
+        this.cardName = cardName;
         placeCard(cardName);
     }
 
@@ -41,11 +43,26 @@ public class TowerActionSpaceImageView extends ActionSpaceImageView {
         card.setFitHeight(100);
 
 
-        card.setImage(new Image("userInterface/gui/images/cards/"+cardName+".jpg")); //todo png
-
+        card.setImage(new Image("userInterface/gui/images/cards/"+cardName+".png"));
         card.setOnMouseClicked( e -> Loader.buildPopUp("Selected card", cardName, card.getImage()));
 
     }
+
+    public String getCardName() {
+        return cardName;
+    }
+
+    public void setCardImage(String imageUrl){
+        card.setMouseTransparent(false);
+        card.setVisible(true);
+        card.setImage(new Image(imageUrl));
+    }
+    public void setCardToTaken(){
+        System.out.println(card);
+        card.setMouseTransparent(true);
+        card.setVisible(false);
+    }
+
 
     public DoubleProperty getHeightProperty(){
         return card.fitHeightProperty();

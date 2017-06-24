@@ -4,8 +4,10 @@ import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
+import javafx.scene.control.TitledPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -238,7 +240,7 @@ public class Main extends Application {
 
 
 
-
+        /*
         Pane pane = new Pane();
 
 
@@ -247,8 +249,9 @@ public class Main extends Application {
         b.bindYPosition(pane.heightProperty().divide(20));
         pane.getChildren().addAll(b.getComponents());
 
-        OpponentView o = new OpponentView(PlayerColor.RED, "id", "name");
-        OpponentView o2 = new OpponentView(PlayerColor.RED, "id2", "name2");
+        OpponentView o = new OpponentView("id", "name");
+        OpponentView o2 = new OpponentView("id2", "name2");
+        OpponentView o2 = new OpponentView("id2", "name2");
         Accordion a = new Accordion(o, o2);
         a.layoutXProperty().bind(b.getXPosition().add(b.getWidthProperty()).add(b.getXPosition()));
         a.layoutYProperty().bind(b.getYPosition().add(20));
@@ -261,7 +264,13 @@ public class Main extends Application {
         pane.getChildren().add(mp);
 
         primaryStage.setScene(new Scene(pane, 1200, 900));
+        */
+
+        Pane pane = new Pane();
+        primaryStage.setScene(new Scene(pane, 1200, 900));
         primaryStage.show();
+
+
 
 
 

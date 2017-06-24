@@ -21,10 +21,13 @@ public class FamilyMemberImageView extends ImageView {
     private Label valueLabel = new Label();
     private int value;
     private Color diceColor;
-    public FamilyMemberImageView(PlayerColor playerColor, Color diceColor, Integer value){
+    private String playerId; //todo get PlayerColor form here
+
+    public FamilyMemberImageView(String playerId, Color diceColor, Integer value) {
         //todo
         //super("userInterface/gui/images/"+playerColor.toString().toLowerCase()+"_family_member_"+diceColor.toString().toLowerCase()+".png"); //todo
         super("userInterface/gui/images/cancellami3.jpg");
+        this.playerId = playerId;
         this.value = value;
         this.diceColor = diceColor;
         placeValueLabel(value.toString());
@@ -38,12 +41,12 @@ public class FamilyMemberImageView extends ImageView {
         return value;
     }
 
-    private void placeValueLabel(String value){
-        valueLabel.layoutXProperty().bind(xProperty().add(fitWidthProperty().divide(2)));
-        valueLabel.layoutYProperty().bind(yProperty().add(fitHeightProperty().divide(2)).subtract(valueLabel.heightProperty().divide(2)));
+    private void placeValueLabel(String value) {
+        valueLabel.layoutXProperty().bind(xProperty().add(fitWidthProperty().divide(2).subtract(valueLabel.widthProperty().divide(2))));
+        valueLabel.layoutYProperty().bind(yProperty().add(fitHeightProperty().divide(2).subtract(valueLabel.heightProperty().divide(2))));
         valueLabel.setText(value);
         valueLabel.setTextFill(javafx.scene.paint.Color.WHITE);
-        valueLabel.setFont(Font.font("Garamond", 20));
+        valueLabel.setFont(Font.font("Garamond", 15));
 
         valueLabel.setBackground(new Background(new BackgroundFill(Paint.valueOf("#000000"), new CornerRadii(100), null)));
     }
@@ -52,6 +55,12 @@ public class FamilyMemberImageView extends ImageView {
          valueLabel.setText(" "+value+" ");
     }
 
+    public void toHide(boolean toHide){
+        for(Node tmp : getComponents()){
+            tmp.setMouseTransparent(toHide);
+            tmp.setVisible(!toHide);
+        }
+    }
 
     public StringProperty getValueProperty(){
         return valueLabel.textProperty();

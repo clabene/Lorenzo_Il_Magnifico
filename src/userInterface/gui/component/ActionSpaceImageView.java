@@ -1,12 +1,8 @@
 package userInterface.gui.component;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import logic.board.Color;
-import userInterface.PlayerColor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,26 +30,30 @@ public class ActionSpaceImageView extends ImageView {
     //}
 
 
+    public int getNumberOfFamilyMembers() {
+        return familyMembers.size();
+    }
+
     public String getActionSpaceId() {
         return actionSpaceId;
     }
 
-    public ImageView addFamilyMemberImage(PlayerColor playerColor, Color diceColor, Integer value) {
-        FamilyMemberImageView imageView = new FamilyMemberImageView(playerColor, diceColor, value);
-        imageView.setFitHeight(40);
-        imageView.setFitWidth(40);
+    public FamilyMemberImageView addFamilyMemberImage(String playerId, Color diceColor, Integer value) {
+        FamilyMemberImageView familyMemberView = new FamilyMemberImageView(playerId, diceColor, value);
+        familyMemberView.setFitHeight(40);
+        familyMemberView.setFitWidth(40);
 
-        familyMembers.add(imageView);
+        familyMembers.add(familyMemberView);
 
-        imageView.xProperty().bind(xProperty()
-                .add(imageView.fitWidthProperty()
+        familyMemberView.xProperty().bind(xProperty()
+                .add(familyMemberView.fitWidthProperty()
                                 .multiply(familyMembers.size()-1).add(10)
                 ));
-        imageView.yProperty().bind(yProperty()
+        familyMemberView.yProperty().bind(yProperty()
                 .add(fitHeightProperty().subtract(
-                        imageView.fitHeightProperty()).divide(2)
+                        familyMemberView.fitHeightProperty()).divide(2)
                 ));
-        return imageView;
+        return familyMemberView;
     }
     public void addFamilyMemberImage(FamilyMemberImageView familyMember) {
         familyMember.setFitHeight(40);

@@ -14,8 +14,8 @@ public class OpponentView extends TitledPane implements PlayerTag {
     private String name;
     private String id;
 
-    public OpponentView(PlayerColor playerColor, String playerId, String playerName){
-        player = new PlayerView(playerColor, PlayerView.ConfigurationMode.OPPONENT);
+    public OpponentView(String playerId, String playerName){
+        player = new PlayerView(playerId, PlayerView.ConfigurationMode.OPPONENT);
         this.id = playerId;
         this.name = playerName;
         setText(playerName);
@@ -87,6 +87,9 @@ public class OpponentView extends TitledPane implements PlayerTag {
 
     public void updateFamilyMemberValue(Color color, String value) {
         player.updateFamilyMemberValue(color, value);
+    }
+    public void hideFamilyMember(Color color){
+        player.hideFamilyMember(color);
     }
 
     public String getPlayerId(){

@@ -26,5 +26,5 @@ public interface PlayerTag {
     void updateMilitaryPointsQuantity(String quantity);
     void updateFaithPointsQuantity(String quantity);
     void updateFamilyMemberValue(Color color, String value);
-
+    void hideFamilyMember(Color color);
 }

@@ -34,7 +34,7 @@ public class MyPlayerView extends TabPane implements PlayerTag {
 
 
     public MyPlayerView(String playerId, String playerName){
-        me = new PlayerView(PlayerColor.RED, PlayerView.ConfigurationMode.MY_PLAYER); //todo client should be able to pick a color
+        me = new PlayerView(playerId, PlayerView.ConfigurationMode.MY_PLAYER);
         id = playerId;
         name = playerName;
         initializeTabs();
@@ -177,6 +177,10 @@ public class MyPlayerView extends TabPane implements PlayerTag {
     public void updateFamilyMemberValue(Color color, String value) {
         me.updateFamilyMemberValue(color, value);
     }
+    public void hideFamilyMember(Color color){
+        me.hideFamilyMember(color);
+    }
+
 
     private void setFamilyMemberSelectable(){
         for(Node tmp : me.getFamilyMembers()){

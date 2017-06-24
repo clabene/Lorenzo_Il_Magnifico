@@ -62,6 +62,10 @@ public abstract class ActionSpace implements Serializable{
         return familyMembers;
     }
 
+    public int getNumberOfFamilyMembers(){
+        return familyMembers.size();
+    }
+
     /*
     private void initializeNumberOfFamiliars(){
         try{

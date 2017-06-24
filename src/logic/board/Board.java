@@ -97,6 +97,10 @@ public class Board implements Serializable{
         return actionSpaceHashMap;
     }
 
+    public ActionSpace getActionSpaceFromId(String actionSpaceId) {
+        return actionSpaceHashMap.get(actionSpaceId);
+    }
+
     public void setCardsOnBoard(Stack<Card> deck){
         ((TowerActionSpace)this.getHashMap().get("TL1")).setCard(deck.pop());
         ((TowerActionSpace)this.getHashMap().get("TL2")).setCard(deck.pop());
