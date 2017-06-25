@@ -55,8 +55,9 @@ public class GuiClient extends AbstractUserInterfaceClient {
             loader.buildMainGameStage();
             ((MainViewController) controller).placeMyPlayer();
             viewBuilder.setController((MainViewController) controller);
+            updateView();
         });
-        updateView();
+        //updateView();
     }
 
     @Override
@@ -65,8 +66,9 @@ public class GuiClient extends AbstractUserInterfaceClient {
             loader.buildMainGameStage();
             ((MainViewController) controller).placeMyPlayer();
             viewBuilder.setController((MainViewController) controller);
+            updateView();
         });
-        updateView();
+        //updateView();
     }
 
     @Override

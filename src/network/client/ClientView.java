@@ -54,6 +54,9 @@ public class ClientView implements Serializable{
 
 
 
+
+
+
     public FamilyMember printFamilyMembersAvailable(String id){
 
         for(Player tmp: players){

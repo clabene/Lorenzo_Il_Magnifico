@@ -24,15 +24,15 @@ public class MalusOnFamilyMemberPlacementTessel extends ExcommunicationTassel{
     * Observation: if action space type is market and malus = Integer.MIN_VALUE, the "no market for you" tassel is implemented too
     * */
 
-    public MalusOnFamilyMemberPlacementTessel(PeriodNumber periodNumber, CardType cardType, int malus){
-        super(periodNumber);
+    public MalusOnFamilyMemberPlacementTessel(PeriodNumber periodNumber, CardType cardType, int malus, String id){
+        super(periodNumber, id);
         //this.cardType = cardType;
         // this.malus = malus;
         this.malusToGiveToPlayer = new BonusOnFamilyMemberPlacement(cardType, -1*malus);
 
     }
-    public MalusOnFamilyMemberPlacementTessel(PeriodNumber periodNumber, ActivationActionSpaceType activationActionSpaceType /*ActionSpaceType actionSpaceType*/, int malus){
-        super(periodNumber);
+    public MalusOnFamilyMemberPlacementTessel(PeriodNumber periodNumber, ActivationActionSpaceType activationActionSpaceType /*ActionSpaceType actionSpaceType*/, int malus, String id){
+        super(periodNumber, id);
         //this.activationActionSpaceType = activationActionSpaceType;
         //this.actionSpaceType = ActionSpaceType.ACTIVATION;
         //this.actionSpaceType = actionSpaceType;
@@ -40,8 +40,8 @@ public class MalusOnFamilyMemberPlacementTessel extends ExcommunicationTassel{
         this.malusToGiveToPlayer = new BonusOnFamilyMemberPlacement(activationActionSpaceType, -1*malus);
 
     }
-    public MalusOnFamilyMemberPlacementTessel(PeriodNumber periodNumber){
-        super(periodNumber);
+    public MalusOnFamilyMemberPlacementTessel(PeriodNumber periodNumber, String id){
+        super(periodNumber, id);
         this.malusToGiveToPlayer = new BonusOnFamilyMemberPlacement(-1);
     }
 

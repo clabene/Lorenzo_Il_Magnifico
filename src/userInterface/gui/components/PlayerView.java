@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import logic.board.Color;
+import userInterface.gui.ColorHandler;
 import userInterface.gui.Loader;
 
 import java.util.ArrayList;
@@ -78,8 +79,8 @@ public class PlayerView extends Pane {
 
         //todo delete
         for(int i = 0; i <= FAITH_INDEX; i++){
-            images[i].setFitWidth(70);
-            images[i].setFitHeight(70);
+            images[i].setFitWidth(50);
+            images[i].setFitHeight(50);
         }
 
     }
@@ -111,10 +112,12 @@ public class PlayerView extends Pane {
         }
     }
     private void initializeFamilyMembers(String playerId){
+        System.out.println(playerId+"---------------------------------"+ ColorHandler.getColor(playerId));
         familyMembers[BLACK_INDEX] = new FamilyMemberImageView(playerId, Color.BLACK, 0);
         familyMembers[RED_INDEX] = new FamilyMemberImageView(playerId, Color.RED, 0);
         familyMembers[WHITE_INDEX] = new FamilyMemberImageView(playerId, Color.WHITE, 0);
-        familyMembers[NEUTRAL_INDEX] = new FamilyMemberImageView(playerId, null, 0);
+        familyMembers[NEUTRAL_INDEX] = new FamilyMemberImageView(playerId, 0);
+
 
         //todo delete
         for(int i = 0; i <= NEUTRAL_INDEX; i++){
@@ -155,13 +158,13 @@ public class PlayerView extends Pane {
 
     private void placeResourceImagesOpponent(){
         images[STONE_INDEX].xProperty().bind(images[WOOD_INDEX].xProperty());
-        images[STONE_INDEX].yProperty().bind(images[WOOD_INDEX].yProperty().add(images[WOOD_INDEX].fitHeightProperty().add(2)));
+        images[STONE_INDEX].yProperty().bind(images[WOOD_INDEX].yProperty().add(images[WOOD_INDEX].fitHeightProperty().add(6)));
 
         images[SLAVE_INDEX].xProperty().bind(images[WOOD_INDEX].xProperty());
-        images[SLAVE_INDEX].yProperty().bind(images[STONE_INDEX].yProperty().add(images[STONE_INDEX].fitHeightProperty().add(2)));
+        images[SLAVE_INDEX].yProperty().bind(images[STONE_INDEX].yProperty().add(images[STONE_INDEX].fitHeightProperty().add(6)));
 
         images[MONEY_INDEX].xProperty().bind(images[WOOD_INDEX].xProperty());
-        images[MONEY_INDEX].yProperty().bind(images[SLAVE_INDEX].yProperty().add(images[SLAVE_INDEX].fitHeightProperty().add(2)));
+        images[MONEY_INDEX].yProperty().bind(images[SLAVE_INDEX].yProperty().add(images[SLAVE_INDEX].fitHeightProperty().add(6)));
     }
     private void placeResourceImagesMyPlayer(){
         images[STONE_INDEX].xProperty().bind(images[WOOD_INDEX].xProperty());
@@ -184,10 +187,10 @@ public class PlayerView extends Pane {
 
     private void placePointsImagesOpponent(){
         images[MILITARY_INDEX].xProperty().bind(images[VICTORY_INDEX].xProperty());
-        images[MILITARY_INDEX].yProperty().bind(images[VICTORY_INDEX].yProperty().add(images[VICTORY_INDEX].fitHeightProperty().add(2)));
+        images[MILITARY_INDEX].yProperty().bind(images[VICTORY_INDEX].yProperty().add(images[VICTORY_INDEX].fitHeightProperty().add(6)));
 
         images[FAITH_INDEX].xProperty().bind(images[VICTORY_INDEX].xProperty());
-        images[FAITH_INDEX].yProperty().bind(images[MILITARY_INDEX].yProperty().add(images[MILITARY_INDEX].fitHeightProperty().add(2)));
+        images[FAITH_INDEX].yProperty().bind(images[MILITARY_INDEX].yProperty().add(images[MILITARY_INDEX].fitHeightProperty().add(6)));
     }
     private void placePointsImagesMyPlayer(){
         images[MILITARY_INDEX].xProperty().bind(images[WOOD_INDEX].xProperty());

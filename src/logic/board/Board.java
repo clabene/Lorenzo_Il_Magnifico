@@ -83,6 +83,7 @@ public class Board implements Serializable{
         return actionSpace;
     }
 
+
     public int getMAX_NUMBER_OF_PLAYERS(){
         return MAX_NUMBER_OF_PLAYERS;
     }
@@ -100,6 +101,11 @@ public class Board implements Serializable{
     public ActionSpace getActionSpaceFromId(String actionSpaceId) {
         return actionSpaceHashMap.get(actionSpaceId);
     }
+
+    public ExcommunicationTassel getTasselFromIndex(int i){
+        return tassels[i];
+    }
+
 
     public void setCardsOnBoard(Stack<Card> deck){
         ((TowerActionSpace)this.getHashMap().get("TL1")).setCard(deck.pop());

@@ -11,6 +11,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import logic.board.Color;
+import userInterface.gui.ColorHandler;
 
 /**
  * Created by IBM on 19/06/2017.
@@ -23,13 +24,20 @@ public class FamilyMemberImageView extends ImageView {
     private String playerId; //todo get PlayerColor form here
 
     public FamilyMemberImageView(String playerId, Color diceColor, Integer value) {
+        super("userInterface/gui/images/familyMembers/"+ ColorHandler.getColor(playerId).toString().toLowerCase()+"X"+diceColor.toString().toLowerCase()+".png");
 
-        //todo
-        //super("userInterface/gui/images/"+playerColor.toString().toLowerCase()+"_family_member_"+diceColor.toString().toLowerCase()+".png"); //todo
-        super("userInterface/gui/images/cancellami3.jpg");
         this.playerId = playerId;
         this.value = value;
         this.diceColor = diceColor;
+        placeValueLabel(value.toString());
+    }
+
+    public FamilyMemberImageView(String playerId, Integer value) {
+        super("userInterface/gui/images/familyMembers/"+ ColorHandler.getColor(playerId).toString().toLowerCase()+"Xnull.png");
+
+        this.playerId = playerId;
+        this.value = value;
+        this.diceColor = null;
         placeValueLabel(value.toString());
     }
 

@@ -25,9 +25,7 @@ public class TowerActionSpaceImageView extends ActionSpaceImageView {
     private void placeCard(String cardName) {
         card.xProperty().bind(xProperty()
                 .subtract(card.fitWidthProperty()
-                        .add(fitWidthProperty()
-                                .divide(15)
-                        )
+                        .add(2)
                 )
         );
         card.yProperty().bind(yProperty()

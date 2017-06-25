@@ -48,7 +48,7 @@ public class ActionSpaceImageView extends ImageView {
         familyMemberView.xProperty().bind(xProperty()
                 .add(familyMemberView.fitWidthProperty()
                                 .multiply(familyMembers.size()-1).add(10)
-                ));
+                ).add(15));
         familyMemberView.yProperty().bind(yProperty()
                 .add(fitHeightProperty().subtract(
                         familyMemberView.fitHeightProperty()).divide(2)

@@ -303,20 +303,20 @@ public class CardSetupHandler {
         Stack<ExcommunicationTassel> tassels1 = new Stack<>();
         Stack<ExcommunicationTassel> tassels2 = new Stack<>();
         Stack<ExcommunicationTassel> tassels3 = new Stack<>();
-        tassels1.add(new MalusOnFamilyMemberPlacementTessel(PeriodNumber.FIRST, ActivationActionSpaceType.HARVEST, 3));
-        tassels1.add(new MalusOnFamilyMemberPlacementTessel(PeriodNumber.FIRST, ActivationActionSpaceType.PRODUCTION, 3));
-        tassels1.add(new MalusOnFamilyMemberPlacementTessel(PeriodNumber.FIRST));
+        tassels1.add(new MalusOnFamilyMemberPlacementTessel(PeriodNumber.FIRST, ActivationActionSpaceType.HARVEST, 3, "a"));
+        tassels1.add(new MalusOnFamilyMemberPlacementTessel(PeriodNumber.FIRST, ActivationActionSpaceType.PRODUCTION, 3,"b"));
+        tassels1.add(new MalusOnFamilyMemberPlacementTessel(PeriodNumber.FIRST,"c"));
 
         //2
-        tassels2.add(new MalusOnFamilyMemberPlacementTessel(PeriodNumber.SECOND, CardType.BUILDING, 4));
-        tassels2.add(new MalusOnFamilyMemberPlacementTessel(PeriodNumber.SECOND, CardType.LAND, 4));
-        tassels2.add(new MalusOnFamilyMemberPlacementTessel(PeriodNumber.SECOND, CardType.PERSON, 4));
-        tassels2.add(new MalusOnFamilyMemberPlacementTessel(PeriodNumber.SECOND, CardType.VENTURE, 4));
+        tassels2.add(new MalusOnFamilyMemberPlacementTessel(PeriodNumber.SECOND, CardType.BUILDING, 4,"d"));
+        tassels2.add(new MalusOnFamilyMemberPlacementTessel(PeriodNumber.SECOND, CardType.LAND, 4,"e"));
+        tassels2.add(new MalusOnFamilyMemberPlacementTessel(PeriodNumber.SECOND, CardType.PERSON, 4,"f"));
+        tassels2.add(new MalusOnFamilyMemberPlacementTessel(PeriodNumber.SECOND, CardType.VENTURE, 4,"g"));
 
         //3
-        tassels3.add(new PointsTrackToZeroTessel(CardType.PERSON));
-        tassels3.add(new PointsTrackToZeroTessel(CardType.LAND));
-        tassels3.add(new PointsTrackToZeroTessel(CardType.VENTURE));
+        tassels3.add(new PointsTrackToZeroTessel(CardType.PERSON,"h"));
+        tassels3.add(new PointsTrackToZeroTessel(CardType.LAND,"i"));
+        tassels3.add(new PointsTrackToZeroTessel(CardType.VENTURE,"j"));
 
         Collections.shuffle(tassels1);
         Collections.shuffle(tassels2);

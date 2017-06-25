@@ -14,8 +14,8 @@ public class PointsTrackToZeroTessel extends ExcommunicationTassel{
 
     private CardType cardType;
 
-    public PointsTrackToZeroTessel(CardType cardType){
-        super(PeriodNumber.THIRD);
+    public PointsTrackToZeroTessel(CardType cardType, String id){
+        super(PeriodNumber.THIRD, id);
         this.cardType = cardType;
     }
 

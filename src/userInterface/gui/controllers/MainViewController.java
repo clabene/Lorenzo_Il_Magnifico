@@ -36,8 +36,8 @@ public class MainViewController extends Controller {
     @FXML
     private Pane pane;
 
-    @FXML
-    private Accordion opponentsAccordion;
+    //@FXML
+    private Accordion opponentsAccordion = new Accordion();
 
     @FXML
     private ImageView image;
@@ -69,7 +69,15 @@ public class MainViewController extends Controller {
         image.setPreserveRatio(false);
         image.fitWidthProperty().bind(pane.widthProperty());
         image.fitHeightProperty().bind(pane.heightProperty());
+    }
 
+    public void setTassels(String a, String b, String c){
+        board.setImages(a,b,c);
+
+    }
+
+    public void setDice(int a, int b , int c){
+        board.setDice(a,b,c);
     }
 
 
@@ -77,10 +85,11 @@ public class MainViewController extends Controller {
     * to be called right after initialize
     * */
     public void placeMyPlayer(){
+        ColorHandler.addPlayer(getGuiClient().getId());
         MyPlayerView myPlayer = new MyPlayerView(getGuiClient().getId());
         players.add(myPlayer);
         myPlayer.layoutXProperty().bind(board.getXPosition().add(board.getWidthProperty().divide(2)));
-        myPlayer.layoutYProperty().bind(pane.heightProperty().multiply(0.7));
+        myPlayer.layoutYProperty().bind(pane.heightProperty().multiply(0.77));
         myPlayer.setBackground(new Background(new BackgroundFill(Color.TAN, new CornerRadii(40), null)));
 
         familyMemberSelected.bindBidirectional( myPlayer.getFamilyMemberSelectedProperty());
@@ -97,8 +106,9 @@ public class MainViewController extends Controller {
 
     private void placeOpponentsAccordion(){
         opponentsAccordion.layoutXProperty().bind(pane.widthProperty().multiply(0.7).add(70));
-        opponentsAccordion.layoutYProperty().bind(board.getYPosition().add(20));
+        opponentsAccordion.layoutYProperty().bind(board.getYPosition().subtract(5));
         opponentsAccordion.setBackground(new Background(new BackgroundFill(javafx.scene.paint.Color.CHOCOLATE,null,null)));
+        pane.getChildren().add(opponentsAccordion);
     }
     private void placeBoard(){
         board.bindXPosition(pane.widthProperty().divide(30));

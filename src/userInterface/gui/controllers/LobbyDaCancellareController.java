@@ -32,7 +32,7 @@ public class LobbyDaCancellareController extends Controller {
     private void placeNewRoomButton(){
         newRoomButton.layoutXProperty().bind(pane.widthProperty().divide(5));
         newRoomButton.layoutYProperty().bind(pane.heightProperty().divide(5).add(50));
-        newRoomButton.setOnAction( e -> getGuiClient().createNewRoom(2) ); //todo
+        newRoomButton.setOnAction( e -> getGuiClient().createNewRoom(3) ); //todo
     }
 
     public void successfullyJoinedGame(){

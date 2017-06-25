@@ -36,8 +36,8 @@ public class TowerView {
             tmp.setFitHeight(50);
             tmp.xProperty().bind(xPosition);
             tmp.yProperty().bind(yPosition.add(tmp.getHeightProperty().add(10).multiply(i)));*/
-            towerActionSpaces[j].setFitWidth(70);
-            towerActionSpaces[j].setFitHeight(70);
+            towerActionSpaces[j].setFitWidth(100);
+            towerActionSpaces[j].setFitHeight(100);
             towerActionSpaces[j].xProperty().bind(xPosition);
             towerActionSpaces[j].yProperty().bind(yPosition.add(towerActionSpaces[j].getHeightProperty().add(10).multiply(i)));
 
@@ -52,8 +52,8 @@ public class TowerView {
         return yPosition;
     }
 
-    public Set<Node> getComponents() {
-        Set<Node> nodes = new HashSet<>();
+    public ArrayList<Node> getComponents() {
+        ArrayList<Node> nodes = new ArrayList<>();
         nodes.addAll(Arrays.asList(towerActionSpaces));
         for(TowerActionSpaceImageView tmp : towerActionSpaces)
             nodes.addAll(tmp.getComponents());

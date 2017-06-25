@@ -46,10 +46,13 @@ public class ViewBuilder {
         buildPlayers();
     }
 
+    private String currentPlayerId = "";
+
     private void checkIsMyTurn(){
         for( Player tmp : clientView.getPlayers() ) {
-            if (controller.getGuiClient().getId().equals(tmp.getId()) && ((RemotePlayer) tmp).getCurrentPlayer()) {
+            if (!tmp.getId().equals(currentPlayerId) && controller.getGuiClient().getId().equals(tmp.getId()) && ((RemotePlayer) tmp).getCurrentPlayer()) {
                 Platform.runLater(() -> Loader.buildPopUp("INFO", "Time to move for: " + controller.getPlayerFromId(tmp.getId()).getPlayerName(), (Image) null));
+                currentPlayerId = tmp.getId();
             }
         }
      }
@@ -69,6 +72,15 @@ public class ViewBuilder {
         for(String tmp : clientView.getBoard().getHashMap().keySet()) {
             buildActionSpace(clientView.getBoard().getActionSpaceFromId(tmp), controller.getActionSpaceFromId(tmp));
         }
+
+        //----
+        Platform.runLater( () -> controller.setTassels(clientView.getBoard().getTasselFromIndex(0).getId(), clientView.getBoard().getTasselFromIndex(1).getId(),
+                clientView.getBoard().getTasselFromIndex(2).getId()));
+
+        Platform.runLater( () -> controller.setDice(clientView.getBoard().getBlackDice(),clientView.getBoard().getRedDice(), clientView.getBoard().getWhiteDice()));
+
+
+
     }
 
     private void hideNotUsableActionSpaces(){
