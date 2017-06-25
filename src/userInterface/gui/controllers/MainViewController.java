@@ -9,6 +9,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -33,6 +35,9 @@ public class MainViewController extends Controller {
     @FXML
     private Accordion opponentsAccordion;
 
+    @FXML
+    private ImageView image;
+
     private BoardView board = new BoardView();
     private ArrayList<PlayerTag> players = new ArrayList<>();
 
@@ -48,10 +53,19 @@ public class MainViewController extends Controller {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        setImageV();
         new Trigger(this).start();
 
         placeBoard();
         placeOpponentsAccordion();
+    }
+
+    public void setImageV(){
+        image.setImage(new Image("userInterface/gui/images/background.png"));
+        image.setPreserveRatio(false);
+        image.fitWidthProperty().bind(pane.widthProperty());
+        image.fitHeightProperty().bind(pane.heightProperty());
+
     }
 
 
@@ -78,8 +92,9 @@ public class MainViewController extends Controller {
     private BooleanProperty slaveUsageSelected = new SimpleBooleanProperty(false);
 
     private void placeOpponentsAccordion(){
-        opponentsAccordion.layoutXProperty().bind(pane.widthProperty().multiply(0.7));
+        opponentsAccordion.layoutXProperty().bind(pane.widthProperty().multiply(0.7).add(70));
         opponentsAccordion.layoutYProperty().bind(board.getYPosition().add(20));
+        opponentsAccordion.setBackground(new Background(new BackgroundFill(javafx.scene.paint.Color.CHOCOLATE,null,null)));
     }
     private void placeBoard(){
         board.bindXPosition(pane.widthProperty().divide(30));

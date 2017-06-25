@@ -19,16 +19,16 @@ public class CouncilFavourPopUpController extends Controller {
 
     // todo make an image of a wood and a stone one next to the other
     //private LabeledImageView woodAndStones = new LabeledImageView("quantity 1", "");
-
+/*
     private LabeledImageView slaves = new LabeledImageView("quantity 2", "");
     private LabeledImageView money = new LabeledImageView("quantity 2", "");
     private LabeledImageView militaryPoints = new LabeledImageView("quantity 2", "");
     private LabeledImageView faithPoints = new LabeledImageView("quantity 1", "");
-
+*/
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        woodAndStones.setFitWidth(45); money.setFitHeight(45);
+        //woodAndStones.setFitWidth(45); money.setFitHeight(45);
         slaves.setFitWidth(45); slaves.setFitHeight(45);
         militaryPoints.setFitWidth(45); militaryPoints.setFitHeight(45);
         faithPoints.setFitWidth(45); faithPoints.setFitHeight(45);

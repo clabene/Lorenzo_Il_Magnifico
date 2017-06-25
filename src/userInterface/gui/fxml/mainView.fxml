@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.image.ImageView?>
 
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.gui.controllers.MainViewController">
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.gui.controllers.MainViewController">
    <children>
+      <ImageView fx:id="image" fitHeight="406.0" fitWidth="600.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" />
       <Accordion fx:id="opponentsAccordion" layoutX="384.0" layoutY="47.0" />
+
    </children>
 </Pane>

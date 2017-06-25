@@ -30,11 +30,17 @@ public class TowerView {
 
     private void placeTowerActionSpaces(){
         int i = 0;
-        for(TowerActionSpaceImageView tmp : towerActionSpaces){
+        for(int j = 3; j >= 0; j--){
+        /*for(TowerActionSpaceImageView tmp : towerActionSpaces){
             tmp.setFitWidth(50);
             tmp.setFitHeight(50);
             tmp.xProperty().bind(xPosition);
-            tmp.yProperty().bind(yPosition.add(tmp.getHeightProperty().add(10).multiply(i)));
+            tmp.yProperty().bind(yPosition.add(tmp.getHeightProperty().add(10).multiply(i)));*/
+            towerActionSpaces[j].setFitWidth(70);
+            towerActionSpaces[j].setFitHeight(70);
+            towerActionSpaces[j].xProperty().bind(xPosition);
+            towerActionSpaces[j].yProperty().bind(yPosition.add(towerActionSpaces[j].getHeightProperty().add(10).multiply(i)));
+
             i++;
         }
     }

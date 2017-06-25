@@ -40,8 +40,8 @@ public class ActionSpaceImageView extends ImageView {
 
     public FamilyMemberImageView addFamilyMemberImage(String playerId, Color diceColor, Integer value) {
         FamilyMemberImageView familyMemberView = new FamilyMemberImageView(playerId, diceColor, value);
-        familyMemberView.setFitHeight(40);
-        familyMemberView.setFitWidth(40);
+        familyMemberView.setFitHeight(30);
+        familyMemberView.setFitWidth(30);
 
         familyMembers.add(familyMemberView);
 

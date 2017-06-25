@@ -55,7 +55,7 @@ public class ViewBuilder {
             if (((TowerActionSpace) actionSpace).getCard() == null)
                 ((TowerActionSpaceImageView) actionSpaceView).setCardToTaken();
             else
-                ((TowerActionSpaceImageView) actionSpaceView).setCardImage("userInterface/gui/images/cards/Tesoreria.png");//+((TowerActionSpace) actionSpace).getCard().getName()+".png");
+                ((TowerActionSpaceImageView) actionSpaceView).setCardImage("userInterface/gui/images/cards/"+((TowerActionSpace) actionSpace).getCard().getName()+".png");
         }
     }
 

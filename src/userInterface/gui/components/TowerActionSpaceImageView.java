@@ -39,8 +39,8 @@ public class TowerActionSpaceImageView extends ActionSpaceImageView {
                 )
         );
 
-        card.setFitWidth(75);
-        card.setFitHeight(100);
+        card.setFitWidth(90);
+        card.setFitHeight(120);
 
 
         card.setImage(new Image("userInterface/gui/images/cards/"+cardName+".png"));

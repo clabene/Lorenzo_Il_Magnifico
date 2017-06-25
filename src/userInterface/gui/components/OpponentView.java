@@ -2,6 +2,8 @@ package userInterface.gui.components;
 
 
 import javafx.scene.control.TitledPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import logic.board.Color;
 
 /**
@@ -19,6 +21,7 @@ public class OpponentView extends TitledPane implements PlayerTag {
         this.name = playerName;
         setText(playerName);
         setContent(player);
+
     }
 
     public void addLandCard(String name){

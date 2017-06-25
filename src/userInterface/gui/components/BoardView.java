@@ -4,6 +4,7 @@ import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.*;
 import javafx.scene.Node;
 
+import javax.swing.text.html.ImageView;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -33,38 +34,37 @@ public class BoardView {
 
     private void initializeActionSpaces(){
         //todo
+        actionSpaces.put("TL4", new TowerActionSpaceImageView("TL4", "userInterface/gui/images/actionSpaces/actionSpace_verde.png", "Araldo"));
+        actionSpaces.put("TL3", new TowerActionSpaceImageView("TL3", "userInterface/gui/images/actionSpaces/actionSpace_verde.png", "Araldo"));
+        actionSpaces.put("TL2", new TowerActionSpaceImageView("TL2", "userInterface/gui/images/actionSpaces/actionSpace_verde.png", "Araldo"));
+        actionSpaces.put("TL1", new TowerActionSpaceImageView("TL1", "userInterface/gui/images/actionSpaces/actionSpace_verde.png", "Araldo"));
 
-        actionSpaces.put("TL1", new TowerActionSpaceImageView("TL1", "userInterface/gui/images/actionSpace.png", "Araldo"));
-        actionSpaces.put("TL2", new TowerActionSpaceImageView("TL2", "userInterface/gui/images/actionSpace.png", "Araldo"));
-        actionSpaces.put("TL3", new TowerActionSpaceImageView("TL3", "userInterface/gui/images/actionSpace.png", "Araldo"));
-        actionSpaces.put("TL4", new TowerActionSpaceImageView("TL4", "userInterface/gui/images/actionSpace.png", "Araldo"));
+        actionSpaces.put("TP4", new TowerActionSpaceImageView("TP4", "userInterface/gui/images/actionSpaces/actionSpace_blu.png", "Araldo"));
+        actionSpaces.put("TP3", new TowerActionSpaceImageView("TP3", "userInterface/gui/images/actionSpaces/actionSpace_blu.png", "Araldo"));
+        actionSpaces.put("TP2", new TowerActionSpaceImageView("TP2", "userInterface/gui/images/actionSpaces/actionSpace_blu.png", "Araldo"));
+        actionSpaces.put("TP1", new TowerActionSpaceImageView("TP1", "userInterface/gui/images/actionSpaces/actionSpace_blu.png", "Araldo"));
 
-        actionSpaces.put("TP1", new TowerActionSpaceImageView("TP1", "userInterface/gui/images/actionSpace.png", "Araldo"));
-        actionSpaces.put("TP2", new TowerActionSpaceImageView("TP2", "userInterface/gui/images/actionSpace.png", "Araldo"));
-        actionSpaces.put("TP3", new TowerActionSpaceImageView("TP3", "userInterface/gui/images/actionSpace.png", "Araldo"));
-        actionSpaces.put("TP4", new TowerActionSpaceImageView("TP4", "userInterface/gui/images/actionSpace.png", "Araldo"));
+        actionSpaces.put("TB4", new TowerActionSpaceImageView("TB4", "userInterface/gui/images/actionSpaces/actionSpace_giallo.png", "Araldo"));
+        actionSpaces.put("TB3", new TowerActionSpaceImageView("TB3", "userInterface/gui/images/actionSpaces/actionSpace_giallo.png", "Araldo"));
+        actionSpaces.put("TB2", new TowerActionSpaceImageView("TB2", "userInterface/gui/images/actionSpaces/actionSpace_giallo.png", "Araldo"));
+        actionSpaces.put("TB1", new TowerActionSpaceImageView("TB1", "userInterface/gui/images/actionSpaces/actionSpace_giallo.png", "Araldo"));
 
-        actionSpaces.put("TB1", new TowerActionSpaceImageView("TB1", "userInterface/gui/images/actionSpace.png", "Araldo"));
-        actionSpaces.put("TB2", new TowerActionSpaceImageView("TB2", "userInterface/gui/images/actionSpace.png", "Araldo"));
-        actionSpaces.put("TB3", new TowerActionSpaceImageView("TB3", "userInterface/gui/images/actionSpace.png", "Araldo"));
-        actionSpaces.put("TB4", new TowerActionSpaceImageView("TB4", "userInterface/gui/images/actionSpace.png", "Araldo"));
+        actionSpaces.put("TV4", new TowerActionSpaceImageView("TV4", "userInterface/gui/images/actionSpaces/actionSpace_viola.png", "Araldo"));
+        actionSpaces.put("TV3", new TowerActionSpaceImageView("TV3", "userInterface/gui/images/actionSpaces/actionSpace_viola.png", "Araldo"));
+        actionSpaces.put("TV2", new TowerActionSpaceImageView("TV2", "userInterface/gui/images/actionSpaces/actionSpace_viola.png", "Araldo"));
+        actionSpaces.put("TV1", new TowerActionSpaceImageView("TV1", "userInterface/gui/images/actionSpaces/actionSpace_viola.png", "Araldo"));
 
-        actionSpaces.put("TV1", new TowerActionSpaceImageView("TV1", "userInterface/gui/images/actionSpace.png", "Araldo"));
-        actionSpaces.put("TV2", new TowerActionSpaceImageView("TV2", "userInterface/gui/images/actionSpace.png", "Araldo"));
-        actionSpaces.put("TV3", new TowerActionSpaceImageView("TV3", "userInterface/gui/images/actionSpace.png", "Araldo"));
-        actionSpaces.put("TV4", new TowerActionSpaceImageView("TV4", "userInterface/gui/images/actionSpace.png", "Araldo"));
+        actionSpaces.put("C", new ActionSpaceImageView("C", "userInterface/gui/images/actionSpaces/actionSpace_consiglio.png"));
 
-        actionSpaces.put("C", new ActionSpaceImageView("C", "userInterface/gui/images/cancellami.jpg"));
+        actionSpaces.put("AP1", new ActionSpaceImageView("AP1", "userInterface/gui/images/actionSpaces/actionSpace_produzione.png"));
+        actionSpaces.put("AP2", new ActionSpaceImageView("AP2", "userInterface/gui/images/actionSpaces/actionSpace_produzione.png"));
+        actionSpaces.put("AH1", new ActionSpaceImageView("AH1", "userInterface/gui/images/actionSpaces/actionSpace_raccolto.png"));
+        actionSpaces.put("AH2", new ActionSpaceImageView("AH2", "userInterface/gui/images/actionSpaces/actionSpace_raccolto.png"));
 
-        actionSpaces.put("AP1", new ActionSpaceImageView("AP1", "userInterface/gui/images/cancellami.jpg"));
-        actionSpaces.put("AP2", new ActionSpaceImageView("AP2", "userInterface/gui/images/cancellami.jpg"));
-        actionSpaces.put("AH1", new ActionSpaceImageView("AH1", "userInterface/gui/images/cancellami.jpg"));
-        actionSpaces.put("AH2", new ActionSpaceImageView("AH2", "userInterface/gui/images/cancellami.jpg"));
-
-        actionSpaces.put("M1", new ActionSpaceImageView("M1", "userInterface/gui/images/cancellami.jpg"));
-        actionSpaces.put("M2", new ActionSpaceImageView("M2", "userInterface/gui/images/cancellami.jpg"));
-        actionSpaces.put("M3", new ActionSpaceImageView("M3", "userInterface/gui/images/cancellami.jpg"));
-        actionSpaces.put("M4", new ActionSpaceImageView("M4", "userInterface/gui/images/cancellami.jpg"));
+        actionSpaces.put("M1", new ActionSpaceImageView("M1", "userInterface/gui/images/actionSpaces/actionSpace_mercato.png"));
+        actionSpaces.put("M2", new ActionSpaceImageView("M2", "userInterface/gui/images/actionSpaces/actionSpace_mercato.png"));
+        actionSpaces.put("M3", new ActionSpaceImageView("M3", "userInterface/gui/images/actionSpaces/actionSpace_mercato.png"));
+        actionSpaces.put("M4", new ActionSpaceImageView("M4", "userInterface/gui/images/actionSpaces/actionSpace_mercato.png"));
 
     }
 
@@ -81,15 +81,15 @@ public class BoardView {
         //towers[0].getYPositionProperty().set(0);
 
         towers[1] = new TowerView((TowerActionSpaceImageView[]) getActionSpacesFromInitials("TP").toArray(new TowerActionSpaceImageView[4]));
-        towers[1].getXPositionProperty().bind(towers[0].getXPositionProperty().add(TowerActionSpaceImageView.getLeftOffset()).add(actionSpaces.get("TV1").fitWidthProperty()).add(5));
+        towers[1].getXPositionProperty().bind(towers[0].getXPositionProperty().add(TowerActionSpaceImageView.getLeftOffset()).add(actionSpaces.get("TV1").fitWidthProperty()).add(15));
         towers[1].getYPositionProperty().bind(towers[0].getYPositionProperty());
 
         towers[2] = new TowerView((TowerActionSpaceImageView[]) getActionSpacesFromInitials("TB").toArray(new TowerActionSpaceImageView[4]));
-        towers[2].getXPositionProperty().bind(towers[1].getXPositionProperty().add(TowerActionSpaceImageView.getLeftOffset()).add(actionSpaces.get("TV1").fitWidthProperty()).add(5));
+        towers[2].getXPositionProperty().bind(towers[1].getXPositionProperty().add(TowerActionSpaceImageView.getLeftOffset()).add(actionSpaces.get("TV1").fitWidthProperty()).add(15));
         towers[2].getYPositionProperty().bind(towers[0].getYPositionProperty());
 
         towers[3] = new TowerView((TowerActionSpaceImageView[]) getActionSpacesFromInitials("TV").toArray(new TowerActionSpaceImageView[4]));
-        towers[3].getXPositionProperty().bind(towers[2].getXPositionProperty().add(TowerActionSpaceImageView.getLeftOffset()).add(actionSpaces.get("TV1").fitWidthProperty()).add(5));
+        towers[3].getXPositionProperty().bind(towers[2].getXPositionProperty().add(TowerActionSpaceImageView.getLeftOffset()).add(actionSpaces.get("TV1").fitWidthProperty()).add(15));
         towers[3].getYPositionProperty().bind(towers[0].getYPositionProperty());
     }
     private void placeCouncilActionSpace(){
@@ -98,8 +98,8 @@ public class BoardView {
         councilActionSpace.yProperty().bind(towers[0].getYPositionProperty());
 
         //todo delete:
-        councilActionSpace.setFitWidth(150);
-        councilActionSpace.setFitHeight(50);
+        councilActionSpace.setFitWidth(250);
+        councilActionSpace.setFitHeight(100);
     }
     private void placeActivationActionSpaces(){
         ActionSpaceImageView harvestShort = actionSpaces.get("AH1");
@@ -118,14 +118,14 @@ public class BoardView {
         productionLong.yProperty().bind(productionShort.yProperty());
 
         //todo delete:
-        harvestShort.setFitWidth(50);
-        harvestShort.setFitHeight(50);
-        harvestLong.setFitWidth(150);
-        harvestLong.setFitHeight(50);
-        productionShort.setFitWidth(50);
-        productionShort.setFitHeight(50);
-        productionLong.setFitWidth(150);
-        productionLong.setFitHeight(50);
+        harvestShort.setFitWidth(70);
+        harvestShort.setFitHeight(70);
+        harvestLong.setFitWidth(250);
+        harvestLong.setFitHeight(70);
+        productionShort.setFitWidth(70);
+        productionShort.setFitHeight(70);
+        productionLong.setFitWidth(250);
+        productionLong.setFitHeight(70);
 
     }
 
@@ -149,15 +149,17 @@ public class BoardView {
         markets[3].yProperty().bind(markets[0].yProperty());
 
         //todo delete:
-        markets[0].setFitWidth(50);
-        markets[0].setFitHeight(50);
-        markets[1].setFitWidth(50);
-        markets[1].setFitHeight(50);
-        markets[2].setFitWidth(50);
-        markets[2].setFitHeight(50);
-        markets[3].setFitWidth(50);
-        markets[3].setFitHeight(50);
+        markets[0].setFitWidth(70);
+        markets[0].setFitHeight(70);
+        markets[1].setFitWidth(70);
+        markets[1].setFitHeight(70);
+        markets[2].setFitWidth(70);
+        markets[2].setFitHeight(70);
+        markets[3].setFitWidth(70);
+        markets[3].setFitHeight(70);
     }
+
+
 
     public HashSet<Node> getComponents(){
         HashSet<Node> toReturn = new HashSet<>();

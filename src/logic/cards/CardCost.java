@@ -34,11 +34,12 @@ public class CardCost implements Losable, Serializable {
         this.necessaryQuantityOfMilitaryPoints = necessaryQuantityOfMilitaryPoints;
         this.selectedCost = militaryPointsCost;
     }
+    /*
     public CardCost(SetOfResources resourcesCost, MilitaryPointsTrack militaryPointsCost, int necessaryQuantityOfMilitaryPoints){
         this.resourcesCost = resourcesCost;
         this.militaryPointsCost = militaryPointsCost;
         this.necessaryQuantityOfMilitaryPoints = necessaryQuantityOfMilitaryPoints;
-    }
+    }*/
 
     public SetOfResources getResourcesCost() {
         return resourcesCost;

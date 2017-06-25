@@ -68,13 +68,13 @@ public class PlayerView extends Pane {
 
     private void initializeImages(){
         //todo
-        images[WOOD_INDEX] = new LabeledImageView("quantity: 0", "userInterface/gui/images/cancellami.jpg");
-        images[STONE_INDEX] = new LabeledImageView("quantity: 0", "userInterface/gui/images/cancellami.jpg");
-        images[SLAVE_INDEX] = new LabeledImageView("quantity: 0", "userInterface/gui/images/cancellami.jpg");
-        images[MONEY_INDEX] = new LabeledImageView("quantity: 0", "userInterface/gui/images/cancellami.jpg");
-        images[VICTORY_INDEX] = new LabeledImageView("quantity: 0", "userInterface/gui/images/cancellami.jpg");
-        images[MILITARY_INDEX] = new LabeledImageView("quantity: 0", "userInterface/gui/images/cancellami.jpg");
-        images[FAITH_INDEX] = new LabeledImageView("quantity: 0", "userInterface/gui/images/cancellami.jpg");
+        images[WOOD_INDEX] = new LabeledImageView("quantity: 0", "userInterface/gui/images/resources/wood.png");
+        images[STONE_INDEX] = new LabeledImageView("quantity: 0", "userInterface/gui/images/resources/stone.png");
+        images[SLAVE_INDEX] = new LabeledImageView("quantity: 0", "userInterface/gui/images/resources/servant1.png");
+        images[MONEY_INDEX] = new LabeledImageView("quantity: 0", "userInterface/gui/images/resources/money1.png");
+        images[VICTORY_INDEX] = new LabeledImageView("quantity: 0", "userInterface/gui/images/resources/victory1.png");
+        images[MILITARY_INDEX] = new LabeledImageView("quantity: 0", "userInterface/gui/images/resources/military1.png");
+        images[FAITH_INDEX] = new LabeledImageView("quantity: 0", "userInterface/gui/images/resources/faith1.png");
 
         //todo delete
         for(int i = 0; i <= FAITH_INDEX; i++){
