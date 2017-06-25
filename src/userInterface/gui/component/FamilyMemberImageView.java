@@ -24,6 +24,7 @@ public class FamilyMemberImageView extends ImageView {
     private String playerId; //todo get PlayerColor form here
 
     public FamilyMemberImageView(String playerId, Color diceColor, Integer value) {
+
         //todo
         //super("userInterface/gui/images/"+playerColor.toString().toLowerCase()+"_family_member_"+diceColor.toString().toLowerCase()+".png"); //todo
         super("userInterface/gui/images/cancellami3.jpg");

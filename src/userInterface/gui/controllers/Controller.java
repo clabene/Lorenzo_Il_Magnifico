@@ -32,7 +32,7 @@ public abstract class Controller implements Initializable {
     */
 
     public void buildErrorPopUp(){
-        Loader.buildPopUp("Error", "An error occurred", "userInterface/gui/images/cancellami.jpg");
+        Loader.buildPopUp("Error", "An error occurred", "userInterface/gui/images/cancellami.jpg");//todo
     }
 
 }
