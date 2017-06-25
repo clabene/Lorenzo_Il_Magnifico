@@ -2,38 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/actionSpaces/actionSpace_blu.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/actionSpaces/actionSpace_consiglio.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/actionSpaces/actionSpace_giallo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/actionSpaces/actionSpace_mercato.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/actionSpaces/actionSpace_produzione.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/actionSpaces/actionSpace_raccolto.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/actionSpaces/actionSpace_verde.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/actionSpaces/actionSpace_viola.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/background.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/cards/Ingaggiare Soldati.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/cards/Ospitare gli Stranieri.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/resources/faith1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/resources/military1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/resources/money1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/resources/servant1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/resources/stone.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/resources/victory1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/resources/wood.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/userInterface/gui/images/cards/Cittadella.png" afterPath="$PROJECT_DIR$/src/userInterface/gui/images/cards/Rocca.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/cards/CardCost.java" afterPath="$PROJECT_DIR$/src/logic/cards/CardCost.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/logic/utility/CardSetupHandler.java" afterPath="$PROJECT_DIR$/src/logic/utility/CardSetupHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/ViewBuilder.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/ViewBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/components/ActionSpaceImageView.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/components/ActionSpaceImageView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/components/BoardView.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/components/BoardView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/components/OpponentView.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/components/OpponentView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/components/PlayerView.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/components/PlayerView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/components/TowerActionSpaceImageView.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/components/TowerActionSpaceImageView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/components/TowerView.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/components/TowerView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/controllers/CouncilFavourPopUpController.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/controllers/CouncilFavourPopUpController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/controllers/MainViewController.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/controllers/MainViewController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/fxml/mainView.fxml" afterPath="$PROJECT_DIR$/src/userInterface/gui/fxml/mainView.fxml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -1295,13 +1264,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495533735855</updated>
     </task>
-    <task id="LOCAL-00040" summary="card creation">
-      <created>1496486434688</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1496486434688</updated>
-    </task>
     <task id="LOCAL-00041" summary="card creation">
       <created>1496488868208</created>
       <option name="number" value="00041" />
@@ -1638,7 +1600,14 @@
       <option name="project" value="LOCAL" />
       <updated>1498349038060</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="cli update">
+      <created>1498401840917</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1498401840918</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TestHistory">
