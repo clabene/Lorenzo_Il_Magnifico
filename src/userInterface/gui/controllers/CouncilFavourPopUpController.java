@@ -1,7 +1,11 @@
 package userInterface.gui.controllers;
 
 import javafx.scene.control.CheckBox;
-import userInterface.gui.components.LabeledImageView;
+import javafx.stage.Stage;
+import logic.interfaces.Gainable;
+import logic.pointsTracks.FaithPointsTrack;
+import logic.pointsTracks.MilitaryPointsTrack;
+import logic.resources.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,37 +16,56 @@ import java.util.ResourceBundle;
 public class CouncilFavourPopUpController extends Controller {
 
     private CheckBox woodAndStones = new CheckBox("1 wood + 1 stone");
-    private LabeledImageView slaves = new LabeledImageView("quantity 2", "");
-    private LabeledImageView money = new LabeledImageView("quantity 2", "");
-    private LabeledImageView militaryPoints = new LabeledImageView("quantity 2", "");
-    private LabeledImageView faithPoints = new LabeledImageView("quantity 1", "");
+    private CheckBox slaves = new CheckBox("2 slaves");
+    private CheckBox money = new CheckBox("2 coins");
+    private CheckBox militaryPoints = new CheckBox("2 military points");
+    private CheckBox faithPoints = new CheckBox("1 faith point");
 
-    // todo make an image of a wood and a stone one next to the other
-    //private LabeledImageView woodAndStones = new LabeledImageView("quantity 1", "");
+    private Stage stage;
 
-    private LabeledImageView slaves = new LabeledImageView("quantity 2", "");
-    private LabeledImageView money = new LabeledImageView("quantity 2", "");
-    private LabeledImageView militaryPoints = new LabeledImageView("quantity 2", "");
-    private LabeledImageView faithPoints = new LabeledImageView("quantity 1", "");
+    int numberOfFavours = 1;
+    int i = 0;
 
+    private Gainable[] favours = new Gainable[numberOfFavours];
+
+    public void setNumberOfFavours(int numberOfFavours) {
+        this.numberOfFavours = numberOfFavours;
+    }
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        woodAndStones.setFitWidth(45); money.setFitHeight(45);
-        slaves.setFitWidth(45); slaves.setFitHeight(45);
-        militaryPoints.setFitWidth(45); militaryPoints.setFitHeight(45);
-        faithPoints.setFitWidth(45); faithPoints.setFitHeight(45);
+        woodAndStones.setLayoutX(100); woodAndStones.setLayoutY(20);
+        slaves.setLayoutX(100); slaves.setLayoutY(70);
+        money.setLayoutX(100); money.setLayoutY(120);
+        militaryPoints.setLayoutX(100); militaryPoints.setLayoutY(170);
+        faithPoints.setLayoutX(100); faithPoints.setLayoutY(210);
 
-
-        woodAndStones.setLayoutX(100); woodAndStones.setLayoutX(20);
-        slaves.setX(100); slaves.setY(70);
-        money.setX(100); money.setY(120);
-        militaryPoints.setX(100); militaryPoints.setY(170);
-        faithPoints.setX(100); faithPoints.setY(210);
-
-
-
+        placeFavour(woodAndStones, new SetOfResources(new Wood(), new Stone()));
+        placeFavour(slaves, new Slave(3));
+        placeFavour(money, new Money(3));
+        placeFavour(militaryPoints, new MilitaryPointsTrack(2));
+        placeFavour(faithPoints, new FaithPointsTrack(1));
 
     }
 
+    private void placeFavour(CheckBox favour, Gainable gainable){
+        favour.setLayoutX(100);
+        favour.setOnAction( e -> {
+            i++;
+            favour.setMouseTransparent(true);
+            favours[i-1] = gainable;
+            if(i >= numberOfFavours) {
+                ((MainViewController) getGuiClient().getController()).setCanSend(true);
+                ((MainViewController) getGuiClient().getController()).setFavours(favours);
+                stage.close();
+            }
+        });
+    }
+
+    public Gainable[] getFavours() {
+        return favours;
+    }
 }

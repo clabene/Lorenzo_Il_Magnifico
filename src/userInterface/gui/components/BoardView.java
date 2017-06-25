@@ -215,5 +215,8 @@ public class BoardView {
         return actionSpaces.values();
     }
 
+    public void adjustNumberOfPlayers(){
+
+    }
 
 }

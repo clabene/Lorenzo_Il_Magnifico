@@ -146,21 +146,56 @@ public class GuiClient extends AbstractUserInterfaceClient {
                 e.printStackTrace();
             }
         }
-        System.out.println("sending " + notSupportingVatican);
+        System.out.println(".........................sending " + notSupportingVatican);
+        canSend = false;
         return notSupportingVatican;
     }
 
 
-    @Override
-    public Gainable[] selectCouncilFavour(int numberOfFavours) {
-        Gainable[] g = new Gainable[1];
-        g[0] = new Wood();
-        return g;
-    }
+    private Gainable[] gainables;
 
     @Override
+    public Gainable[] selectCouncilFavour(int numberOfFavours) {
+        Platform.runLater( () -> ((MainViewController) controller).selectCouncilFavour(numberOfFavours) ) ;
+
+        //todo check this
+
+        while(!canSend){
+            canSend = ((MainViewController) controller).getCanSend();
+            gainables = ((MainViewController) controller).getFavours();
+            try {
+                Thread.currentThread().sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println(".......................sending " + gainables);
+        canSend = false;
+        return gainables;
+    }
+
+    private ActionSpace actionSpace;
+    @Override
     public ActionSpace selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces) {
-        return null;
+        if(actionSpaces.size() == 1) return actionSpaces.get(0);
+
+        Platform.runLater( () -> ((MainViewController) controller).selectActionSpaceForExtraAction(actionSpaces));
+
+        //todo check this
+
+        while(!canSend){
+            canSend = ((MainViewController) controller).getCanSend();
+            actionSpace = ((MainViewController) controller).getActionSpace();
+            try {
+                Thread.currentThread().sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println(".......................sending " + actionSpace);
+        canSend = false;
+        return actionSpace;
+
     }
 
     @Override
