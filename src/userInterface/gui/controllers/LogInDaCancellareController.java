@@ -24,7 +24,7 @@ public class LogInDaCancellareController extends Controller {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         placeLogInButton();
-        placeImageView();
+    //    placeImageView();
     }
 
     private void placeLogInButton(){
@@ -32,11 +32,12 @@ public class LogInDaCancellareController extends Controller {
         logInButton.layoutXProperty().bind(pane.widthProperty().divide(10));
         logInButton.setOnAction( e -> getGuiClient().logIn() );
     }
-
+/*
     private void placeImageView(){
         image.setImage(new Image("userInterface/gui/lorenzo-magnifico.jpg"));
         image.setLayoutX(100);
     }
+    */
 /*
     public void successfullyLoggedIn(){
         getLoader().buildLobbyStage();

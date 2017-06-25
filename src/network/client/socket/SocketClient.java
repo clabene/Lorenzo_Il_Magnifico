@@ -275,7 +275,6 @@ public class SocketClient extends AbstractNetworkClient {
         public void run(){
             try {
                 while (true) {
-
                     String serverRequestCode = (String) input.readObject();
                     System.out.println(serverRequestCode);
                     streamHandler.respond(serverRequestCode);

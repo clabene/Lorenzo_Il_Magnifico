@@ -18,7 +18,7 @@ import java.util.HashMap;
  * Created by IBM on 22/06/2017.
  */
 public class ViewUpdater {
-
+/*
     private ClientView oldClientView;
     private ClientView newClientView;
     private MainViewController controller;
@@ -26,13 +26,13 @@ public class ViewUpdater {
     public void setController(MainViewController controller) {
         this.controller = controller;
     }
-/*
+
     public ViewUpdater(){
         oldClientView = new ClientView();
         oldClientView.setBoard(new Board(0));
         oldClientView.setPlayers(new ArrayList<>());
     }
-*/
+
     public void updateView(ClientView newClientView, ClientView oldClientView){
         if(controller == null) return;
 
@@ -173,5 +173,5 @@ public class ViewUpdater {
                 ;//todo update family member's value
         }
     }
-
+*/
 }

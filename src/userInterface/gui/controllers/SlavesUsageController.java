@@ -33,7 +33,7 @@ public class SlavesUsageController extends Controller{
     public void initialize(URL location, ResourceBundle resources) {
         label.setLayoutX(20);
 
-        okButton.setLayoutY(350);
+        okButton.setLayoutX(350);
         okButton.setLayoutY(253);
 
         quantity.setText(" 1 ");
@@ -59,7 +59,10 @@ public class SlavesUsageController extends Controller{
     }
 
     public void setStage(Stage stage){
-        okButton.setOnAction( e -> stage.close() );
+        okButton.setOnAction( e -> {
+            getGuiClient().useSlaves(i.get());
+            stage.close();
+        } );
     }
 
 

@@ -118,6 +118,7 @@ public class GameRoom implements Serializable{
             players.get(playerId).notifyRequestHandleOutcome(ResponseCode.WAIT_YOUR_TURN);
             return;
         }
+
         ResponseCode responseCode = game.selectionFamilyMember(familyMember, players.get(playerId));
         players.get(playerId).notifyRequestHandleOutcome(responseCode);
         if (canPlaceFamilyMember()) puttingFamilyMemberOnActionSpace(playerId);

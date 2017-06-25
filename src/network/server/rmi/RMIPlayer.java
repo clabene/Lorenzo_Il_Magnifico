@@ -57,7 +57,7 @@ public class RMIPlayer extends RemotePlayer {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        gain(favours);
+        gain( (Gainable[]) favours);
 
     }
     @Override

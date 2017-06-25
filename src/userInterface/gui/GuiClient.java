@@ -2,11 +2,13 @@ package userInterface.gui;
 
 import javafx.application.Platform;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import logic.actionSpaces.ActionSpace;
 import logic.board.Board;
 import logic.interfaces.Gainable;
 import logic.player.Player;
+import logic.resources.Wood;
 import network.ResponseCode;
 import network.client.ClientInterface;
 import network.client.ClientView;
@@ -35,7 +37,9 @@ public class GuiClient extends AbstractUserInterfaceClient {
         loader = new Loader(this, stage);
     }
 
-
+    public Controller getController(){
+        return controller;
+    }
     public void setController(Controller controller) {
         this.controller = controller;
     }
@@ -52,6 +56,7 @@ public class GuiClient extends AbstractUserInterfaceClient {
             ((MainViewController) controller).placeMyPlayer();
             viewBuilder.setController((MainViewController) controller);
         });
+        updateView();
     }
 
     @Override
@@ -61,6 +66,7 @@ public class GuiClient extends AbstractUserInterfaceClient {
             ((MainViewController) controller).placeMyPlayer();
             viewBuilder.setController((MainViewController) controller);
         });
+        updateView();
     }
 
     @Override
@@ -95,12 +101,12 @@ public class GuiClient extends AbstractUserInterfaceClient {
 
     @Override
     protected void successfullyOperationFinished() {
-
+        //nop
     }
 
     @Override
     protected void successfullyExcommunicationTaken() {
-
+        Platform.runLater( () -> Loader.buildPopUp("Excommunication received", "You received the excommunication from the Vatican", (Image) null) );
     }
 
     @Override
@@ -119,14 +125,37 @@ public class GuiClient extends AbstractUserInterfaceClient {
         loader.buildLogInStage();
     }
 
+
+    private boolean notSupportingVatican = true;
+    private boolean canSend = false;
+
+
+    //true: excommunication taken, false: excommunication not taken
     @Override
     public boolean dealWithVatican(int periodNumber) {
-        return false;
+        Platform.runLater( () -> ((MainViewController) controller).dealWithVatican(periodNumber) ) ;
+
+        //todo check this
+
+        while(!canSend){
+            canSend = ((MainViewController) controller).getCanSend();
+            notSupportingVatican = ((MainViewController) controller).getNotSupporting();
+            try {
+                Thread.currentThread().sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println("sending " + notSupportingVatican);
+        return notSupportingVatican;
     }
+
 
     @Override
     public Gainable[] selectCouncilFavour(int numberOfFavours) {
-        return new Gainable[0];
+        Gainable[] g = new Gainable[1];
+        g[0] = new Wood();
+        return g;
     }
 
     @Override

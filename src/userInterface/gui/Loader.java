@@ -3,12 +3,12 @@ package userInterface.gui;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-import userInterface.gui.component.PopUp;
+import userInterface.gui.components.PopUp;
 import userInterface.gui.controllers.Controller;
-
+import userInterface.gui.controllers.SlavesUsageController;
 
 
 /**
@@ -52,6 +52,9 @@ public class Loader {
         popUp.setTitle(title);
         popUp.show();
     }
+
+
+
 /*
     private void buildPopUp(String title, String fxmlUrl, int width, int height) {
         alertBox = new Stage();

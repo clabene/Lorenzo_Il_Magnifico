@@ -2,16 +2,13 @@ package userInterface.gui.controllers;
 
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
-import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -19,11 +16,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import logic.actionSpaces.ActionSpace;
-import userInterface.PlayerColor;
-import userInterface.gui.component.*;
+import userInterface.gui.components.*;
 
-import javax.swing.text.html.ImageView;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -101,6 +95,10 @@ public class MainViewController extends Controller {
         players.add(opponent);
         opponentsAccordion.getPanes().add(opponent);
     }
+    public void addFamilyMemberToActionSpace(String actionSpaceId, String playerId, logic.board.Color diceColor, Integer value){
+        FamilyMemberImageView f = getActionSpaceFromId(actionSpaceId).addFamilyMemberImage(playerId, diceColor, value);
+        pane.getChildren().add(f);
+    }
 
 /*
     public void addLandCard(String playerId, String name){
@@ -139,11 +137,6 @@ public class MainViewController extends Controller {
     public void updateFamilyMemberValue(String playerId, logic.board.Color color, String value){
         getPlayerFromId(playerId).updateFamilyMemberValue(color, value);
     }
-
-    public void addFamilyMemberToActionSpace(String actionSpaceId, String playerId, logic.board.Color diceColor, Integer value){
-        FamilyMemberImageView f = getActionSpaceFromId(actionSpaceId).addFamilyMemberImage(playerId, diceColor, value);
-        pane.getChildren().add(f);
-    }
 */
 
 
@@ -153,10 +146,11 @@ public class MainViewController extends Controller {
         alertBox.initModality(Modality.APPLICATION_MODAL);
         alertBox.setResizable(false);
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/SlavesPopUp.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/slavesPopUp.fxml"));
             Parent root = fxmlLoader.load();
             SlavesUsageController controller = fxmlLoader.getController();
             controller.setStage(alertBox);
+            controller.setGuiClient(getGuiClient());
             alertBox.setOnCloseRequest( e -> getGuiClient().useSlaves(controller.getQuantity()) );
             alertBox.setScene(new Scene(root,400,275));
         } catch (Exception e) {
@@ -165,9 +159,46 @@ public class MainViewController extends Controller {
         alertBox.show();
     }
 
-    public void dealWithVatican(){
 
+    private boolean notSupporting = true;
+    private boolean canSend = false;
+    public boolean getCanSend() {
+        return canSend;
     }
+    public void setCanSend(boolean canSend) {
+        this.canSend = canSend;
+    }
+    public boolean getNotSupporting() {
+        return notSupporting;
+    }
+    public void setNotSupporting(boolean notSupporting) {
+        this.notSupporting = notSupporting;
+    }
+    public void dealWithVatican(int periodNumber){
+        Stage alertBox = new Stage();
+        alertBox.setTitle("Vatican Inspection");
+        alertBox.initModality(Modality.APPLICATION_MODAL);
+        alertBox.setResizable(false);
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/vaticanInspection.fxml"));
+            Parent root = fxmlLoader.load();
+            VaticanInspectionController controller = fxmlLoader.getController();
+            controller.setStage(alertBox);
+            controller.setGuiClient(getGuiClient());
+            //todo use period number to display the right tassel
+            alertBox.setOnCloseRequest( e -> {
+                notSupporting = controller.getNotSupporting();
+                canSend = true;
+            } );
+            alertBox.setScene(new Scene(root,400,275));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        alertBox.show();
+    }
+
+
+
 
 
 
@@ -199,7 +230,6 @@ public class MainViewController extends Controller {
                 if(mainViewController.slaveUsageSelected.get()){
                     Platform.runLater( () -> mainViewController.buildSlavesPopUp());
                     //while(mainViewController.getSlavesQuantity() == -1);
-                    //System.out.println("sono qui <-----------------------------------------------------------");
                     //getGuiClient().useSlaves(mainViewController.slavesQuantity);
                     //mainViewController.slavesQuantity = -1;
                     mainViewController.slaveUsageSelected.set(false);

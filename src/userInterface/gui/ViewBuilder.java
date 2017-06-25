@@ -3,14 +3,12 @@ package userInterface.gui;
 import javafx.application.Platform;
 import logic.actionSpaces.ActionSpace;
 import logic.actionSpaces.TowerActionSpace;
-import logic.board.Color;
 import logic.player.FamilyMember;
 import logic.player.Player;
 import network.client.ClientView;
-import userInterface.PlayerColor;
-import userInterface.gui.component.ActionSpaceImageView;
-import userInterface.gui.component.PlayerTag;
-import userInterface.gui.component.TowerActionSpaceImageView;
+import userInterface.gui.components.ActionSpaceImageView;
+import userInterface.gui.components.PlayerTag;
+import userInterface.gui.components.TowerActionSpaceImageView;
 import userInterface.gui.controllers.MainViewController;
 
 
@@ -57,7 +55,7 @@ public class ViewBuilder {
             if (((TowerActionSpace) actionSpace).getCard() == null)
                 ((TowerActionSpaceImageView) actionSpaceView).setCardToTaken();
             else
-                ((TowerActionSpaceImageView) actionSpaceView).setCardImage("userInterface/gui/images/cards/"+((TowerActionSpace) actionSpace).getCard().getName()+".png");
+                ((TowerActionSpaceImageView) actionSpaceView).setCardImage("userInterface/gui/images/cards/Tesoreria.png");//+((TowerActionSpace) actionSpace).getCard().getName()+".png");
         }
     }
 
