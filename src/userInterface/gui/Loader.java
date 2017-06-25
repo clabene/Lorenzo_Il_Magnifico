@@ -92,6 +92,7 @@ public class Loader {
         buildStage("LORENZO IL MAGNIFICO", "fxml/mainView.fxml", 1200, 800);
         window.setOnCloseRequest( e -> {
             guiClient.getClientController().leaveGame();
+            Platform.exit();
         });
     }
 }

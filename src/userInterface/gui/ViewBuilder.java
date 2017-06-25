@@ -65,8 +65,20 @@ public class ViewBuilder {
     }
 
     private void buildBoard(){
+        hideNotUsableActionSpaces();
         for(String tmp : clientView.getBoard().getHashMap().keySet()) {
             buildActionSpace(clientView.getBoard().getActionSpaceFromId(tmp), controller.getActionSpaceFromId(tmp));
+        }
+    }
+
+    private void hideNotUsableActionSpaces(){
+        if(clientView.getPlayers().size() < 3) {
+            controller.getActionSpaceFromId("AH2").setMouseTransparent(true);
+            controller.getActionSpaceFromId("AP2").setMouseTransparent(true);
+        }
+        if(clientView.getPlayers().size() < 4){
+            controller.getActionSpaceFromId("M3").setMouseTransparent(true);
+            controller.getActionSpaceFromId("M4").setMouseTransparent(true);
         }
     }
 
@@ -85,7 +97,8 @@ public class ViewBuilder {
         for(Player tmp : clientView.getPlayers())
             if(controller.getPlayerFromId(tmp.getId()) == null)
                 Platform.runLater(() -> controller.addOpponent(tmp.getId()));
-            else buildOpponent(tmp, controller.getPlayerFromId(tmp.getId()));
+        else
+                buildOpponent(tmp, controller.getPlayerFromId(tmp.getId()));
     }
 
     private void buildOpponent(Player player, PlayerTag playerTag){

@@ -4,10 +4,7 @@ import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.*;
 import javafx.scene.Node;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 /**
  * Created by IBM on 19/06/2017.
@@ -215,8 +212,5 @@ public class BoardView {
         return actionSpaces.values();
     }
 
-    public void adjustNumberOfPlayers(){
-
-    }
 
 }
