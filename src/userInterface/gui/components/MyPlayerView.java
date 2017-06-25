@@ -8,6 +8,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.Pane;
 import logic.board.Color;
 import logic.player.FamilyMember;
+import userInterface.gui.ColorHandler;
 
 /**
  * Created by IBM on 21/06/2017.
@@ -31,10 +32,10 @@ public class MyPlayerView extends TabPane implements PlayerTag {
     }
 
 
-    public MyPlayerView(String playerId, String playerName){
+    public MyPlayerView(String playerId){
         me = new PlayerView(playerId, PlayerView.ConfigurationMode.MY_PLAYER);
         id = playerId;
-        name = playerName;
+        name = "YOU";
         initializeTabs();
         setFamilyMemberSelectable();
         setSlavesSelectable();

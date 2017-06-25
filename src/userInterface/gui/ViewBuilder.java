@@ -1,11 +1,13 @@
 package userInterface.gui;
 
 import javafx.application.Platform;
+import javafx.scene.image.Image;
 import logic.actionSpaces.ActionSpace;
 import logic.actionSpaces.TowerActionSpace;
 import logic.player.FamilyMember;
 import logic.player.Player;
 import network.client.ClientView;
+import network.server.RemotePlayer;
 import userInterface.gui.components.ActionSpaceImageView;
 import userInterface.gui.components.PlayerTag;
 import userInterface.gui.components.TowerActionSpaceImageView;
@@ -38,13 +40,45 @@ public class ViewBuilder {
 
     public void buildView(){
         if(controller == null) return;
+        if(checkForWinner()) return;
+        checkIsMyTurn();
         buildBoard();
         buildPlayers();
     }
 
+    private void checkIsMyTurn(){
+        for( Player tmp : clientView.getPlayers() ) {
+            if (controller.getGuiClient().getId().equals(tmp.getId()) && ((RemotePlayer) tmp).getCurrentPlayer()) {
+                Platform.runLater(() -> Loader.buildPopUp("INFO", "Time to move for: " + controller.getPlayerFromId(tmp.getId()).getPlayerName(), (Image) null));
+            }
+        }
+     }
+
+    private boolean checkForWinner(){
+        for( Player tmp : clientView.getPlayers() ) {
+            if(((RemotePlayer) tmp).getIsWinner()){
+                Platform.runLater( () -> controller.showWinner(tmp.getId()));
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void buildBoard(){
+        hideNotUsableActionSpaces();
         for(String tmp : clientView.getBoard().getHashMap().keySet()) {
             buildActionSpace(clientView.getBoard().getActionSpaceFromId(tmp), controller.getActionSpaceFromId(tmp));
+        }
+    }
+
+    private void hideNotUsableActionSpaces(){
+        if(clientView.getPlayers().size() < 3) {
+            controller.getActionSpaceFromId("AH2").setMouseTransparent(true);
+            controller.getActionSpaceFromId("AP2").setMouseTransparent(true);
+        }
+        if(clientView.getPlayers().size() < 4){
+            controller.getActionSpaceFromId("M3").setMouseTransparent(true);
+            controller.getActionSpaceFromId("M4").setMouseTransparent(true);
         }
     }
 
@@ -62,8 +96,9 @@ public class ViewBuilder {
     private void buildPlayers(){
         for(Player tmp : clientView.getPlayers())
             if(controller.getPlayerFromId(tmp.getId()) == null)
-                Platform.runLater(() -> controller.addOpponent(tmp.getId(), "name"));
-            else buildOpponent(tmp, controller.getPlayerFromId(tmp.getId()));
+                Platform.runLater(() -> controller.addOpponent(tmp.getId()));
+        else
+                buildOpponent(tmp, controller.getPlayerFromId(tmp.getId()));
     }
 
     private void buildOpponent(Player player, PlayerTag playerTag){

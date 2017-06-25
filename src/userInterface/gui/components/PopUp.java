@@ -1,5 +1,6 @@
 package userInterface.gui.components;
 
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -40,14 +41,14 @@ public class PopUp extends Stage {
         placeLabel(message);
         placeImageView(image);
 
-        setScene(new Scene(pane, 300, 300));
+        if(image == null) setScene(new Scene(pane, 300, 100));
+        else setScene(new Scene(pane, 300, 300));
     }
-
 
     private void placeButton(){
         okButton.setLayoutX(270);
         okButton.setLayoutY(270);
-        okButton.setOnAction( e -> close() );
+        okButton.setOnAction( e -> close());
         pane.getChildren().add(okButton);
     }
     private void placeLabel(String message){

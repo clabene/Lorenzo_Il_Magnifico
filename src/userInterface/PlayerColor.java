@@ -5,6 +5,6 @@ package userInterface;
  */
 public enum PlayerColor {
 
-    RED, YELLOW, BLUE
+    RED, YELLOW, BLUE, GREEN
 
 }

@@ -1,5 +1,6 @@
 package userInterface.gui;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -55,6 +56,7 @@ public class Loader {
 
 
 
+
 /*
     private void buildPopUp(String title, String fxmlUrl, int width, int height) {
         alertBox = new Stage();
@@ -88,6 +90,10 @@ public class Loader {
     }
     public void buildMainGameStage(){
         buildStage("LORENZO IL MAGNIFICO", "fxml/mainView.fxml", 1200, 800);
+        window.setOnCloseRequest( e -> {
+            guiClient.getClientController().leaveGame();
+            Platform.exit();
+        });
     }
 }
 

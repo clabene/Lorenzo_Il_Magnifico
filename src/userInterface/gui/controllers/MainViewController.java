@@ -18,6 +18,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import logic.actionSpaces.ActionSpace;
+import logic.interfaces.Gainable;
+import userInterface.gui.ColorHandler;
+import userInterface.gui.Loader;
 import userInterface.gui.components.*;
 
 import java.net.URL;
@@ -73,7 +77,7 @@ public class MainViewController extends Controller {
     * to be called right after initialize
     * */
     public void placeMyPlayer(){
-        MyPlayerView myPlayer = new MyPlayerView(getGuiClient().getId(), "name goes here");
+        MyPlayerView myPlayer = new MyPlayerView(getGuiClient().getId());
         players.add(myPlayer);
         myPlayer.layoutXProperty().bind(board.getXPosition().add(board.getWidthProperty().divide(2)));
         myPlayer.layoutYProperty().bind(pane.heightProperty().multiply(0.7));
@@ -105,8 +109,9 @@ public class MainViewController extends Controller {
         pane.getChildren().addAll(board.getComponents());
     }
 
-    public void addOpponent(String playerId, String name) {
-        OpponentView opponent = new OpponentView(playerId, name);
+    public void addOpponent(String playerId) {
+        ColorHandler.addPlayer(playerId);
+        OpponentView opponent = new OpponentView(playerId, ColorHandler.getColor(playerId)+"_Player");
         players.add(opponent);
         opponentsAccordion.getPanes().add(opponent);
     }
@@ -114,45 +119,6 @@ public class MainViewController extends Controller {
         FamilyMemberImageView f = getActionSpaceFromId(actionSpaceId).addFamilyMemberImage(playerId, diceColor, value);
         pane.getChildren().add(f);
     }
-
-/*
-    public void addLandCard(String playerId, String name){
-        getPlayerFromId(playerId).addLandCard(name);
-    }
-    public void addPersonCard(String playerId, String name){
-        getPlayerFromId(playerId).addPersonCard(name);
-    }
-    public void addBuildingCard(String playerId, String name){
-        getPlayerFromId(playerId).addBuildingCard(name);
-    }
-    public void addVentureCard(String playerId, String name){
-        getPlayerFromId(playerId).addVentureCard(name);
-    }
-    public void updateWoodQuantity(String playerId, String quantity){
-        getPlayerFromId(playerId).updateWoodQuantity(quantity);
-    }
-    public void updateStoneQuantity(String playerId, String quantity){
-        getPlayerFromId(playerId).updateStoneQuantity( quantity);
-    }
-    public void updateSlaveQuantity(String playerId, String quantity){
-        getPlayerFromId(playerId).updateSlaveQuantity( quantity);
-    }
-    public void updateMoneyQuantity(String playerId, String quantity){
-        getPlayerFromId(playerId).updateMoneyQuantity( quantity);
-    }
-    public void updateVictoryPointsQuantity(String playerId, String quantity){
-        getPlayerFromId(playerId).updateVictoryPointsQuantity(quantity);
-    }
-    public void updateMilitaryPointsQuantity(String playerId, String quantity){
-        getPlayerFromId(playerId).updateMilitaryPointsQuantity( quantity);
-    }
-    public void updateFaithPointsQuantity(String playerId, String quantity) {
-        getPlayerFromId(playerId).updateFaithPointsQuantity( quantity);
-    }
-    public void updateFamilyMemberValue(String playerId, logic.board.Color color, String value){
-        getPlayerFromId(playerId).updateFamilyMemberValue(color, value);
-    }
-*/
 
 
     private void buildSlavesPopUp() {
@@ -175,7 +141,6 @@ public class MainViewController extends Controller {
     }
 
 
-    private boolean notSupporting = true;
     private boolean canSend = false;
     public boolean getCanSend() {
         return canSend;
@@ -183,6 +148,8 @@ public class MainViewController extends Controller {
     public void setCanSend(boolean canSend) {
         this.canSend = canSend;
     }
+
+    private boolean notSupporting = true;
     public boolean getNotSupporting() {
         return notSupporting;
     }
@@ -190,6 +157,7 @@ public class MainViewController extends Controller {
         this.notSupporting = notSupporting;
     }
     public void dealWithVatican(int periodNumber){
+        canSend = false;
         Stage alertBox = new Stage();
         alertBox.setTitle("Vatican Inspection");
         alertBox.initModality(Modality.APPLICATION_MODAL);
@@ -212,9 +180,76 @@ public class MainViewController extends Controller {
         alertBox.show();
     }
 
+    private Gainable[] favours;
+    public void setFavours(Gainable[] gainables) {
+        this.favours = gainables;
+    }
+    public Gainable[] getFavours() {
+        return favours;
+    }
+    public void selectCouncilFavour(int numberOfFavours){
+        canSend = false;
+        Stage alertBox = new Stage();
+        alertBox.setTitle("Council favour");
+        alertBox.initModality(Modality.APPLICATION_MODAL);
+        alertBox.setResizable(false);
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/councilFavourPopUp.fxml"));
+            Parent root = fxmlLoader.load();
+            CouncilFavourPopUpController controller = fxmlLoader.getController();
+            controller.setStage(alertBox);
+            controller.setGuiClient(getGuiClient());
+            controller.setNumberOfFavours(numberOfFavours);
+            alertBox.setOnCloseRequest( e -> {
+                favours = controller.getFavours();
+                canSend = true;
+            } );
+            alertBox.setScene(new Scene(root,400,275));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        alertBox.show();
+    }
 
+    private ActionSpace actionSpace;
+    public ActionSpace getActionSpace() {
+        return actionSpace;
+    }
+    public void setActionSpace(ActionSpace actionSpace) {
+        this.actionSpace = actionSpace;
+    }
+    public void selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces){
+        canSend = false;
+        Stage alertBox = new Stage();
+        alertBox.setTitle("Council favour");
+        alertBox.initModality(Modality.APPLICATION_MODAL);
+        alertBox.setResizable(false);
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/extraActionPopUp.fxml"));
+            Parent root = fxmlLoader.load();
+            ExtraActionPopUpController controller = fxmlLoader.getController();
+            controller.setStage(alertBox);
+            controller.setGuiClient(getGuiClient());
+            controller.setActionSpaces(actionSpaces);
+            alertBox.setOnCloseRequest( e -> {
+                actionSpace = controller.getActionSpace();
+                canSend = true;
+            } );
+            alertBox.setScene(new Scene(root,400,275));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        alertBox.show();
+    }
 
-
+    public void showWinner(String winnerId){
+        for(PlayerTag tmp : players) {
+            if (tmp.getPlayerId().equals(winnerId)) {
+                Loader.buildPopUp( "WINNER","The winner is "+(getPlayerFromId(winnerId).getPlayerName()), "userInterface/gui/images/winner.png" );
+                Platform.exit();
+            }
+        }
+    }
 
 
     private class Trigger extends Thread{
