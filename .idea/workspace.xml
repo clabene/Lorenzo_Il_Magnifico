@@ -4,9 +4,6 @@
     <list default="true" id="fad80928-b44e-442f-9778-31370b51cb97" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/userInterface/gui/fxml/slavesPopUp.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/Loader.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/Loader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/ViewBuilder.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/ViewBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/userInterface/gui/components/BoardView.java" afterPath="$PROJECT_DIR$/src/userInterface/gui/components/BoardView.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -837,13 +834,6 @@
       <option name="presentableId" value="Default" />
       <updated>1495533735855</updated>
     </task>
-    <task id="LOCAL-00058" summary="network skeleton">
-      <created>1496767018194</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1496767018194</updated>
-    </task>
     <task id="LOCAL-00059" summary="network skeleton">
       <created>1496768012117</created>
       <option name="number" value="00059" />
@@ -1180,7 +1170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1498403332260</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="gui">
+      <created>1498418816999</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1498418817000</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1455,6 +1452,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
           <caret line="54" column="44" lean-forward="false" selection-start-line="54" selection-start-column="36" selection-end-line="54" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
