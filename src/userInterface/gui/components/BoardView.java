@@ -172,6 +172,8 @@ public class BoardView {
 
     }
 
+
+
     private ArrayList<ActionSpaceImageView> getActionSpacesFromInitials(String initials){
         ArrayList<ActionSpaceImageView> toReturn = new ArrayList<>();
         for(ActionSpaceImageView tmp : actionSpaces.values())
@@ -205,8 +207,8 @@ public class BoardView {
     }
     private void placeCouncilActionSpace(){
         ActionSpaceImageView councilActionSpace = actionSpaces.get("C");
-        councilActionSpace.xProperty().bind(towers[3].getXPositionProperty().add(towers[0].getXPositionProperty().divide(1.3)));
-        councilActionSpace.yProperty().bind(towers[0].getYPositionProperty());
+        councilActionSpace.xProperty().bind(towers[3].getXPositionProperty().add(towers[0].getXPositionProperty().divide(0.6)));
+        councilActionSpace.yProperty().bind(towers[0].getYPositionProperty().subtract(15));
 
         //todo delete:
         councilActionSpace.setFitWidth(350);
@@ -218,7 +220,7 @@ public class BoardView {
         ActionSpaceImageView productionShort = actionSpaces.get("AP1");
         ActionSpaceImageView productionLong = actionSpaces.get("AP2");
 
-        harvestShort.xProperty().bind(towers[3].getXPositionProperty().add(towers[0].getXPositionProperty().divide(1.3)));
+        harvestShort.xProperty().bind(towers[3].getXPositionProperty().add(towers[0].getXPositionProperty().divide(0.8)));
         harvestShort.yProperty().bind(towers[0].getYPositionProperty().add(150));
         harvestLong.xProperty().bind(harvestShort.xProperty().add(harvestShort.fitWidthProperty()).add(10));
         harvestLong.yProperty().bind(harvestShort.yProperty());
@@ -231,11 +233,11 @@ public class BoardView {
         //todo delete:
         harvestShort.setFitWidth(100);
         harvestShort.setFitHeight(100);
-        harvestLong.setFitWidth(350);
+        harvestLong.setFitWidth(300);
         harvestLong.setFitHeight(100);
         productionShort.setFitWidth(100);
         productionShort.setFitHeight(100);
-        productionLong.setFitWidth(250);
+        productionLong.setFitWidth(300);
         productionLong.setFitHeight(100);
 
     }
@@ -247,7 +249,7 @@ public class BoardView {
         markets[2] = actionSpaces.get("M3");
         markets[3] = actionSpaces.get("M4");
 
-        markets[0].xProperty().bind(towers[3].getXPositionProperty().add(towers[0].getXPositionProperty().divide(1.3)));
+        markets[0].xProperty().bind(towers[3].getXPositionProperty().add(towers[0].getXPositionProperty().divide(0.8)));
         markets[0].yProperty().bind(towers[0].getYPositionProperty().add(400));
 
         markets[1].xProperty().bind(markets[0].xProperty().add(markets[0].fitWidthProperty()).add(20));

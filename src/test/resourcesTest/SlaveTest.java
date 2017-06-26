@@ -37,12 +37,5 @@ class SlaveTest {
         assertEquals(3,player.getPlank().getSetOfResources().getResources()[2].getQuantity());
     }
 
-    @Test
-    void gainedByPlayer() {
-    }
-
-    @Test
-    void lostByPlayer() {
-    }
 
 }

@@ -38,12 +38,6 @@ class StoneTest {
         assertEquals(3,player.getPlank().getSetOfResources().getResources()[1].getQuantity());
     }
 
-    @Test
-    void gainedByPlayer() {
-    }
 
-    @Test
-    void lostByPlayer() {
-    }
 
 }

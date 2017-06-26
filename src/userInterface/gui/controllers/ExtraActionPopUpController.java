@@ -1,11 +1,16 @@
 package userInterface.gui.controllers;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import logic.actionSpaces.ActionSpace;
+import logic.actionSpaces.CouncilActionSpace;
+import logic.actionSpaces.MarketActionSpace;
 import logic.actionSpaces.TowerActionSpace;
 import logic.interfaces.Gainable;
 import logic.player.Player;
+import logic.resources.Wood;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -15,16 +20,13 @@ import java.util.ResourceBundle;
  * Created by IBM on 25/06/2017.
  */
 public class ExtraActionPopUpController extends Controller {
+    @FXML
+    private Pane pane;
 
     private Stage stage;
 
     private ArrayList<ActionSpace> actionSpaces;
-    private ActionSpace actionSpace = new ActionSpace(0, null, 0, (Gainable[]) null) {
-        @Override
-        public boolean action(Player player) {
-            return false;
-        }
-    }; //default value is a no-op action space
+    private ActionSpace actionSpace = new MarketActionSpace(new Wood(0)); //default value
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -61,6 +63,7 @@ public class ExtraActionPopUpController extends Controller {
                 j++;
             }
             i++;
+            pane.getChildren().add(label);
         }
     }
 

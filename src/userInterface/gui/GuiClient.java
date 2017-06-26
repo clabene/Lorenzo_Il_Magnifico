@@ -189,7 +189,7 @@ public class GuiClient extends AbstractUserInterfaceClient {
             canSend = ((MainViewController) controller).getCanSend();
             actionSpace = ((MainViewController) controller).getActionSpace();
             try {
-                Thread.currentThread().sleep(500);
+                Thread.currentThread().sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

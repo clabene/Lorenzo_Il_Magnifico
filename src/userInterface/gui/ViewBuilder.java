@@ -9,9 +9,12 @@ import logic.player.Player;
 import network.client.ClientView;
 import network.server.RemotePlayer;
 import userInterface.gui.components.ActionSpaceImageView;
+import userInterface.gui.components.FamilyMemberImageView;
 import userInterface.gui.components.PlayerTag;
 import userInterface.gui.components.TowerActionSpaceImageView;
 import userInterface.gui.controllers.MainViewController;
+
+import java.util.ArrayList;
 
 
 /**
@@ -21,6 +24,7 @@ public class ViewBuilder {
 
     private ClientView clientView;
     private MainViewController controller;
+
 
     public ViewBuilder(ClientView clientView, MainViewController controller){
         this.clientView = clientView;
@@ -71,6 +75,10 @@ public class ViewBuilder {
         hideNotUsableActionSpaces();
         for(String tmp : clientView.getBoard().getHashMap().keySet()) {
             buildActionSpace(clientView.getBoard().getActionSpaceFromId(tmp), controller.getActionSpaceFromId(tmp));
+            /*if(clientView.getBoard().getActionSpaceFromId(tmp) instanceof TowerActionSpace && ((TowerActionSpace)clientView.getBoard().getActionSpaceFromId(tmp)).getCard() != null){
+                if(!(((TowerActionSpace)clientView.getBoard().getActionSpaceFromId(tmp)).getCard().getName().equals(((TowerActionSpaceImageView)controller.getActionSpaceFromId(tmp)).getCardName())))
+                ((TowerActionSpaceImageView) controller.getActionSpaceFromId(tmp)).setCardImage("userInterface/gui/images/cards/"+((TowerActionSpace) clientView.getBoard().getActionSpaceFromId(tmp)).getCard().getName()+".png");
+            }*/
         }
 
         //----
@@ -95,15 +103,40 @@ public class ViewBuilder {
     }
 
     private void buildActionSpace(ActionSpace actionSpace, ActionSpaceImageView actionSpaceView){
-        if(actionSpace.getNumberOfFamilyMembers() != actionSpaceView.getNumberOfFamilyMembers())
-            Platform.runLater( () -> controller.addFamilyMemberToActionSpace(actionSpaceView.getActionSpaceId(), actionSpace.getLastFamilyMemberAdded().getPlayerId(), actionSpace.getLastFamilyMemberAdded().getColor(), actionSpace.getLastFamilyMemberAdded().getValue()));
+
+        /*System.out.println("-------------------------------------------------"+actionSpaceView.getActionSpaceId());
+        System.out.println("-------------------------------------------------"+actionSpace.getLastFamilyMemberAdded().getPlayerId());
+        System.out.println("-------------------------------------------------"+actionSpace.getLastFamilyMemberAdded().getColor());
+        System.out.println("-------------------------------------------------"+actionSpace.getLastFamilyMemberAdded().getValue());
+*/
+
+        if(actionSpace.getNumberOfFamilyMembers() < actionSpaceView.getNumberOfFamilyMembers() ){
+            Platform.runLater(() -> controller.removeFamilyMemberFromActionSpace(actionSpaceView.getActionSpaceId()));
+            while(actionSpaceView.getFamilyMembers().size()> 0){
+                actionSpaceView.getFamilyMembers().remove(0);
+            }
+            //actionSpaceView.setFamilyMembers(new ArrayList<>());
+            //if(actionSpaceView instanceof TowerActionSpaceImageView)
+                //((TowerActionSpaceImageView) controller.getActionSpaceFromId(actionSpaceView.getActionSpaceId())).setCardImage("userInterface/gui/images/cards/" + ((TowerActionSpace) clientView.getBoard().getActionSpaceFromId(actionSpaceView.getActionSpaceId())).getCard().getName() + ".png");
+            //    System.out.println("non entroooooooooooooooooooooooooooooooooo");
+            //}
+
+        }//else{
+        if(actionSpace.getNumberOfFamilyMembers() > actionSpaceView.getNumberOfFamilyMembers())
+                Platform.runLater(() -> controller.addFamilyMemberToActionSpace(actionSpaceView.getActionSpaceId(), actionSpace.getLastFamilyMemberAdded().getPlayerId(), actionSpace.getLastFamilyMemberAdded().getColor(), actionSpace.getLastFamilyMemberAdded().getValue()));
+
         if(actionSpace instanceof TowerActionSpace) {
             if (((TowerActionSpace) actionSpace).getCard() == null)
                 ((TowerActionSpaceImageView) actionSpaceView).setCardToTaken();
             else
-                ((TowerActionSpaceImageView) actionSpaceView).setCardImage("userInterface/gui/images/cards/"+((TowerActionSpace) actionSpace).getCard().getName()+".png");
+                ((TowerActionSpaceImageView) actionSpaceView).setCardImage("userInterface/gui/images/cards/" + ((TowerActionSpace) actionSpace).getCard().getName() + ".png");
+            //}
+
+
         }
     }
+
+
 
     private void buildPlayers(){
         for(Player tmp : clientView.getPlayers())
@@ -127,7 +160,7 @@ public class ViewBuilder {
     private void updatePoints(Player player, PlayerTag playerTag){
         Platform.runLater( () -> playerTag.updateFaithPointsQuantity( ((Integer)player.getFaithPoints().getTrackPosition().getValue()).toString() ) );
         Platform.runLater( () -> playerTag.updateMilitaryPointsQuantity( ((Integer)player.getMilitaryPoints().getTrackPosition().getValue()).toString() ));
-        Platform.runLater( () -> playerTag.updateFaithPointsQuantity( ((Integer) player.getPoints().getQuantity()).toString() ));
+        Platform.runLater( () -> playerTag.updateVictoryPointsQuantity( ((Integer) player.getPoints().getQuantity()).toString() ));
     }
     private void buildCards(Player player, PlayerTag playerTag){
         for(int i  = 0; i<6; i++){

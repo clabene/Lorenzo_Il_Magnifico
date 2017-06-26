@@ -184,11 +184,17 @@ public class GameRoom implements Serializable{
     }
 
     private void useCouncilFavours(RemotePlayer remotePlayer) {
+        while(remotePlayer.getPlank().getCouncilFavours().size() >0){
+            remotePlayer.selectCouncilFavour(remotePlayer.getPlank().getCouncilFavours().get(0).getNumberOfFavours());
+            remotePlayer.getPlank().getCouncilFavours().remove(0);
+        }
+
+/*
         Iterator iterator = remotePlayer.getPlank().getCouncilFavours().iterator();
         while(iterator.hasNext()) {
             remotePlayer.selectCouncilFavour(((CouncilFavour) iterator.next()).getNumberOfFavours() );
             iterator.remove();
-        }
+        }*/
     }
     private void useExtraAction(RemotePlayer remotePlayer){
         if(remotePlayer.getExtraAction() == null) return;
@@ -258,39 +264,40 @@ public class GameRoom implements Serializable{
         }
 
         if(toChangeTurn){
-            if(turnNumber == 1){//todo qui dovrebbe essere due perchè sono due i turni
-                for(Player tmp: players.values()){
-                    System.out.println("quiii----zac");
+            if(turnNumber == 2){//todo qui dovrebbe essere due perchè sono due i turni
+                for(Player tmp: players.values())
                     dealWithVatican(tmp.getId(), periodNumber+2, board.getTassels()[periodNumber-1]);
+                /*
+                for(Player tmp: players.values())
                     game.takingBackFamilyMembers(tmp, board);//todo ho aggiunto questo stasera perchè non potevo andare avanti
                     getNextTurnOrder();
                     setCardsOnBoard();
-                    setValueOfFamilyMembers();
-                    updatePlayersView();
+                    setValueOfFamilyMembers();*/
 
-
-                }
-                if(periodNumber == 3){
-                    WinnerElector winnerElector = new WinnerElector();
-                    ArrayList<Player> playersWinner = new ArrayList<>();
-                    for(Player tmp: players.values()){
-                        playersWinner.add(tmp);
-                    }
-                    winnerElector.setPlayers(playersWinner);
-                    players.get(winnerElector.getWinner()).setWinner(true);
-                    updatePlayersView();
-
-                }
                 periodNumber++;
                 turnNumber = 0;
+            }
+
+            if(periodNumber == 3){
+                WinnerElector winnerElector = new WinnerElector();
+                ArrayList<Player> playersWinner = new ArrayList<>();
+                for(Player tmp: players.values()){
+                    playersWinner.add(tmp);
+                }
+                winnerElector.setPlayers(playersWinner);
+                players.get(winnerElector.getWinner()).setWinner(true);
+                updatePlayersView();
+                return;
+
             }
             //game.changeTurn();//todo ho commentato questo il 23/06/17
             turnNumber++;
             for(Player tmp: players.values())
                 game.takingBackFamilyMembers(tmp, board);
-            getNextTurnOrder();
+            //getNextTurnOrder();
             setCardsOnBoard();
             setValueOfFamilyMembers();
+            updatePlayersView();
 
         }
     }
@@ -346,25 +353,29 @@ public class GameRoom implements Serializable{
             tmp.setBlackFM(getBoard().getBlackDice());
             tmp.setWhiteFM(getBoard().getWhiteDice());
             tmp.setRedFM(getBoard().getRedDice());
+            tmp.setNeutralFM();
+
         }
     }
 
     public void leaveGame(String id){
 
-        WinnerElector winnerElector = new WinnerElector();
-        ArrayList<Player> playersWinner = new ArrayList<>();
-        for(Player tmp: players.values()) {
-            if (!tmp.getId().equals(id))
-                playersWinner.add(tmp);
+        if(players.size() >1) {
+
+            WinnerElector winnerElector = new WinnerElector();
+            ArrayList<Player> playersWinner = new ArrayList<>();
+            for (Player tmp : players.values()) {
+                if (!tmp.getId().equals(id))
+                    playersWinner.add(tmp);
+            }
+
+            winnerElector.setPlayers(playersWinner);
+            players.get(winnerElector.getWinner().getId()).setWinner(true);
+            players.get(id).setPlayerLeft(true);
+
+            updatePlayersView();
+
         }
-
-        winnerElector.setPlayers(playersWinner);
-        players.get(winnerElector.getWinner().getId()).setWinner(true);
-        players.get(id).setPlayerLeft(true);
-
-        updatePlayersView();
-
-
 
     }
 

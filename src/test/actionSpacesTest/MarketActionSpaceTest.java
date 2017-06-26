@@ -46,12 +46,10 @@ class MarketActionSpaceTest {
     void getLastFamilyMemberAdded() {
         MarketActionSpace marketActionSpace = new MarketActionSpace();
         FamilyMember familyMember = new FamilyMember(Color.BLACK, 3);
-        FamilyMember familyMember1 = new FamilyMember(Color.RED, 3);
-        FamilyMember familyMember2 = new FamilyMember(Color.WHITE, 3);
+
         marketActionSpace.familyMemberAdded(familyMember);
-        marketActionSpace.familyMemberAdded(familyMember1);
-        marketActionSpace.familyMemberAdded(familyMember2);
-        assertEquals(familyMember2, marketActionSpace.getLastFamilyMemberAdded());
+
+        assertEquals(familyMember, marketActionSpace.getLastFamilyMemberAdded());
     }
 
     @Test

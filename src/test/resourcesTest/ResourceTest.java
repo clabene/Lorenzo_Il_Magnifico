@@ -43,12 +43,5 @@ class ResourceTest {
         assertEquals(4,player.getPlank().getSetOfResources().getResources()[3].getQuantity());
     }
 
-    @Test
-    void gainedByPlayer() {
-    }
-
-    @Test
-    void lostByPlayer() {
-    }
 
 }

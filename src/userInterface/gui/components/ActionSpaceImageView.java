@@ -15,10 +15,12 @@ public class ActionSpaceImageView extends ImageView {
     private ArrayList<FamilyMemberImageView> familyMembers = new ArrayList<>();
     private String actionSpaceId;
 
+
     //private BooleanProperty selected = new SimpleBooleanProperty(false);
 
     public ActionSpaceImageView(String actionSpaceId, String fxmlUrl) {
         super(fxmlUrl);
+
         this.actionSpaceId = actionSpaceId;
         //setOnMouseClicked( e -> {
         //    selected.set(true);
@@ -29,6 +31,13 @@ public class ActionSpaceImageView extends ImageView {
     //    return selected;
     //}
 
+    public ArrayList<FamilyMemberImageView> getFamilyMembers(){
+        return familyMembers;
+    }
+
+    public void setFamilyMembers(ArrayList<FamilyMemberImageView> familyMembers) {
+        this.familyMembers = familyMembers;
+    }
 
     public int getNumberOfFamilyMembers() {
         return familyMembers.size();
@@ -39,7 +48,11 @@ public class ActionSpaceImageView extends ImageView {
     }
 
     public FamilyMemberImageView addFamilyMemberImage(String playerId, Color diceColor, Integer value) {
-        FamilyMemberImageView familyMemberView = new FamilyMemberImageView(playerId, diceColor, value);
+        FamilyMemberImageView familyMemberView;
+        if(diceColor != null)
+            familyMemberView = new FamilyMemberImageView(playerId, diceColor, value);
+        else familyMemberView = new FamilyMemberImageView(playerId, value);
+
         familyMemberView.setFitHeight(30);
         familyMemberView.setFitWidth(30);
 
@@ -55,6 +68,8 @@ public class ActionSpaceImageView extends ImageView {
                 ));
         return familyMemberView;
     }
+
+
     public void addFamilyMemberImage(FamilyMemberImageView familyMember) {
         familyMember.setFitHeight(40);
         familyMember.setFitWidth(40);

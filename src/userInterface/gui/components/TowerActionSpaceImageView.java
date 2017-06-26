@@ -42,7 +42,7 @@ public class TowerActionSpaceImageView extends ActionSpaceImageView {
 
 
         card.setImage(new Image("userInterface/gui/images/cards/"+cardName+".png"));
-        card.setOnMouseClicked( e -> Loader.buildPopUp("Selected card", cardName, card.getImage()));
+        card.setOnMouseClicked( e -> Loader.buildPopUp("Selected card", "", card.getImage()));
 
     }
 
@@ -51,9 +51,9 @@ public class TowerActionSpaceImageView extends ActionSpaceImageView {
     }
 
     public void setCardImage(String imageUrl){
+        card.setImage(new Image(imageUrl));
         card.setMouseTransparent(false);
         card.setVisible(true);
-        card.setImage(new Image(imageUrl));
     }
     public void setCardToTaken(){
         System.out.println(card);

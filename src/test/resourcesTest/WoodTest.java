@@ -37,12 +37,6 @@ class WoodTest {
         assertEquals(3,player.getPlank().getSetOfResources().getResources()[0].getQuantity());
     }
 
-    @Test
-    void gainedByPlayer() {
-    }
 
-    @Test
-    void lostByPlayer() {
-    }
 
 }

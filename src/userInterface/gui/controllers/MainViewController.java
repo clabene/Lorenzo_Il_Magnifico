@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
@@ -129,6 +130,28 @@ public class MainViewController extends Controller {
         FamilyMemberImageView f = getActionSpaceFromId(actionSpaceId).addFamilyMemberImage(playerId, diceColor, value);
         pane.getChildren().add(f);
     }
+    public void removeFamilyMemberFromActionSpace(String actionSpaceId ){
+        //ActionSpaceImageView a = getActionSpaceFromId(actionSpaceId).getComponents();
+
+        //          pane.getChildren().removeAll(getActionSpaceFromId(actionSpaceId).getComponents());
+        for(FamilyMemberImageView tmp : getActionSpaceFromId(actionSpaceId).getFamilyMembers())
+            pane.getChildren().removeAll(tmp.getComponents());
+
+        //pane.getChildren().removeAll(getActionSpaceFromId(actionSpaceId));
+
+        //         pane.getChildren().add(getActionSpaceFromId(actionSpaceId));
+
+        //pane.getChildren().add(getActionSpaceFromId(actionSpaceId).getComponents().remove(1));
+
+
+
+
+
+        //FamilyMemberImageView f = getActionSpaceFromId(actionSpaceId).addFamilyMemberImage(playerId, diceColor, value);
+
+    }
+
+
 
 
     private void buildSlavesPopUp() {
@@ -178,7 +201,6 @@ public class MainViewController extends Controller {
             VaticanInspectionController controller = fxmlLoader.getController();
             controller.setStage(alertBox);
             controller.setGuiClient(getGuiClient());
-            //todo use period number to display the right tassel
             alertBox.setOnCloseRequest( e -> {
                 notSupporting = controller.getNotSupporting();
                 canSend = true;
@@ -231,7 +253,7 @@ public class MainViewController extends Controller {
     public void selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces){
         canSend = false;
         Stage alertBox = new Stage();
-        alertBox.setTitle("Council favour");
+        alertBox.setTitle("Extra Action");
         alertBox.initModality(Modality.APPLICATION_MODAL);
         alertBox.setResizable(false);
         try {
@@ -255,7 +277,7 @@ public class MainViewController extends Controller {
     public void showWinner(String winnerId){
         for(PlayerTag tmp : players) {
             if (tmp.getPlayerId().equals(winnerId)) {
-                Loader.buildPopUp( "WINNER","The winner is "+(getPlayerFromId(winnerId).getPlayerName()), "userInterface/gui/images/winner.png" );
+                Loader.buildPopUp( "WINNER","The winner is "+(getPlayerFromId(winnerId).getPlayerName()), "userInterface/gui/images/cancellami.jpg" );
                 Platform.exit();
             }
         }

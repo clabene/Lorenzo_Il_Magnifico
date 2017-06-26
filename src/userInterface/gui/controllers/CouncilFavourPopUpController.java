@@ -1,6 +1,8 @@
 package userInterface.gui.controllers;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import logic.interfaces.Gainable;
 import logic.pointsTracks.FaithPointsTrack;
@@ -14,6 +16,9 @@ import java.util.ResourceBundle;
  * Created by IBM on 25/06/2017.
  */
 public class CouncilFavourPopUpController extends Controller {
+
+    @FXML
+    private Pane pane;
 
     private CheckBox woodAndStones = new CheckBox("1 wood + 1 stone");
     private CheckBox slaves = new CheckBox("2 slaves");
@@ -56,13 +61,16 @@ public class CouncilFavourPopUpController extends Controller {
         favour.setOnAction( e -> {
             i++;
             favour.setMouseTransparent(true);
+            favour.setVisible(false);
             favours[i-1] = gainable;
             if(i >= numberOfFavours) {
-                ((MainViewController) getGuiClient().getController()).setCanSend(true);
                 ((MainViewController) getGuiClient().getController()).setFavours(favours);
+                ((MainViewController) getGuiClient().getController()).setCanSend(true);
                 stage.close();
             }
         });
+        pane.getChildren().add(favour);
+
     }
 
     public Gainable[] getFavours() {

@@ -36,7 +36,13 @@ public abstract class ActionSpace implements Serializable{
     }
 
     public void resetActionSpace(){
-        familyMembers.clear();
+        while(familyMembers.size() >0){
+            familyMembers.remove(0);
+        }
+
+        //familyMembers.removeAll(familyMembers);
+
+        //familyMembers.clear();//todo
     }
 
     public void setCovered(boolean covered){

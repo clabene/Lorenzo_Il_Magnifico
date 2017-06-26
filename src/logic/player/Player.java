@@ -278,5 +278,9 @@ public class Player implements Serializable{
 
     }
 
+    public void setNeutralFM(){
+        this.familyMembers[3].setValue(0);
+    }
+
     //todo method to take the excommunication
 }

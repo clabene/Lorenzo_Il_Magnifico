@@ -41,13 +41,5 @@ class MoneyTest {
 
     }
 
-    @org.junit.jupiter.api.Test
-    void gainedByPlayer() {
-
-    }
-
-    @org.junit.jupiter.api.Test
-    void lostByPlayer() {
-    }
 
 }
