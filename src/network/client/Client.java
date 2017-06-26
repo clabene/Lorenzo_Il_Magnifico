@@ -163,6 +163,7 @@ public class Client extends Application implements ClientInterface {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         uiClient = new GuiClient(this);
 
         setNetworkType();

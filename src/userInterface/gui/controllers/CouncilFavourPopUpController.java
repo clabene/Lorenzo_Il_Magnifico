@@ -61,7 +61,7 @@ public class CouncilFavourPopUpController extends Controller {
         favour.setOnAction( e -> {
             i++;
             favour.setMouseTransparent(true);
-            favour.setVisible(false);
+            //favour.setVisible(false);
             favours[i-1] = gainable;
             if(i >= numberOfFavours) {
                 ((MainViewController) getGuiClient().getController()).setFavours(favours);

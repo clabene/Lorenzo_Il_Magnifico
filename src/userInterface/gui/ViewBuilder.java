@@ -113,6 +113,7 @@ public class ViewBuilder {
         if(actionSpace.getNumberOfFamilyMembers() < actionSpaceView.getNumberOfFamilyMembers() ){
             Platform.runLater(() -> controller.removeFamilyMemberFromActionSpace(actionSpaceView.getActionSpaceId()));
             while(actionSpaceView.getFamilyMembers().size()> 0){
+
                 actionSpaceView.getFamilyMembers().remove(0);
             }
             //actionSpaceView.setFamilyMembers(new ArrayList<>());

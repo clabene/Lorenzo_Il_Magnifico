@@ -554,7 +554,7 @@ public class CardSetupHandler {
        landCards.add(new LandCard("Cava di Pietra", PeriodNumber.SECOND, 3, new ReceiveGainablesEffect(new Wood()), new ReceiveGainablesEffect(new Stone(3))));
        landCards.add(new LandCard("Villaggio Montano", PeriodNumber.SECOND, 3, new ReceiveGainablesEffect(new Slave()), new ReceiveGainablesEffect(new Wood(2), new MilitaryPointsTrack(1))));
        landCards.add(new LandCard("Maniero", PeriodNumber.SECOND, 5, null, new ReceiveGainablesEffect(new MilitaryPointsTrack(2), new Slave(2))));
-       landCards.add(new LandCard("Miniera_di_Oro", PeriodNumber.SECOND, 1, new ReceiveGainablesEffect(new Money()), new ReceiveGainablesEffect(new Money(2))));
+       landCards.add(new LandCard("MinieraOro", PeriodNumber.SECOND, 1, new ReceiveGainablesEffect(new Money()), new ReceiveGainablesEffect(new Money(2))));
 //territorio terzo periodo-----------------------------------------------------
        landCards.add(new LandCard("Città Mercantile", PeriodNumber.THIRD, 1, new ReceiveGainablesEffect(new Money(), new Slave()), new ReceiveGainablesEffect(new Money(3))));
        landCards.add(new LandCard("Castello", PeriodNumber.THIRD, 4, new ReceiveGainablesEffect(new Money(2), new VictoryPoint(2)), new ReceiveGainablesEffect(new MilitaryPointsTrack(3), new Slave())));

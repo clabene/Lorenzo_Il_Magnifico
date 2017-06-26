@@ -132,14 +132,31 @@ public class MainViewController extends Controller {
     }
     public void removeFamilyMemberFromActionSpace(String actionSpaceId ){
         //ActionSpaceImageView a = getActionSpaceFromId(actionSpaceId).getComponents();
-
-        //          pane.getChildren().removeAll(getActionSpaceFromId(actionSpaceId).getComponents());
-        for(FamilyMemberImageView tmp : getActionSpaceFromId(actionSpaceId).getFamilyMembers())
+        pane.getChildren().removeAll(getActionSpaceFromId(actionSpaceId).getComponents());
+        for(FamilyMemberImageView tmp : getActionSpaceFromId(actionSpaceId).getFamilyMembers()) {
             pane.getChildren().removeAll(tmp.getComponents());
+            pane.getChildren().removeAll(tmp);
+        }
 
+        if(getActionSpaceFromId(actionSpaceId) instanceof TowerActionSpaceImageView){
+            TowerActionSpaceImageView a = (TowerActionSpaceImageView) getActionSpaceFromId(actionSpaceId);
+            pane.getChildren().addAll(a.getComponents());
+        }
+        else
+            pane.getChildren().add(getActionSpaceFromId(actionSpaceId));
+
+
+
+
+
+            /*
+            tmp.getComponents()[0].setVisible(false);
+            tmp.getComponents()[1].setVisible(false);
+            tmp.getComponents()[2].setVisible(false);
+        }*/
         //pane.getChildren().removeAll(getActionSpaceFromId(actionSpaceId));
 
-        //         pane.getChildren().add(getActionSpaceFromId(actionSpaceId));
+
 
         //pane.getChildren().add(getActionSpaceFromId(actionSpaceId).getComponents().remove(1));
 

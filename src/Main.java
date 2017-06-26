@@ -1,7 +1,13 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import logic.cards.Card;
+import logic.utility.CardSetupHandler;
+
+import java.util.Stack;
 
 /**
  * Created by IBM on 09/05/2017.
@@ -10,6 +16,7 @@ public class Main extends Application {
 
 
     public static void main(String args[]){
+
         /*
         Player player = new Player();
 
@@ -250,10 +257,18 @@ public class Main extends Application {
 
         primaryStage.setScene(new Scene(pane, 1200, 900));
         */
+        CardSetupHandler cardSetupHandler = new CardSetupHandler();
+        Stack<Card> cards = cardSetupHandler.shuffleHandle();
+        while(!cards.isEmpty()){
+            System.out.println(cards.peek());
+            Pane pane = new Pane(new ImageView(new Image("userInterface/gui/images/cards/"+ cards.peek().getName()+".png")));
+            primaryStage.setScene(new Scene(pane, 1200, 900));
+            primaryStage.show();
+            cards.pop();
 
-        Pane pane = new Pane();
-        primaryStage.setScene(new Scene(pane, 1200, 900));
-        primaryStage.show();
+        }
+        //Pane pane = new Pane(new ImageView(new Image()));
+
 
 
 
