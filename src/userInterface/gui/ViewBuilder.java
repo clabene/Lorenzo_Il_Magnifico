@@ -128,9 +128,11 @@ public class ViewBuilder {
         if(actionSpace instanceof TowerActionSpace) {
             if (((TowerActionSpace) actionSpace).getCard() == null)
                 ((TowerActionSpaceImageView) actionSpaceView).setCardToTaken();
-            else
+            else{
+                System.out.println("---------------------------------------"+((TowerActionSpace) actionSpace).getCard().getName());
                 ((TowerActionSpaceImageView) actionSpaceView).setCardImage("userInterface/gui/images/cards/" + ((TowerActionSpace) actionSpace).getCard().getName() + ".png");
-            //}
+
+            }
 
 
         }
