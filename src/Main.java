@@ -1,10 +1,13 @@
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import logic.cards.Card;
+import logic.player.Player;
+import logic.pointsTracks.FaithPointsTrack;
 import logic.utility.CardSetupHandler;
 
 import java.util.Stack;
@@ -134,7 +137,14 @@ public class Main extends Application {
         System.out.println(s);
         */
 
-        launch();
+        Player p = new Player();
+        p.gain(new FaithPointsTrack(10));
+        System.out.println(p.getFaithPoints().getTrackPosition().getValue());
+        System.out.println(p.lose(new FaithPointsTrack(2)));
+        System.out.println(p.getFaithPoints().getTrackPosition().getValue());
+
+
+        //launch();
 
     }
 

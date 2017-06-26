@@ -35,10 +35,6 @@ public class ActionSpaceImageView extends ImageView {
         return familyMembers;
     }
 
-    public void setFamilyMembers(ArrayList<FamilyMemberImageView> familyMembers) {
-        this.familyMembers = familyMembers;
-    }
-
     public int getNumberOfFamilyMembers() {
         return familyMembers.size();
     }
@@ -49,41 +45,24 @@ public class ActionSpaceImageView extends ImageView {
 
     public FamilyMemberImageView addFamilyMemberImage(String playerId, Color diceColor, Integer value) {
         FamilyMemberImageView familyMemberView;
-        if(diceColor != null)
-            familyMemberView = new FamilyMemberImageView(playerId, diceColor, value);
+
+        if (diceColor != null) familyMemberView = new FamilyMemberImageView(playerId, diceColor, value);
         else familyMemberView = new FamilyMemberImageView(playerId, value);
 
-        familyMemberView.setFitHeight(30);
-        familyMemberView.setFitWidth(30);
+        familyMemberView.setFitHeight(45);
+        familyMemberView.setFitWidth(45);
 
         familyMembers.add(familyMemberView);
 
         familyMemberView.xProperty().bind(xProperty()
                 .add(familyMemberView.fitWidthProperty()
-                                .multiply(familyMembers.size()-1).add(10)
+                        .multiply(familyMembers.size() - 1).add(10)
                 ).add(15));
         familyMemberView.yProperty().bind(yProperty()
                 .add(fitHeightProperty().subtract(
                         familyMemberView.fitHeightProperty()).divide(2)
                 ));
         return familyMemberView;
-    }
-
-
-    public void addFamilyMemberImage(FamilyMemberImageView familyMember) {
-        familyMember.setFitHeight(40);
-        familyMember.setFitWidth(40);
-
-        familyMembers.add(familyMember);
-
-        familyMember.xProperty().bind(xProperty()
-                .add(familyMember.fitWidthProperty()
-                        .multiply(familyMembers.size()-1).add(10)
-                ));
-        familyMember.yProperty().bind(yProperty()
-                .add(fitHeightProperty().subtract(
-                        familyMember.fitHeightProperty()).divide(2)
-                ));
     }
 
     public ArrayList<Node> getComponents(){

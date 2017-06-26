@@ -47,7 +47,7 @@ public abstract class RemotePlayer extends Player implements Serializable {
         return excommunications;
     }
 
-    public void setExcommunications(int i , boolean takeExcommunication) {
+    public void setExcommunications(int i, boolean takeExcommunication) {
         this.excommunications[i] = takeExcommunication;
     }
 

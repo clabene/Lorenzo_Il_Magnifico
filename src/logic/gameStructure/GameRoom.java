@@ -227,10 +227,6 @@ public class GameRoom implements Serializable{
 
     }
 
-    //todo use this to handle turn switching
-    private void getNextTurnOrder() {
-        turnOrder = game.gettingNextTurnOrder(turnOrder, board);
-    }
 
     public void dealWithVatican(String playerId, int minFaithPoints, ExcommunicationTassel tassel){
         if(!game.hasEnoughFaithPoints(players.get(playerId), minFaithPoints)){
@@ -247,6 +243,7 @@ public class GameRoom implements Serializable{
     }
 
     public void takeExcommunication(Player player, boolean notSupporting){
+        System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwwwlllllllllllllllllllllllllllllllll");
         game.takeExcommunication(player, board.getTassels()[game.getCurrentPeriodNumber()], notSupporting);
     }
 
@@ -361,7 +358,7 @@ public class GameRoom implements Serializable{
 
     public void leaveGame(String id){
 
-        if(players.size() >1) {
+        if(players.size() > 1) {
 
             WinnerElector winnerElector = new WinnerElector();
             ArrayList<Player> playersWinner = new ArrayList<>();

@@ -26,7 +26,6 @@ public class GuiClient extends AbstractUserInterfaceClient {
 
     private Controller controller;
     private Loader loader;
-    private ViewUpdater viewUpdater = new ViewUpdater();
     private ViewBuilder viewBuilder = new ViewBuilder();
 
     public GuiClient(ClientInterface clientController) {
@@ -140,15 +139,15 @@ public class GuiClient extends AbstractUserInterfaceClient {
         //todo check this
 
         while(!canSend){
-            canSend = ((MainViewController) controller).getCanSend();
+            canSend = ((MainViewController) controller).getCanSendVatican();
             notSupportingVatican = ((MainViewController) controller).getNotSupporting();
             try {
-                Thread.currentThread().sleep(500);
+                Thread.currentThread().sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        System.out.println(".........................sending " + notSupportingVatican);
+        System.out.println("................................................................sending " + notSupportingVatican);
         canSend = false;
         return notSupportingVatican;
     }
@@ -163,15 +162,17 @@ public class GuiClient extends AbstractUserInterfaceClient {
         //todo check this
 
         while(!canSend){
-            canSend = ((MainViewController) controller).getCanSend();
+            canSend = ((MainViewController) controller).getCanSendFavour();
             gainables = ((MainViewController) controller).getFavours();
             try {
-                Thread.currentThread().sleep(500);
+                Thread.currentThread().sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        System.out.println(".......................sending " + gainables);
+        System.out.println("...................................................................................sending ");
+        for(Gainable tmp : gainables)
+            System.out.println(".............................................................................." + tmp);
         canSend = false;
         return gainables;
     }
@@ -186,7 +187,7 @@ public class GuiClient extends AbstractUserInterfaceClient {
         //todo check this
 
         while(!canSend){
-            canSend = ((MainViewController) controller).getCanSend();
+            canSend = ((MainViewController) controller).getCanSendAction();
             actionSpace = ((MainViewController) controller).getActionSpace();
             try {
                 Thread.currentThread().sleep(1000);
@@ -194,7 +195,7 @@ public class GuiClient extends AbstractUserInterfaceClient {
                 e.printStackTrace();
             }
         }
-        System.out.println(".......................sending " + actionSpace);
+        System.out.println(".........................................................................sending " + actionSpace);
         canSend = false;
         return actionSpace;
 

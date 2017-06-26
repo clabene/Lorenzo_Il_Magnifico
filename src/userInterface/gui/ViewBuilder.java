@@ -94,11 +94,16 @@ public class ViewBuilder {
     private void hideNotUsableActionSpaces(){
         if(clientView.getPlayers().size() < 3) {
             controller.getActionSpaceFromId("AH2").setMouseTransparent(true);
+            controller.getActionSpaceFromId("AH2").setVisible(false);
             controller.getActionSpaceFromId("AP2").setMouseTransparent(true);
+            controller.getActionSpaceFromId("AP2").setVisible(false);
         }
         if(clientView.getPlayers().size() < 4){
             controller.getActionSpaceFromId("M3").setMouseTransparent(true);
+            controller.getActionSpaceFromId("M3").setVisible(false);
             controller.getActionSpaceFromId("M4").setMouseTransparent(true);
+            controller.getActionSpaceFromId("M4").setVisible(false);
+
         }
     }
 
@@ -109,6 +114,7 @@ public class ViewBuilder {
         System.out.println("-------------------------------------------------"+actionSpace.getLastFamilyMemberAdded().getColor());
         System.out.println("-------------------------------------------------"+actionSpace.getLastFamilyMemberAdded().getValue());
 */
+
 
         if(actionSpace.getNumberOfFamilyMembers() < actionSpaceView.getNumberOfFamilyMembers() ){
             Platform.runLater(() -> controller.removeFamilyMemberFromActionSpace(actionSpaceView.getActionSpaceId()));

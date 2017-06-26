@@ -116,10 +116,12 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
             output.writeObject(periodNumber);
             output.flush();
         } catch (IOException e){
-            System.out.println("Could not ask for council favours");
+            System.out.println("Could not ask for Vatican decision");
         }
         try {
             boolean notSupporting = (Boolean) input.readObject();
+            System.out.println("..................................................player received this vativan decicision: "+notSupporting);
+            setExcommunications(periodNumber, notSupporting);
             getGameRoom().takeExcommunication(this, notSupporting);
             notifyRequestHandleOutcome(ResponseCode.OK);
 

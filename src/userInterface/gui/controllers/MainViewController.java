@@ -109,6 +109,7 @@ public class MainViewController extends Controller {
         opponentsAccordion.layoutXProperty().bind(pane.widthProperty().multiply(0.7).add(70));
         opponentsAccordion.layoutYProperty().bind(board.getYPosition().subtract(5));
         opponentsAccordion.setBackground(new Background(new BackgroundFill(javafx.scene.paint.Color.CHOCOLATE,null,null)));
+        opponentsAccordion.toFront();
         pane.getChildren().add(opponentsAccordion);
     }
     private void placeBoard(){
@@ -156,7 +157,7 @@ public class MainViewController extends Controller {
         }*/
         //pane.getChildren().removeAll(getActionSpaceFromId(actionSpaceId));
 
-
+        //         pane.getChildren().add(getActionSpaceFromId(actionSpaceId));
 
         //pane.getChildren().add(getActionSpaceFromId(actionSpaceId).getComponents().remove(1));
 
@@ -191,12 +192,12 @@ public class MainViewController extends Controller {
     }
 
 
-    private boolean canSend = false;
-    public boolean getCanSend() {
-        return canSend;
+    private boolean canSendVatican = false;
+    public boolean getCanSendVatican() {
+        return canSendVatican;
     }
-    public void setCanSend(boolean canSend) {
-        this.canSend = canSend;
+    public void setCanSendVatican(boolean canSend) {
+        this.canSendVatican = canSend;
     }
 
     private boolean notSupporting = true;
@@ -207,7 +208,7 @@ public class MainViewController extends Controller {
         this.notSupporting = notSupporting;
     }
     public void dealWithVatican(int periodNumber){
-        canSend = false;
+        canSendVatican = false;
         Stage alertBox = new Stage();
         alertBox.setTitle("Vatican Inspection");
         alertBox.initModality(Modality.APPLICATION_MODAL);
@@ -220,13 +221,22 @@ public class MainViewController extends Controller {
             controller.setGuiClient(getGuiClient());
             alertBox.setOnCloseRequest( e -> {
                 notSupporting = controller.getNotSupporting();
-                canSend = true;
+                canSendVatican = true;
             } );
             alertBox.setScene(new Scene(root,400,275));
         } catch (Exception e) {
             e.printStackTrace();
         }
         alertBox.show();
+    }
+
+
+    private boolean canSendFavour = false;
+    public boolean getCanSendFavour() {
+        return canSendFavour;
+    }
+    public void setCanSendFavour(boolean canSend) {
+        this.canSendFavour = canSend;
     }
 
     private Gainable[] favours;
@@ -237,7 +247,7 @@ public class MainViewController extends Controller {
         return favours;
     }
     public void selectCouncilFavour(int numberOfFavours){
-        canSend = false;
+        canSendFavour = false;
         Stage alertBox = new Stage();
         alertBox.setTitle("Council favour");
         alertBox.initModality(Modality.APPLICATION_MODAL);
@@ -251,13 +261,23 @@ public class MainViewController extends Controller {
             controller.setNumberOfFavours(numberOfFavours);
             alertBox.setOnCloseRequest( e -> {
                 favours = controller.getFavours();
-                canSend = true;
+                canSendFavour = true;
             } );
             alertBox.setScene(new Scene(root,400,275));
         } catch (Exception e) {
             e.printStackTrace();
         }
         alertBox.show();
+    }
+
+
+
+    private boolean canSendAction = false;
+    public boolean getCanSendAction() {
+        return canSendAction;
+    }
+    public void setCanSendAction(boolean canSend) {
+        this.canSendAction = canSend;
     }
 
     private ActionSpace actionSpace;
@@ -268,7 +288,7 @@ public class MainViewController extends Controller {
         this.actionSpace = actionSpace;
     }
     public void selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces){
-        canSend = false;
+        canSendAction = false;
         Stage alertBox = new Stage();
         alertBox.setTitle("Extra Action");
         alertBox.initModality(Modality.APPLICATION_MODAL);
@@ -282,7 +302,7 @@ public class MainViewController extends Controller {
             controller.setActionSpaces(actionSpaces);
             alertBox.setOnCloseRequest( e -> {
                 actionSpace = controller.getActionSpace();
-                canSend = true;
+                canSendAction = true;
             } );
             alertBox.setScene(new Scene(root,400,275));
         } catch (Exception e) {
@@ -294,7 +314,7 @@ public class MainViewController extends Controller {
     public void showWinner(String winnerId){
         for(PlayerTag tmp : players) {
             if (tmp.getPlayerId().equals(winnerId)) {
-                Loader.buildPopUp( "WINNER","The winner is "+(getPlayerFromId(winnerId).getPlayerName()), "userInterface/gui/images/cancellami.jpg" );
+                Loader.buildPopUp( "WINNER","The winner is "+getPlayerFromId(winnerId).getPlayerName(), "userInterface/gui/images/winner.png" );
                 Platform.exit();
             }
         }

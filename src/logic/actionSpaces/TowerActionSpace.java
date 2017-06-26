@@ -39,7 +39,7 @@ public class TowerActionSpace extends ActionSpace {
     private boolean towerAlreadyHasColoredOfSameType(Player player){
         for(TowerActionSpace tmp : getTower(player.getBoard())) {
 
-                if(tmp.getLastFamilyMemberAdded()!= null &&
+                if(tmp.getLastFamilyMemberAdded() != null &&
                         this.getLastFamilyMemberAdded().getPlayerId().equals(tmp.getLastFamilyMemberAdded().getPlayerId()) //tmp1 of same player as current family member
                         && tmp.getLastFamilyMemberAdded().getColor() != null  //tmp1 is not neutral
                         && tmp.getLastFamilyMemberAdded().getColor() != this.getLastFamilyMemberAdded().getColor() ){ //tmp1 is not current family member
@@ -67,8 +67,12 @@ public class TowerActionSpace extends ActionSpace {
     }
 
     private boolean playerPaidCoins(Player player) {
+        if(this.getLastFamilyMemberAdded().getColor() == null && towerAlreadyHasColoredOfSameType(player))
+            return player.lose(new Money(3));
+
         if(towerAlreadyHasNeutralOfSameType(player))
             return player.lose(new Money(3));
+
         return true;
     }
 
@@ -76,7 +80,7 @@ public class TowerActionSpace extends ActionSpace {
 
         if(this.card == null) return false;
 
-        if(towerAlreadyHasColoredOfSameType(player)) return false;
+        if(this.getLastFamilyMemberAdded().getColor() != null && towerAlreadyHasColoredOfSameType(player)) return false;
 
         if(! playerPaidCoins(player)) return false;
 
@@ -89,6 +93,7 @@ public class TowerActionSpace extends ActionSpace {
                 return false;
             }
             if(card.getImmediateEffect() != null) card.getImmediateEffect().activate(player);
+            if(card.getCardType() == CardType.PERSON && card.getPermanentEffect() != null) card.getPermanentEffect().activate(player);
             this.card = null;
             return true;
         }

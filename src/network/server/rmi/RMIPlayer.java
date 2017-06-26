@@ -66,6 +66,7 @@ public class RMIPlayer extends RemotePlayer {
         try {
             choice = rmiclientInterface.dealWithVatican(periodNumber);
             this.setExcommunications(periodNumber-1, choice);
+            System.out.println(".........................................Received this bool from the client : " + choice);
         } catch (RemoteException e) {
             e.printStackTrace();
         }

@@ -86,33 +86,26 @@ public class ActionPhase implements Serializable{
 */
     public boolean putFamilyMemberOnActionSpace(Player player, FamilyMember familyMember, ActionSpace actionSpace) {
 
+        actionSpace.familyMemberAdded(familyMember);
+        familyMember.setInActionSpace(true);
+        activateBonuses(player, actionSpace);
+
         if (familyMember.getValue() >= actionSpace.getMinValueToPlaceFamiliar() ) {
-
-            /*
-            familyMember.setInActionSpace(true); // Should not this go inside the if statement?
-                                                 // Indeed, if a tower card is too expensive for the player, they will
-                                                 // take their familiar back!
-            if(actionSpace.action(player))
-                player.gain(actionSpace.familiarAdded());
-            */
-
-            actionSpace.familyMemberAdded(familyMember);
-            familyMember.setInActionSpace(true);
             player.gain(actionSpace.getBonus().toArray(new Gainable[actionSpace.getBonus().size()]));
-
             if(!actionSpace.action(player)) {
-
                 //restore previous situation
                 player.lose(actionSpace.getBonus().toArray(new Losable[actionSpace.getBonus().size()]));
                 actionSpace.familyMemberRemoved(familyMember);
                 familyMember.setInActionSpace(false);
                 return false;
             }
-
             return true;
-        }else
+        }else {
+            //restore previous situation
             System.out.println("Your family member is not valuable enough for this action space\n");
-
+            actionSpace.familyMemberRemoved(familyMember);
+            familyMember.setInActionSpace(false);
+        }
         return false;
     }
 
@@ -130,11 +123,7 @@ public class ActionPhase implements Serializable{
 
     }
 
-
     public boolean incrementFamilyMemberValueRequest(Player player, FamilyMember familyMember, int quantity) {
-
-
-
         if(player.lose(new Slave(quantity))) {
 
             if(familyMember.getColor() == null ){
@@ -157,49 +146,13 @@ public class ActionPhase implements Serializable{
             return true;
         }
         return false;
-        /*
-        boolean b = true;
-        while (b) {
-
-            System.out.println("Quanti schiavi vuoi sacrificare? (Nessuno = 0)\n");
-            //Scanner input = new Scanner(System.in);
-            //int quantity = input.nextInt();
-            if (player.lose(new SetOfResources(new Slave(quantity)))) {
-                familyMember.incrementFamilyMemberValue(quantity);
-                b = false;
-                return true;
-            } else{
-                System.out.println("Non hai abbastanza schiavi\n");
-
-            }
-        }
-        return false;
-        */
     }
 
-/*
-    public FamilyMember selectionFamilyMemberPhase(Player player){
-        FamilyMember familyMember = player.selectFamilyMember();
-        if (familyMember.getInActionSpace()) {
-            System.out.println("Il familiare è occupato");
-            return null;
-        }
-        return familyMember;
-    }
-
-    public ActionSpace selectionActionSpacePhase(Player player, Board board){
-        Area area = player.selectArea(board);
-        ActionSpace actionSpace = player.selectActionSpace(area);
-        if (actionSpace.getCovered()) {
-            System.out.println("Spazio azione occupato");
-            return null;
-        }
-        return actionSpace;
-    }
-*/
     public void activateBonuses(Player player, ActionSpace actionSpace){
-        for(Bonus tmp : player.getBonuses())
+        for(Bonus tmp : player.getBonuses()){
+            System.out.println(tmp);
             tmp.activateBonus(actionSpace);
+        }
     }
 
 }

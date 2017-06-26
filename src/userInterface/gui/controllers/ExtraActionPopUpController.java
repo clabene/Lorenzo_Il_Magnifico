@@ -48,20 +48,15 @@ public class ExtraActionPopUpController extends Controller {
 
     private void placeLabels( ArrayList<ActionSpace> actionSpaces ){
         int i = 0;
-        int j = 0;
         for(ActionSpace tmp : actionSpaces) {
             Label label = new Label(((TowerActionSpace)tmp).getCard().getName()); //if were not tower action spaces, would not have got here
-            label.setLayoutX(130+60*j);
+            label.setLayoutX(20);
             label.setLayoutY(20+30*i);
             label.setOnMouseClicked( e ->{
                 ((MainViewController)getGuiClient().getController()).setActionSpace(actionSpace);
-                ((MainViewController)getGuiClient().getController()).setCanSend(true);
+                ((MainViewController)getGuiClient().getController()).setCanSendAction(true);
                 stage.close();
             } );
-            if(i == 10){
-                i = 0;
-                j++;
-            }
             i++;
             pane.getChildren().add(label);
         }

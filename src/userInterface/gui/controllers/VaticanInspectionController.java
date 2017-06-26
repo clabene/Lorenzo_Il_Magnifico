@@ -30,13 +30,13 @@ public class VaticanInspectionController extends Controller{
 
     public void setStage(Stage stage){
         supportButton.setOnAction( e -> {
-            ((MainViewController)getGuiClient().getController()).setCanSend(true);
+            ((MainViewController)getGuiClient().getController()).setCanSendVatican(true);
             ((MainViewController)getGuiClient().getController()).setNotSupporting(false);
             notSupporting = false;
             stage.close();
         } );
         excommunicationButton.setOnAction( e -> {
-            ((MainViewController)getGuiClient().getController()).setCanSend(true);
+            ((MainViewController)getGuiClient().getController()).setCanSendVatican(true);
             ((MainViewController)getGuiClient().getController()).setNotSupporting(true);
             notSupporting = true;
             stage.close();

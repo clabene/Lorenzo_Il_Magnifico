@@ -115,7 +115,6 @@ public class Player implements Serializable{
         boolean toReturn = true;
         for (Losable tmp : losables)
             try {
-                System.out.println("--------------------------------losables"+ losables);
                 if(tmp == null) continue;
                 tmp.lostByPlayer(this);
             } catch (NegativeResourceQuantityException | NegativePointsException e) {

@@ -92,11 +92,10 @@ public class Game implements Serializable{
     }
 
     public ResponseCode puttingFamilyMemberOnActionSpace(Player player) {
-        actionPhase.activateBonuses(player, selectedActionSpace);
+        //actionPhase.activateBonuses(player, selectedActionSpace);
         Boolean b = actionPhase.putFamilyMemberOnActionSpace(player, selectedFamilyMember, selectedActionSpace);
         selectedFamilyMember = null;
         selectedActionSpace = null;
-        System.out.println(b+"-----------------------------------------------------------b");
         if(b) return ResponseCode.OK;
         return ResponseCode.GENERIC_ERROR;
     }
@@ -108,8 +107,6 @@ public class Game implements Serializable{
         Boolean b = actionPhase.putFamilyMemberOnActionSpace(player,
                 new FamilyMember(null, familyMemberValue, player.getId()),
                 actionSpace);
-        System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-
 
         if(b) return ResponseCode.OK;
         return ResponseCode.GENERIC_ERROR;
@@ -148,11 +145,12 @@ public class Game implements Serializable{
 
     public void takeExcommunication(Player player, ExcommunicationTassel tassel, boolean notSupporting){
         if(!notSupporting){
+            System.out.println("33333333333333333333333333333333333333333333333333333333");
             player.gain(player.getFaithPoints().calculateVictoryPointsFromPosition());
             player.lose(player.getFaithPoints());
             return;
         }
-
+        System.out.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
         tassel.activate(player);
     }
 

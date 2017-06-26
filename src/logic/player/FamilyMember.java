@@ -62,7 +62,7 @@ public class FamilyMember implements Serializable {
 
     public void incrementFamilyMemberValue(int value){
         this.value += value;
-        System.out.println(this);
+        System.out.println( "ZKJBFXCCLIVHFGXkycghggggggggggggggggggggggggggggggggggggggggggggggggggggggggg  " + this);
     }
 
     public void setValue(int value){

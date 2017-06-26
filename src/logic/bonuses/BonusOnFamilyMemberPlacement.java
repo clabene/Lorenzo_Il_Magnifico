@@ -32,16 +32,17 @@ public class BonusOnFamilyMemberPlacement implements Bonus {
 
     @Override
     public void activateBonus(ActionSpace actionSpace) {
-        if(cardType == null && actionSpace.getActionSpaceType() == this.actionSpaceType)
+        if(cardType == null && actionSpaceType == null) //no matter what the action space is, family member always take the bonus
+            actionSpace.getLastFamilyMemberAdded().incrementFamilyMemberValue(bonus);
+
+        if(actionSpaceType != null && cardType == null && actionSpace.getActionSpaceType() == this.actionSpaceType)
             if(activationActionSpaceType == null || activationActionSpaceType == ((ActivationActionSpace)actionSpace).getActivationType())
                 actionSpace.getLastFamilyMemberAdded().incrementFamilyMemberValue(bonus);
 
-        if(actionSpaceType == null && ((TowerActionSpace)actionSpace).getCard().getCardType() == this.cardType)
+        if( cardType != null && actionSpaceType == null && actionSpace.getActionSpaceType() == ActionSpaceType.TOWER && ((TowerActionSpace)actionSpace).getCard().getCardType() == this.cardType)
             actionSpace.getLastFamilyMemberAdded().incrementFamilyMemberValue(bonus);
 
-        if(cardType == null && actionSpaceType == null) //no matter what the action space is, family member always take the bonus
-            actionSpace.getLastFamilyMemberAdded().incrementFamilyMemberValue(bonus);
+
     }
-
 
 }
