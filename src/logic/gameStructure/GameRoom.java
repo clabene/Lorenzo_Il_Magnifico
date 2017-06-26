@@ -243,6 +243,7 @@ public class GameRoom implements Serializable{
             players.get(playerId).dealWithVatican(periodNumber);
             players.get(playerId).notifyRequestHandleOutcome(ResponseCode.OK);
         }
+        updatePlayersView();
     }
 
     public void takeExcommunication(Player player, boolean notSupporting){
