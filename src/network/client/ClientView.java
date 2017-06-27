@@ -435,10 +435,10 @@ public class ClientView implements Serializable{
 
 
             System.out.println(end+"\n");
-            System.out.print(("Money: "+tmp.getPlank().getSetOfResources().getResources()[0]+s).substring(0,k) );
+            System.out.print(("Wood:: "+tmp.getPlank().getSetOfResources().getResources()[0]+s).substring(0,k) );
             System.out.print(("Stone: "+tmp.getPlank().getSetOfResources().getResources()[1]+s).substring(0,k) );
-            System.out.print(("Wood: "+tmp.getPlank().getSetOfResources().getResources()[2]+s).substring(0,k) );
-            System.out.print(("Slaves: "+tmp.getPlank().getSetOfResources().getResources()[3]+s).substring(0,k) );
+            System.out.print(("Slaves: "+tmp.getPlank().getSetOfResources().getResources()[2]+s).substring(0,k) );
+            System.out.print(("Money: "+tmp.getPlank().getSetOfResources().getResources()[3]+s).substring(0,k) );
             System.out.print(("Council Favour: "+tmp.getPlank().getCouncilFavours().size()+s).substring(0,k) );
             System.out.println();
             System.out.print(("MP: "+tmp.getMilitaryPoints().getTrackPosition().getValue()+s).substring(0,k) );
