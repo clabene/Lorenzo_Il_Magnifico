@@ -34,17 +34,6 @@ class PlankTest {
 
     }
 
-    @Test
-    void setToUseSeparateResources() {
 
-    }
-
-    @Test
-    void getSetOfResources() {
-    }
-
-    @Test
-    void dump() {
-    }
 
 }

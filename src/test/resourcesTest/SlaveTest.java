@@ -15,26 +15,26 @@ class SlaveTest {
     @Test
     void resourceAdded() {
         player.getPlank().getSetOfResources().resourcesAdded(new Slave(0));
-        assertEquals(0 ,player.getPlank().getSetOfResources().getQuantityOfResources());
+        assertEquals(4000 ,player.getPlank().getSetOfResources().getQuantityOfResources());
         player.getPlank().getSetOfResources().resourcesAdded(new Slave(3));
-        assertEquals(3 ,player.getPlank().getSetOfResources().getQuantityOfResources());
+        assertEquals(4003 ,player.getPlank().getSetOfResources().getQuantityOfResources());
         player.getPlank().getSetOfResources().resourcesAdded(new Slave(-3));
-        assertEquals(3 ,player.getPlank().getSetOfResources().getQuantityOfResources());
+        assertEquals(4003 ,player.getPlank().getSetOfResources().getQuantityOfResources());
     }
 
     @Test
     void resourceSpent() throws NegativeResourceQuantityException {
         player.getPlank().getSetOfResources().resourcesAdded(new Slave(3));
         player.getPlank().getSetOfResources().resourcesSpent(new Slave(3));
-        assertEquals( 0 ,player.getPlank().getSetOfResources().getQuantityOfResources());
-        assertThrows(NegativeResourceQuantityException.class, () -> player.getPlank().getSetOfResources().resourcesSpent(new Slave(4)));
+        assertEquals( 4000 ,player.getPlank().getSetOfResources().getQuantityOfResources());
+        assertThrows(NegativeResourceQuantityException.class, () -> player.getPlank().getSetOfResources().resourcesSpent(new Slave(449085)));
 
     }
 
     @Test
     void getQuantity() {
         player.getPlank().getSetOfResources().resourcesAdded(new Slave(3));
-        assertEquals(3,player.getPlank().getSetOfResources().getResources()[2].getQuantity());
+        assertEquals(1003,player.getPlank().getSetOfResources().getResources()[2].getQuantity());
     }
 
 

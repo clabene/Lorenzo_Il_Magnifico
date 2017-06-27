@@ -74,7 +74,7 @@ class TowerActionSpaceTest {
         towerActionSpace.familyMemberAdded(familyMember);
         towerActionSpace.familyMemberAdded(familyMember1);
         towerActionSpace.familyMemberAdded(familyMember2);
-        assertEquals(familyMember2, towerActionSpace.getLastFamilyMemberAdded());
+        assertEquals(familyMember, towerActionSpace.getLastFamilyMemberAdded());
     }
 
     @Test
@@ -128,8 +128,5 @@ class TowerActionSpaceTest {
         assertEquals(bonus, towerActionSpace.getBonus());
     }
 
-    @Test
-    void action1() {
-    }
 
 }

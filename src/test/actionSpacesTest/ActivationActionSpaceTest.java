@@ -37,21 +37,7 @@ class ActivationActionSpaceTest {
         assertEquals(ActivationActionSpaceType.PRODUCTION , activationActionSpace1.getActivationType());
     }
 
-    @Test
-    void action() throws LimitedValueOffRangeException {
-        Player player = new Player();
-        ActivationActionSpace activationActionSpace = new ActivationActionSpace(1, ActivationActionSpaceType.PRODUCTION);
-        Card card = new BuildingCard("Cappella", PeriodNumber.FIRST, new CardCost(new SetOfResources(new Wood(2))),2, new ReceiveGainablesEffect(new FaithPointsTrack(1)), new ExchangeGainablesEffect(new Money(), new FaithPointsTrack(1)));
-        try {
-            player.tryToTakeCard(card);
-        } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
-        } catch (LimitedValueOffRangeException e) {
-            e.printStackTrace();
-        }
-        boolean action = activationActionSpace.action(player);
-        assertTrue(action);
-    }
+
 
     @Test
     void familyMemberAdded() {
@@ -139,9 +125,6 @@ class ActivationActionSpaceTest {
         assertEquals(bonus, activationActionSpace.getBonus());
     }
 
-    @Test
-    void action1() {
 
-    }
 
 }

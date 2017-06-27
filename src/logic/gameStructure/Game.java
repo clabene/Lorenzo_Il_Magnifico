@@ -144,10 +144,13 @@ public class Game implements Serializable{
     }
 
     public void takeExcommunication(Player player, ExcommunicationTassel tassel, boolean notSupporting){
+        System.out.println("-------------------------------------------------------brandolese----amarilli"+ notSupporting);
+
         if(!notSupporting){
             System.out.println("33333333333333333333333333333333333333333333333333333333");
             player.gain(player.getFaithPoints().calculateVictoryPointsFromPosition());
             player.lose(player.getFaithPoints());
+            System.out.println("-------------------------------------------------------brandolese"+player.lose(player.getFaithPoints()));
             return;
         }
         System.out.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");

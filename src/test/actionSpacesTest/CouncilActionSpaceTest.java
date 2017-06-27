@@ -23,10 +23,13 @@ class CouncilActionSpaceTest {
     void action() {
         CouncilActionSpace councilActionSpace = new CouncilActionSpace();
         Player player = new Player();
+        player.setId("Claudio");
         Player player1 = new Player();
+        player1.setId("Pinò");
         ArrayList<String> names = new ArrayList<>();
         names.add("Claudio");
         councilActionSpace.action(player);
+
         assertEquals( names,councilActionSpace.getFamilyMemberArrayList() );
         names.add("Pinò");
         councilActionSpace.action(player1);
@@ -39,7 +42,10 @@ class CouncilActionSpaceTest {
     void getFamilyMemberArrayList() {
         CouncilActionSpace councilActionSpace = new CouncilActionSpace();
         Player player = new Player();
+
         Player player1 = new Player();
+        player.setId("Claudio");
+        player1.setId("Pinò");
         ArrayList<String> names = new ArrayList<>();
         assertEquals( names,councilActionSpace.getFamilyMemberArrayList() );
         names.add("Claudio");
@@ -123,24 +129,6 @@ class CouncilActionSpaceTest {
         assertEquals(bonus, councilActionSpace.getBonus());
     }
 
-    @Test
-    void getBonus() {
-        CouncilActionSpace councilActionSpace = new CouncilActionSpace();
-        ArrayList<Gainable> bonus = new ArrayList<>();
 
-        bonus.add(new Money(1));
-        bonus.add(new CouncilFavour(1));
-
-        assertArrayEquals(bonus.toArray() , councilActionSpace.getBonus().toArray());
-        /*
-        ArrayList<Gainable> bonus1 = new ArrayList<>();
-        bonus1.add(new Money(3));
-        councilActionSpace.setBonus(bonus1);
-        assertEquals(bonus1, councilActionSpace.getBonus());*/
-    }
-
-    @Test
-    void action1() {
-    }
 
 }

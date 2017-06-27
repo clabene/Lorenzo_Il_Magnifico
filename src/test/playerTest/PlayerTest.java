@@ -25,9 +25,9 @@ class PlayerTest {
     void gain() {
         Player player = new Player();
         player.gain( new SetOfResources(new Money(3),new Stone(3), new Wood(2)));
-        assertEquals(2,player.getPlank().getSetOfResources().getResources()[0].getQuantity());
-        assertEquals(3,player.getPlank().getSetOfResources().getResources()[1].getQuantity());
-        assertEquals(3,player.getPlank().getSetOfResources().getResources()[3].getQuantity());
+        assertEquals(1002,player.getPlank().getSetOfResources().getResources()[0].getQuantity());
+        assertEquals(1003,player.getPlank().getSetOfResources().getResources()[1].getQuantity());
+        assertEquals(1003,player.getPlank().getSetOfResources().getResources()[3].getQuantity());
 
     }
 
@@ -36,14 +36,14 @@ class PlayerTest {
         Player player = new Player();
         player.gain(new Money(3), new SetOfResources(new Stone(3), new Wood(2)));
         player.lose(new Money(1), new SetOfResources(new Stone(1), new Wood(1)));
-        assertEquals(1,player.getPlank().getSetOfResources().getResources()[0].getQuantity());
-        assertEquals(2,player.getPlank().getSetOfResources().getResources()[1].getQuantity());
-        assertEquals(2,player.getPlank().getSetOfResources().getResources()[3].getQuantity());
+        assertEquals(1001,player.getPlank().getSetOfResources().getResources()[0].getQuantity());
+        assertEquals(1002,player.getPlank().getSetOfResources().getResources()[1].getQuantity());
+        assertEquals(1002,player.getPlank().getSetOfResources().getResources()[3].getQuantity());
         player.lose(new Money(4), new SetOfResources(new Stone(1), new Wood(1)));
-        assertEquals(0,player.getPlank().getSetOfResources().getResources()[0].getQuantity());
-        assertEquals(1,player.getPlank().getSetOfResources().getResources()[1].getQuantity());
-        assertEquals(0,player.getPlank().getSetOfResources().getResources()[2].getQuantity());
-        assertEquals(2,player.getPlank().getSetOfResources().getResources()[3].getQuantity());
+        assertEquals(1000,player.getPlank().getSetOfResources().getResources()[0].getQuantity());
+        assertEquals(1001,player.getPlank().getSetOfResources().getResources()[1].getQuantity());
+        assertEquals(1000,player.getPlank().getSetOfResources().getResources()[2].getQuantity());
+        assertEquals(998,player.getPlank().getSetOfResources().getResources()[3].getQuantity());
 
     }
 
@@ -66,10 +66,10 @@ class PlayerTest {
     void addResourcesToPlank() {
         Player player = new Player();
         player.addResourcesToPlank(new Money(3), new Stone(4));
-        assertEquals(0,player.getPlank().getSetOfResources().getResources()[0].getQuantity());
-        assertEquals(4,player.getPlank().getSetOfResources().getResources()[1].getQuantity());
-        assertEquals(0,player.getPlank().getSetOfResources().getResources()[2].getQuantity());
-        assertEquals(3,player.getPlank().getSetOfResources().getResources()[3].getQuantity());
+        assertEquals(1000,player.getPlank().getSetOfResources().getResources()[0].getQuantity());
+        assertEquals(1004,player.getPlank().getSetOfResources().getResources()[1].getQuantity());
+        assertEquals(1000,player.getPlank().getSetOfResources().getResources()[2].getQuantity());
+        assertEquals(1003,player.getPlank().getSetOfResources().getResources()[3].getQuantity());
 
     }
 
@@ -77,41 +77,33 @@ class PlayerTest {
     void removeResourcesFromPlank() {
         Player player = new Player();
         player.addResourcesToPlank(new Money(3), new Stone(4));
-        assertEquals(0,player.getPlank().getSetOfResources().getResources()[0].getQuantity());
-        assertEquals(4,player.getPlank().getSetOfResources().getResources()[1].getQuantity());
-        assertEquals(0,player.getPlank().getSetOfResources().getResources()[2].getQuantity());
-        assertEquals(3,player.getPlank().getSetOfResources().getResources()[3].getQuantity());
+        assertEquals(1000,player.getPlank().getSetOfResources().getResources()[0].getQuantity());
+        assertEquals(1004,player.getPlank().getSetOfResources().getResources()[1].getQuantity());
+        assertEquals(1000,player.getPlank().getSetOfResources().getResources()[2].getQuantity());
+        assertEquals(1003,player.getPlank().getSetOfResources().getResources()[3].getQuantity());
         try {
-            player.removeResourcesFromPlank(new Money(2), new Stone(3));
+            player.removeResourcesFromPlank(new Money(5000), new Stone(3));
         } catch (NegativeResourceQuantityException e) {
             e.printStackTrace();
         }
-        assertEquals(0,player.getPlank().getSetOfResources().getResources()[0].getQuantity());
-        assertEquals(1,player.getPlank().getSetOfResources().getResources()[1].getQuantity());
-        assertEquals(0,player.getPlank().getSetOfResources().getResources()[2].getQuantity());
-        assertEquals(1,player.getPlank().getSetOfResources().getResources()[3].getQuantity());
+        assertEquals(1000,player.getPlank().getSetOfResources().getResources()[0].getQuantity());
+        assertEquals(1004,player.getPlank().getSetOfResources().getResources()[1].getQuantity());
+        assertEquals(1000,player.getPlank().getSetOfResources().getResources()[2].getQuantity());
+        assertEquals(1003,player.getPlank().getSetOfResources().getResources()[3].getQuantity());
     }
 
 
 
-    @Test
-    void getBonuses() {
 
-
-
-
-    }
 
     @Test
     void getId() {
         Player player = new Player(new Wood());
+        player.setId("Claudio");
         assertEquals("Claudio", player.getId());
     }
 
-    @Test
-    void getPlank() {
 
-    }
 
     @Test
     void getMilitaryPoints() {
@@ -152,6 +144,7 @@ class PlayerTest {
     @Test
     void getFamilyMembersAvailable() {
         Player player = new Player();
+        player.setId("Claudio");
         player.getFamilyMembers()[0].setInActionSpace(true);
         assertEquals(3, player.getFamilyMembersAvailable().toArray().length);
     }
@@ -163,8 +156,5 @@ class PlayerTest {
 
     }
 
-    @Test
-    void excommunicationDecision() {
-    }
 
 }

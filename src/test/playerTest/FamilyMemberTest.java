@@ -15,6 +15,7 @@ class FamilyMemberTest {
     @Test
     void getPlayerId() {
         Player player = new Player(new Wood());
+        player.setId("Claudio");
         FamilyMember familyMember = new FamilyMember(Color.BLACK, 3, player.getId(), false);
         assertEquals("Claudio", familyMember.getPlayerId() );
 

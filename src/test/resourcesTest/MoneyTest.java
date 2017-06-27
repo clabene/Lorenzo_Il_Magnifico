@@ -18,26 +18,26 @@ class MoneyTest {
     @org.junit.jupiter.api.Test
     void resourceAdded() {
         player.getPlank().getSetOfResources().resourcesAdded(new Money(0));
-        assertEquals(0 ,player.getPlank().getSetOfResources().getQuantityOfResources());
+        assertEquals(4000 ,player.getPlank().getSetOfResources().getQuantityOfResources());
         player.getPlank().getSetOfResources().resourcesAdded(new Money(3));
-        assertEquals(3 ,player.getPlank().getSetOfResources().getQuantityOfResources());
+        assertEquals(4003 ,player.getPlank().getSetOfResources().getQuantityOfResources());
         player.getPlank().getSetOfResources().resourcesAdded(new Money(-3));
-        assertEquals(3 ,player.getPlank().getSetOfResources().getQuantityOfResources());
+        assertEquals(4003 ,player.getPlank().getSetOfResources().getQuantityOfResources());
     }
 
     @org.junit.jupiter.api.Test
     void resourceSpent() throws NegativeResourceQuantityException {
         player.getPlank().getSetOfResources().resourcesAdded(new Money(3));
         player.getPlank().getSetOfResources().resourcesSpent(new Money(3));
-        assertEquals( 0 ,player.getPlank().getSetOfResources().getQuantityOfResources());
-        assertThrows(NegativeResourceQuantityException.class, () -> player.getPlank().getSetOfResources().resourcesSpent(new Money(4)));
+        assertEquals( 4000 ,player.getPlank().getSetOfResources().getQuantityOfResources());
+        assertThrows(NegativeResourceQuantityException.class, () -> player.getPlank().getSetOfResources().resourcesSpent(new Money(4000)));
 
     }
 
     @org.junit.jupiter.api.Test
     void getQuantity() throws NegativeResourceQuantityException {
         player.getPlank().getSetOfResources().resourcesAdded(new Money(3));
-        assertEquals(3,player.getPlank().getSetOfResources().getResources()[3].getQuantity());
+        assertEquals(1003,player.getPlank().getSetOfResources().getResources()[3].getQuantity());
 
     }
 

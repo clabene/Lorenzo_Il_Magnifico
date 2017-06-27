@@ -36,12 +36,5 @@ class VictoryPointTest {
         assertEquals(1, victoryPoint.getQuantity());
     }
 
-    @Test
-    void gainedByPlayer() {
-    }
-
-    @Test
-    void lostByPlayer() {
-    }
 
 }
