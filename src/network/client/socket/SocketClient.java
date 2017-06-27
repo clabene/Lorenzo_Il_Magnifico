@@ -191,6 +191,7 @@ public class SocketClient extends AbstractNetworkClient {
 
 
         try {
+            output.reset();
             output.writeObject(favours);
             output.flush();
         } catch (IOException e){

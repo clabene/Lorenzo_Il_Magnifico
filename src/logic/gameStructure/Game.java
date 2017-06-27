@@ -1,6 +1,7 @@
 package logic.gameStructure;
 
 import logic.actionSpaces.ActionSpace;
+import logic.actionSpaces.TowerActionSpace;
 import logic.board.Board;
 import logic.exceptions.ActionSpaceCoveredException;
 import logic.exceptions.FamilyMemberSelectionException;
@@ -102,11 +103,18 @@ public class Game implements Serializable{
 
     public ResponseCode playingExtraAction(Player player, int familyMemberValue, ActionSpace actionSpace){
 
-        actionPhase.activateBonuses(player, actionSpace);
+        //actionPhase.activateBonuses(player, actionSpace);
+
+        selectedFamilyMember = new FamilyMember(null, familyMemberValue, player.getId());
+
+        selectedActionSpace = actionSpace;
 
         Boolean b = actionPhase.putFamilyMemberOnActionSpace(player,
                 new FamilyMember(null, familyMemberValue, player.getId()),
                 actionSpace);
+
+        selectedFamilyMember = null;
+        selectedActionSpace = null;
 
         if(b) return ResponseCode.OK;
         return ResponseCode.GENERIC_ERROR;
@@ -131,7 +139,6 @@ public class Game implements Serializable{
 
     public ResponseCode useSlaves(Player player, int quantity){
         if(selectedFamilyMember == null) return ResponseCode.GENERIC_ERROR;
-        System.out.println(player+"-------------------------------------------------------aaaaaaaaaaaaaaaaaaa");
 
 
         if(actionPhase.incrementFamilyMemberValueRequest(player, selectedFamilyMember, quantity))
@@ -147,13 +154,11 @@ public class Game implements Serializable{
         System.out.println("-------------------------------------------------------brandolese----amarilli"+ notSupporting);
 
         if(!notSupporting){
-            System.out.println("33333333333333333333333333333333333333333333333333333333");
             player.gain(player.getFaithPoints().calculateVictoryPointsFromPosition());
             player.lose(player.getFaithPoints());
             System.out.println("-------------------------------------------------------brandolese"+player.lose(player.getFaithPoints()));
             return;
         }
-        System.out.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
         tassel.activate(player);
     }
 

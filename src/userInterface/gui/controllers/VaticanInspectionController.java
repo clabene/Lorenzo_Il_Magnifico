@@ -2,6 +2,7 @@ package userInterface.gui.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -17,11 +18,15 @@ public class VaticanInspectionController extends Controller{
     private Pane pane;
     @FXML
     private Button excommunicationButton, supportButton;
+    @FXML
+    private Label label;
 
     private boolean notSupporting = true; //false -> excommunication, true -> support
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        label.setLayoutX(20);
+        label.setLayoutY(20);
         excommunicationButton.setLayoutX(100);
         supportButton.setLayoutX(250);
         supportButton.setLayoutY(100);

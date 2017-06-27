@@ -91,7 +91,7 @@ public class ActionPhase implements Serializable{
         activateBonuses(player, actionSpace);
 
         if (familyMember.getValue() >= actionSpace.getMinValueToPlaceFamiliar() ) {
-            player.gain(actionSpace.getBonus().toArray(new Gainable[actionSpace.getBonus().size()]));
+            if(actionSpace.getBonus() != null) player.gain(actionSpace.getBonus().toArray(new Gainable[actionSpace.getBonus().size()]));
             if(!actionSpace.action(player)) {
                 //restore previous situation
                 player.lose(actionSpace.getBonus().toArray(new Losable[actionSpace.getBonus().size()]));

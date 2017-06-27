@@ -87,7 +87,7 @@ public class ViewBuilder {
 
         Platform.runLater( () -> controller.setDice(clientView.getBoard().getBlackDice(),clientView.getBoard().getRedDice(), clientView.getBoard().getWhiteDice()));
 
-
+        Platform.runLater( () ->controller.getOpponentsAccordion().toFront());
 
     }
 

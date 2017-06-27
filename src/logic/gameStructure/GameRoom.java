@@ -11,7 +11,10 @@ import logic.excommunicationTessels.ExcommunicationTassel;
 import logic.interfaces.Gainable;
 import logic.player.FamilyMember;
 import logic.player.Player;
+import logic.pointsTracks.FaithPointsTrack;
 import logic.resources.CouncilFavour;
+import logic.resources.SetOfResources;
+import logic.resources.Wood;
 import logic.utility.CardSetupHandler;
 import logic.utility.LimitedInteger;
 import network.ResponseCode;
@@ -201,16 +204,42 @@ public class GameRoom implements Serializable{
         remotePlayer.selectActionSpaceForExtraAction(remotePlayer.getExtraAction().getActionSpaces());
     }
 
-    public void doExtraAction(RemotePlayer remotePlayer, ActionSpace actionSpace){
-        ResponseCode responseCode = game.playingExtraAction(remotePlayer, remotePlayer.getExtraAction().getFamilyMemberValue(), actionSpace);
+    public void doExtraAction(RemotePlayer remotePlayer, ActionSpace actionSpace) {
+        ResponseCode responseCode;
+        TowerActionSpace t = new TowerActionSpace(0, new Wood(0));
+        if (actionSpace instanceof TowerActionSpace) {
+
+            t = (TowerActionSpace) actionSpace;
+
+            for (ActionSpace tmp : board.getHashMap().values()) {
+            if (!(tmp instanceof TowerActionSpace)) continue;
+                if ( ((TowerActionSpace) tmp).getCard() != null &&  ((TowerActionSpace) tmp).getCard().getName().equals(t.getCard().getName())){
+                t = (TowerActionSpace) tmp;
+            }
+        }
+
+        responseCode = game.playingExtraAction(remotePlayer,
+                remotePlayer.getExtraAction().getFamilyMemberValue(),
+                t);
+        } else {
+            responseCode = game.playingExtraAction(remotePlayer,
+                    remotePlayer.getExtraAction().getFamilyMemberValue(),
+                    actionSpace);
+        }
+
+
+
+        useCouncilFavours(remotePlayer);
 
         if(responseCode == ResponseCode.GENERIC_ERROR) restoreArea(actionSpace);
 
+        updatePlayersView();
+
         remotePlayer.notifyRequestHandleOutcome(responseCode);
 
-
-
         remotePlayer.setExtraAction(null);
+
+
     }
     private void restoreArea(ActionSpace actionSpace) {
         Card card = ( (TowerActionSpace) actionSpace).getCard();
@@ -242,8 +271,7 @@ public class GameRoom implements Serializable{
         updatePlayersView();
     }
 
-    public void takeExcommunication(Player player, boolean notSupporting){
-        System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwwwlllllllllllllllllllllllllllllllll");
+    public void takeExcommunication(Player player, boolean notSupporting) {
         game.takeExcommunication(player, board.getTassels()[game.getCurrentPeriodNumber()], notSupporting);
     }
 

@@ -25,7 +25,6 @@ public class ExtraActionPopUpController extends Controller {
 
     private Stage stage;
 
-    private ArrayList<ActionSpace> actionSpaces;
     private ActionSpace actionSpace = new MarketActionSpace(new Wood(0)); //default value
 
     public void setStage(Stage stage) {
@@ -33,7 +32,6 @@ public class ExtraActionPopUpController extends Controller {
     }
 
     public void setActionSpaces(ArrayList<ActionSpace> actionSpaces) {
-        this.actionSpaces = actionSpaces;
         placeLabels(actionSpaces);
     }
 
@@ -49,11 +47,12 @@ public class ExtraActionPopUpController extends Controller {
     private void placeLabels( ArrayList<ActionSpace> actionSpaces ){
         int i = 0;
         for(ActionSpace tmp : actionSpaces) {
+        if(((TowerActionSpace)tmp).getCard() == null) continue;
             Label label = new Label(((TowerActionSpace)tmp).getCard().getName()); //if were not tower action spaces, would not have got here
             label.setLayoutX(20);
             label.setLayoutY(20+30*i);
             label.setOnMouseClicked( e ->{
-                ((MainViewController)getGuiClient().getController()).setActionSpace(actionSpace);
+                ((MainViewController)getGuiClient().getController()).setActionSpace(tmp);
                 ((MainViewController)getGuiClient().getController()).setCanSendAction(true);
                 stage.close();
             } );

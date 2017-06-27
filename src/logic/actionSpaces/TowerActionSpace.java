@@ -95,6 +95,7 @@ public class TowerActionSpace extends ActionSpace {
             if(card.getImmediateEffect() != null) card.getImmediateEffect().activate(player);
             if(card.getCardType() == CardType.PERSON && card.getPermanentEffect() != null) card.getPermanentEffect().activate(player);
             this.card = null;
+
             return true;
         }
         return false;

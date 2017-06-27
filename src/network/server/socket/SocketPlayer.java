@@ -155,6 +155,7 @@ public class SocketPlayer extends RemotePlayer implements Runnable {
     @Override
     public void selectActionSpaceForExtraAction(ArrayList<ActionSpace> actionSpaces) {
         try {
+            output.reset();
             output.writeObject("SELECT_ACTION_SPACE_FOR_EXTRA_ACTION");
             output.writeObject(actionSpaces);
             output.flush();

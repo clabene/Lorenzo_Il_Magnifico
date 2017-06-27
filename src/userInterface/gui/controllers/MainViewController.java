@@ -65,6 +65,10 @@ public class MainViewController extends Controller {
         placeOpponentsAccordion();
     }
 
+    public Accordion getOpponentsAccordion() {
+        return opponentsAccordion;
+    }
+
     public void setImageV(){
         image.setImage(new Image("userInterface/gui/images/background.png"));
         image.setPreserveRatio(false);
@@ -107,7 +111,7 @@ public class MainViewController extends Controller {
 
     private void placeOpponentsAccordion(){
         opponentsAccordion.layoutXProperty().bind(pane.widthProperty().multiply(0.7).add(70));
-        opponentsAccordion.layoutYProperty().bind(board.getYPosition().subtract(5));
+        opponentsAccordion.layoutYProperty().bind(board.getYPosition().subtract(12));
         opponentsAccordion.setBackground(new Background(new BackgroundFill(javafx.scene.paint.Color.CHOCOLATE,null,null)));
         opponentsAccordion.toFront();
         pane.getChildren().add(opponentsAccordion);
@@ -315,7 +319,6 @@ public class MainViewController extends Controller {
         for(PlayerTag tmp : players) {
             if (tmp.getPlayerId().equals(winnerId)) {
                 Loader.buildPopUp( "WINNER","The winner is "+getPlayerFromId(winnerId).getPlayerName(), "userInterface/gui/images/winner.png" );
-                Platform.exit();
             }
         }
     }

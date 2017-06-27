@@ -16,8 +16,6 @@ import java.util.ArrayList;
  */
 public class PlayExtraActionPhaseEffect implements CardEffect{
 
-    //this class is not very well implemented
-
     private ArrayList<ActionSpace> actionSpaces = new ArrayList<>();
     private int valueOfFamilyMember;
     private CardType cardType;
@@ -41,15 +39,13 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
         for(ActionSpace tmp : player.getBoard().getHashMap().values()){
             if(!(tmp instanceof TowerActionSpace)) continue;
             TowerActionSpace tmp1 = (TowerActionSpace) tmp;
-            if(tmp1.getCard() != null && this.cardType == null) //cardType == null -> i take all tower action space
+            if(tmp1.getCard() != null && this.cardType == null) //cardType == null -> take all tower action spaces
                 this.actionSpaces.add(tmp1);
             else if(tmp1.getCard() != null && tmp1.getCard().getCardType() == this.cardType)
                 this.actionSpaces.add(tmp1);
-            else break;
         }
     }
 
-    //todo add check considering bonus
     private boolean isPhasePlayable(Player player) {
         for(ActionSpace tmp : actionSpaces)
             if (player.getPlank().getSetOfResources().getQuantityOfSlaves() + valueOfFamilyMember >= tmp.getMinValueToPlaceFamiliar())
@@ -72,32 +68,6 @@ public class PlayExtraActionPhaseEffect implements CardEffect{
 
         player.setExtraAction(extraAction);
 
-        /*ActionPhase actionPhase = new ActionPhase();
-
-        while(true) {
-            if(isPhasePlayable(player)) break;
-
-            ActionSpace selectedActionSpace = new CouncilActionSpace();//player.selectActionSpace(actionSpaces.toArray(new ActionSpace[actionSpaces.size()]));
-            //todo input from client is needed here. See if Game or GameRoom is needed instead of ActionPhase
-
-            if(selectedActionSpace == null) continue;
-
-            // slaves sacrifices
-            actionPhase.incrementFamilyMemberValueRequest(player, familyMember);
-
-            // bonuses activation
-            actionPhase.activateBonuses(player ,selectedActionSpace);
-
-            if(actionPhase.putFamilyMemberOnActionSpace(player,familyMember, selectedActionSpace)) break;
-
-            Card card = ( (TowerActionSpace) selectedActionSpace).getCard();
-            selectedActionSpace = new TowerActionSpace(selectedActionSpace.getMinValueToPlaceFamiliar(), selectedActionSpace.getBonus().toArray(new Gainable[selectedActionSpace.getBonus().size()]));
-            ((TowerActionSpace)selectedActionSpace).setCard(card);
-        }
-
-        // family member gets removed from game
-        this.familyMember = null;
-        */
     }
 
 }

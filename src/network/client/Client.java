@@ -158,12 +158,12 @@ public class Client extends Application implements ClientInterface {
 
     public static void main(String[] args){
         Client c = new Client();
+
         c.setUserInterfaceAndStart();
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
         uiClient = new GuiClient(this);
 
         setNetworkType();
